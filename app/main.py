@@ -1,13 +1,17 @@
 import os
 import uuid
 import hashlib
-from datetime import datetime
+import logging
 
 import httpx
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 
 app = FastAPI()
+
+# --- logging ---
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger("telegram")
 
 STATE_NEW = "NEW"
 STATE_PHASE0_PENDING = "PHASE0_PENDING"
@@ -24,27 +28,46 @@ def sha256_text(text: str) -> str:
 
 async def tg_send_message(chat_id: int, text: str) -> None:
     token = os.getenv("TELEGRAM_BOT_TOKEN")
+
     if not token:
-        # если токена нет — не падаем, просто молча пропускаем
+        logger.warning(
+            "TELEGRAM_BOT_TOKEN is missing. chat_id=%s text=%s",
+            chat_id,
+            text[:100],
+        )
         return
 
     url = f"https://api.telegram.org/bot{token}/sendMessage"
     payload = {"chat_id": chat_id, "text": text}
 
-    async with httpx.AsyncClient(timeout=10) as client:
-        await client.post(url, json=payload)
+    try:
+        async with httpx.AsyncClient(timeout=10) as client:
+            response = await client.post(url, json=payload)
+
+        logger.info(
+            "sendMessage -> status=%s body=%s",
+            response.status_code,
+            response.text[:300],
+        )
+
+    except Exception as e:
+        logger.exception("sendMessage failed: %s", e)
 
 
 @app.post("/telegram/webhook")
 async def telegram_webhook(request: Request):
     payload = await request.json()
+    logger.info("Incoming update: %s", str(payload)[:500])
 
     message = payload.get("message")
     if not message:
+        logger.info("No message field in update")
         return JSONResponse({"status": "ignored"})
 
     text = message.get("text", "")
     chat_id = message["chat"]["id"]
+
+    logger.info("Message received: chat_id=%s text=%s", chat_id, text)
 
     if text.startswith("/run"):
         conflict_text = text.replace("/run", "").strip()
@@ -62,10 +85,10 @@ async def telegram_webhook(request: Request):
             f"state={STATE_PHASE0_PENDING}\n"
             f"request_hash={request_hash}"
         )
-        await tg_send_message(chat_id, reply_text)
 
+        await tg_send_message(chat_id, reply_text)
         return JSONResponse({"status": "ok"})
 
-    # базовый ответ на любые другие сообщения (чтобы видеть, что бот жив)
+    # базовый ответ
     await tg_send_message(chat_id, "OK. Use /run <text> to create a run.")
     return JSONResponse({"status": "ok"})
