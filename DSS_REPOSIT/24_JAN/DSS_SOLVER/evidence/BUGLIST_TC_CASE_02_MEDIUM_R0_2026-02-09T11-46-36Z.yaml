@@ -1,0 +1,6 @@
+run_id: 2026-02-09T11-46-36Z
+test_case_id: TC_CASE_02_MEDIUM_R0
+issues:
+  - gate: NONE
+    issue_code: NONE
+    message: "No issues"

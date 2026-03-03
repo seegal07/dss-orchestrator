@@ -1,0 +1,171 @@
+test_case_id: "TC_E25_PHASE0_REPEATABILITY"
+status: "FILLED"
+mode: "full_vector"
+canon_versions:
+  schema: "TEST_VECTOR_SCHEMA_v0.6"
+schema: "TEST_VECTOR_SCHEMA_v0.6"
+schema_version: 0.6
+phase0_enabled: true
+operator_core_enabled: true
+full_vector:
+  step_0:
+    symptom_1l: "Европейские филиалы запускаются по старым правилам и дают системный перерасход/слабый PMF"
+  step_1:
+    owner_role: "CEO компании"
+    owner_scope: "правило запуска новых филиалов в Европе"
+    constraints:
+      - "не раздувать исследовательский бюджет/срок"
+  step_2:
+    actor:
+      - "центральный офис"
+      - "региональный директор Европы"
+      - "локальные команды"
+    system:
+      - "процесс запуска филиала"
+    environment:
+      - "локальные законы"
+      - "локальный рынок труда"
+      - "локальный спрос"
+      - "брендовая неизвестность"
+    boundary_note_1l: "Внутри: процедура запуска, ресурсы и подготовка; снаружи: локальные условия рынка Европы."
+  step_3:
+    elements:
+      - "финмодель"
+      - "найм"
+      - "маркетинг"
+      - "продуктовый пакет"
+    flows:
+      -
+        from: "центральный офис"
+        to: "новый филиал"
+        type: "procedure"
+        note: "типовой запуск из неевропейского шаблона"
+    symptom_location: "Прогноз CAPEX/OPEX и фактические затраты расходятся в европейском запуске."
+  step_4:
+    improve_x: "скорость запуска и точность прогноза"
+    worsen_y: "вероятность быстрого возврата инвестиций"
+    statement_1l: "Если увеличиваем скорость запуска, уменьшается вероятность быстрого возврата инвестиций."
+    measurement_hint: "срок запуска, отклонение CAPEX/OPEX от прогноза, срок окупаемости"
+  step_5:
+    ikr_1l: "Филиал запускается быстро с управляемым CAPEX/OPEX и предсказуемым ROI."
+  step_6:
+    barrier_1l: "Время и бюджет подготовки не выходят за утвержденные лимиты."
+    equivalent_to_step4: true
+  step_7:
+    resources:
+      -
+        name: "центральные специалисты"
+        category: "org"
+        tied_to: "запуск"
+      -
+        name: "локальные данные рынка"
+        category: "info"
+        tied_to: "калибровка модели"
+      -
+        name: "юрист компании"
+        category: "legal"
+        tied_to: "комплаенс"
+      -
+        name: "внешние локальные эксперты/консалтинг"
+        category: "external"
+        tied_to: "исследования в лимите"
+  step_8:
+    PRIMARY_FORM: "Form 5"
+    BOUNDARY_CHECK:
+      note: "ускорение без адаптации ломает экономику"
+    TRIZ_CORE:
+      physical_contradiction:
+        object: "запуск филиала"
+        parameter: "скорость/точность"
+        state_a: "быстро"
+        state_not_a: "точно"
+      separation:
+        separation_type: "condition"
+        what_changes: "запуск только после порога готовности"
+        expected_resolution: "снижение неверных запусков"
+      system_operator:
+        subsystem_present: "локальная подготовка"
+        system_present: "pipeline запуска"
+        supersystem_present: "международная сеть"
+      transformation_model:
+        changed_object: "момент разрешения необратимых затрат"
+        new_state: "разрешение только после порога"
+        resolution_link: "контроль риска неверного запуска"
+      non_obviousness_check:
+        assumption_broken: "быстрый перенос шаблона всегда масштабируется"
+        why_not_obvious: "без порога готовности рост скорости повышает риск системного перерасхода"
+    PRINCIPLES_TO_ACTION:
+      PRINCIPLES:
+        - 1
+      ACTIONS:
+        - "gate запуска по порогу команды и спроса"
+    IKR_TEST:
+      Q1: "YES"
+    CONFIDENCE:
+      score: 1
+    risk_1l: "Первично ломается команда: некомпетентность/несоответствие приводит к провалу спроса и перерасходу."
+  step_8_5:
+    operator_selected: "DEPENDENCY_INVERSION"
+    detected_conflict_types:
+      - "B"
+    dominant_conflict_type: "B"
+    transformed_conflict_frame: "Запуск отделен от необратимых затрат до прохождения порога готовности."
+    what_changed_structurally: "Необратимые затраты зависят от верификации команды и спроса."
+    mechanism_1l: "Запуск филиала разрешён только после проверки (команда>=N и спрос>=M) до любых необратимых затрат; иначе стоп."
+    search_loop: true
+    structural_resolution_confirmed: true
+    separation_illusion_test: false
+    assisted_matrix:
+      -
+        question_id: "CR_Q1"
+        answer: "YES"
+      -
+        question_id: "CR_Q2"
+        answer: "YES"
+      -
+        question_id: "CR_Q3"
+        answer: "YES"
+      -
+        question_id: "CR_Q4"
+        answer: "YES"
+      -
+        question_id: "CR_Q5"
+        answer: "YES"
+  step_9:
+    count_rule: "3-5"
+    concepts:
+      -
+        concept_index: 1
+        name: "Порог команды+спроса"
+      -
+        concept_index: 2
+        name: "Запрет необратимых затрат до порога"
+      -
+        concept_index: 3
+        name: "Условный запуск"
+  step_10:
+    concept_specs:
+      -
+        concept_index: 1
+        A_name_tagline: "Порог команды+спроса"
+  step_11:
+    new_contradiction_exists: false
+    selection_criteria_refs:
+      - "contradiction"
+      - "ikr"
+      - "barrier"
+  step_12:
+    chosen_concept_index: 1
+    chosen_concept_name: "Порог команды+спроса"
+    reasons:
+      - "снижает риск неверного запуска"
+    commit_confirmation: "YES"
+    compromise_mode: true
+pfl_enabled: true
+pfl_verdict: "PASS"
+pfl_reason: "NONE"
+pfl_attempt_index: 1
+pfl_structural_tension: true
+pfl_conflict_type_candidate: "causal"
+pfl_X: "Ускорить запуск филиалов в Европе и повысить точность CAPEX/OPEX+PMF до запуска."
+pfl_Y: "Не увеличивать чрезмерно время и стоимость подготовки запуска."

@@ -1,0 +1,20 @@
+{
+  "schema": "TEST_VECTOR_SCHEMA_v0.4",
+  "schema_version": 0.4,
+  "pfl_enabled": true,
+  "pfl_verdict": "PASS",
+  "pfl_reason": "NONE",
+  "pfl_attempt_index": 1,
+  "pfl_X": "Директор филиала должен иметь право на работу в Словакии, владеть RU/UA и иметь управленческие компетенции (финансы, маркетинг).",
+  "pfl_Y": "Условия найма: зарплата не выше 3000 EUR/мес и закрытие вакансии не позднее 30 дней.",
+  "full_vector": {
+    "step_8_5": {
+      "operator_selected": "DEPENDENCY_INVERSION",
+      "mechanism_1l": "Если Sintegrum >=8 и оба интервью PASS, делаем оффер; иначе стоп и новый поиск.",
+      "search_loop": true,
+      "separation_illusion_test": false,
+      "structural_resolution_confirmed": true,
+      "gatecr_status": "PASS"
+    }
+  }
+}

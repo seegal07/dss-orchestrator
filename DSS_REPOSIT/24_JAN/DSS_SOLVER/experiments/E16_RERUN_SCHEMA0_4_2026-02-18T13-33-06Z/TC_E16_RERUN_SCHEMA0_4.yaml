@@ -1,0 +1,160 @@
+test_case_id: TC_E16_RERUN_SCHEMA0_4
+status: FILLED
+mode: full_vector
+schema_version: 0.4
+pfl_enabled: true
+pfl_verdict: PASS
+pfl_reason: "NONE"
+pfl_attempt_index: 1
+pfl_structural_tension: true
+pfl_conflict_type_candidate: causal
+pfl_X: "Директор филиала должен иметь право на работу в Словакии, владеть RU/UA и иметь управленческие компетенции (финансы, маркетинг)."
+pfl_Y: "Условия найма: зарплата не выше 3000 EUR/мес и закрытие вакансии не позднее 30 дней."
+operator_core_enabled: true
+canon_versions:
+  canon_pipeline: CANON_PIPELINE_v1.2.docx
+  canon_9forms: CANON_9FORMS_v1.1.docx
+  schema: TEST_VECTOR_SCHEMA_v0.4.md
+notes: "E16 controlled rerun on schema 0.4 with loop flag true"
+
+full_vector:
+  step_0:
+    symptom_1l: "Директор филиала не нанят в срок из-за конфликта требований к профилю, сроку и бюджету"
+  step_1:
+    owner_role: "региональный директор"
+    owner_scope: "найм директора филиала в Братиславе"
+    constraints: ["зарплата <=3000 EUR/мес", "срок закрытия <=30 дней", "право на работу в Словакии"]
+  step_2:
+    actor: ["региональный директор", "рекрутер", "кандидат", "гендиректор"]
+    system: ["процесс найма директора филиала"]
+    environment: ["рынок кандидатов Словакии", "миграционный контур", "ожидания по зарплате"]
+    boundary_note_1l: "Внутри: каналы поиска, правила отбора, интервью и оффер; снаружи: доступность кандидатов, миграционный статус, рыночные зарплатные ожидания."
+  step_3:
+    elements: ["кандидат", "рекрутер", "региональный директор", "гендиректор"]
+    flows:
+      - from: "рынок кандидатов"
+        to: "рекрутер"
+        type: "candidate_flow"
+        note: "первичный пул кандидатов"
+      - from: "рекрутер"
+        to: "региональный директор"
+        type: "screening"
+        note: "отобранные кандидаты"
+      - from: "региональный директор"
+        to: "гендиректор"
+        type: "final_review"
+        note: "финальный кандидат"
+    symptom_location: "На этапе финального отбора кандидаты выпадают из-за конфликта требований к профилю, сроку и стоимости найма."
+  step_4:
+    improve_x: "строгое соответствие кандидата требованиям роли (язык, статус, компетенции)"
+    worsen_y: "срок закрытия вакансии и зарплатный бюджет найма"
+    statement_1l: "Если усиливаем требования к кандидату, ухудшаются срок закрытия вакансии и зарплатные ожидания."
+    measurement_hint: "срок найма (дни), ожидаемая зарплата (EUR/мес), число релевантных кандидатов"
+  step_5:
+    ikr_1l: "Назначен директор с оценкой Sintegrum >=8, правом на работу в Словакии, ожиданием зарплаты <=3000 EUR/мес, срок закрытия <=30 дней."
+  step_6:
+    barrier_1l: "Кандидат должен иметь право на работу в Словакии; зарплата <=3000 EUR/мес; срок закрытия вакансии <=30 дней."
+    equivalent_to_step4: true
+  step_7:
+    resources:
+      - name: "внешний рекрутер"
+        category: "org"
+        tied_to: "поиск кандидатов"
+      - name: "объявления в соцсетях"
+        category: "channel"
+        tied_to: "привлечение откликов"
+      - name: "местные job-платформы Словакии"
+        category: "channel"
+        tied_to: "локальный поиск кандидатов"
+      - name: "Sintegrum"
+        category: "assessment"
+        tied_to: "оценка компетенций"
+      - name: "финальное интервью региональный директор + гендиректор"
+        category: "decision"
+        tied_to: "финальный выбор кандидата"
+  step_8:
+    PRIMARY_FORM: "Form 5"
+    BOUNDARY_CHECK:
+      note: "ok"
+    TRIZ_CORE:
+      physical_contradiction:
+        object: "найм директора"
+        parameter: "строгость требований"
+        state_a: "максимальная строгость"
+        state_not_a: "минимальная строгость"
+      separation:
+        separation_type: "condition"
+        what_changes: "оффер только после проверки пригодности"
+        expected_resolution: "снижение риска ошибочного найма"
+      system_operator:
+        subsystem_present: "интервью"
+        system_present: "процесс найма"
+        supersystem_present: "региональное управление"
+      transformation_model:
+        changed_object: "правило финального оффера"
+        new_state: "оффер зависит от верифицированной пригодности"
+        resolution_link: "снижает риск ложноположительного найма"
+      non_obviousness_check:
+        assumption_broken: "быстрое закрытие без проверки пригодности неустойчиво"
+        why_not_obvious: "без условного разделения проверки и оффера риск не снимается"
+    PRINCIPLES_TO_ACTION:
+      PRINCIPLES: [1]
+      ACTIONS: ["сначала верификация пригодности, затем оффер"]
+    IKR_TEST:
+      Q1: "YES"
+    CONFIDENCE:
+      score: 1
+  step_8_5:
+    operator_selected: "DEPENDENCY_INVERSION"
+    detected_conflict_types: ["B"]
+    dominant_conflict_type: "B"
+    transformed_conflict_frame: "Сначала фильтрация кандидата по верифицированной пригодности, затем оффер в лимите срока/бюджета."
+    what_changed_structurally: "Оффер теперь зависит от верифицированного прохождения Sintegrum и двух интервью, а не только от скорости закрытия вакансии."
+    mechanism_1l: "Если Sintegrum >=8 и оба интервью PASS, делаем оффер; иначе стоп и новый поиск."
+    structural_resolution_confirmed: true
+    separation_illusion_test: false
+    search_loop: true
+    assisted_matrix:
+      - question_id: "CR_Q1"
+        answer: "YES"
+      - question_id: "CR_Q2"
+        answer: "YES"
+      - question_id: "CR_Q3"
+        answer: "YES"
+      - question_id: "CR_Q4"
+        answer: "YES"
+      - question_id: "CR_Q5"
+        answer: "YES"
+  step_9:
+    count_rule: "3-5"
+    concepts:
+      - concept_index: 1
+        name: "Проверка и оффер"
+      - concept_index: 2
+        name: "Фильтр пригодности"
+      - concept_index: 3
+        name: "Ограниченный оффер"
+  step_10:
+    concept_specs:
+      - concept_index: 1
+        A_name_tagline: "Проверка и оффер"
+  step_11:
+    new_contradiction_exists: false
+    selection_criteria_refs: ["contradiction", "ikr", "barrier"]
+  step_12:
+    chosen_concept_index: 1
+    chosen_concept_name: "Проверка и оффер"
+    reasons: ["в рамках лимитов"]
+    compromise_mode: true
+  step_13:
+    workstreams:
+      - name: "Hiring"
+  step_14:
+    rule_id: "H1"
+    rule_statement_if_then: "If fit verified then offer"
+    criterion: "fit + budget + timeline"
+    boundaries: "branch"
+    evidence_from_case: "E16"
+    test_case_action: "apply"
+    version_note: "v1"
+    rationale_1l: "guard against false-positive hire"

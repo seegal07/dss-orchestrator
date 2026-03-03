@@ -1,0 +1,15 @@
+run_id: 2026-02-20T11-05-12Z
+test_case_id: TC_E21_LOOP_YES
+issues:
+  - gate: Gate0
+    issue_code: STRUCTURAL
+    message: "status is not FILLED"
+  - gate: Gate0
+    issue_code: STRUCTURAL
+    message: "mode is invalid"
+  - gate: Gate0
+    issue_code: STRUCTURAL
+    message: "canon_versions missing"
+  - gate: GateTRIZ
+    issue_code: STRUCTURAL
+    message: "TRIZ_G4_INVALID: non-obviousness has no reference to separation (step_8.TRIZ_CORE.non_obviousness_check)"

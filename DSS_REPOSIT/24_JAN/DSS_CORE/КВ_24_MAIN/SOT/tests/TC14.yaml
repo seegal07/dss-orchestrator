@@ -1,0 +1,333 @@
+test_case_id: TC14
+status: FILLED
+mode: artifact_pack
+canon_versions:
+  canon_pipeline: CANON_PIPELINE_v1.2.docx
+  canon_9forms: CANON_9FORMS_v1.1.docx
+  schema: TEST_VECTOR_SCHEMA_v0.1.md.docx
+notes: "patched vector"
+
+artifact_pack:
+  - artifact_type: CASE_SYMPTOM
+    pipeline_step: 0
+    payload:
+      symptom_1l: "После внедрения нового прайсинга растёт число обращений в поддержку и возвратов; пользователи не понимают правила списаний."
+
+  - artifact_type: PROBLEM_OWNER_CARD
+    pipeline_step: 1
+    payload:
+      owner_role: "Product Manager / Руководитель продукта (SaaS)"
+      owner_scope: "Может менять коммуникации, онбординг, правила списаний, подсказки в продукте и превентивные проверки перед оплатой."
+      constraints:
+        - "Нельзя менять саму модель прайсинга в течение квартала"
+        - "Нельзя увеличивать штат поддержки"
+        - "Нужен эффект в течение 4 недель"
+      success_metric_hint: "% тикетов по биллингу, % возвратов, NPS после оплаты."
+
+  - artifact_type: SYSTEM_BOUNDARY_MAP
+    pipeline_step: 2
+    payload:
+      actor:
+        - "Пользователь"
+        - "Биллинг-система"
+        - "Продукт (UI/онбординг)"
+        - "Поддержка"
+      system:
+        - "Поток: выбор тарифа → оплата → списания → уведомления"
+        - "Тексты и подсказки в UI"
+      environment:
+        - "Платёжные провайдеры"
+        - "Правила возвратов"
+        - "Конкурентные ожидания пользователей"
+      boundary_note_1l: "Симптом на границе «ожидание пользователя» и «реальные правила списаний»."
+
+  - artifact_type: INTERACTION_MAP
+    pipeline_step: 3
+    payload:
+      elements:
+        - "Выбор тарифа"
+        - "Экран оплаты"
+        - "Чек/инвойс"
+        - "Уведомления о списаниях"
+        - "Поддержка"
+      flows:
+        - from: "Пользователь"
+          to: "Экран оплаты"
+          type: info
+          note: "выбор тарифа/условий"
+        - from: "Экран оплаты"
+          to: "Биллинг-система"
+          type: money
+          note: "платёж/подписка"
+        - from: "Биллинг-система"
+          to: "Пользователь"
+          type: info
+          note: "уведомления о списании"
+        - from: "Пользователь"
+          to: "Поддержка"
+          type: info
+          note: "вопросы/претензии по списанию"
+        - from: "Поддержка"
+          to: "Биллинг-система"
+          type: info
+          note: "проверка транзакций"
+      symptom_location: "Между «экран оплаты» и «ожидания пользователя»: недостаток превентивной ясности вызывает тикеты и возвраты."
+
+  - artifact_type: CONTRADICTION_STATEMENT
+    pipeline_step: 4
+    payload:
+      improve_x: "Простота и скорость оплаты (минимум текста/шагов)"
+      worsen_y: "Понимание пользователем правил списаний (прозрачность условий)"
+      statement_1l: "Если упрощаем оплату, ухудшается понимание правил списаний; если добавляем пояснения, падает скорость оплаты и конверсия."
+      measurement_hint: "X=конверсия checkout; Y=% тикетов/возвратов по биллингу."
+
+  - artifact_type: IKR_CARD
+    pipeline_step: 5
+    payload:
+      ikr_1l: "Пользователь понимает правила списаний ещё до оплаты, а конверсия оплаты не падает."
+      no_new_harm_clause: "Без роста нагрузки на поддержку."
+
+  - artifact_type: HARD_BARRIER
+    pipeline_step: 6
+    payload:
+      barrier_1l: "Нельзя одновременно сделать оплату максимально короткой и гарантировать понимание всех условий списаний."
+      equivalent_to_step4: true
+
+  - artifact_type: RESOURCE_MAP
+    pipeline_step: 7
+    payload:
+      resources:
+        - name: "Логи причин возвратов"
+          category: info
+          tied_to: "Поддержка"
+          note: "топ-непонимания и формулировки пользователей"
+        - name: "События воронки checkout"
+          category: info
+          tied_to: "Экран оплаты"
+          note: "где теряем конверсию"
+        - name: "UI-подсказки (tooltips/баннеры)"
+          category: info
+          tied_to: "Продукт (UI/онбординг)"
+          note: "можно показывать только по триггеру"
+        - name: "Письмо/чек после оплаты"
+          category: info
+          tied_to: "Чек/инвойс"
+          note: "подтверждает правила списаний"
+        - name: "Превью следующего списания"
+          category: info
+          tied_to: "Биллинг-система"
+          note: "дата/сумма заранее"
+        - name: "Тайминг уведомлений"
+          category: time
+          tied_to: "Уведомления о списаниях"
+          note: "можно сдвинуть/добавить напоминание"
+        - name: "Ограниченный набор ключевых правил (3 пункта)"
+          category: org
+          tied_to: "Экран оплаты"
+          note: "минимальная обязательная ясность"
+        - name: "FAQ по биллингу"
+          category: info
+          tied_to: "Продукт (UI/онбординг)"
+          note: "ссылки с экрана оплаты"
+        - name: "Текстовые шаблоны поддержки"
+          category: org
+          tied_to: "Поддержка"
+          note: "ускоряет ответы без найма"
+
+  - artifact_type: FORM_SELECTION
+    pipeline_step: 8
+    payload:
+      PRIMARY_FORM: "№3 Превенция"
+      BOUNDARY_CHECK:
+        NEAREST_FORMS:
+          - "№3 Превенция"
+          - "№8 Кибернетика"
+        WHY_NOT_X:
+          - "Нужны превентивные действия ДО оплаты, иначе тикеты уже возникли."
+          - "Цель — убрать причины непонимания заранее."
+        WHY_NOT_Y:
+          - "Обратная связь важна, но она работает после инцидента; здесь приоритет — предотвратить."
+          - "Сначала убираем типовые ловушки правил списаний в момент оплаты."
+      D_MARKER: "D2"
+      TRIZ_CORE:
+        CONTRADICTION_1L: "нужно минимизировать шаги оплаты, но нужно гарантировать понимание условий"
+        IKR_1L: "условия становятся понятны автоматически в нужный момент"
+      PRINCIPLES_TO_ACTION:
+        PRINCIPLES: [10, 11, 9]
+        ACTIONS:
+          - "10: Перед оплатой показывать 3 ключевых правила списаний одним экраном с подтверждением."
+          - "11: Подложить «подушку»: превью следующего списания (дата/сумма) прямо в checkout."
+          - "09: Предварительное анти-действие: блокировать оплату при неподтверждённом периоде списания."
+      IKR_TEST:
+        Q1: "YES — причины тикетов устраняются до оплаты."
+        Q2: "YES — чеклист короткий (3 правила), конверсия не должна сильно пострадать."
+      CONFIDENCE:
+        score: 68
+        justification: "Есть логи тикетов и события воронки; подсказки реализуемы без смены прайсинга."
+
+  - artifact_type: SOLUTION_SET
+    pipeline_step: 9
+    payload:
+      count_rule: "3–5"
+      concepts:
+        - concept_index: 1
+          name: "3 правила списаний в checkout + подтверждение"
+          idea_1l: "Перед оплатой показывать 3 ключевых правила и требовать явное подтверждение."
+          linked_form: "№3 Превенция"
+          linked_principles: [10]
+          linked_resources:
+            - "Ограниченный набор ключевых правил (3 пункта)"
+            - "UI-подсказки (tooltips/баннеры)"
+          ikr_alignment_1l: "Понимание появляется до оплаты без длинных документов."
+        - concept_index: 2
+          name: "Превью следующего списания в checkout"
+          idea_1l: "Показывать дату и сумму следующего списания прямо на экране оплаты."
+          linked_form: "№3 Превенция"
+          linked_principles: [11]
+          linked_resources:
+            - "Превью следующего списания"
+            - "События воронки checkout"
+          ikr_alignment_1l: "Снижает эффект неожиданности и возвраты."
+        - concept_index: 3
+          name: "Анти-ошибка: блок при неподтверждённом периоде"
+          idea_1l: "Если период списания не подтверждён, оплату не принимать."
+          linked_form: "№3 Превенция"
+          linked_principles: [9]
+          linked_resources:
+            - "UI-подсказки (tooltips/баннеры)"
+            - "FAQ по биллингу"
+          ikr_alignment_1l: "Предотвращает типовую причину непонимания."
+
+  - artifact_type: MECHANISM_SPECS
+    pipeline_step: 10
+    payload:
+      concept_specs:
+        - concept_index: 1
+          A_name_tagline: "3 правила + подтверждение — «понятно до оплаты»"
+          B_axis_and_resource: "Ось: ясность условий; ресурс: короткие правила + UI-подсказки"
+          C_mechanism_steps:
+            - "Из тикетов выделить 3 самых частых непонимания."
+            - "Сформулировать правила в 1 строку каждое."
+            - "Добавить блок в checkout с чекбоксом подтверждения."
+            - "A/B тест 50/50."
+          D_assumptions_constraints:
+            - "3 правила покрывают ≥60% причин тикетов."
+            - "Текст помещается без прокрутки."
+          E_risks_failures:
+            - "Длинный текст снизит конверсию."
+            - "Пользователи будут подтверждать не читая."
+          F_metrics:
+            leading:
+              - "конверсия checkout (A/B)"
+              - "время на checkout"
+              - "доля просмотров блока"
+            lagging:
+              - "% тикетов по биллингу"
+              - "% возвратов"
+          G_experiment:
+            timebox: "2 недели"
+            budget: "0–500 EUR"
+            pass_criteria: "Тикеты ↓ ≥15% при падении конверсии ≤2 п.п."
+        - concept_index: 2
+          A_name_tagline: "Превью списания — «без сюрпризов»"
+          B_axis_and_resource: "Ось: снижение возвратов; ресурс: данные биллинга о следующем списании"
+          C_mechanism_steps:
+            - "Вывести дату/сумму следующего списания из биллинга."
+            - "Показать превью на checkout."
+            - "Добавить ссылку на FAQ."
+          D_assumptions_constraints:
+            - "Биллинг может рассчитать следующий платёж до оплаты."
+          E_risks_failures:
+            - "Расчёт окажется некорректным из-за купонов/налогов."
+          F_metrics:
+            leading:
+              - "доля оплат с просмотром превью"
+              - "клики по FAQ"
+              - "конверсия checkout"
+            lagging:
+              - "% возвратов"
+              - "% тикетов"
+          G_experiment:
+            timebox: "3 недели"
+            budget: "0–800 EUR"
+            pass_criteria: "Возвраты ↓ ≥10% без роста тикетов"
+        - concept_index: 3
+          A_name_tagline: "Блок подтверждения периода — «анти-ошибка»"
+          B_axis_and_resource: "Ось: предотвращение неверной интерпретации; ресурс: обязательный чекбокс/выбор периода"
+          C_mechanism_steps:
+            - "Добавить явный выбор периода перед оплатой."
+            - "Если не подтвержден — блокировать оплату."
+            - "Логировать ошибки."
+          D_assumptions_constraints:
+            - "Типовая ошибка — непонимание периода списания."
+          E_risks_failures:
+            - "Дополнительный шаг снизит конверсию."
+          F_metrics:
+            leading:
+              - "доля ошибок «не подтверждён период»"
+              - "конверсия checkout"
+              - "время на checkout"
+            lagging:
+              - "% тикетов по периоду"
+              - "% возвратов"
+          G_experiment:
+            timebox: "2 недели"
+            budget: "0–500 EUR"
+            pass_criteria: "Тикеты по периоду ↓ ≥20% при падении конверсии ≤3 п.п."
+
+  - artifact_type: SECONDARY_CONTRADICTION_CHECK
+    pipeline_step: 11
+    payload:
+      new_contradiction_exists: false
+
+  - artifact_type: DECISION_RECORD
+    pipeline_step: 12
+    payload:
+      chosen_concept_index: 1
+      chosen_concept_name: "3 правила списаний в checkout + подтверждение"
+      reasons:
+        - "Закрывает основные причины тикетов до оплаты."
+        - "Не требует изменений прайсинга, только текста/UI."
+      rejected_alternatives:
+        - concept_index: 2
+          concept: "Превью следующего списания в checkout"
+          why_rejected: "Зависит от биллинга; добавить вторым шагом."
+        - concept_index: 3
+          concept: "Анти-ошибка: блок периода"
+          why_rejected: "Риск падения конверсии выше; применять точечно."
+      assumptions:
+        - "3 правила покрывают большинство тикетов."
+      success_criteria:
+        - "Тикеты ↓ ≥15%"
+        - "Падение конверсии ≤2 п.п."
+
+  - artifact_type: IMPLEMENTATION_MAP
+    pipeline_step: 13
+    payload:
+      workstreams:
+        - name: "Контент и UI"
+          owner: "Product Manager"
+          tasks:
+            - task: "Собрать топ-3 причины тикетов и сформулировать правила"
+              due: "2026-02-07"
+              dependency: "выгрузка тикетов"
+              checkpoint_metric: "3 правила утверждены"
+            - task: "Внедрить блок в checkout и запустить A/B"
+              due: "2026-02-14"
+              dependency: "правила утверждены"
+              checkpoint_metric: "A/B запущен"
+
+  - artifact_type: RULE_UPDATE
+    pipeline_step: 14
+    payload:
+      rule_id: "CASE-RULE-TC14-01"
+      rule_statement_if_then: "Если доля тикетов по биллингу растёт, то перед оплатой обязательно показывать 3 ключевых правила и требовать подтверждение."
+      criterion: "Тикеты по биллингу > базовой линии на 10% неделю к неделе."
+      boundaries: "Применимо к self-serve оплатам; не применимо к Enterprise контрактам."
+      evidence_from_case: "Симптом: рост тикетов и возвратов после прайсинга."
+      test_case_action:
+        add_or_update: add
+        test_case_id: TC14
+        expected_effect: "тикеты ↓, возвраты ↓ без роста поддержки"
+      version_note: "NON-CANON case rule; canon unchanged"
+      rationale_1l: "Превентивная ясность в момент оплаты снижает инциденты."

@@ -1,0 +1,85 @@
+run_id: 2026-02-17T10-16-54Z
+test_case_id: TC_E15_RUNC_HISTORICAL_EXEMPT
+harness_version: dss-solver-0.1
+timestamp_utc: 2026-02-17T10-16-54Z
+overall_status: FAIL
+gate_results:
+  - gate: Gate0
+    status: PASS
+    reasons: []
+  - gate: Gate1
+    status: PASS
+    reasons: []
+  - gate: Gate2
+    status: PASS
+    reasons: []
+  - gate: Gate3
+    status: PASS
+    reasons: []
+  - gate: GatePFL
+    status: NOT_RUN
+    reasons:
+      - "PFL disabled (historical compatibility)"
+  - gate: Gate4
+    status: PASS
+    reasons:
+      - "G4-P1: Step4: improve_x/worsen_y заданы как измеримые параметры"
+      - "G4-P2: statement_1l в форме 'Если улучшаем X, ухудшается Y'"
+      - "G4-P3: measurement_hint описывает метрики X/Y"
+  - gate: Gate5
+    status: PASS
+    reasons:
+      - "G5-P1: IKR описывает результат без механизма"
+      - "G5-P2: нет конструкций 'через/путём/используя'"
+  - gate: Gate6
+    status: PASS
+    reasons:
+      - "G6-P1: barrier_1l выражает взаимоисключение"
+      - "G6-P2: equivalent_to_step4=true"
+  - gate: Gate7
+    status: PASS
+    reasons: []
+  - gate: Gate8
+    status: FAIL
+    reasons:
+      - "Step8.TRIZ_CORE.physical_contradiction missing"
+      - "Step8.TRIZ_CORE.separation missing"
+      - "Step8.TRIZ_CORE.system_operator missing"
+      - "Step8.TRIZ_CORE.transformation_model missing"
+      - "Step8.TRIZ_CORE.non_obviousness_check missing"
+  - gate: GateCR
+    status: HARD_FAIL
+    reasons:
+      - "structural resolution not found"
+  - gate: Gate9
+    status: NOT_RUN
+    reasons:
+      - "structural resolution not found"
+  - gate: Gate10
+    status: NOT_RUN
+    reasons:
+      - "structural resolution not found"
+  - gate: Gate11
+    status: NOT_RUN
+    reasons:
+      - "structural resolution not found"
+  - gate: Gate12
+    status: NOT_RUN
+    reasons:
+      - "structural resolution not found"
+  - gate: Gate13
+    status: NOT_RUN
+    reasons:
+      - "structural resolution not found"
+  - gate: Gate14
+    status: NOT_RUN
+    reasons:
+      - "structural resolution not found"
+  - gate: GateTRIZ
+    status: FAIL
+    reasons:
+      - "TRIZ_G1_MISSING: physical_contradiction missing (step_8.TRIZ_CORE.physical_contradiction)"
+      - "TRIZ_G2_MISSING: separation missing (step_8.TRIZ_CORE.separation)"
+      - "TRIZ_G3_MISSING: system_operator missing (step_8.TRIZ_CORE.system_operator)"
+      - "TRIZ_G4_MISSING: non_obviousness_check missing (step_8.TRIZ_CORE.non_obviousness_check)"
+      - "TRIZ_GX_MISSING: transformation_model missing (step_8.TRIZ_CORE.transformation_model)"

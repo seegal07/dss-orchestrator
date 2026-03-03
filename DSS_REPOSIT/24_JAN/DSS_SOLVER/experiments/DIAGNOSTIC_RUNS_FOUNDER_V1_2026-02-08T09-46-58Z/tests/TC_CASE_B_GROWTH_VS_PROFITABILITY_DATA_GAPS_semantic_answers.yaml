@@ -1,0 +1,47 @@
+criteria_version: ASSISTED_GATE_CRITERIA_v0.1
+criteria_doc: ASSISTED_GATE_CRITERIA_v0.1.md
+
+results:
+  Gate4:
+    criteria:
+      - criterion_id: G4-P1
+        status: PASS
+        evidence: "X/Y заданы (рост vs прибыльность), но без метрик"
+      - criterion_id: G4-P2
+        status: PASS
+        evidence: "statement_1l в форме 'если X, ухудшается Y'"
+      - criterion_id: G4-P3
+        status: FAIL
+        evidence: "measurement_hint MISSING (LTV/CAC/маржа/runway)"
+  Gate5:
+    criteria:
+      - criterion_id: G5-P1
+        status: BLOCKED
+        evidence: "MISSING: Step5.ikr_1l отсутствует"
+      - criterion_id: G5-P2
+        status: BLOCKED
+        evidence: "MISSING: нельзя проверить отсутствие механизма"
+  Gate6:
+    criteria:
+      - criterion_id: G6-P1
+        status: BLOCKED
+        evidence: "MISSING: Step6.barrier_1l отсутствует"
+      - criterion_id: G6-P2
+        status: BLOCKED
+        evidence: "MISSING: Step6.equivalent_to_step4 отсутствует"
+  Gate11:
+    criteria:
+      - criterion_id: G11-P1
+        status: BLOCKED
+        evidence: "MISSING: Step11.new_contradiction_exists отсутствует"
+  Gate12:
+    criteria:
+      - criterion_id: G12-P1
+        status: BLOCKED
+        evidence: "MISSING: Step12.chosen_concept_index отсутствует"
+      - criterion_id: G12-P2
+        status: BLOCKED
+        evidence: "MISSING: Step12.reasons отсутствуют"
+      - criterion_id: G12-P3
+        status: BLOCKED
+        evidence: "MISSING: Step12.success_criteria отсутствуют"

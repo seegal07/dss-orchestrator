@@ -1,0 +1,70 @@
+run_id: 2026-02-08T12-12-55Z
+test_case_id: TC_CASE_C_CUSTOMIZATION_TRIZ_RESOLUTION
+harness_version: dss-solver-0.1
+timestamp_utc: 2026-02-08T12-12-55Z
+overall_status: BLOCKED
+gate_results:
+  - gate: Gate0
+    status: PASS
+    reasons: []
+  - gate: Gate1
+    status: PASS
+    reasons: []
+  - gate: Gate2
+    status: PASS
+    reasons: []
+  - gate: Gate3
+    status: PASS
+    reasons: []
+  - gate: Gate4
+    status: PASS
+    reasons:
+      - "G4-P1: X/Y заданы измеримо"
+      - "G4-P2: statement_1l соответствует форме"
+      - "G4-P3: measurement_hint содержит PROXY + validation_date"
+  - gate: Gate5
+    status: BLOCKED
+    reasons:
+      - "semantic answers missing"
+  - gate: Gate6
+    status: BLOCKED
+    reasons:
+      - "semantic answers missing"
+  - gate: Gate7
+    status: PASS
+    reasons: []
+  - gate: Gate8
+    status: PASS
+    reasons: []
+  - gate: Gate9
+    status: PASS
+    reasons: []
+  - gate: Gate10
+    status: FAIL
+    reasons:
+      - "Step10.concept_specs missing"
+  - gate: Gate11
+    status: BLOCKED
+    reasons:
+      - "semantic answers missing"
+  - gate: Gate12
+    status: PASS
+    reasons:
+      - "G12-P1: chosen_concept_index=1"
+      - "G12-P2: reasons содержат separation + principle‑action"
+      - "G12-P3: success_criteria содержат thresholds + validation_date"
+  - gate: Gate13
+    status: FAIL
+    reasons:
+      - "Step13.workstreams missing"
+  - gate: Gate14
+    status: FAIL
+    reasons:
+      - "Step14.rule_id missing"
+      - "Step14.rule_statement_if_then missing"
+      - "Step14.criterion missing"
+      - "Step14.boundaries missing"
+      - "Step14.evidence_from_case missing"
+      - "Step14.test_case_action missing"
+      - "Step14.version_note missing"
+      - "Step14.rationale_1l missing"

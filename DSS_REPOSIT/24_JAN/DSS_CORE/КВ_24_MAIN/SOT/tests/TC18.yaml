@@ -1,0 +1,273 @@
+test_case_id: TC18
+status: FILLED
+mode: artifact_pack
+canon_versions:
+  canon_pipeline: CANON_PIPELINE_v1.2.docx
+  canon_9forms: CANON_9FORMS_v1.1.docx
+  schema: TEST_VECTOR_SCHEMA_v0.1.md.docx
+notes: "patched vector"
+
+artifact_pack:
+  - artifact_type: CASE_SYMPTOM
+    pipeline_step: 0
+    payload:
+      symptom_1l: "В филиале падает дисциплина исполнения: задачи «висят», отчётность запаздывает, но директор перегружен ручным контролем."
+
+  - artifact_type: PROBLEM_OWNER_CARD
+    pipeline_step: 1
+    payload:
+      owner_role: "Региональный директор / Operational Excellence Lead"
+      owner_scope: "Может менять систему контроля, ритмы управления, формат отчетности, правила эскалации и визуализацию метрик."
+      constraints:
+        - "Нельзя увеличить число администраторов"
+        - "Нельзя вводить тяжёлую ERP"
+        - "Нужен эффект за 30 дней"
+      success_metric_hint: "% задач в срок, просрочки, нагрузка директора, качество данных."
+
+  - artifact_type: SYSTEM_BOUNDARY_MAP
+    pipeline_step: 2
+    payload:
+      actor:
+        - "Директор филиала"
+        - "Руководители направлений (продажи/учебная/маркетинг/админ)"
+        - "Региональный директор"
+        - "Трекер задач (таблица/CRM/планер)"
+      system:
+        - "Ритмы управления (ежедневно/еженедельно)"
+        - "Система постановки задач и контроля"
+      environment:
+        - "Сезонность спроса"
+        - "Внешние события (ивенты/кампании)"
+      boundary_note_1l: "Симптом связан с отсутствием «самоподдерживающего» контура контроля, всё держится на директоре."
+
+  - artifact_type: INTERACTION_MAP
+    pipeline_step: 3
+    payload:
+      elements:
+        - "Постановка задач"
+        - "Исполнение"
+        - "Отчетность"
+        - "Контроль/эскалация"
+        - "Метрики"
+      flows:
+        - from: "Региональный директор"
+          to: "Директор филиала"
+          type: org
+          note: "цели/планы"
+        - from: "Директор филиала"
+          to: "Руководители направлений"
+          type: org
+          note: "задачи"
+        - from: "Руководители направлений"
+          to: "Трекер задач"
+          type: info
+          note: "статус/комментарии"
+        - from: "Трекер задач"
+          to: "Метрики"
+          type: info
+          note: "агрегация"
+        - from: "Метрики"
+          to: "Контроль/эскалация"
+          type: org
+          note: "сигналы отклонений"
+      symptom_location: "Нет автоматического сигнала отклонений; директор вручную «пингует», перегружаясь."
+
+  - artifact_type: CONTRADICTION_STATEMENT
+    pipeline_step: 4
+    payload:
+      improve_x: "Контроль исполнения (дисциплина и сроки)"
+      worsen_y: "Нагрузка руководителя (ручной контроль и микроменеджмент)"
+      statement_1l: "Если усиливаем контроль, директор перегружается; если убираем контроль, падает дисциплина и сроки."
+      measurement_hint: "X=% задач в срок; Y=часы директора на контроль/нед."
+
+  - artifact_type: IKR_CARD
+    pipeline_step: 5
+    payload:
+      ikr_1l: "Система сама подсвечивает отклонения, и задачи выполняются в срок без ручного пинга."
+      no_new_harm_clause: "Без тяжёлых систем и доп.персонала."
+
+  - artifact_type: HARD_BARRIER
+    pipeline_step: 6
+    payload:
+      barrier_1l: "Нельзя держать высокий контроль без роста ручной нагрузки, если нет автоматических сигналов и правил эскалации."
+      equivalent_to_step4: true
+
+  - artifact_type: RESOURCE_MAP
+    pipeline_step: 7
+    payload:
+      resources:
+        - name: "Ритм планёрок (15 минут)"
+          category: time
+          tied_to: "Ритмы управления"
+          note: "короткие синки"
+        - name: "Таблица задач с дедлайнами"
+          category: info
+          tied_to: "Трекер задач"
+          note: "единый источник"
+        - name: "Правила RAG-статусов (green/yellow/red)"
+          category: org
+          tied_to: "Метрики"
+          note: "сигналы отклонений"
+        - name: "Простая дашборд-страница (1 экран)"
+          category: info
+          tied_to: "Метрики"
+          note: "видимость"
+        - name: "Правило эскалации по просрочке"
+          category: org
+          tied_to: "Контроль/эскалация"
+          note: "автоматический триггер"
+        - name: "Шаблоны отчетов руководителей"
+          category: org
+          tied_to: "Отчетность"
+          note: "снижает хаос"
+        - name: "Норма «1 метрика = 1 владелец»"
+          category: org
+          tied_to: "Руководители направлений"
+          note: "ответственность"
+        - name: "История просрочек (почему)"
+          category: info
+          tied_to: "Отчетность"
+          note: "причины и паттерны"
+        - name: "Коммуникационный канал (чат)"
+          category: info
+          tied_to: "Контроль/эскалация"
+          note: "быстрая эскалация"
+
+  - artifact_type: FORM_SELECTION
+    pipeline_step: 8
+    payload:
+      PRIMARY_FORM: "№8 Кибернетика"
+      BOUNDARY_CHECK:
+        NEAREST_FORMS:
+          - "№8 Кибернетика"
+          - "№6 Ресурсоэффективность"
+        WHY_NOT_X:
+          - "Экономия времени директора важна, но корень — отсутствие контура обратной связи и сигналов."
+        WHY_NOT_Y:
+          - "Нужно построить управляемый контур: метрики → сигнал → действие → корректировка."
+      D_MARKER: "D1"
+      TRIZ_CORE:
+        CONTRADICTION_1L: "нужно усилить контроль, но нельзя перегрузить руководителя"
+        IKR_1L: "система контролирует сама через сигналы и правила"
+      PRINCIPLES_TO_ACTION:
+        PRINCIPLES: [23, 10, 16]
+        ACTIONS:
+          - "23: Ввести регулярный контур: еженедельный обзор просрочек → обновление правил."
+          - "10: Предварительное действие: RAG-статусы и дедлайны на входе задачи."
+          - "16: Частичное действие: директор реагирует только на «красные» задачи."
+      IKR_TEST:
+        Q1: "YES — директор вмешивается только по сигналу."
+        Q2: "YES — инструменты легкие (таблица + дашборд)."
+      CONFIDENCE:
+        score: 73
+        justification: "Можно реализовать на таблицах/трекере без ERP."
+
+  - artifact_type: SOLUTION_SET
+    pipeline_step: 9
+    payload:
+      count_rule: "3–5"
+      concepts:
+        - concept_index: 1
+          name: "RAG-дашборд + правило эскалации"
+          idea_1l: "Ввести статусы green/yellow/red и автоматическое правило эскалации по просрочке."
+          linked_form: "№8 Кибернетика"
+          linked_principles: [10, 16]
+          linked_resources:
+            - "Правила RAG-статусов (green/yellow/red)"
+            - "Простая дашборд-страница (1 экран)"
+            - "Правило эскалации по просрочке"
+          ikr_alignment_1l: "Контроль становится селективным и самоподдерживающим."
+        - concept_index: 2
+          name: "15-минутные синки по отклонениям"
+          idea_1l: "Ежедневно 15 минут: обсуждаем только yellow/red и блокеры."
+          linked_form: "№8 Кибернетика"
+          linked_principles: [23]
+          linked_resources:
+            - "Ритм планёрок (15 минут)"
+            - "Таблица задач с дедлайнами"
+          ikr_alignment_1l: "Скорость реакции растёт без микроменеджмента."
+        - concept_index: 3
+          name: "Шаблоны отчетов + владельцы метрик"
+          idea_1l: "Единые шаблоны отчета и правило: у каждой метрики есть владелец."
+          linked_form: "№8 Кибернетика"
+          linked_principles: [23]
+          linked_resources:
+            - "Шаблоны отчетов руководителей"
+            - "Норма «1 метрика = 1 владелец»"
+          ikr_alignment_1l: "Уменьшает шум и повышает ответственность."
+
+  - artifact_type: MECHANISM_SPECS
+    pipeline_step: 10
+    payload:
+      concept_specs:
+        - concept_index: 1
+          A_name_tagline: "RAG + эскалация — «директор реагирует только на красное»"
+          B_axis_and_resource: "Ось: дисциплина; ресурс: статусы + дашборд"
+          C_mechanism_steps:
+            - "Определить правила RAG: green=в срок, yellow=риск, red=просрочка."
+            - "В трекере добавить дедлайны и ответственных."
+            - "Настроить дашборд 1 экран с фильтром red."
+            - "Правило эскалации: red > 24 часа → сообщение в чат + задача директору."
+          D_assumptions_constraints:
+            - "Статусы обновляются ежедневно."
+          E_risks_failures:
+            - "Статусы будут «рисоваться» и терять доверие."
+          F_metrics:
+            leading:
+              - "% задач с актуальным статусом"
+              - "число red"
+              - "время реакции на red"
+            lagging:
+              - "% задач в срок"
+              - "часы директора на контроль"
+          G_experiment:
+            timebox: "30 дней"
+            budget: "0 EUR"
+            pass_criteria: "% задач в срок ↑ ≥15% и часы директора на контроль ↓ ≥20%"
+
+  - artifact_type: SECONDARY_CONTRADICTION_CHECK
+    pipeline_step: 11
+    payload:
+      new_contradiction_exists: false
+
+  - artifact_type: DECISION_RECORD
+    pipeline_step: 12
+    payload:
+      chosen_concept_index: 1
+      chosen_concept_name: "RAG-дашборд + правило эскалации"
+      reasons:
+        - "Даёт селективный контроль без ERP и доп.людей."
+      success_criteria:
+        - "% задач в срок ↑ ≥15%"
+        - "часы директора на контроль ↓ ≥20%"
+
+  - artifact_type: IMPLEMENTATION_MAP
+    pipeline_step: 13
+    payload:
+      workstreams:
+        - name: "Сигналы и дашборд"
+          owner: "Директор филиала"
+          tasks:
+            - task: "Ввести дедлайны, ответственных и RAG-правила в трекере"
+              due: "2026-02-06"
+              dependency: "нет"
+              checkpoint_metric: "RAG работает"
+            - task: "Запустить дашборд 1 экран и правило эскалации"
+              due: "2026-02-10"
+              dependency: "RAG работает"
+              checkpoint_metric: "эскалация по red"
+
+  - artifact_type: RULE_UPDATE
+    pipeline_step: 14
+    payload:
+      rule_id: "CASE-RULE-TC18-01"
+      rule_statement_if_then: "Если задача становится red (просрочка >24ч), то система автоматически эскалирует в чат и ставит директору задачу реакции."
+      criterion: "red > 24 часа."
+      boundaries: "Не применимо к задачам без дедлайна; дедлайн обязателен."
+      evidence_from_case: "Симптом: директор перегружен ручным контролем, задачи висят."
+      test_case_action:
+        add_or_update: add
+        test_case_id: TC18
+        expected_effect: "дисциплина ↑, нагрузка директора ↓"
+      version_note: "NON-CANON case rule; canon unchanged"
+      rationale_1l: "Контур сигналов заменяет ручной контроль."

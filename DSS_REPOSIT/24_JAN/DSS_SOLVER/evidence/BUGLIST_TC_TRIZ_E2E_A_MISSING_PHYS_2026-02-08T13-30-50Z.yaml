@@ -1,0 +1,6 @@
+run_id: 2026-02-08T13-30-50Z
+test_case_id: TC_TRIZ_E2E_A_MISSING_PHYS
+issues:
+  - gate: GateTRIZ
+    issue_code: STRUCTURAL
+    message: "TRIZ_G1_INCOMPLETE: physical contradiction fields missing (step_8.TRIZ_CORE.physical_contradiction)"

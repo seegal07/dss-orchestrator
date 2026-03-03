@@ -1,0 +1,24 @@
+run_id: 2026-02-18T13-20-31Z
+test_case_id: TC_E17_RUNB_LOOP_FALSE_CAN_PASS
+issues:
+  - gate: GatePFL
+    issue_code: STRUCTURAL
+    message: "pfl_X missing"
+  - gate: GatePFL
+    issue_code: STRUCTURAL
+    message: "pfl_Y missing"
+  - gate: GatePFL
+    issue_code: STRUCTURAL
+    message: "pfl_verdict invalid"
+  - gate: GatePFL
+    issue_code: STRUCTURAL
+    message: "pfl_reason invalid"
+  - gate: GatePFL
+    issue_code: STRUCTURAL
+    message: "pfl_conflict_type_candidate invalid"
+  - gate: GatePFL
+    issue_code: STRUCTURAL
+    message: "pfl_structural_tension missing"
+  - gate: GatePFL
+    issue_code: STRUCTURAL
+    message: "pfl_attempt_index missing"

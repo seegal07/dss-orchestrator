@@ -1,0 +1,95 @@
+CLIENT REPORT (CASE 01)
+
+Title: DSS Case Report
+Client: IT Step Academy (Poland branch)
+Date: February 4, 2026
+Case ID: CASE-01-ITSTEP-PL
+Decision owner: Branch Director (management decision owner)
+
+0) DECISION STATUS (MANDATORY)
+☑ DECISION READY
+☐ REQUIRES MANDATORY INPUT CLARIFICATION
+☐ DECISION IMPOSSIBLE UNDER CURRENT CONDITIONS (Decision Lock)
+
+1) DECISION LOCK (HARD COMMITMENT)
+- ACCEPTED DECISION (single, no alternatives):
+  Launch a 60‑day operational plan to grow enrollment by improving funnel quality (content → lead → event → contract) with focus on conversion, CRM discipline, and event execution quality, without changing the product portfolio.
+- REJECTED ALTERNATIVES (list):
+  1) “Rely only on expensive direct high‑intent leads with low volume.”
+  2) “Expand the product line before stabilizing conversion.”
+  3) “Deep price discounting to chase volume.”
+- OWNER CONFIRMATION:
+  “I, __________________, accept this decision and take responsibility for execution.”
+
+2) SHORT SUMMARY
+- Problem in 1–2 sentences:
+  The branch consistently misses enrollment targets and fails to launch new groups; within 2 months it must restore positive cash flow.
+- Why this is urgent now:
+  Current funnel quality and conversion levels keep the branch in a financial deficit.
+- Target result (measurable):
+  Within 2 months launch 6 adult groups (PL/EN/RU), +60 students, +50–60k PLN/month cash flow; within 1 month launch 3 adult groups (15 each) + 1 kids group.
+
+3) PROBLEM STRUCTURE (MINIMUM)
+- System boundary (inside/outside):
+  Inside: local branch (marketing, sales, events, delivery, HR, local content/execution). Outside: central office (ad targeting and programs). Market/economy/regulation are external conditions but under the director’s managerial responsibility.
+- Key actors and interactions:
+  Branch Director → content maker → targeting (central office) → leads → sales team → events → contracts; instructors and training programs as part of the customer promise.
+- Core contradiction:
+  Cheap leads are low quality and don’t convert; expensive leads are high quality but too few and still not fully converted.
+
+4) IDEAL FINAL RESULT (IFR)
+- IFR statement:
+  Within 2 months the branch launches 6 groups and gains +60 students with stable training quality and no product expansion.
+- “No new harm” condition:
+  Do not reduce training quality, do not dump price, and do not burn out the team.
+
+5) EXECUTION PLAN (2–4 weeks)
+- Workstream 1: Positioning and content
+  Tasks:
+  - Within 7 days define value messages by program (PL/EN/RU).
+  - Rebuild creatives and event сценарии around target pains.
+  - Run events with an external host or retrain the host.
+- Workstream 2: Sales funnel and CRM discipline
+  Tasks:
+  - Enforce lead response SLA (time to first contact, number of touches).
+  - Restart qualification scripts and follow‑up scenarios.
+  - Weekly conversion audit: lead → confirmed → show‑up → contract.
+
+6) METRICS & VERIFICATION
+- Leading indicators:
+  - Valid leads/week (target: +50% vs baseline).
+  - Event show‑up rate (target: ≥30% of confirmations).
+  - Event‑to‑contract conversion (target: ≥10%).
+- Outcome metrics:
+  - Groups launched (target: 3 by month 1; 6 by month 2).
+  - New students (target: +60 in 2 months).
+  - Cash flow (target: +50–60k PLN/month).
+- Success criteria:
+  Actual group launches and cash flow increase confirmed by the branch director.
+
+7) COST OF ERROR (MANDATORY)
+- Cost of non‑decision:
+  Continued cash flow deficit and risk of branch closure/restructuring.
+- Cost of rule violation:
+  Budget wasted on low‑quality leads and loss of the 2‑month window.
+- Cost of alternative path:
+  Relying only on expensive direct leads yields insufficient volume to launch the required groups.
+
+8) RULE (OPERATIONAL)
+If for 2 consecutive weeks event‑to‑contract conversion < 10% and show‑up < 30%, then replace the event host and сценарий, and rebuild creatives with new messages.
+Scope/exceptions:
+Applies to all branch events regardless of audience language.
+Rule owner: client (branch director).
+
+9) GUIDED CORRECTION (IF “REQUIRES INPUT CLARIFICATION”)
+Not applicable: input data is sufficient to make a decision.
+
+10) CLIENT SEES ONLY THE INTERPRETATION
+- Client status:
+  ☑ “DECISION READY”
+  ☐ “REQUIRES MANDATORY INPUT CLARIFICATION”
+  ☐ “DECISION IMPOSSIBLE UNDER CURRENT CONDITIONS”
+
+Appendix (optional)
+- Risks/notes: director skill gaps; risk of weak content quality; dependency on central office for programs.
+- Internal artifacts: Intake Q1–Q8, system boundary, contradiction, metrics.

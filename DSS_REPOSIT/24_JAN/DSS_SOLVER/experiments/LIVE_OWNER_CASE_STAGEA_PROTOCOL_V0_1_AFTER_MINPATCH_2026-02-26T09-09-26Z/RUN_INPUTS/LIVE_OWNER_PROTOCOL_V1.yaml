@@ -1,0 +1,42 @@
+test_case_id: "TC_LIVE_OWNER_CASE_STAGEA_PROTOCOL_V0_1_AFTER_MINPATCH_V1"
+status: "FILLED"
+mode: "full_vector"
+canon_versions:
+  schema: "TEST_VECTOR_SCHEMA_v0.6"
+schema: "TEST_VECTOR_SCHEMA_v0.6"
+schema_version: 0.6
+pfl_enabled: true
+phase0_enabled: true
+operator_core_enabled: true
+historical_exempt: false
+manual_override_used: false
+override_type: null
+full_vector:
+  step_0:
+    symptom_1l: "комфорт проживания семьи выше ↔ налоговая нагрузка на мой доход выше; бюджет семьи не должен уходить в дефицит"
+  step_1:
+    owner_role: "Owner"
+    owner_scope: "выбор страны проживания семьи (Польша vs Испания) при удаленной работе"
+    constraints:
+      - "школа для ребенка должна быть определена к сентябрю 2026"
+      - "бюджет семьи не должен уходить в дефицит"
+      - "обучение на английском языке"
+      - "до июля 2026"
+  step_2:
+    actor: ["owner", "семья"]
+    system: ["решение о стране проживания"]
+    environment: ["Польша", "Испания", "налоги", "стоимость жизни", "школа"]
+    boundary_note_1l: "Внутри — выбор страны проживания и бюджет семьи; снаружи — налоговые и школьные условия."
+  step_3:
+    elements: ["комфорт", "налоговая нагрузка", "доход", "бюджет", "школа"]
+    flows:
+      - from: "налоговая нагрузка"
+        to: "доступный доход"
+        type: "money"
+        note: "рост налоговой нагрузки снижает доступный остаток"
+    symptom_location: "конфликт между комфортом проживания и финансовой достаточностью"
+  step_4:
+    improve_x: "комфорт проживания семьи"
+    worsen_y: "налоговая нагрузка на мой доход"
+    statement_1l: "Чем выше комфорт проживания семьи, тем выше налоговая нагрузка на мой доход при текущих условиях."
+    measurement_hint: "уровень комфорта, налоговая доля, остаток бюджета"

@@ -1,0 +1,63 @@
+criteria_version: ASSISTED_GATE_CRITERIA_v0.3
+criteria_doc: ASSISTED_GATE_CRITERIA_v0.3.md
+
+results:
+  Gate4:
+    criteria:
+      - criterion_id: G4-P1
+        status: PASS
+        evidence: "Step4 improve_x/worsen_y заданы"
+      - criterion_id: G4-P2
+        status: PASS
+        evidence: "statement_1l формула противоречия есть"
+      - criterion_id: G4-P3
+        status: PASS
+        evidence: "measurement_hint указан"
+  Gate5:
+    criteria:
+      - criterion_id: G5-P1
+        status: PASS
+        evidence: "IKR задан (общий)"
+      - criterion_id: G5-P2
+        status: PASS
+        evidence: "без механизма"
+  Gate6:
+    criteria:
+      - criterion_id: G6-P1
+        status: PASS
+        evidence: "barrier_1l выражает взаимно исключающие требования"
+      - criterion_id: G6-P2
+        status: PASS
+        evidence: "equivalent_to_step4=true"
+  Gate8:
+    criteria:
+      - criterion_id: G8-P1
+        status: PASS
+        evidence: "TRIZ_CORE CONTRADICTION_1L и IKR_1L заданы"
+      - criterion_id: G8-P2
+        status: PASS
+        evidence: "separation задана (condition)"
+      - criterion_id: G8-P3
+        status: BLOCKED
+        evidence: "PRINCIPLES_TO_ACTION отсутствует"
+  Gate9:
+    criteria:
+      - criterion_id: G9-P1
+        status: BLOCKED
+        evidence: "концепты отсутствуют"
+  Gate11:
+    criteria:
+      - criterion_id: G11-P1
+        status: BLOCKED
+        evidence: "new_contradiction_exists не задан"
+  Gate12:
+    criteria:
+      - criterion_id: G12-P1
+        status: BLOCKED
+        evidence: "нет выбранного концепта"
+      - criterion_id: G12-P2
+        status: BLOCKED
+        evidence: "нет reasons"
+      - criterion_id: G12-P3
+        status: BLOCKED
+        evidence: "нет thresholds"

@@ -1,0 +1,6 @@
+run_id: 2026-02-18T13-22-21Z
+test_case_id: TC_E17_RUNA_LOOP_TRUE_EXPECT_SOFT_FAIL
+issues:
+  - gate: Gate12
+    issue_code: STRUCTURAL
+    message: "Step12.compromise_mode must be true when GateCR=SOFT_FAIL"

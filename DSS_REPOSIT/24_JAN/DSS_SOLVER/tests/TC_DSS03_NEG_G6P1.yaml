@@ -1,0 +1,214 @@
+test_case_id: TC_DSS03_NEG_G6P1
+status: FILLED
+mode: full_vector
+canon_versions:
+  canon_pipeline: CANON_PIPELINE_v1.2.docx
+  canon_9forms: CANON_9FORMS_v1.1.docx
+  schema: TEST_VECTOR_SCHEMA_v0.1.md.docx
+notes: "NEGATIVE: G6-P1 FAIL"
+
+full_vector:
+  step_0:
+    symptom_1l: "Группа распадается после 2–3 месяцев из-за ухода студентов в онлайн и потери офлайн-посещаемости."
+  step_1:
+    owner_role: "Директор филиала"
+    owner_scope: "Формат обучения, расписание, политика посещения, коммуникации"
+    constraints:
+      - "Цена 900 PLN/мес фиксирована"
+      - "16 часов/мес фиксированы"
+      - "Набор 2 месяца фиксирован"
+      - "Маркетинг ≤10% потенциальной выручки студента"
+      - "Горизонт стабилизации 2 месяца"
+    success_metric_hint: "Старт 15; через 2 мес обучения ≥12; минимум 8 до конца курса"
+  step_2:
+    actor: ["Студенты", "Преподаватель", "Менеджер учебного процесса", "Директор", "Платформа онлайн"]
+    system: ["Группа гибридного обучения", "Политика посещения", "Расписание занятий", "Аудитория"]
+    environment: ["Конкуренты", "Погода/сезон", "Транспорт", "Соцсети/реклама"]
+    boundary_note_1l: "Система — управление форматом и удержанием группы; внешняя среда — конкуренты и сезонность."
+  step_3:
+    elements: ["Лид", "Студент", "Преподаватель", "Менеджер", "Аудитория", "Онлайн-платформа", "Оплата"]
+    flows:
+      - from: "Лид"
+        to: "Студент"
+        type: "info"
+        note: "Коммуникация и запись"
+      - from: "Студент"
+        to: "Оплата"
+        type: "money"
+        note: "Оплата 900 PLN/мес"
+      - from: "Преподаватель"
+        to: "Студент"
+        type: "info"
+        note: "Обучение и контроль прогресса"
+      - from: "Студент"
+        to: "Онлайн-платформа"
+        type: "other"
+        note: "Переход в онлайн"
+      - from: "Студент"
+        to: "Аудитория"
+        type: "other"
+        note: "Офлайн-посещение"
+    symptom_location: "Переход в онлайн → снижение офлайн-посещаемости → распад группы"
+  step_4:
+    improve_x: "Гибкость и удобство посещения"
+    worsen_y: "Стабильность группы и офлайн-посещаемость"
+    statement_1l: "Если увеличиваем гибкость (онлайн), ухудшается стабильность группы и посещаемость офлайн"
+    measurement_hint: "Доля офлайн-посещаемости, численность через 2 месяца, удержание до конца курса"
+  step_5:
+    ikr_1l: "Группа сохраняет ≥12 студентов через 2 месяца и ≥8 до конца курса при фиксированной цене и часах"
+    no_new_harm_clause: "Не снижать цену и не увеличивать маркетинговые затраты"
+  step_6:
+    barrier_1l: "Нельзя одновременно дать полную свободу формата и сохранить стабильную офлайн-группу"
+    equivalent_to_step4: true
+  step_7:
+    resources:
+      - name: "Аудитории"
+        category: "material"
+        tied_to: "Аудитория"
+        note: "Фиксированное место занятий"
+      - name: "Преподаватель"
+        category: "org"
+        tied_to: "Преподаватель"
+        note: "Ключевая фигура вовлечения"
+      - name: "Расписание"
+        category: "time"
+        tied_to: "Расписание занятий"
+        note: "Можно менять день/время"
+      - name: "Менеджер учебного процесса"
+        category: "org"
+        tied_to: "Коммуникация"
+        note: "Контакт со студентами"
+      - name: "Онлайн-платформа"
+        category: "info"
+        tied_to: "Онлайн-посещение"
+        note: "Точка гибридного доступа"
+      - name: "Журнал посещаемости"
+        category: "info"
+        tied_to: "Посещаемость"
+        note: "Фиксация офлайн/онлайн"
+      - name: "Групповая динамика"
+        category: "trust"
+        tied_to: "Группа"
+        note: "Эффект присутствия"
+      - name: "Правила формата"
+        category: "org"
+        tied_to: "Политика посещения"
+        note: "Ограничения/условия гибрида"
+  step_8:
+    PRIMARY_FORM: "№5 Инверсия"
+    BOUNDARY_CHECK:
+      NEAREST_FORMS:
+        - "№4 Медиация"
+        - "№6 Ресурсоэффективность"
+      WHY_NOT_X: ["x", "x"]
+      WHY_NOT_Y: ["x", "x"]
+    TRIZ_CORE:
+      CONTRADICTION_1L: "нужно обеспечить гибкость, но нужно сохранить офлайн-стабильность"
+      IKR_1L: "группа стабильно сохраняется при гибриде"
+    PRINCIPLES_TO_ACTION:
+      PRINCIPLES: [13]
+      ACTIONS: ["Формализовать условия гибридного доступа"]
+    IKR_TEST:
+      Q1: "YES"
+      Q2: "YES"
+    CONFIDENCE:
+      score: 1
+      justification: "x"
+  step_9:
+    count_rule: "3–5"
+    concepts:
+      - concept_index: 1
+        name: "Правила гибридного доступа"
+        idea_1l: "Фиксировать условия перехода в онлайн"
+        linked_form: "№5 Инверсия"
+        linked_principles: [13]
+        linked_resources: ["Правила формата"]
+        ikr_alignment_1l: "Снижает уход в онлайн"
+      - concept_index: 2
+        name: "Офлайн-ядро"
+        idea_1l: "Усилить ценность офлайн-ядра группы"
+        linked_form: "№5 Инверсия"
+        linked_principles: [13]
+        linked_resources: ["Групповая динамика"]
+        ikr_alignment_1l: "Удерживает офлайн-посещение"
+      - concept_index: 3
+        name: "Контроль посещаемости"
+        idea_1l: "Регулярный контроль и реакция на пропуски"
+        linked_form: "№5 Инверсия"
+        linked_principles: [13]
+        linked_resources: ["Журнал посещаемости"]
+        ikr_alignment_1l: "Поддерживает ≥12 через 2 месяца"
+  step_10:
+    concept_specs:
+      - concept_index: 1
+        A_name_tagline: "Правила гибридного доступа"
+        B_axis_and_resource: "Политика формата + онлайн-платформа"
+        C_mechanism_steps:
+          - "Зафиксировать условия перехода в онлайн"
+          - "Применять правила одинаково для всех"
+        D_assumptions_constraints: ["Цена/часы фиксированы"]
+        E_risks_failures: ["Сопротивление студентов"]
+        F_metrics:
+          leading: ["Доля офлайн-посещений"]
+          lagging: ["Число студентов через 2 месяца"]
+        G_experiment:
+          timebox: "2 месяца"
+          budget: "0"
+          pass_criteria: "≥12 через 2 месяца"
+      - concept_index: 2
+        A_name_tagline: "Офлайн-ядро"
+        B_axis_and_resource: "Аудитория + групповая динамика"
+        C_mechanism_steps:
+          - "Усилить офлайн-ценность"
+          - "Поддерживать вовлечённость"
+        D_assumptions_constraints: ["Программа фиксирована"]
+        E_risks_failures: ["Неравномерная мотивация"]
+        F_metrics:
+          leading: ["Явка офлайн"]
+          lagging: ["Сохранность группы"]
+        G_experiment:
+          timebox: "2 месяца"
+          budget: "0"
+          pass_criteria: "≥12 через 2 месяца"
+      - concept_index: 3
+        A_name_tagline: "Контроль посещаемости"
+        B_axis_and_resource: "Менеджер учебного процесса + журнал"
+        C_mechanism_steps:
+          - "Фиксировать пропуски"
+          - "Контактировать со студентом"
+        D_assumptions_constraints: ["Нагрузка менеджера допустима"]
+        E_risks_failures: ["Низкий отклик"]
+        F_metrics:
+          leading: ["Контакт после пропуска"]
+          lagging: ["Удержание ≥8 до конца курса"]
+        G_experiment:
+          timebox: "2 месяца"
+          budget: "0"
+          pass_criteria: "≥8 до конца курса"
+  step_11:
+    new_contradiction_exists: false
+  step_12:
+    chosen_concept_index: 1
+    chosen_concept_name: "Правила гибридного доступа"
+    reasons: ["Соответствует ограничениям и цели удержания"]
+    rejected_alternatives: ["Офлайн-ядро", "Контроль посещаемости"]
+    assumptions: ["Студенты принимают правила"]
+    success_criteria: ["≥12 через 2 месяца", "≥8 до конца курса"]
+  step_13:
+    workstreams:
+      - name: "Политика формата"
+        owner: "Директор"
+        tasks:
+          - task: "Зафиксировать условия онлайн-доступа"
+            due: "2 недели"
+            dependency: ""
+            checkpoint_metric: "Правила утверждены"
+  step_14:
+    rule_id: "HYBRID_FORMAT_01"
+    rule_statement_if_then: "Если посещаемость офлайн падает <12 через 2 месяца, то применяется правило ограничения онлайн-доступа"
+    criterion: "Офлайн-численность"
+    boundaries: "Применимо ко всем группам"
+    evidence_from_case: "CASE-05"
+    test_case_action: "apply_rule"
+    version_note: "v1"
+    rationale_1l: "Стабилизировать группу"

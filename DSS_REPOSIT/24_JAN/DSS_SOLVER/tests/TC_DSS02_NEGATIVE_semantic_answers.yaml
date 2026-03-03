@@ -1,0 +1,47 @@
+criteria_version: ASSISTED_GATE_CRITERIA_v0.1
+criteria_doc: ASSISTED_GATE_CRITERIA_v0.1.md
+
+results:
+  Gate4:
+    criteria:
+      - criterion_id: G4-P1
+        status: PASS
+        evidence: "Step4: improve_x/worsen_y заданы как измеримые параметры"
+      - criterion_id: G4-P2
+        status: PASS
+        evidence: "statement_1l в форме 'Если улучшаем X, ухудшается Y'"
+      - criterion_id: G4-P3
+        status: PASS
+        evidence: "measurement_hint описывает метрики X/Y"
+  Gate5:
+    criteria:
+      - criterion_id: G5-P1
+        status: FAIL
+        evidence: "IKR содержит механизм (нарушение требования безмеханизменности)"
+      - criterion_id: G5-P2
+        status: PASS
+        evidence: "нет конструкций 'через/путём/используя'"
+  Gate6:
+    criteria:
+      - criterion_id: G6-P1
+        status: PASS
+        evidence: "barrier_1l выражает взаимоисключение"
+      - criterion_id: G6-P2
+        status: PASS
+        evidence: "equivalent_to_step4=true"
+  Gate11:
+    criteria:
+      - criterion_id: G11-P1
+        status: PASS
+        evidence: "new_contradiction_exists=false и в решениях нет новых конфликтов"
+  Gate12:
+    criteria:
+      - criterion_id: G12-P1
+        status: PASS
+        evidence: "chosen_concept_index=1 соответствует Step9"
+      - criterion_id: G12-P2
+        status: PASS
+        evidence: "reasons связаны с ограничениями и целевыми метриками"
+      - criterion_id: G12-P3
+        status: PASS
+        evidence: "success_criteria согласованы с IKR"

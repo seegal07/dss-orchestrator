@@ -1,0 +1,12 @@
+run_id: 2026-02-06T22-14-28Z
+test_case_id: TC_DSS03_NEG_G4P1
+issues:
+  - gate: Gate4
+    issue_code: STRUCTURAL
+    message: "G4-P1: Негативный тест: G4-P1 FAIL"
+  - gate: Gate4
+    issue_code: STRUCTURAL
+    message: "G4-P2: OK"
+  - gate: Gate4
+    issue_code: STRUCTURAL
+    message: "G4-P3: OK"

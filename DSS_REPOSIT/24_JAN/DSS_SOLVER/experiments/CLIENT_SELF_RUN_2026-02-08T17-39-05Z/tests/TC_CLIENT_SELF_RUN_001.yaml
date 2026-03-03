@@ -1,0 +1,156 @@
+test_case_id: TC_CLIENT_SELF_RUN_001
+status: FILLED
+mode: full_vector
+canon_versions:
+  canon_pipeline: CANON_PIPELINE_v1.2.docx
+  canon_9forms: CANON_9FORMS_v1.1.docx
+  schema: TEST_VECTOR_SCHEMA_v0.1.md.docx
+notes: "CLIENT SELF-RUN — гибридная группа Python распадается"
+
+full_vector:
+  step_0:
+    symptom_1l: "Гибридная группа Python теряет офлайн-ядро, уходит в онлайн и распадается; численность падает до 7–8 и курс закрывается."
+  step_1:
+    owner_role: "Директор филиала"
+    owner_scope: "Маркетинг и набор групп, формат обучения, политика посещаемости, организация обучения"
+    constraints:
+      - "Формат гибридный (онлайн + офлайн) разрешён"
+      - "Курс 8 месяцев"
+      - "Нагрузка 16 часов в неделю"
+      - "Цена 900 PLN/мес"
+    success_metric_hint: "Сохранение группы до завершения курса без распада"
+  step_2:
+    actor: ["Студенты", "Преподаватель", "Директор филиала", "Маркетинг"]
+    system: ["Группа обучения Python", "Гибридный формат", "Офлайн занятия", "Онлайн занятия"]
+    environment: ["Поведение студентов", "Альтернативные курсы"]
+    boundary_note_1l: "Внутри — формат и организация обучения; снаружи — поведение студентов и рынок."
+  step_3:
+    elements: ["Группа", "Офлайн занятия", "Онлайн занятия", "Преподаватель", "Студенты"]
+    flows:
+      - from: "Офлайн занятия"
+        to: "Студенты"
+        type: "value"
+        note: "Основная ценность и вовлечённость"
+      - from: "Онлайн занятия"
+        to: "Студенты"
+        type: "value"
+        note: "Удобство, но низкая вовлечённость"
+      - from: "Студенты"
+        to: "Группа"
+        type: "risk"
+        note: "Уход в онлайн снижает численность офлайна"
+    symptom_location: "Уход в онлайн снижает офлайн-ядро и приводит к распаду"
+  step_4:
+    improve_x: "Доступность/гибкость посещения"
+    worsen_y: "Стабильность офлайн-ядра и сохранность группы"
+    statement_1l: "Если повышаем гибкость посещения (X), падает стабильность офлайн-ядра (Y); если держим офлайн-ядро (Y), снижается гибкость (X)."
+    measurement_hint: "Численность группы по месяцам, доля офлайн-участников, процент отсева"
+  step_5:
+    ikr_1l: "Группа остаётся устойчивой и доходит до конца курса без распада, при сохранении гибридного формата."
+    no_new_harm_clause: "Без потери экономической целесообразности"
+  step_6:
+    barrier_1l: "Нужно дать гибкость онлайн и одновременно удержать офлайн-ядро, иначе группа распадается."
+    equivalent_to_step4: "true"
+  step_7:
+    resources:
+      - name: "Очные занятия"
+        category: "org"
+        tied_to: "Вовлечённость"
+        note: "Ценность офлайн"
+      - name: "Онлайн формат"
+        category: "org"
+        tied_to: "Гибкость"
+        note: "Удобство участия"
+      - name: "Преподаватель"
+        category: "org"
+        tied_to: "Взаимодействие"
+        note: "Ведёт офлайн и онлайн"
+  step_8:
+    PRIMARY_FORM: "NONE"
+    BOUNDARY_CHECK:
+      NEAREST_FORMS: ["NONE"]
+      WHY_NOT_X: ["Распад группы"]
+      WHY_NOT_Y: ["Невозможность онлайн участия"]
+    TRIZ_CORE:
+      CONTRADICTION_1L: "Группа должна быть одновременно офлайн-ориентированной и допускать онлайн, иначе распадается."
+      IKR_1L: "Группа сохраняется до конца курса без распада при гибридном формате."
+      physical_contradiction:
+        object: "сама группа"
+        parameter: "доля офлайн‑участия"
+        state_a: "высокая (почти все офлайн)"
+        state_not_a: "низкая (многие онлайн)"
+      separation:
+        separation_type: "condition"
+        what_changes: "онлайн допускается как исключение по заявлению студента, офлайн — базовый режим"
+        expected_resolution: "офлайн остаётся основным режимом, онлайн — исключение без распада группы"
+      system_operator:
+        system_present: "группа Python (15 студентов) в гибридном формате с преподавателем"
+        subsystem_present: "подгруппа офлайн в аудитории + подгруппа онлайн"
+        system_future: "если офлайн удержан, через 3 месяца остаётся ≥10 студентов"
+      transformation_model:
+        changed_object: "правила допуска к онлайн-участию"
+        new_state: "онлайн как исключение по заявлению, офлайн — базовый режим"
+        resolution_link: "офлайн-ядро сохраняется, гибкость остаётся"
+      non_obviousness_check:
+        assumption_broken: "если онлайн разрешён как исключение по условию, офлайн-ядро сохранится, хотя кажется, что это не влияет"
+        why_not_obvious: "офлайн остаётся основным режимом, онлайн — исключение без распада группы"
+    PRINCIPLES_TO_ACTION:
+      PRINCIPLES: ["MISSING"]
+      ACTIONS: ["MISSING"]
+    IKR_TEST:
+      Q1: "MISSING"
+      Q2: "MISSING"
+    CONFIDENCE:
+      score: "MISSING"
+      justification: "MISSING"
+  step_9:
+    count_rule: "MISSING"
+    concepts:
+      - concept_index: "MISSING"
+        name: "MISSING"
+        idea_1l: "MISSING"
+        linked_form: "MISSING"
+        linked_principles: ["MISSING"]
+        linked_resources: ["MISSING"]
+        ikr_alignment_1l: "MISSING"
+        traceability: "MISSING"
+  step_10:
+    concept_specs:
+      - concept_index: "MISSING"
+        A_name_tagline: "MISSING"
+        B_axis_and_resource: "MISSING"
+        C_mechanism_steps: ["MISSING"]
+        D_assumptions_constraints: ["MISSING"]
+        E_risks_failures: ["MISSING"]
+        F_metrics:
+          leading: ["MISSING"]
+          lagging: ["MISSING"]
+        G_experiment:
+          timebox: "MISSING"
+          budget: "MISSING"
+          pass_criteria: "MISSING"
+  step_11:
+    new_contradiction_exists: "MISSING"
+  step_12:
+    chosen_concept_index: "MISSING"
+    chosen_concept_name: "MISSING"
+    reasons: ["MISSING"]
+    rejected_alternatives: ["MISSING"]
+    assumptions: ["MISSING"]
+    success_criteria: ["MISSING"]
+  step_13:
+    workstreams:
+      - name: "MISSING"
+        owner: "MISSING"
+        steps: ["MISSING"]
+        timing: "MISSING"
+        risks: ["MISSING"]
+  step_14:
+    rule_id: "MISSING"
+    rule_statement_if_then: "MISSING"
+    criterion: "MISSING"
+    boundaries: "MISSING"
+    evidence_from_case: "MISSING"
+    test_case_action: "MISSING"
+    version_note: "MISSING"
+    rationale_1l: "MISSING"

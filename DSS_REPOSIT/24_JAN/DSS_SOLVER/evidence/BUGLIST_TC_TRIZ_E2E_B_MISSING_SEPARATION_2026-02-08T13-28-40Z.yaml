@@ -1,0 +1,15 @@
+run_id: 2026-02-08T13-28-40Z
+test_case_id: TC_TRIZ_E2E_B_MISSING_SEPARATION
+issues:
+  - gate: GateTRIZ
+    issue_code: STRUCTURAL
+    message: "TRIZ_G1_MISSING: physical_contradiction missing (step_8.TRIZ_CORE.physical_contradiction)"
+  - gate: GateTRIZ
+    issue_code: STRUCTURAL
+    message: "TRIZ_G2_MISSING: separation missing (step_8.TRIZ_CORE.separation)"
+  - gate: GateTRIZ
+    issue_code: STRUCTURAL
+    message: "TRIZ_G4_MISSING: non_obviousness_check missing (step_8.TRIZ_CORE.non_obviousness_check)"
+  - gate: GateTRIZ
+    issue_code: STRUCTURAL
+    message: "TRIZ_GX_MISSING: transformation_model missing (step_8.TRIZ_CORE.transformation_model)"

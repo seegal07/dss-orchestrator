@@ -1,0 +1,3 @@
+usage: harness.py run [-h] [--tc TC] [--tc-path TC_PATH] --answers ANSWERS
+                      [--addon-answers ADDON_ANSWERS] [--addon-strict]
+harness.py run: error: the following arguments are required: --answers

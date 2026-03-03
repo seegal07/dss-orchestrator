@@ -1,0 +1,196 @@
+test_case_id: TC_E5_REAL_CASE_004
+status: FILLED
+mode: full_vector
+canon_versions:
+  canon_pipeline: CANON_PIPELINE_v1.2.docx
+  canon_9forms: CANON_9FORMS_v1.1.docx
+  schema: TEST_VECTOR_SCHEMA_v0.1.md.docx
+notes: "E5 — финансы/дебиторка, DSO"
+
+full_vector:
+  step_0:
+    symptom_1l: "Просроченная дебиторка вызывает кассовый разрыв; клиенты платят позже сроков."
+  step_1:
+    owner_role: "CFO"
+    owner_scope: "Кредитная политика, инкассация, регламенты, приоритеты клиентов"
+    constraints:
+      - "Нельзя менять условия контрактов и цены"
+      - "Нельзя привлекать новый долг"
+      - "Срок эффекта — 2 месяца"
+    success_metric_hint: "DSO ≤45 дней, просрочка >30 дней ≤10%"
+  step_2:
+    actor: ["CFO", "Бухгалтерия", "Менеджеры", "Клиенты"]
+    system: ["Счета", "Сроки оплаты", "CRM", "Процесс инкассации"]
+    environment: ["Платёжная дисциплина клиентов", "Регуляции", "Банковские сроки"]
+    boundary_note_1l: "Внутри — процесс инкассации и регламенты; снаружи — дисциплина клиентов и банковская среда."
+  step_3:
+    elements: ["Счёт", "Срок оплаты", "Просрочка", "Напоминание", "Оплата", "DSO"]
+    flows:
+      - from: "Счёт"
+        to: "Срок оплаты"
+        type: "info"
+        note: "Назначение срока"
+      - from: "Срок оплаты"
+        to: "Просрочка"
+        type: "other"
+        note: "Просрочка при неоплате"
+      - from: "Просрочка"
+        to: "Напоминание"
+        type: "info"
+        note: "Коммуникации"
+      - from: "Напоминание"
+        to: "Оплата"
+        type: "money"
+        note: "Поступление средств"
+    symptom_location: "Просрочка >30 дней"
+  step_4:
+    improve_x: "Скорость инкассации (DSO)"
+    worsen_y: "Лояльность клиентов/риски churn"
+    statement_1l: "Если ускоряем инкассацию, ухудшается лояльность; если сохраняем лояльность, растёт просрочка"
+    measurement_hint: "DSO, % просрочки >30 дней, churn"
+  step_5:
+    ikr_1l: "DSO снижен до 45 дней без потери клиентов и без изменения условий контрактов"
+    no_new_harm_clause: "Не ухудшать retention и не увеличивать финансовые затраты"
+  step_6:
+    barrier_1l: "Нельзя одновременно сохранить текущую лояльность всех клиентов и резко снизить просрочку без изменения процесса"
+    equivalent_to_step4: true
+  step_7:
+    resources:
+      - name: "Регламенты напоминаний"
+        category: "org"
+        tied_to: "Инкассация"
+        note: "Можно менять"
+      - name: "Сегментация клиентов"
+        category: "info"
+        tied_to: "Приоритеты"
+        note: "Можно вводить"
+      - name: "CRM"
+        category: "info"
+        tied_to: "Сценарии"
+        note: "Можно настраивать"
+      - name: "Шаблоны претензий"
+        category: "info"
+        tied_to: "Эскалации"
+        note: "Есть"
+  step_8:
+    PRIMARY_FORM: "Форма контроля потока"
+    BOUNDARY_CHECK:
+      NEAREST_FORMS: ["Форма регламента", "Форма сегментации"]
+      WHY_NOT_X: ["Нельзя менять контракты"]
+      WHY_NOT_Y: ["Нельзя ухудшать retention"]
+    TRIZ_CORE:
+      CONTRADICTION_1L: "нужно снизить DSO, но нельзя терять клиентов"
+      IKR_1L: "DSO снижен без потери клиентов"
+    PRINCIPLES_TO_ACTION:
+      PRINCIPLES: [13]
+      ACTIONS: ["Сегментировать клиентов и сценарии"]
+    IKR_TEST:
+      Q1: "YES"
+      Q2: "YES"
+    CONFIDENCE:
+      score: 2
+      justification: "Противоречие и IKR подтверждены входом"
+  step_9:
+    count_rule: "3–5"
+    concepts:
+      - concept_index: 1
+        name: "Сегментация и сценарии"
+        idea_1l: "Разные сценарии напоминаний по сегментам"
+        linked_form: "Форма сегментации"
+        linked_principles: [13]
+        linked_resources: ["CRM", "Сегментация клиентов"]
+        ikr_alignment_1l: "Снижает DSO без изменения контрактов"
+      - concept_index: 2
+        name: "Ранние уведомления"
+        idea_1l: "Напоминания до просрочки"
+        linked_form: "Форма регламента"
+        linked_principles: [13]
+        linked_resources: ["Регламенты напоминаний"]
+        ikr_alignment_1l: "Снижает долю просрочек"
+      - concept_index: 3
+        name: "Эскалации"
+        idea_1l: "Эскалация по триггерам"
+        linked_form: "Форма контроля"
+        linked_principles: [13]
+        linked_resources: ["Шаблоны претензий"]
+        ikr_alignment_1l: "Снижает просрочку"
+  step_10:
+    concept_specs:
+      - concept_index: 1
+        A_name_tagline: "Сегментация и сценарии"
+        B_axis_and_resource: "CRM + сегментация"
+        C_mechanism_steps:
+          - "Классифицировать клиентов"
+          - "Назначить сценарии напоминаний"
+        D_assumptions_constraints: ["Контракты неизменны"]
+        E_risks_failures: ["Негативная реакция клиентов"]
+        F_metrics:
+          leading: ["Время реакции на просрочку"]
+          lagging: ["DSO", "% просрочки"]
+        G_experiment:
+          timebox: "2 месяца"
+          budget: "0"
+          pass_criteria: "DSO ≤45"
+      - concept_index: 2
+        A_name_tagline: "Ранние уведомления"
+        B_axis_and_resource: "Регламенты"
+        C_mechanism_steps:
+          - "Уведомления за 7/3 дня"
+        D_assumptions_constraints: ["Контракты неизменны"]
+        E_risks_failures: ["Игнорирование"]
+        F_metrics:
+          leading: ["% уведомлений"]
+          lagging: ["DSO"]
+        G_experiment:
+          timebox: "2 месяца"
+          budget: "0"
+          pass_criteria: "DSO ≤45"
+      - concept_index: 3
+        A_name_tagline: "Эскалации"
+        B_axis_and_resource: "Претензионные шаблоны"
+        C_mechanism_steps:
+          - "Эскалация 15/30 день"
+        D_assumptions_constraints: ["Без изменения контрактов"]
+        E_risks_failures: ["Конфликт"]
+        F_metrics:
+          leading: ["% эскалаций"]
+          lagging: ["% просрочки >30"]
+        G_experiment:
+          timebox: "2 месяца"
+          budget: "0"
+          pass_criteria: "% просрочки ≤10%"
+  step_11:
+    new_contradiction_exists: false
+  step_12:
+    chosen_concept_index: 1
+    chosen_concept_name: "Сегментация и сценарии"
+    reasons: ["Не меняет контракты", "Снижает DSO", "Минимальные затраты"]
+    rejected_alternatives: ["Ранние уведомления", "Эскалации"]
+    assumptions: ["Клиенты реагируют на сценарии"]
+    success_criteria: ["DSO ≤45 дней", "Просрочка >30 дней ≤10%"]
+  step_13:
+    workstreams:
+      - name: "Сегментация клиентов"
+        owner: "CFO"
+        steps: ["Классификация", "Правила сегментов"]
+        timing: "2 недели"
+        risks: ["Неверная классификация"]
+      - name: "CRM‑сценарии"
+        owner: "Финансы"
+        steps: ["Настройка", "Запуск"]
+        timing: "2–3 недели"
+        risks: ["Сбой уведомлений"]
+      - name: "Контроль DSO"
+        owner: "CFO"
+        steps: ["Еженедельный мониторинг"]
+        timing: "2 месяца"
+        risks: ["Отсутствие дисциплины"]
+  step_14:
+    rule_id: "RULE_E5_DSO_001"
+    rule_statement_if_then: "Если DSO >45 дней через 2 месяца, то сценарии напоминаний пересматриваются"
+    criterion: "DSO и % просрочки"
+    boundaries: "Текущие контракты"
+    evidence_from_case: "Отчёт дебиторки"
+    test_case_action: "Пересмотр сценариев"
+    version_note: "v1"
+    rationale_1l: "Снижаем просрочку без изменения контрактов"

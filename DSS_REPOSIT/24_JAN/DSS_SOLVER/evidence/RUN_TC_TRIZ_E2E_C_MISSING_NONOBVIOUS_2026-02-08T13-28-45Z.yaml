@@ -1,0 +1,69 @@
+run_id: 2026-02-08T13-28-45Z
+test_case_id: TC_TRIZ_E2E_C_MISSING_NONOBVIOUS
+harness_version: dss-solver-0.1
+timestamp_utc: 2026-02-08T13-28-45Z
+overall_status: FAIL
+gate_results:
+  - gate: Gate0
+    status: PASS
+    reasons: []
+  - gate: Gate1
+    status: PASS
+    reasons: []
+  - gate: Gate2
+    status: PASS
+    reasons: []
+  - gate: Gate3
+    status: PASS
+    reasons: []
+  - gate: Gate4
+    status: PASS
+    reasons:
+      - "G4-P1: X/Y заданы"
+      - "G4-P2: statement_1l корректен"
+      - "G4-P3: measurement_hint задан"
+  - gate: Gate5
+    status: PASS
+    reasons:
+      - "G5-P1: IKR задан"
+      - "G5-P2: IKR без механизма"
+  - gate: Gate6
+    status: PASS
+    reasons:
+      - "G6-P1: барьер задан"
+      - "G6-P2: equivalent_to_step4=true"
+  - gate: Gate7
+    status: PASS
+    reasons: []
+  - gate: Gate8
+    status: PASS
+    reasons: []
+  - gate: Gate9
+    status: PASS
+    reasons: []
+  - gate: Gate10
+    status: PASS
+    reasons: []
+  - gate: Gate11
+    status: PASS
+    reasons:
+      - "G11-P1: new_contradiction_exists=false"
+  - gate: Gate12
+    status: PASS
+    reasons:
+      - "G12-P1: chosen_concept_index=1"
+      - "G12-P2: reasons заданы"
+      - "G12-P3: success_criteria заданы"
+  - gate: Gate13
+    status: PASS
+    reasons: []
+  - gate: Gate14
+    status: PASS
+    reasons: []
+  - gate: GateTRIZ
+    status: FAIL
+    reasons:
+      - "TRIZ_G1_MISSING: physical_contradiction missing (step_8.TRIZ_CORE.physical_contradiction)"
+      - "TRIZ_G2_MISSING: separation missing (step_8.TRIZ_CORE.separation)"
+      - "TRIZ_G4_MISSING: non_obviousness_check missing (step_8.TRIZ_CORE.non_obviousness_check)"
+      - "TRIZ_GX_MISSING: transformation_model missing (step_8.TRIZ_CORE.transformation_model)"

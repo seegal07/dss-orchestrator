@@ -1,0 +1,302 @@
+[
+  {
+    "gate_log_entry_id": "2026-02-06T22-14-29Z-Gate0",
+    "case_id": "DSS_Output_Package_TC_DSS03_NEG_G5P1_2026-02-06T22-14-29Z",
+    "gate_id": "Gate0",
+    "pipeline_step": 0,
+    "result": "pass",
+    "check_type": "AUTOMATED",
+    "criteria_scope": "CANON",
+    "criteria_results": [],
+    "reason": "",
+    "canon_ref": "CANON_PIPELINE_v1.2",
+    "run_id": "2026-02-06T22-14-29Z",
+    "timestamp": "2026-02-06T22-14-29Z",
+    "actor_type": "system",
+    "actor_user_id": null
+  },
+  {
+    "gate_log_entry_id": "2026-02-06T22-14-29Z-Gate1",
+    "case_id": "DSS_Output_Package_TC_DSS03_NEG_G5P1_2026-02-06T22-14-29Z",
+    "gate_id": "Gate1",
+    "pipeline_step": 1,
+    "result": "pass",
+    "check_type": "AUTOMATED",
+    "criteria_scope": "CANON",
+    "criteria_results": [],
+    "reason": "",
+    "canon_ref": "CANON_PIPELINE_v1.2",
+    "run_id": "2026-02-06T22-14-29Z",
+    "timestamp": "2026-02-06T22-14-29Z",
+    "actor_type": "system",
+    "actor_user_id": null
+  },
+  {
+    "gate_log_entry_id": "2026-02-06T22-14-29Z-Gate2",
+    "case_id": "DSS_Output_Package_TC_DSS03_NEG_G5P1_2026-02-06T22-14-29Z",
+    "gate_id": "Gate2",
+    "pipeline_step": 2,
+    "result": "pass",
+    "check_type": "AUTOMATED",
+    "criteria_scope": "CANON",
+    "criteria_results": [],
+    "reason": "",
+    "canon_ref": "CANON_PIPELINE_v1.2",
+    "run_id": "2026-02-06T22-14-29Z",
+    "timestamp": "2026-02-06T22-14-29Z",
+    "actor_type": "system",
+    "actor_user_id": null
+  },
+  {
+    "gate_log_entry_id": "2026-02-06T22-14-29Z-Gate3",
+    "case_id": "DSS_Output_Package_TC_DSS03_NEG_G5P1_2026-02-06T22-14-29Z",
+    "gate_id": "Gate3",
+    "pipeline_step": 3,
+    "result": "pass",
+    "check_type": "AUTOMATED",
+    "criteria_scope": "CANON",
+    "criteria_results": [],
+    "reason": "",
+    "canon_ref": "CANON_PIPELINE_v1.2",
+    "run_id": "2026-02-06T22-14-29Z",
+    "timestamp": "2026-02-06T22-14-29Z",
+    "actor_type": "system",
+    "actor_user_id": null
+  },
+  {
+    "gate_log_entry_id": "2026-02-06T22-14-29Z-Gate4",
+    "case_id": "DSS_Output_Package_TC_DSS03_NEG_G5P1_2026-02-06T22-14-29Z",
+    "gate_id": "Gate4",
+    "pipeline_step": 4,
+    "result": "pass",
+    "check_type": "ASSISTED",
+    "criteria_scope": "CANON",
+    "criteria_results": [
+      {
+        "criterion_id": "G4-P1",
+        "status": "pass",
+        "evidence": "OK"
+      },
+      {
+        "criterion_id": "G4-P2",
+        "status": "pass",
+        "evidence": "OK"
+      },
+      {
+        "criterion_id": "G4-P3",
+        "status": "pass",
+        "evidence": "OK"
+      }
+    ],
+    "reason": "G4-P1: OK, G4-P2: OK, G4-P3: OK",
+    "canon_ref": "CANON_PIPELINE_v1.2",
+    "run_id": "2026-02-06T22-14-29Z",
+    "timestamp": "2026-02-06T22-14-29Z",
+    "actor_type": "system",
+    "actor_user_id": null
+  },
+  {
+    "gate_log_entry_id": "2026-02-06T22-14-29Z-Gate5",
+    "case_id": "DSS_Output_Package_TC_DSS03_NEG_G5P1_2026-02-06T22-14-29Z",
+    "gate_id": "Gate5",
+    "pipeline_step": 5,
+    "result": "fail",
+    "check_type": "ASSISTED",
+    "criteria_scope": "CANON",
+    "criteria_results": [
+      {
+        "criterion_id": "G5-P1",
+        "status": "fail",
+        "evidence": "Негативный тест: G5-P1 FAIL"
+      },
+      {
+        "criterion_id": "G5-P2",
+        "status": "pass",
+        "evidence": "OK"
+      }
+    ],
+    "reason": "G5-P1: Негативный тест: G5-P1 FAIL, G5-P2: OK",
+    "canon_ref": "CANON_PIPELINE_v1.2",
+    "run_id": "2026-02-06T22-14-29Z",
+    "timestamp": "2026-02-06T22-14-29Z",
+    "actor_type": "system",
+    "actor_user_id": null
+  },
+  {
+    "gate_log_entry_id": "2026-02-06T22-14-29Z-Gate6",
+    "case_id": "DSS_Output_Package_TC_DSS03_NEG_G5P1_2026-02-06T22-14-29Z",
+    "gate_id": "Gate6",
+    "pipeline_step": 6,
+    "result": "pass",
+    "check_type": "ASSISTED",
+    "criteria_scope": "CANON",
+    "criteria_results": [
+      {
+        "criterion_id": "G6-P1",
+        "status": "pass",
+        "evidence": "OK"
+      },
+      {
+        "criterion_id": "G6-P2",
+        "status": "pass",
+        "evidence": "OK"
+      }
+    ],
+    "reason": "G6-P1: OK, G6-P2: OK",
+    "canon_ref": "CANON_PIPELINE_v1.2",
+    "run_id": "2026-02-06T22-14-29Z",
+    "timestamp": "2026-02-06T22-14-29Z",
+    "actor_type": "system",
+    "actor_user_id": null
+  },
+  {
+    "gate_log_entry_id": "2026-02-06T22-14-29Z-Gate7",
+    "case_id": "DSS_Output_Package_TC_DSS03_NEG_G5P1_2026-02-06T22-14-29Z",
+    "gate_id": "Gate7",
+    "pipeline_step": 7,
+    "result": "pass",
+    "check_type": "AUTOMATED",
+    "criteria_scope": "CANON",
+    "criteria_results": [],
+    "reason": "",
+    "canon_ref": "CANON_PIPELINE_v1.2",
+    "run_id": "2026-02-06T22-14-29Z",
+    "timestamp": "2026-02-06T22-14-29Z",
+    "actor_type": "system",
+    "actor_user_id": null
+  },
+  {
+    "gate_log_entry_id": "2026-02-06T22-14-29Z-Gate8",
+    "case_id": "DSS_Output_Package_TC_DSS03_NEG_G5P1_2026-02-06T22-14-29Z",
+    "gate_id": "Gate8",
+    "pipeline_step": 8,
+    "result": "pass",
+    "check_type": "AUTOMATED",
+    "criteria_scope": "CANON",
+    "criteria_results": [],
+    "reason": "",
+    "canon_ref": "CANON_PIPELINE_v1.2",
+    "run_id": "2026-02-06T22-14-29Z",
+    "timestamp": "2026-02-06T22-14-29Z",
+    "actor_type": "system",
+    "actor_user_id": null
+  },
+  {
+    "gate_log_entry_id": "2026-02-06T22-14-29Z-Gate9",
+    "case_id": "DSS_Output_Package_TC_DSS03_NEG_G5P1_2026-02-06T22-14-29Z",
+    "gate_id": "Gate9",
+    "pipeline_step": 9,
+    "result": "pass",
+    "check_type": "AUTOMATED",
+    "criteria_scope": "CANON",
+    "criteria_results": [],
+    "reason": "",
+    "canon_ref": "CANON_PIPELINE_v1.2",
+    "run_id": "2026-02-06T22-14-29Z",
+    "timestamp": "2026-02-06T22-14-29Z",
+    "actor_type": "system",
+    "actor_user_id": null
+  },
+  {
+    "gate_log_entry_id": "2026-02-06T22-14-29Z-Gate10",
+    "case_id": "DSS_Output_Package_TC_DSS03_NEG_G5P1_2026-02-06T22-14-29Z",
+    "gate_id": "Gate10",
+    "pipeline_step": 10,
+    "result": "pass",
+    "check_type": "AUTOMATED",
+    "criteria_scope": "CANON",
+    "criteria_results": [],
+    "reason": "",
+    "canon_ref": "CANON_PIPELINE_v1.2",
+    "run_id": "2026-02-06T22-14-29Z",
+    "timestamp": "2026-02-06T22-14-29Z",
+    "actor_type": "system",
+    "actor_user_id": null
+  },
+  {
+    "gate_log_entry_id": "2026-02-06T22-14-29Z-Gate11",
+    "case_id": "DSS_Output_Package_TC_DSS03_NEG_G5P1_2026-02-06T22-14-29Z",
+    "gate_id": "Gate11",
+    "pipeline_step": 11,
+    "result": "pass",
+    "check_type": "ASSISTED",
+    "criteria_scope": "CANON",
+    "criteria_results": [
+      {
+        "criterion_id": "G11-P1",
+        "status": "pass",
+        "evidence": "OK"
+      }
+    ],
+    "reason": "G11-P1: OK",
+    "canon_ref": "CANON_PIPELINE_v1.2",
+    "run_id": "2026-02-06T22-14-29Z",
+    "timestamp": "2026-02-06T22-14-29Z",
+    "actor_type": "system",
+    "actor_user_id": null
+  },
+  {
+    "gate_log_entry_id": "2026-02-06T22-14-29Z-Gate12",
+    "case_id": "DSS_Output_Package_TC_DSS03_NEG_G5P1_2026-02-06T22-14-29Z",
+    "gate_id": "Gate12",
+    "pipeline_step": 12,
+    "result": "pass",
+    "check_type": "ASSISTED",
+    "criteria_scope": "CANON",
+    "criteria_results": [
+      {
+        "criterion_id": "G12-P1",
+        "status": "pass",
+        "evidence": "OK"
+      },
+      {
+        "criterion_id": "G12-P2",
+        "status": "pass",
+        "evidence": "OK"
+      },
+      {
+        "criterion_id": "G12-P3",
+        "status": "pass",
+        "evidence": "OK"
+      }
+    ],
+    "reason": "G12-P1: OK, G12-P2: OK, G12-P3: OK",
+    "canon_ref": "CANON_PIPELINE_v1.2",
+    "run_id": "2026-02-06T22-14-29Z",
+    "timestamp": "2026-02-06T22-14-29Z",
+    "actor_type": "system",
+    "actor_user_id": null
+  },
+  {
+    "gate_log_entry_id": "2026-02-06T22-14-29Z-Gate13",
+    "case_id": "DSS_Output_Package_TC_DSS03_NEG_G5P1_2026-02-06T22-14-29Z",
+    "gate_id": "Gate13",
+    "pipeline_step": 13,
+    "result": "pass",
+    "check_type": "AUTOMATED",
+    "criteria_scope": "CANON",
+    "criteria_results": [],
+    "reason": "",
+    "canon_ref": "CANON_PIPELINE_v1.2",
+    "run_id": "2026-02-06T22-14-29Z",
+    "timestamp": "2026-02-06T22-14-29Z",
+    "actor_type": "system",
+    "actor_user_id": null
+  },
+  {
+    "gate_log_entry_id": "2026-02-06T22-14-29Z-Gate14",
+    "case_id": "DSS_Output_Package_TC_DSS03_NEG_G5P1_2026-02-06T22-14-29Z",
+    "gate_id": "Gate14",
+    "pipeline_step": 14,
+    "result": "pass",
+    "check_type": "AUTOMATED",
+    "criteria_scope": "CANON",
+    "criteria_results": [],
+    "reason": "",
+    "canon_ref": "CANON_PIPELINE_v1.2",
+    "run_id": "2026-02-06T22-14-29Z",
+    "timestamp": "2026-02-06T22-14-29Z",
+    "actor_type": "system",
+    "actor_user_id": null
+  }
+]

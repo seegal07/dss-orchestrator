@@ -1,0 +1,25 @@
+{
+  "checkpoint_1_gatephase0": "PASS",
+  "checkpoint_2_hashes": "PASS",
+  "per_variant": {
+    "V1": {
+      "gatephase0_ok": true,
+      "hashes_ok": true,
+      "s03_5_nonnull": true,
+      "gatepfl_no_solution_as_xy": true
+    },
+    "V2": {
+      "gatephase0_ok": true,
+      "hashes_ok": true,
+      "s03_5_nonnull": true,
+      "gatepfl_no_solution_as_xy": true
+    },
+    "V3": {
+      "gatephase0_ok": true,
+      "hashes_ok": true,
+      "s03_5_nonnull": true,
+      "gatepfl_no_solution_as_xy": true
+    }
+  },
+  "gatepfl_no_solution_as_xy": "PASS"
+}

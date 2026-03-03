@@ -1,0 +1,6 @@
+run_id: 2026-02-08T13-30-55Z
+test_case_id: TC_TRIZ_E2E_B_MISSING_SEPARATION
+issues:
+  - gate: GateTRIZ
+    issue_code: STRUCTURAL
+    message: "TRIZ_G2_INVALID_TYPE: invalid or missing separation_type (step_8.TRIZ_CORE.separation.separation_type)"

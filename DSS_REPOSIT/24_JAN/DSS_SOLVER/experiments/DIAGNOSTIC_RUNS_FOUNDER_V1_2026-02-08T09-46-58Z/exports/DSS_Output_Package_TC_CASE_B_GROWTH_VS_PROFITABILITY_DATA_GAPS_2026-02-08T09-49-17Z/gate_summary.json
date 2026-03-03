@@ -1,0 +1,21 @@
+{
+  "case_id": "DSS_Output_Package_TC_CASE_B_GROWTH_VS_PROFITABILITY_DATA_GAPS_2026-02-08T09-49-17Z",
+  "run_id": "2026-02-08T09-49-17Z",
+  "latest": {
+    "Gate0": "pass",
+    "Gate1": "pass",
+    "Gate2": "pass",
+    "Gate3": "fail",
+    "Gate4": "fail",
+    "Gate5": "blocked",
+    "Gate6": "blocked",
+    "Gate7": "pass",
+    "Gate8": "fail",
+    "Gate9": "pass",
+    "Gate10": "fail",
+    "Gate11": "blocked",
+    "Gate12": "fail",
+    "Gate13": "fail",
+    "Gate14": "fail"
+  }
+}

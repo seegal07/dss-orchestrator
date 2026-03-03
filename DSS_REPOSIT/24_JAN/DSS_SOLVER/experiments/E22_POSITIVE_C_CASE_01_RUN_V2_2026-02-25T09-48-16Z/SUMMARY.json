@@ -1,0 +1,66 @@
+{
+  "checkpoints": {
+    "checkpoint_1_gatephase0": "PASS",
+    "checkpoint_2_hashes": "PASS",
+    "per_variant": {
+      "V1": {
+        "gatephase0_ok": true,
+        "hashes_ok": true
+      },
+      "V2": {
+        "gatephase0_ok": true,
+        "hashes_ok": true
+      },
+      "V3": {
+        "gatephase0_ok": true,
+        "hashes_ok": true
+      }
+    }
+  },
+  "Step1": "PASS",
+  "Step2": "PASS",
+  "variants": {
+    "V1": {
+      "canonical_hash_v0": "c7721edb3432f248abd02519882d27220112dbd14ff2499baedfaf2ea0f2574f",
+      "canonical_hash_text": "15ac1363a8cf1ac8973431b910de9865c43d7df5039ee2de9955671fb6c0b676",
+      "X_delta_direction": "unknown",
+      "Y_delta_direction": "unknown",
+      "X_metric_polarity": "HIGHER_IS_BETTER",
+      "Y_metric_polarity": "LOWER_IS_BETTER",
+      "trace_markers": [
+        "MISSING_SLOT:X_delta_direction",
+        "MISSING_SLOT:Y_delta_direction"
+      ],
+      "GatePFL_result": null,
+      "GatePFL_reason": null
+    },
+    "V2": {
+      "canonical_hash_v0": "c7721edb3432f248abd02519882d27220112dbd14ff2499baedfaf2ea0f2574f",
+      "canonical_hash_text": "15ac1363a8cf1ac8973431b910de9865c43d7df5039ee2de9955671fb6c0b676",
+      "X_delta_direction": "unknown",
+      "Y_delta_direction": "unknown",
+      "X_metric_polarity": "HIGHER_IS_BETTER",
+      "Y_metric_polarity": "LOWER_IS_BETTER",
+      "trace_markers": [
+        "MISSING_SLOT:X_delta_direction",
+        "MISSING_SLOT:Y_delta_direction"
+      ],
+      "GatePFL_result": null,
+      "GatePFL_reason": null
+    },
+    "V3": {
+      "canonical_hash_v0": "c7721edb3432f248abd02519882d27220112dbd14ff2499baedfaf2ea0f2574f",
+      "canonical_hash_text": "15ac1363a8cf1ac8973431b910de9865c43d7df5039ee2de9955671fb6c0b676",
+      "X_delta_direction": "unknown",
+      "Y_delta_direction": "unknown",
+      "X_metric_polarity": "HIGHER_IS_BETTER",
+      "Y_metric_polarity": "LOWER_IS_BETTER",
+      "trace_markers": [
+        "MISSING_SLOT:X_delta_direction",
+        "MISSING_SLOT:Y_delta_direction"
+      ],
+      "GatePFL_result": null,
+      "GatePFL_reason": null
+    }
+  }
+}

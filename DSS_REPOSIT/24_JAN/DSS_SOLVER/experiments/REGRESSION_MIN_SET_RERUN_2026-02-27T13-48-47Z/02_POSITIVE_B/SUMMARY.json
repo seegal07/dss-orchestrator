@@ -1,0 +1,45 @@
+{
+  "checkpoints": {
+    "checkpoint_1_gatephase0": "PASS",
+    "checkpoint_2_hashes": "PASS",
+    "per_variant": {
+      "TC_E22_POSITIVE_B_CASE_01_V1": {
+        "gatephase0_ok": true,
+        "hashes_ok": true
+      },
+      "TC_E22_POSITIVE_B_CASE_01_V2": {
+        "gatephase0_ok": true,
+        "hashes_ok": true
+      },
+      "TC_E22_POSITIVE_B_CASE_01_V3": {
+        "gatephase0_ok": true,
+        "hashes_ok": true
+      }
+    }
+  },
+  "Step1": "PASS",
+  "Step2": "PASS",
+  "variants": {
+    "TC_E22_POSITIVE_B_CASE_01_V1": {
+      "canonical_hash_v0": "3b83600f606e14b8f43a86836e48081d3cdabe6430ebbf64d348fb14c4e7f57c",
+      "canonical_hash_text": "57e02640435c0da72d514c19ae1710516a563aa755b1cecc02baa359ad6fbde2",
+      "s2a_hash": "bb0109a1fea5264d07c5cf9983a4d3cd8f62efe5a7101e3dc209cad98f43e6b6",
+      "GatePFL_result": "fail",
+      "GatePFL_reason": "NO_MUTUAL_DEGRADATION"
+    },
+    "TC_E22_POSITIVE_B_CASE_01_V2": {
+      "canonical_hash_v0": "3b83600f606e14b8f43a86836e48081d3cdabe6430ebbf64d348fb14c4e7f57c",
+      "canonical_hash_text": "57e02640435c0da72d514c19ae1710516a563aa755b1cecc02baa359ad6fbde2",
+      "s2a_hash": "bb0109a1fea5264d07c5cf9983a4d3cd8f62efe5a7101e3dc209cad98f43e6b6",
+      "GatePFL_result": "fail",
+      "GatePFL_reason": "NO_MUTUAL_DEGRADATION"
+    },
+    "TC_E22_POSITIVE_B_CASE_01_V3": {
+      "canonical_hash_v0": "3b83600f606e14b8f43a86836e48081d3cdabe6430ebbf64d348fb14c4e7f57c",
+      "canonical_hash_text": "57e02640435c0da72d514c19ae1710516a563aa755b1cecc02baa359ad6fbde2",
+      "s2a_hash": "bb0109a1fea5264d07c5cf9983a4d3cd8f62efe5a7101e3dc209cad98f43e6b6",
+      "GatePFL_result": "fail",
+      "GatePFL_reason": "NO_MUTUAL_DEGRADATION"
+    }
+  }
+}

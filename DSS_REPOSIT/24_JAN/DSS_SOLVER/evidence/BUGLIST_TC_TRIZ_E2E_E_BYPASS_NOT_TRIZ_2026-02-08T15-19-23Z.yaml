@@ -1,0 +1,6 @@
+run_id: 2026-02-08T15-19-23Z
+test_case_id: TC_TRIZ_E2E_E_BYPASS_NOT_TRIZ
+issues:
+  - gate: GateTRIZ
+    issue_code: STRUCTURAL
+    message: "TRIZ_G4_MISSING: non_obviousness_check missing (step_8.TRIZ_CORE.non_obviousness_check)"

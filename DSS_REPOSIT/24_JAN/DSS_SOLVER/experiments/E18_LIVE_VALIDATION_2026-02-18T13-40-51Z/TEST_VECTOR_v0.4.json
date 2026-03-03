@@ -1,0 +1,228 @@
+{
+  "schema": "TEST_VECTOR_SCHEMA_v0.4",
+  "schema_version": 0.4,
+  "pfl_enabled": true,
+  "pfl_verdict": "PASS",
+  "pfl_reason": "NONE",
+  "pfl_attempt_index": 1,
+  "pfl_structural_tension": true,
+  "pfl_conflict_type_candidate": "causal",
+  "pfl_X": "Усилить локальную адаптацию приоритета под дневную операционную ситуацию филиала.",
+  "pfl_Y": "Не ломать обязательный CRM-порядок обработки лидов как системное правило.",
+  "full_vector": {
+    "step_0": {
+      "symptom_1l": "Директору иногда нужно отклониться от CRM-приоритета для спасения ивента"
+    },
+    "step_1": {
+      "owner_role": "директор филиала",
+      "owner_scope": "локальная приоритизация обработки лидов в CRM",
+      "constraints": [
+        "центральный CRM-стандарт обязателен"
+      ]
+    },
+    "step_2": {
+      "actor": [
+        "директор филиала",
+        "отдел продаж",
+        "руководитель продаж центрального офиса"
+      ],
+      "system": [
+        "процесс обработки лидов в CRM"
+      ],
+      "environment": [
+        "локальный спрос на ивенты"
+      ],
+      "boundary_note_1l": "Внутри — CRM-процедура и локальное управление очередью; снаружи — волатильность регистраций на ивенты."
+    },
+    "step_3": {
+      "elements": [
+        "CRM-приоритеты",
+        "директор филиала",
+        "отдел продаж",
+        "ивент"
+      ],
+      "flows": [
+        {
+          "from": "CRM",
+          "to": "отдел продаж",
+          "type": "task_order",
+          "note": "стандартная очередь"
+        },
+        {
+          "from": "директор филиала",
+          "to": "отдел продаж",
+          "type": "override",
+          "note": "локальное исключение по ивенту"
+        }
+      ],
+      "symptom_location": "Конфликт между стандартной CRM-очередью и срочной локальной задачей добора на ивент."
+    },
+    "step_4": {
+      "improve_x": "оперативный добор участников на ивент для защиты уже понесенных затрат",
+      "worsen_y": "системная дисциплина CRM-обработки лидов",
+      "statement_1l": "Если усиливаем добор на ивент, ухудшается соблюдение стандартного CRM-порядка.",
+      "measurement_hint": "подтверждения на ивент, доля отклонений от CRM-порядка"
+    },
+    "step_5": {
+      "ikr_1l": "Ивент не провален и CRM-процедура не ломается системно."
+    },
+    "step_6": {
+      "barrier_1l": "Отклонение от CRM допускается только как документированное разовое исключение с возвратом в стандарт.",
+      "equivalent_to_step4": true
+    },
+    "step_7": {
+      "resources": [
+        {
+          "name": "CRM",
+          "category": "info",
+          "tied_to": "приоритизация задач"
+        },
+        {
+          "name": "директор филиала",
+          "category": "org",
+          "tied_to": "решение об исключении"
+        },
+        {
+          "name": "отдел продаж",
+          "category": "org",
+          "tied_to": "исполнение обзвона"
+        },
+        {
+          "name": "данные регистраций/неявок на ивент",
+          "category": "info",
+          "tied_to": "триггер исключения"
+        },
+        {
+          "name": "контроль руководителя продаж/аккаунт-менеджера",
+          "category": "org",
+          "tied_to": "возврат в стандарт"
+        }
+      ]
+    },
+    "step_8": {
+      "PRIMARY_FORM": "Form 5",
+      "BOUNDARY_CHECK": {
+        "note": "разовое исключение"
+      },
+      "TRIZ_CORE": {
+        "physical_contradiction": {
+          "object": "CRM приоритизация",
+          "parameter": "жесткость порядка",
+          "state_a": "строгий стандарт",
+          "state_not_a": "локальная адаптация"
+        },
+        "separation": {
+          "separation_type": "condition",
+          "what_changes": "отклонение только при пороге <15 подтверждений",
+          "expected_resolution": "после >=15 возврат в стандарт"
+        },
+        "system_operator": {
+          "subsystem_present": "филиал",
+          "system_present": "CRM процесс",
+          "supersystem_present": "центральный офис"
+        },
+        "transformation_model": {
+          "changed_object": "право на отклонение очереди",
+          "new_state": "условное исключение по порогу",
+          "resolution_link": "снижение риска провала ивента без системного хаоса"
+        },
+        "non_obviousness_check": {
+          "assumption_broken": "строгая очередь всегда оптимальна",
+          "why_not_obvious": "исключение допустимо только по явному триггеру и обратному порогу"
+        }
+      },
+      "PRINCIPLES_TO_ACTION": {
+        "PRINCIPLES": [
+          1
+        ],
+        "ACTIONS": [
+          "условный override по метрике подтверждений"
+        ]
+      },
+      "IKR_TEST": {
+        "Q1": "YES"
+      },
+      "CONFIDENCE": {
+        "score": 1
+      },
+      "risk_1l": "Частые обходы CRM стандарта приведут к хаосу в продажах"
+    },
+    "step_8_5": {
+      "operator_selected": "DEPENDENCY_INVERSION",
+      "detected_conflict_types": [
+        "B"
+      ],
+      "dominant_conflict_type": "B",
+      "transformed_conflict_frame": "Исключение из CRM-порядка возможно только при явном риске провала ивента.",
+      "what_changed_structurally": "Отклонение от порядка стало условным по измеримому триггеру и обязательному возврату.",
+      "mechanism_1l": "Если подтверждено <15, приоритетом становится обзвон ранее зарегистрированных неявившихся лидов; при >=15 — возврат в стандарт CRM.",
+      "search_loop": true,
+      "structural_resolution_confirmed": true,
+      "separation_illusion_test": false,
+      "assisted_matrix": [
+        {
+          "question_id": "CR_Q1",
+          "answer": "YES"
+        },
+        {
+          "question_id": "CR_Q2",
+          "answer": "YES"
+        },
+        {
+          "question_id": "CR_Q3",
+          "answer": "YES"
+        },
+        {
+          "question_id": "CR_Q4",
+          "answer": "YES"
+        },
+        {
+          "question_id": "CR_Q5",
+          "answer": "YES"
+        }
+      ]
+    },
+    "step_9": {
+      "count_rule": "3-5",
+      "concepts": [
+        {
+          "concept_index": 1,
+          "name": "Пороговое исключение"
+        },
+        {
+          "concept_index": 2,
+          "name": "Возврат в стандарт"
+        },
+        {
+          "concept_index": 3,
+          "name": "Контроль отклонений"
+        }
+      ]
+    },
+    "step_10": {
+      "concept_specs": [
+        {
+          "concept_index": 1,
+          "A_name_tagline": "Пороговое исключение"
+        }
+      ]
+    },
+    "step_11": {
+      "new_contradiction_exists": false,
+      "selection_criteria_refs": [
+        "contradiction",
+        "ikr",
+        "barrier"
+      ]
+    },
+    "step_12": {
+      "chosen_concept_index": 1,
+      "chosen_concept_name": "Пороговое исключение",
+      "reasons": [
+        "защищает ивент при контролируемом отклонении"
+      ],
+      "commit_confirmation": "YES",
+      "compromise_mode": true
+    }
+  }
+}

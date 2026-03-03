@@ -1,0 +1,244 @@
+{
+  "run_root": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/REGRESSION_MIN_SET_RERUN_2026-02-27T13-48-47Z",
+  "answers_stub": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/REGRESSION_MIN_SET_RERUN_2026-02-27T13-48-47Z/answers_stub.yaml",
+  "overall_pass": true,
+  "packs": [
+    {
+      "title": "POSITIVE_A",
+      "source_pack": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/E22_POSITIVE_CASE_01_RUN_V4_2026-02-24T15-27-32Z",
+      "out_pack": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/REGRESSION_MIN_SET_RERUN_2026-02-27T13-48-47Z/01_POSITIVE_A",
+      "run_variants": [
+        "TC_E22_POSITIVE_CASE_01_V1",
+        "TC_E22_POSITIVE_CASE_01_V2",
+        "TC_E22_POSITIVE_CASE_01_V3"
+      ],
+      "harness_crash": false,
+      "expected": {
+        "checkpoints": "PASS/PASS",
+        "Step1": "PASS",
+        "Step2": "PASS"
+      },
+      "observed": {
+        "checkpoints": "PASS/PASS",
+        "Step1": "PASS",
+        "Step2": "PASS"
+      },
+      "gatepfl": {
+        "TC_E22_POSITIVE_CASE_01_V1": {
+          "result": "fail",
+          "reason": "SOLUTION_AS_XY",
+          "gate_log": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/REGRESSION_MIN_SET_RERUN_2026-02-27T13-48-47Z/01_POSITIVE_A/EXPORTS/TC_E22_POSITIVE_CASE_01_V1/gate_log.json",
+          "gate_summary": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/REGRESSION_MIN_SET_RERUN_2026-02-27T13-48-47Z/01_POSITIVE_A/EXPORTS/TC_E22_POSITIVE_CASE_01_V1/gate_summary.json"
+        },
+        "TC_E22_POSITIVE_CASE_01_V2": {
+          "result": "fail",
+          "reason": "SOLUTION_AS_XY",
+          "gate_log": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/REGRESSION_MIN_SET_RERUN_2026-02-27T13-48-47Z/01_POSITIVE_A/EXPORTS/TC_E22_POSITIVE_CASE_01_V2/gate_log.json",
+          "gate_summary": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/REGRESSION_MIN_SET_RERUN_2026-02-27T13-48-47Z/01_POSITIVE_A/EXPORTS/TC_E22_POSITIVE_CASE_01_V2/gate_summary.json"
+        },
+        "TC_E22_POSITIVE_CASE_01_V3": {
+          "result": "fail",
+          "reason": "SOLUTION_AS_XY",
+          "gate_log": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/REGRESSION_MIN_SET_RERUN_2026-02-27T13-48-47Z/01_POSITIVE_A/EXPORTS/TC_E22_POSITIVE_CASE_01_V3/gate_log.json",
+          "gate_summary": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/REGRESSION_MIN_SET_RERUN_2026-02-27T13-48-47Z/01_POSITIVE_A/EXPORTS/TC_E22_POSITIVE_CASE_01_V3/gate_summary.json"
+        }
+      },
+      "mismatch_fields": []
+    },
+    {
+      "title": "POSITIVE_B",
+      "source_pack": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/E22_POSITIVE_B_CASE_01_RUN_V2_2026-02-24T11-18-23Z",
+      "out_pack": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/REGRESSION_MIN_SET_RERUN_2026-02-27T13-48-47Z/02_POSITIVE_B",
+      "run_variants": [
+        "TC_E22_POSITIVE_B_CASE_01_V1",
+        "TC_E22_POSITIVE_B_CASE_01_V2",
+        "TC_E22_POSITIVE_B_CASE_01_V3"
+      ],
+      "harness_crash": false,
+      "expected": {
+        "checkpoints": "PASS/PASS",
+        "Step1": "PASS",
+        "Step2": "PASS"
+      },
+      "observed": {
+        "checkpoints": "PASS/PASS",
+        "Step1": "PASS",
+        "Step2": "PASS"
+      },
+      "gatepfl": {
+        "TC_E22_POSITIVE_B_CASE_01_V1": {
+          "result": "fail",
+          "reason": "NO_MUTUAL_DEGRADATION",
+          "gate_log": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/REGRESSION_MIN_SET_RERUN_2026-02-27T13-48-47Z/02_POSITIVE_B/EXPORTS/TC_E22_POSITIVE_B_CASE_01_V1/gate_log.json",
+          "gate_summary": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/REGRESSION_MIN_SET_RERUN_2026-02-27T13-48-47Z/02_POSITIVE_B/EXPORTS/TC_E22_POSITIVE_B_CASE_01_V1/gate_summary.json"
+        },
+        "TC_E22_POSITIVE_B_CASE_01_V2": {
+          "result": "fail",
+          "reason": "NO_MUTUAL_DEGRADATION",
+          "gate_log": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/REGRESSION_MIN_SET_RERUN_2026-02-27T13-48-47Z/02_POSITIVE_B/EXPORTS/TC_E22_POSITIVE_B_CASE_01_V2/gate_log.json",
+          "gate_summary": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/REGRESSION_MIN_SET_RERUN_2026-02-27T13-48-47Z/02_POSITIVE_B/EXPORTS/TC_E22_POSITIVE_B_CASE_01_V2/gate_summary.json"
+        },
+        "TC_E22_POSITIVE_B_CASE_01_V3": {
+          "result": "fail",
+          "reason": "NO_MUTUAL_DEGRADATION",
+          "gate_log": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/REGRESSION_MIN_SET_RERUN_2026-02-27T13-48-47Z/02_POSITIVE_B/EXPORTS/TC_E22_POSITIVE_B_CASE_01_V3/gate_log.json",
+          "gate_summary": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/REGRESSION_MIN_SET_RERUN_2026-02-27T13-48-47Z/02_POSITIVE_B/EXPORTS/TC_E22_POSITIVE_B_CASE_01_V3/gate_summary.json"
+        }
+      },
+      "mismatch_fields": []
+    },
+    {
+      "title": "POSITIVE_C",
+      "source_pack": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/E22_POSITIVE_C_CASE_01_RUN_V1_2026-02-24T15-41-33Z",
+      "out_pack": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/REGRESSION_MIN_SET_RERUN_2026-02-27T13-48-47Z/03_POSITIVE_C",
+      "run_variants": [
+        "TC_E22_POSITIVE_C_CASE_01_V1",
+        "TC_E22_POSITIVE_C_CASE_01_V2",
+        "TC_E22_POSITIVE_C_CASE_01_V3"
+      ],
+      "harness_crash": false,
+      "expected": {
+        "checkpoints": "PASS/PASS",
+        "Step1": "PASS",
+        "Step2": "PASS"
+      },
+      "observed": {
+        "checkpoints": "PASS/PASS",
+        "Step1": "PASS",
+        "Step2": "PASS"
+      },
+      "gatepfl": {
+        "TC_E22_POSITIVE_C_CASE_01_V1": {
+          "result": "fail",
+          "reason": "NO_MUTUAL_DEGRADATION",
+          "gate_log": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/REGRESSION_MIN_SET_RERUN_2026-02-27T13-48-47Z/03_POSITIVE_C/EXPORTS/TC_E22_POSITIVE_C_CASE_01_V1/gate_log.json",
+          "gate_summary": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/REGRESSION_MIN_SET_RERUN_2026-02-27T13-48-47Z/03_POSITIVE_C/EXPORTS/TC_E22_POSITIVE_C_CASE_01_V1/gate_summary.json"
+        },
+        "TC_E22_POSITIVE_C_CASE_01_V2": {
+          "result": "fail",
+          "reason": "NO_MUTUAL_DEGRADATION",
+          "gate_log": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/REGRESSION_MIN_SET_RERUN_2026-02-27T13-48-47Z/03_POSITIVE_C/EXPORTS/TC_E22_POSITIVE_C_CASE_01_V2/gate_log.json",
+          "gate_summary": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/REGRESSION_MIN_SET_RERUN_2026-02-27T13-48-47Z/03_POSITIVE_C/EXPORTS/TC_E22_POSITIVE_C_CASE_01_V2/gate_summary.json"
+        },
+        "TC_E22_POSITIVE_C_CASE_01_V3": {
+          "result": "fail",
+          "reason": "NO_MUTUAL_DEGRADATION",
+          "gate_log": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/REGRESSION_MIN_SET_RERUN_2026-02-27T13-48-47Z/03_POSITIVE_C/EXPORTS/TC_E22_POSITIVE_C_CASE_01_V3/gate_log.json",
+          "gate_summary": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/REGRESSION_MIN_SET_RERUN_2026-02-27T13-48-47Z/03_POSITIVE_C/EXPORTS/TC_E22_POSITIVE_C_CASE_01_V3/gate_summary.json"
+        }
+      },
+      "mismatch_fields": []
+    },
+    {
+      "title": "NEGATIVE",
+      "source_pack": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/E22_RUN_V8_SLOT_INVARIANCE_2026-02-23T15-24-39Z",
+      "out_pack": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/REGRESSION_MIN_SET_RERUN_2026-02-27T13-48-47Z/04_NEGATIVE",
+      "run_variants": [
+        "TC_E22_V1",
+        "TC_E22_V2",
+        "TC_E22_V3"
+      ],
+      "harness_crash": false,
+      "expected": {
+        "checkpoints": "PASS/PASS",
+        "Step1": "FAIL",
+        "Step2": "NOT_APPLICABLE"
+      },
+      "observed": {
+        "checkpoints": "PASS/PASS",
+        "Step1": "FAIL",
+        "Step2": "NOT_APPLICABLE"
+      },
+      "gatepfl": {
+        "TC_E22_V1": {
+          "result": "fail",
+          "reason": "SOLUTION_AS_XY",
+          "gate_log": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/REGRESSION_MIN_SET_RERUN_2026-02-27T13-48-47Z/04_NEGATIVE/EXPORTS/TC_E22_V1/gate_log.json",
+          "gate_summary": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/REGRESSION_MIN_SET_RERUN_2026-02-27T13-48-47Z/04_NEGATIVE/EXPORTS/TC_E22_V1/gate_summary.json"
+        },
+        "TC_E22_V2": {
+          "result": "fail",
+          "reason": "SOLUTION_AS_XY",
+          "gate_log": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/REGRESSION_MIN_SET_RERUN_2026-02-27T13-48-47Z/04_NEGATIVE/EXPORTS/TC_E22_V2/gate_log.json",
+          "gate_summary": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/REGRESSION_MIN_SET_RERUN_2026-02-27T13-48-47Z/04_NEGATIVE/EXPORTS/TC_E22_V2/gate_summary.json"
+        },
+        "TC_E22_V3": {
+          "result": "fail",
+          "reason": "SOLUTION_AS_XY",
+          "gate_log": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/REGRESSION_MIN_SET_RERUN_2026-02-27T13-48-47Z/04_NEGATIVE/EXPORTS/TC_E22_V3/gate_log.json",
+          "gate_summary": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/REGRESSION_MIN_SET_RERUN_2026-02-27T13-48-47Z/04_NEGATIVE/EXPORTS/TC_E22_V3/gate_summary.json"
+        }
+      },
+      "mismatch_fields": []
+    },
+    {
+      "title": "RESOLVED_HISTORY (former KNOWN_ISSUE / PAUSE)",
+      "source_pack": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/E22_POSITIVE_C_CASE_01_RUN_V3_2026-02-25T11-50-52Z",
+      "out_pack": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/REGRESSION_MIN_SET_RERUN_2026-02-27T13-48-47Z/05_RESOLVED_HISTORY_former_KNOWN_ISSUE_PAUSE",
+      "run_variants": [
+        "TC_E22_POSITIVE_C_CASE_01_V1",
+        "TC_E22_POSITIVE_C_CASE_01_V2",
+        "TC_E22_POSITIVE_C_CASE_01_V3"
+      ],
+      "harness_crash": false,
+      "expected": {
+        "checkpoints": "PASS/PASS",
+        "Step1": "PASS",
+        "Step2": "PASS"
+      },
+      "observed": {
+        "checkpoints": "PASS/PASS",
+        "Step1": "PASS",
+        "Step2": "PASS"
+      },
+      "gatepfl": {
+        "TC_E22_POSITIVE_C_CASE_01_V1": {
+          "result": "fail",
+          "reason": "NO_MUTUAL_DEGRADATION",
+          "gate_log": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/REGRESSION_MIN_SET_RERUN_2026-02-27T13-48-47Z/05_RESOLVED_HISTORY_former_KNOWN_ISSUE_PAUSE/EXPORTS/TC_E22_POSITIVE_C_CASE_01_V1/gate_log.json",
+          "gate_summary": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/REGRESSION_MIN_SET_RERUN_2026-02-27T13-48-47Z/05_RESOLVED_HISTORY_former_KNOWN_ISSUE_PAUSE/EXPORTS/TC_E22_POSITIVE_C_CASE_01_V1/gate_summary.json"
+        },
+        "TC_E22_POSITIVE_C_CASE_01_V2": {
+          "result": "fail",
+          "reason": "NO_MUTUAL_DEGRADATION",
+          "gate_log": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/REGRESSION_MIN_SET_RERUN_2026-02-27T13-48-47Z/05_RESOLVED_HISTORY_former_KNOWN_ISSUE_PAUSE/EXPORTS/TC_E22_POSITIVE_C_CASE_01_V2/gate_log.json",
+          "gate_summary": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/REGRESSION_MIN_SET_RERUN_2026-02-27T13-48-47Z/05_RESOLVED_HISTORY_former_KNOWN_ISSUE_PAUSE/EXPORTS/TC_E22_POSITIVE_C_CASE_01_V2/gate_summary.json"
+        },
+        "TC_E22_POSITIVE_C_CASE_01_V3": {
+          "result": "fail",
+          "reason": "NO_MUTUAL_DEGRADATION",
+          "gate_log": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/REGRESSION_MIN_SET_RERUN_2026-02-27T13-48-47Z/05_RESOLVED_HISTORY_former_KNOWN_ISSUE_PAUSE/EXPORTS/TC_E22_POSITIVE_C_CASE_01_V3/gate_log.json",
+          "gate_summary": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/REGRESSION_MIN_SET_RERUN_2026-02-27T13-48-47Z/05_RESOLVED_HISTORY_former_KNOWN_ISSUE_PAUSE/EXPORTS/TC_E22_POSITIVE_C_CASE_01_V3/gate_summary.json"
+        }
+      },
+      "mismatch_fields": []
+    },
+    {
+      "title": "LIVE_PROTOCOL_READINESS_CONTROL",
+      "source_pack": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/LIVE_OWNER_CASE_STAGEA_PROTOCOL_V0_1_AFTER_MINPATCH2_2026-02-26T09-27-55Z",
+      "out_pack": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/REGRESSION_MIN_SET_RERUN_2026-02-27T13-48-47Z/06_LIVE_PROTOCOL_READINESS_CONTROL",
+      "run_variants": [
+        "TC_LIVE_OWNER_CASE_STAGEA_PROTOCOL_V0_1_AFTER_MINPATCH2_V1"
+      ],
+      "harness_crash": false,
+      "expected": {
+        "checkpoints": "PASS"
+      },
+      "observed": {
+        "checkpoints": "PASS/PASS",
+        "Step1": "PASS",
+        "Step2": "PASS"
+      },
+      "gatepfl": {
+        "TC_LIVE_OWNER_CASE_STAGEA_PROTOCOL_V0_1_AFTER_MINPATCH2_V1": {
+          "result": "fail",
+          "reason": "NO_MUTUAL_DEGRADATION",
+          "gate_log": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/REGRESSION_MIN_SET_RERUN_2026-02-27T13-48-47Z/06_LIVE_PROTOCOL_READINESS_CONTROL/EXPORTS/TC_LIVE_OWNER_CASE_STAGEA_PROTOCOL_V0_1_AFTER_MINPATCH2_V1/gate_log.json",
+          "gate_summary": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/REGRESSION_MIN_SET_RERUN_2026-02-27T13-48-47Z/06_LIVE_PROTOCOL_READINESS_CONTROL/EXPORTS/TC_LIVE_OWNER_CASE_STAGEA_PROTOCOL_V0_1_AFTER_MINPATCH2_V1/gate_summary.json"
+        }
+      },
+      "mismatch_fields": []
+    }
+  ],
+  "deviations": []
+}

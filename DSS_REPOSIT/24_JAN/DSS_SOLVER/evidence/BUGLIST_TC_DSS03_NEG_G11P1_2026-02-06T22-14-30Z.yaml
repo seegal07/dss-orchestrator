@@ -1,0 +1,6 @@
+run_id: 2026-02-06T22-14-30Z
+test_case_id: TC_DSS03_NEG_G11P1
+issues:
+  - gate: Gate11
+    issue_code: STRUCTURAL
+    message: "G11-P1: Негативный тест: G11-P1 FAIL"

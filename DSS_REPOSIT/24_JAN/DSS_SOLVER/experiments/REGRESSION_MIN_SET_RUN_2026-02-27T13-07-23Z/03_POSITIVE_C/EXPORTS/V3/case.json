@@ -1,0 +1,86 @@
+{
+  "case_id": "TC_E22_POSITIVE_C_CASE_01_V3",
+  "title": "TC_E22_POSITIVE_C_CASE_01_V3",
+  "created_at": "2026-02-27T13-07-26Z",
+  "updated_at": "2026-02-27T13-07-26Z",
+  "case_version": 1,
+  "status": "done",
+  "canon_versions": {
+    "canon_pipeline_version": "v1.2",
+    "canon_9forms_version": "v1.1"
+  },
+  "shell_versions": {
+    "gate_automation_matrix_version": "v0.1.1",
+    "prd_version": "v0.1",
+    "ux_flow_version": "v0.1",
+    "export_spec_version": "v0.1",
+    "data_model_version": "v0.1"
+  },
+  "pfl_status": "PFL_READY",
+  "pfl_status_reason": "PFL v0.1 compute executed from canonical fields",
+  "pfl_verdict": "FAIL",
+  "pfl_reason": "NO_MUTUAL_DEGRADATION",
+  "pfl_attempt_index": 1,
+  "pfl_structural_tension": false,
+  "instrumentation": {
+    "input_fingerprint": "24fea4b593c4325ffc7e855d3921e9d40e39021cf4c167c73975e029f3322c57",
+    "manual_override_used": false,
+    "override_type": null,
+    "normalized_reason_codes": [
+      "NO_MUTUAL_DEGRADATION",
+      "TRIZ_G4_INVALID"
+    ],
+    "gatecr_status_mirror": "NOT_APPLICABLE",
+    "phase0_verdict": "PASS",
+    "phase0_reason_code": "NONE",
+    "canonical_hash": "24fea4b593c4325ffc7e855d3921e9d40e39021cf4c167c73975e029f3322c57",
+    "raw_hash": "b14d72a327e0d74b4f9ef96833f1ef845e411907c3a737033f41aa9db48e0838",
+    "trace_count": 4,
+    "confidence_summary": "HIGH",
+    "reconstruction_trace": [
+      {
+        "raw_fragment": "точность прогноза для запуска филиалов в Европе",
+        "interpreted_parameter": "точность прогноза для запуска филиалов в Европе",
+        "reasoning_trace": "X:normalize_whitespace",
+        "confidence_level": "HIGH"
+      },
+      {
+        "raw_fragment": "время запуска филиалов в Европе",
+        "interpreted_parameter": "время запуска филиалов в Европе",
+        "reasoning_trace": "Y:normalize_whitespace",
+        "confidence_level": "HIGH"
+      },
+      {
+        "raw_fragment": "Запуск филиалов в Европе",
+        "interpreted_parameter": "Запуск филиалов в Европе",
+        "reasoning_trace": "scope:scope_projection",
+        "confidence_level": "HIGH"
+      },
+      {
+        "raw_fragment": "['Без роста бюджета и без увеличения длительности исследования/подготовки']",
+        "interpreted_parameter": [
+          "Без роста бюджета и без увеличения длительности исследования/подготовки"
+        ],
+        "reasoning_trace": "constraints:stable_list_sort",
+        "confidence_level": "HIGH"
+      }
+    ],
+    "canonical_object": {
+      "system_scope": "Запуск филиалов в Европе",
+      "X_param": "точность прогноза для запуска филиалов в Европе",
+      "Y_param": "время запуска филиалов в Европе",
+      "constraints": [
+        "Без роста бюджета и без увеличения длительности исследования/подготовки"
+      ],
+      "conflict_type_candidate": "causal",
+      "conflict_type_candidate_trace": null,
+      "s2a_hash": "bb0109a1fea5264d07c5cf9983a4d3cd8f62efe5a7101e3dc209cad98f43e6b6"
+    },
+    "pfl_status": "PFL_READY",
+    "pfl_status_reason": "PFL v0.1 compute executed from canonical fields",
+    "pfl_verdict": "FAIL",
+    "pfl_reason": "NO_MUTUAL_DEGRADATION",
+    "pfl_attempt_index": 1,
+    "pfl_structural_tension": false
+  }
+}

@@ -1,0 +1,113 @@
+test_case_id: "TC_E22_POSITIVE_CASE_01_V2"
+status: "FILLED"
+mode: "full_vector"
+canon_versions:
+  schema: "TEST_VECTOR_SCHEMA_v0.6"
+schema: "TEST_VECTOR_SCHEMA_v0.6"
+schema_version: 0.6
+pfl_enabled: true
+phase0_enabled: true
+operator_core_enabled: true
+historical_exempt: false
+manual_override_used: false
+override_type: null
+full_vector:
+  step_0:
+    symptom_1l: "Как быстрее запустить филиалы в Европе и сделать прогноз точнее, не раздувая бюджет и сроки исследования?"
+  step_1:
+    owner_role: "CEO компании"
+    owner_scope: "Запуск филиалов в Европе"
+    constraints:
+      - "Не увеличивать бюджет и не увеличивать срок исследования/подготовки"
+  step_2:
+    actor: ["центральный офис", "региональная команда"]
+    system: ["процесс запуска филиала"]
+    environment: ["рынок Европы", "локальные условия"]
+    boundary_note_1l: "Внутри: запусковой контур и ресурсы; снаружи: рыночные условия."
+  step_3:
+    elements: ["финмодель", "подготовка", "запуск"]
+    flows:
+      - from: "центральный офис"
+        to: "филиал"
+        type: "procedure"
+        note: "единый контур запуска"
+    symptom_location: "Как быстрее запустить филиалы в Европе и сделать прогноз точнее, не раздувая бюджет и сроки исследования?"
+  step_4:
+    improve_x: "ускорение запуска филиалов и точность прогноза"
+    worsen_y: "рост бюджета и срока исследования/подготовки"
+    statement_1l: "Если ускоряем запуск и повышаем точность прогноза, растут бюджет и срок исследования/подготовки."
+    measurement_hint: "срок запуска, точность прогноза, бюджет и срок подготовки"
+  step_5:
+    ikr_1l: "Филиалы запускаются быстрее и прогноз точнее без роста бюджета и срока подготовки."
+  step_6:
+    barrier_1l: "Бюджет и срок подготовки остаются в лимите."
+    equivalent_to_step4: true
+  step_7:
+    resources:
+      - name: "команда запуска"
+        category: "org"
+        tied_to: "запуск"
+  step_8:
+    PRIMARY_FORM: "Form 5"
+    BOUNDARY_CHECK:
+      note: "контроль против перерасхода"
+    TRIZ_CORE:
+      physical_contradiction:
+        object: "запуск филиала"
+        parameter: "скорость/точность"
+        state_a: "быстро"
+        state_not_a: "без роста затрат"
+      separation:
+        separation_type: "condition"
+        what_changes: "порог запуска"
+        expected_resolution: "ускорение без роста затрат"
+      system_operator:
+        subsystem_present: "подготовка"
+        system_present: "pipeline запуска"
+        supersystem_present: "сеть филиалов"
+      transformation_model:
+        changed_object: "условие запуска"
+        new_state: "через порог готовности"
+        resolution_link: "баланс скорости/затрат"
+      non_obviousness_check:
+        assumption_broken: "быстрее = дороже"
+        why_not_obvious: "при корректном пороге возможно иначе"
+    PRINCIPLES_TO_ACTION:
+      PRINCIPLES: [1]
+      ACTIONS: ["условный запуск"]
+    IKR_TEST:
+      Q1: "YES"
+    CONFIDENCE:
+      score: 1
+    risk_1l: "риск неверного порога"
+  step_8_5:
+    operator_selected: "DEPENDENCY_INVERSION"
+    detected_conflict_types: ["B"]
+    dominant_conflict_type: "B"
+    transformed_conflict_frame: "условный запуск по порогу"
+    what_changed_structurally: "затраты после порога"
+    mechanism_1l: "Запуск разрешён после проверки порога готовности."
+    search_loop: false
+    structural_resolution_confirmed: true
+    separation_illusion_test: false
+    assisted_matrix:
+      - question_id: "CR_Q1"
+        answer: "YES"
+  step_9:
+    count_rule: "3-5"
+    concepts:
+      - concept_index: 1
+        name: "условный запуск"
+  step_10:
+    concept_specs:
+      - concept_index: 1
+        A_name_tagline: "условный запуск"
+  step_11:
+    new_contradiction_exists: false
+    selection_criteria_refs: ["contradiction", "ikr", "barrier"]
+  step_12:
+    chosen_concept_index: 1
+    chosen_concept_name: "условный запуск"
+    reasons: ["баланс скорости и затрат"]
+    commit_confirmation: "YES"
+    compromise_mode: false

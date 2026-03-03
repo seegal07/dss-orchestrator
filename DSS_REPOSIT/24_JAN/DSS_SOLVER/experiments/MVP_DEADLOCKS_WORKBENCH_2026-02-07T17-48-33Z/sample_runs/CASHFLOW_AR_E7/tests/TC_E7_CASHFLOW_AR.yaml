@@ -1,0 +1,126 @@
+test_case_id: TC_E7_CASHFLOW_AR
+status: FILLED
+mode: full_vector
+canon_versions:
+  canon_pipeline: CANON_PIPELINE_v1.2.docx
+  canon_9forms: CANON_9FORMS_v1.1.docx
+  schema: TEST_VECTOR_SCHEMA_v0.1.md.docx
+notes: "MVP deadlock — cashflow/AR"
+
+full_vector:
+  step_0:
+    symptom_1l: "Просроченная дебиторка растёт, кассовый разрыв увеличивается."
+  step_1:
+    owner_role: "CFO"
+    owner_scope: "Инкассация, регламенты, приоритеты"
+    constraints:
+      - "Нельзя менять контракты и цены"
+      - "Нельзя привлекать долг"
+      - "Срок эффекта — 2 месяца"
+    success_metric_hint: "DSO ≤45, просрочка >30 дней ≤10%"
+  step_2:
+    actor: ["CFO", "Бухгалтерия", "Клиенты"]
+    system: ["Счета", "Инкассация", "CRM"]
+    environment: ["Дисциплина клиентов"]
+    boundary_note_1l: "Внутри — процесс инкассации; снаружи — дисциплина клиентов."
+  step_3:
+    elements: ["Счёт", "Срок", "Просрочка", "Оплата"]
+    flows:
+      - from: "Счёт"
+        to: "Срок"
+        type: "info"
+        note: "Назначение срока"
+      - from: "Срок"
+        to: "Просрочка"
+        type: "other"
+        note: "Просрочка"
+    symptom_location: "Просрочка >30 дней"
+  step_4:
+    improve_x: "Скорость инкассации"
+    worsen_y: "Лояльность клиентов"
+    statement_1l: "Если ускоряем инкассацию, ухудшается лояльность"
+    measurement_hint: "DSO, % просрочки, churn"
+  step_5:
+    ikr_1l: "DSO ≤45 дней без потери клиентов и без изменения контрактов"
+    no_new_harm_clause: "Не ухудшать retention"
+  step_6:
+    barrier_1l: "Нельзя одновременно сохранить лояльность всех клиентов и резко снизить просрочку без изменения процесса"
+    equivalent_to_step4: true
+  step_7:
+    resources:
+      - name: "Регламенты напоминаний"
+        category: "org"
+        tied_to: "Инкассация"
+        note: "Можно менять"
+      - name: "CRM"
+        category: "info"
+        tied_to: "Сценарии"
+        note: "Можно настраивать"
+  step_8:
+    PRIMARY_FORM: "Форма сегментации"
+    BOUNDARY_CHECK:
+      NEAREST_FORMS: ["Форма регламента", "Форма контроля"]
+      WHY_NOT_X: ["Нельзя менять контракты"]
+      WHY_NOT_Y: ["Нельзя терять клиентов"]
+    TRIZ_CORE:
+      CONTRADICTION_1L: "нужно снизить DSO, но нельзя терять клиентов"
+      IKR_1L: "DSO ≤45 без потери клиентов"
+    PRINCIPLES_TO_ACTION:
+      PRINCIPLES: [13]
+      ACTIONS: ["Сегментировать клиентов"]
+    IKR_TEST:
+      Q1: "YES"
+      Q2: "YES"
+    CONFIDENCE:
+      score: 2
+      justification: "Противоречие и IKR подтверждены"
+  step_9:
+    count_rule: "3–5"
+    concepts:
+      - concept_index: 1
+        name: "Сегментация и сценарии"
+        idea_1l: "Разные сценарии напоминаний"
+        linked_form: "Форма сегментации"
+        linked_principles: [13]
+        linked_resources: ["CRM", "Регламенты напоминаний"]
+        ikr_alignment_1l: "Снижает DSO"
+  step_10:
+    concept_specs:
+      - concept_index: 1
+        A_name_tagline: "Сегментация и сценарии"
+        B_axis_and_resource: "CRM + регламенты"
+        C_mechanism_steps: ["Сегментация", "Сценарии"]
+        D_assumptions_constraints: ["Без изменения контрактов"]
+        E_risks_failures: ["Реакция клиентов"]
+        F_metrics:
+          leading: ["Скорость реакции"]
+          lagging: ["DSO", "% просрочки"]
+        G_experiment:
+          timebox: "2 месяца"
+          budget: "0"
+          pass_criteria: "DSO ≤45"
+  step_11:
+    new_contradiction_exists: false
+  step_12:
+    chosen_concept_index: 1
+    chosen_concept_name: "Сегментация и сценарии"
+    reasons: ["Без изменения контрактов", "Снижает DSO"]
+    rejected_alternatives: ["Ранние уведомления", "Эскалации"]
+    assumptions: ["Клиенты реагируют на сценарии"]
+    success_criteria: ["DSO ≤45", "Просрочка >30 дней ≤10%"]
+  step_13:
+    workstreams:
+      - name: "Сегментация"
+        owner: "CFO"
+        steps: ["Классификация", "Правила"]
+        timing: "2 недели"
+        risks: ["Ошибки классификации"]
+  step_14:
+    rule_id: "RULE_E7_AR_001"
+    rule_statement_if_then: "Если DSO >45 дней через 2 месяца, то сценарии пересматриваются"
+    criterion: "DSO"
+    boundaries: "Текущие контракты"
+    evidence_from_case: "Отчёты дебиторки"
+    test_case_action: "Пересмотр сценариев"
+    version_note: "v1"
+    rationale_1l: "Снижаем просрочку"

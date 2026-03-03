@@ -1,0 +1,63 @@
+criteria_version: ASSISTED_GATE_CRITERIA_v0.3
+criteria_doc: ASSISTED_GATE_CRITERIA_v0.3.md
+
+results:
+  Gate4:
+    criteria:
+      - criterion_id: G4-P1
+        status: PASS
+        evidence: "Step4 improve_x/worsen_y задано"
+      - criterion_id: G4-P2
+        status: PASS
+        evidence: "statement_1l задан"
+      - criterion_id: G4-P3
+        status: PASS
+        evidence: "measurement_hint указан"
+  Gate5:
+    criteria:
+      - criterion_id: G5-P1
+        status: PASS
+        evidence: "IKR без механизма"
+      - criterion_id: G5-P2
+        status: PASS
+        evidence: "нет механизма"
+  Gate6:
+    criteria:
+      - criterion_id: G6-P1
+        status: PASS
+        evidence: "barrier_1l выражает взаимоисключение"
+      - criterion_id: G6-P2
+        status: PASS
+        evidence: "equivalent_to_step4=true"
+  Gate8:
+    criteria:
+      - criterion_id: G8-P1
+        status: PASS
+        evidence: "TRIZ_CORE задан"
+      - criterion_id: G8-P2
+        status: PASS
+        evidence: "separation задана"
+      - criterion_id: G8-P3
+        status: PASS
+        evidence: "PRINCIPLES_TO_ACTION содержит 2 оператора"
+  Gate9:
+    criteria:
+      - criterion_id: G9-P1
+        status: PASS
+        evidence: "traceability на separation/resource/contradiction"
+  Gate11:
+    criteria:
+      - criterion_id: G11-P1
+        status: PASS
+        evidence: "new_contradiction_exists=false"
+  Gate12:
+    criteria:
+      - criterion_id: G12-P1
+        status: PASS
+        evidence: "chosen_concept_index=1"
+      - criterion_id: G12-P2
+        status: PASS
+        evidence: "reasons связаны с IKR"
+      - criterion_id: G12-P3
+        status: PASS
+        evidence: "success_criteria заданы"

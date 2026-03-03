@@ -1,0 +1,20 @@
+{
+  "run_id": "E22_V2",
+  "export_path": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/exports/DSS_Output_Package_TC_E22_V2_2026-02-20T11-39-14Z",
+  "input_fingerprint": "56dc8bb0626130f38ae25a5d856332cb1143fa2607df7729542afb5e3acaeb3a",
+  "pfl_verdict": "FAIL",
+  "pfl_reason": "SOLUTION_AS_XY",
+  "attempt_index": 1,
+  "system_scope": "правило запуска новых филиалов в Европе",
+  "boundary_note_1l": "Внутри: процедура запуска, ресурсы и подготовка; снаружи: локальные условия рынка Европы.",
+  "manual_override_used": false,
+  "search_loop": true,
+  "gatecr_verdict": "NOT_REACHED/NA",
+  "gatecr_status_mirror": "NOT_APPLICABLE",
+  "compromise_mode": true,
+  "normalized_reason_codes": [
+    "SOLUTION_AS_XY",
+    "STEP3_FLOWS_0_NOT_A_DICT",
+    "TRIZ_G4_INVALID"
+  ]
+}

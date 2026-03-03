@@ -1,0 +1,22 @@
+{
+  "case_id": "DSS_Output_Package_TC_PILOT_V1_3_EARLY_BLOCK_2026-02-08T16-16-53Z",
+  "run_id": "2026-02-08T16-16-53Z",
+  "latest": {
+    "Gate0": "pass",
+    "Gate1": "pass",
+    "Gate2": "pass",
+    "Gate3": "pass",
+    "Gate4": "pass",
+    "Gate5": "pass",
+    "Gate6": "pass",
+    "Gate7": "pass",
+    "Gate8": "pass",
+    "Gate9": "pass",
+    "Gate10": "pass",
+    "Gate11": "pass",
+    "Gate12": "pass",
+    "Gate13": "pass",
+    "Gate14": "pass",
+    "GateTRIZ": "pass"
+  }
+}

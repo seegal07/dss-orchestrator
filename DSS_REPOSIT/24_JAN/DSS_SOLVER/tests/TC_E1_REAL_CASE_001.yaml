@@ -1,0 +1,164 @@
+test_case_id: TC_E1_REAL_CASE_001
+status: FILLED
+mode: full_vector
+canon_versions:
+  canon_pipeline: CANON_PIPELINE_v1.2.docx
+  canon_9forms: CANON_9FORMS_v1.1.docx
+  schema: TEST_VECTOR_SCHEMA_v0.1.md.docx
+notes: "E1_REAL_CASE_001 — HQ/филиал: контроль качества лидов и реакция HQ"
+
+full_vector:
+  step_0:
+    symptom_1l: "HQ формально отвечает за таргетинг, но не реагирует на обратную связь филиала, из‑за чего качество/количество лидов не соответствует цели в 14‑дневном окне."
+  step_1:
+    owner_role: "Директор филиала"
+    owner_scope: "Выбор продукта, каналов, креативов и бюджета кампании; формирование брифа для HQ; контроль результата"
+    constraints:
+      - "Бюджет на кампанию фиксирован (≈2000 PLN), допускается небольшое отклонение"
+      - "Каналы менять/добавлять запрещено"
+      - "Кампания запускается за 14 дней до мероприятия"
+      - "Персонал и роли фиксированы; таргетинг и изменения делает только HQ"
+      - "Перенос ответственности между HQ/филиалом запрещён"
+    success_metric_hint: "За 14 дней ≥100 лидов; валидных ≈50%; подтверждений ≈30; явка 15–20"
+  step_2:
+    actor: ["Директор филиала", "HQ таргетолог", "Руководитель маркетинга HQ", "Контент‑мейкер", "Потенциальные лиды"]
+    system: ["Рекламная кампания", "Бриф", "Креативы", "Таргетинг", "Контроль качества лидов", "CRM"]
+    environment: ["Поведение клиентов", "Алгоритмы рекламных платформ", "Конкуренты", "Экономическая ситуация", "Законы/регуляции"]
+    boundary_note_1l: "Внутри — постановка задачи филиалом и выполнение таргетинга HQ; снаружи — поведение клиентов и платформы, рынок и регуляции."
+  step_3:
+    elements: ["Бриф", "Креативы", "HQ таргетинг", "Рекламная платформа", "Лид", "CRM", "Филиал"]
+    flows:
+      - from: "Филиал"
+        to: "Бриф"
+        type: "info"
+        note: "Филиал формирует требования к кампании"
+      - from: "Бриф"
+        to: "HQ таргетинг"
+        type: "info"
+        note: "HQ настраивает кампанию по брифу"
+      - from: "HQ таргетинг"
+        to: "Рекламная платформа"
+        type: "other"
+        note: "Запуск таргетинга в каналах"
+      - from: "Рекламная платформа"
+        to: "Лид"
+        type: "info"
+        note: "Поступление заявок"
+      - from: "Лид"
+        to: "CRM"
+        type: "info"
+        note: "Фиксация заявок и валидации"
+      - from: "CRM"
+        to: "Филиал"
+        type: "info"
+        note: "Филиал видит количество и качество лидов"
+      - from: "Филиал"
+        to: "HQ таргетинг"
+        type: "info"
+        note: "Обратная связь о качестве/количестве"
+    symptom_location: "Обратная связь филиала не приводит к оперативной корректировке таргетинга, и метрики 14‑дневной кампании не достигаются"
+  step_4:
+    improve_x: "Скорость и качество корректировки таргетинга по результатам кампании"
+    worsen_y: "Централизованный контроль HQ и соблюдение регламента изменений"
+    statement_1l: "Если ускоряем реакцию и корректировки таргетинга (X), нарушается централизованный контроль и регламент HQ (Y); если сохраняем централизованный контроль (Y), реакция запаздывает и лиды некачественные"
+    measurement_hint: "Срок реакции HQ (дни), CPL, доля валидных лидов, число лидов за 14 дней"
+  step_5:
+    ikr_1l: "MISSING: IKR (конечный эффект без механизма)"
+    no_new_harm_clause: "MISSING: ограничение на новый вред"
+  step_6:
+    barrier_1l: "MISSING: жёсткий барьер (взаимоисключение условий)"
+    equivalent_to_step4: "MISSING: not specified"
+  step_7:
+    resources:
+      - name: "HQ таргетолог"
+        category: "org"
+        tied_to: "Управление таргетингом"
+        note: "Может остановить кампанию и менять таргетинг"
+      - name: "Набор креативов (5 шт.)"
+        category: "info"
+        tied_to: "Креативы"
+        note: "HQ может переключать креативы из набора"
+      - name: "Бриф филиала"
+        category: "info"
+        tied_to: "Постановка задачи"
+        note: "Филиал задаёт продукт, ЦА, географию"
+      - name: "Остановка кампании"
+        category: "org"
+        tied_to: "Управление бюджетом"
+        note: "HQ может остановить кампанию по запросу"
+      - name: "Отмена мероприятия"
+        category: "org"
+        tied_to: "Управление событиями"
+        note: "Филиал может отменить при нехватке лидов"
+      - name: "Перераспределение бюджета"
+        category: "org"
+        tied_to: "Бюджет кампании"
+        note: "Возможно в пределах 14 дней по запросу"
+  step_8:
+    PRIMARY_FORM: "MISSING"
+    BOUNDARY_CHECK:
+      NEAREST_FORMS: ["MISSING"]
+      WHY_NOT_X: ["MISSING"]
+      WHY_NOT_Y: ["MISSING"]
+    TRIZ_CORE:
+      CONTRADICTION_1L: "MISSING"
+      IKR_1L: "MISSING"
+    PRINCIPLES_TO_ACTION:
+      PRINCIPLES: ["MISSING"]
+      ACTIONS: ["MISSING"]
+    IKR_TEST:
+      Q1: "MISSING"
+      Q2: "MISSING"
+    CONFIDENCE:
+      score: "MISSING"
+      justification: "MISSING"
+  step_9:
+    count_rule: "3–5"
+    concepts:
+      - concept_index: "MISSING"
+        name: "MISSING"
+        idea_1l: "MISSING"
+        linked_form: "MISSING"
+        linked_principles: ["MISSING"]
+        linked_resources: ["MISSING"]
+        ikr_alignment_1l: "MISSING"
+  step_10:
+    concept_specs:
+      - concept_index: "MISSING"
+        A_name_tagline: "MISSING"
+        B_axis_and_resource: "MISSING"
+        C_mechanism_steps: ["MISSING"]
+        D_assumptions_constraints: ["MISSING"]
+        E_risks_failures: ["MISSING"]
+        F_metrics:
+          leading: ["MISSING"]
+          lagging: ["MISSING"]
+        G_experiment:
+          timebox: "MISSING"
+          budget: "MISSING"
+          pass_criteria: "MISSING"
+  step_11:
+    new_contradiction_exists: "MISSING"
+  step_12:
+    chosen_concept_index: "MISSING"
+    chosen_concept_name: "MISSING"
+    reasons: ["MISSING"]
+    rejected_alternatives: ["MISSING"]
+    assumptions: ["MISSING"]
+    success_criteria: ["MISSING"]
+  step_13:
+    workstreams:
+      - name: "MISSING"
+        owner: "MISSING"
+        steps: ["MISSING"]
+        timing: "MISSING"
+        risks: ["MISSING"]
+  step_14:
+    rule_id: "MISSING"
+    rule_statement_if_then: "MISSING"
+    criterion: "MISSING"
+    boundaries: "MISSING"
+    evidence_from_case: "MISSING"
+    test_case_action: "MISSING"
+    version_note: "MISSING"
+    rationale_1l: "MISSING"

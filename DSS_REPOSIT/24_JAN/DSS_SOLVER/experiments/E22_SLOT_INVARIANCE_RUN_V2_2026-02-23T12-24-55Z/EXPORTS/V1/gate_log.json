@@ -1,0 +1,425 @@
+[
+  {
+    "gate_log_entry_id": "2026-02-23T12-24-55Z-Gate0",
+    "case_id": "DSS_Output_Package_TC_E22_V1_2026-02-23T12-24-55Z",
+    "gate_id": "Gate0",
+    "pipeline_step": 0,
+    "result": "pass",
+    "check_type": "AUTOMATED",
+    "criteria_scope": "CANON",
+    "criteria_results": [],
+    "reason": "",
+    "normalized_reason_codes": [],
+    "canon_ref": "CANON_PIPELINE_v1.2",
+    "run_id": "2026-02-23T12-24-55Z",
+    "timestamp": "2026-02-23T12-24-55Z",
+    "actor_type": "system",
+    "actor_user_id": null
+  },
+  {
+    "gate_log_entry_id": "2026-02-23T12-24-55Z-Gate1",
+    "case_id": "DSS_Output_Package_TC_E22_V1_2026-02-23T12-24-55Z",
+    "gate_id": "Gate1",
+    "pipeline_step": 1,
+    "result": "pass",
+    "check_type": "AUTOMATED",
+    "criteria_scope": "CANON",
+    "criteria_results": [],
+    "reason": "",
+    "normalized_reason_codes": [],
+    "canon_ref": "CANON_PIPELINE_v1.2",
+    "run_id": "2026-02-23T12-24-55Z",
+    "timestamp": "2026-02-23T12-24-55Z",
+    "actor_type": "system",
+    "actor_user_id": null
+  },
+  {
+    "gate_log_entry_id": "2026-02-23T12-24-55Z-Gate2",
+    "case_id": "DSS_Output_Package_TC_E22_V1_2026-02-23T12-24-55Z",
+    "gate_id": "Gate2",
+    "pipeline_step": 2,
+    "result": "pass",
+    "check_type": "AUTOMATED",
+    "criteria_scope": "CANON",
+    "criteria_results": [],
+    "reason": "",
+    "normalized_reason_codes": [],
+    "canon_ref": "CANON_PIPELINE_v1.2",
+    "run_id": "2026-02-23T12-24-55Z",
+    "timestamp": "2026-02-23T12-24-55Z",
+    "actor_type": "system",
+    "actor_user_id": null
+  },
+  {
+    "gate_log_entry_id": "2026-02-23T12-24-55Z-Gate3",
+    "case_id": "DSS_Output_Package_TC_E22_V1_2026-02-23T12-24-55Z",
+    "gate_id": "Gate3",
+    "pipeline_step": 3,
+    "result": "fail",
+    "check_type": "AUTOMATED",
+    "criteria_scope": "CANON",
+    "criteria_results": [],
+    "reason": "Step3.flows[0] not a dict",
+    "normalized_reason_codes": [
+      "STEP3_FLOWS_0_NOT_A_DICT"
+    ],
+    "canon_ref": "CANON_PIPELINE_v1.2",
+    "run_id": "2026-02-23T12-24-55Z",
+    "timestamp": "2026-02-23T12-24-55Z",
+    "actor_type": "system",
+    "actor_user_id": null
+  },
+  {
+    "gate_log_entry_id": "2026-02-23T12-24-55Z-GatePhase0",
+    "case_id": "DSS_Output_Package_TC_E22_V1_2026-02-23T12-24-55Z",
+    "gate_id": "GatePhase0",
+    "pipeline_step": 30,
+    "result": "not_run",
+    "check_type": "PHASE0",
+    "criteria_scope": "PHASE0",
+    "criteria_results": [],
+    "reason": "Phase0 disabled (historical compatibility)",
+    "normalized_reason_codes": [
+      "PHASE0_DISABLED_HISTORICAL_COMPATIBILITY"
+    ],
+    "canon_ref": "CANON_PIPELINE_v1.2",
+    "run_id": "2026-02-23T12-24-55Z",
+    "timestamp": "2026-02-23T12-24-55Z",
+    "actor_type": "system",
+    "actor_user_id": null
+  },
+  {
+    "gate_log_entry_id": "2026-02-23T12-24-55Z-GatePFL",
+    "case_id": "DSS_Output_Package_TC_E22_V1_2026-02-23T12-24-55Z",
+    "gate_id": "GatePFL",
+    "pipeline_step": 35,
+    "result": "pass",
+    "check_type": "PFL",
+    "criteria_scope": "PFL",
+    "criteria_results": [],
+    "reason": "",
+    "normalized_reason_codes": [],
+    "canon_ref": "CANON_PIPELINE_v1.2",
+    "run_id": "2026-02-23T12-24-55Z",
+    "timestamp": "2026-02-23T12-24-55Z",
+    "actor_type": "system",
+    "actor_user_id": null
+  },
+  {
+    "gate_log_entry_id": "2026-02-23T12-24-55Z-Gate4",
+    "case_id": "DSS_Output_Package_TC_E22_V1_2026-02-23T12-24-55Z",
+    "gate_id": "Gate4",
+    "pipeline_step": 4,
+    "result": "pass",
+    "check_type": "ASSISTED",
+    "criteria_scope": "CANON",
+    "criteria_results": [
+      {
+        "criterion_id": "G4-P1",
+        "status": "pass",
+        "evidence": "Step4: improve_x/worsen_y заданы как измеримые параметры"
+      },
+      {
+        "criterion_id": "G4-P2",
+        "status": "pass",
+        "evidence": "statement_1l в форме 'Если улучшаем X, ухудшается Y'"
+      },
+      {
+        "criterion_id": "G4-P3",
+        "status": "pass",
+        "evidence": "measurement_hint описывает метрики X/Y"
+      }
+    ],
+    "reason": "G4-P1: Step4: improve_x/worsen_y заданы как измеримые параметры, G4-P2: statement_1l в форме 'Если улучшаем X, ухудшается Y', G4-P3: measurement_hint описывает метрики X/Y",
+    "normalized_reason_codes": [
+      "G4_P1",
+      "G4_P2",
+      "G4_P3"
+    ],
+    "canon_ref": "CANON_PIPELINE_v1.2",
+    "run_id": "2026-02-23T12-24-55Z",
+    "timestamp": "2026-02-23T12-24-55Z",
+    "actor_type": "system",
+    "actor_user_id": null
+  },
+  {
+    "gate_log_entry_id": "2026-02-23T12-24-55Z-Gate5",
+    "case_id": "DSS_Output_Package_TC_E22_V1_2026-02-23T12-24-55Z",
+    "gate_id": "Gate5",
+    "pipeline_step": 5,
+    "result": "pass",
+    "check_type": "ASSISTED",
+    "criteria_scope": "CANON",
+    "criteria_results": [
+      {
+        "criterion_id": "G5-P1",
+        "status": "pass",
+        "evidence": "IKR описывает результат без механизма"
+      },
+      {
+        "criterion_id": "G5-P2",
+        "status": "pass",
+        "evidence": "нет конструкций 'через/путём/используя'"
+      }
+    ],
+    "reason": "G5-P1: IKR описывает результат без механизма, G5-P2: нет конструкций 'через/путём/используя'",
+    "normalized_reason_codes": [
+      "G5_P1",
+      "G5_P2"
+    ],
+    "canon_ref": "CANON_PIPELINE_v1.2",
+    "run_id": "2026-02-23T12-24-55Z",
+    "timestamp": "2026-02-23T12-24-55Z",
+    "actor_type": "system",
+    "actor_user_id": null
+  },
+  {
+    "gate_log_entry_id": "2026-02-23T12-24-55Z-Gate6",
+    "case_id": "DSS_Output_Package_TC_E22_V1_2026-02-23T12-24-55Z",
+    "gate_id": "Gate6",
+    "pipeline_step": 6,
+    "result": "pass",
+    "check_type": "ASSISTED",
+    "criteria_scope": "CANON",
+    "criteria_results": [
+      {
+        "criterion_id": "G6-P1",
+        "status": "pass",
+        "evidence": "barrier_1l выражает взаимоисключение"
+      },
+      {
+        "criterion_id": "G6-P2",
+        "status": "pass",
+        "evidence": "equivalent_to_step4=true"
+      }
+    ],
+    "reason": "G6-P1: barrier_1l выражает взаимоисключение, G6-P2: equivalent_to_step4=true",
+    "normalized_reason_codes": [
+      "G6_P1",
+      "G6_P2"
+    ],
+    "canon_ref": "CANON_PIPELINE_v1.2",
+    "run_id": "2026-02-23T12-24-55Z",
+    "timestamp": "2026-02-23T12-24-55Z",
+    "actor_type": "system",
+    "actor_user_id": null
+  },
+  {
+    "gate_log_entry_id": "2026-02-23T12-24-55Z-Gate7",
+    "case_id": "DSS_Output_Package_TC_E22_V1_2026-02-23T12-24-55Z",
+    "gate_id": "Gate7",
+    "pipeline_step": 7,
+    "result": "fail",
+    "check_type": "AUTOMATED",
+    "criteria_scope": "CANON",
+    "criteria_results": [],
+    "reason": "Step7.resources is not a list",
+    "normalized_reason_codes": [
+      "STEP7_RESOURCES_IS_NOT_A_LIST"
+    ],
+    "canon_ref": "CANON_PIPELINE_v1.2",
+    "run_id": "2026-02-23T12-24-55Z",
+    "timestamp": "2026-02-23T12-24-55Z",
+    "actor_type": "system",
+    "actor_user_id": null
+  },
+  {
+    "gate_log_entry_id": "2026-02-23T12-24-55Z-Gate8",
+    "case_id": "DSS_Output_Package_TC_E22_V1_2026-02-23T12-24-55Z",
+    "gate_id": "Gate8",
+    "pipeline_step": 8,
+    "result": "pass",
+    "check_type": "AUTOMATED",
+    "criteria_scope": "CANON",
+    "criteria_results": [],
+    "reason": "",
+    "normalized_reason_codes": [],
+    "canon_ref": "CANON_PIPELINE_v1.2",
+    "run_id": "2026-02-23T12-24-55Z",
+    "timestamp": "2026-02-23T12-24-55Z",
+    "actor_type": "system",
+    "actor_user_id": null
+  },
+  {
+    "gate_log_entry_id": "2026-02-23T12-24-55Z-GateCR",
+    "case_id": "DSS_Output_Package_TC_E22_V1_2026-02-23T12-24-55Z",
+    "gate_id": "GateCR",
+    "pipeline_step": 85,
+    "result": "soft_fail",
+    "check_type": "OPERATOR_CORE",
+    "criteria_scope": "OPERATOR_CORE",
+    "criteria_results": [],
+    "reason": "Step8_5.assisted_matrix missing, risk_shift_detected=true (search_loop=true)",
+    "normalized_reason_codes": [
+      "STEP8_5_ASSISTED_MATRIX_MISSING",
+      "RISK_SHIFT_DETECTED_TRUE_SEARCH_LOOP_TRUE"
+    ],
+    "canon_ref": "CANON_PIPELINE_v1.2",
+    "run_id": "2026-02-23T12-24-55Z",
+    "timestamp": "2026-02-23T12-24-55Z",
+    "actor_type": "system",
+    "actor_user_id": null
+  },
+  {
+    "gate_log_entry_id": "2026-02-23T12-24-55Z-Gate9",
+    "case_id": "DSS_Output_Package_TC_E22_V1_2026-02-23T12-24-55Z",
+    "gate_id": "Gate9",
+    "pipeline_step": 9,
+    "result": "fail",
+    "check_type": "AUTOMATED",
+    "criteria_scope": "CANON",
+    "criteria_results": [],
+    "reason": "Step9.concepts is not a list",
+    "normalized_reason_codes": [
+      "STEP9_CONCEPTS_IS_NOT_A_LIST"
+    ],
+    "canon_ref": "CANON_PIPELINE_v1.2",
+    "run_id": "2026-02-23T12-24-55Z",
+    "timestamp": "2026-02-23T12-24-55Z",
+    "actor_type": "system",
+    "actor_user_id": null
+  },
+  {
+    "gate_log_entry_id": "2026-02-23T12-24-55Z-Gate10",
+    "case_id": "DSS_Output_Package_TC_E22_V1_2026-02-23T12-24-55Z",
+    "gate_id": "Gate10",
+    "pipeline_step": 10,
+    "result": "fail",
+    "check_type": "AUTOMATED",
+    "criteria_scope": "CANON",
+    "criteria_results": [],
+    "reason": "Step10.concept_specs is not a list",
+    "normalized_reason_codes": [
+      "STEP10_CONCEPT_SPECS_IS_NOT_A_LIST"
+    ],
+    "canon_ref": "CANON_PIPELINE_v1.2",
+    "run_id": "2026-02-23T12-24-55Z",
+    "timestamp": "2026-02-23T12-24-55Z",
+    "actor_type": "system",
+    "actor_user_id": null
+  },
+  {
+    "gate_log_entry_id": "2026-02-23T12-24-55Z-Gate11",
+    "case_id": "DSS_Output_Package_TC_E22_V1_2026-02-23T12-24-55Z",
+    "gate_id": "Gate11",
+    "pipeline_step": 11,
+    "result": "pass",
+    "check_type": "ASSISTED",
+    "criteria_scope": "CANON",
+    "criteria_results": [
+      {
+        "criterion_id": "G11-P1",
+        "status": "pass",
+        "evidence": "new_contradiction_exists=false и в решениях нет новых конфликтов"
+      }
+    ],
+    "reason": "G11-P1: new_contradiction_exists=false и в решениях нет новых конфликтов",
+    "normalized_reason_codes": [
+      "G11_P1"
+    ],
+    "canon_ref": "CANON_PIPELINE_v1.2",
+    "run_id": "2026-02-23T12-24-55Z",
+    "timestamp": "2026-02-23T12-24-55Z",
+    "actor_type": "system",
+    "actor_user_id": null
+  },
+  {
+    "gate_log_entry_id": "2026-02-23T12-24-55Z-Gate12",
+    "case_id": "DSS_Output_Package_TC_E22_V1_2026-02-23T12-24-55Z",
+    "gate_id": "Gate12",
+    "pipeline_step": 12,
+    "result": "not_run",
+    "check_type": "ASSISTED",
+    "criteria_scope": "CANON",
+    "criteria_results": [
+      {
+        "criterion_id": "G12-P1",
+        "status": "pass",
+        "evidence": "chosen_concept_index=1 соответствует Step9"
+      },
+      {
+        "criterion_id": "G12-P2",
+        "status": "pass",
+        "evidence": "reasons связаны с ограничениями и целевыми метриками"
+      },
+      {
+        "criterion_id": "G12-P3",
+        "status": "pass",
+        "evidence": "success_criteria согласованы с IKR"
+      }
+    ],
+    "reason": "Gate12 blocked due to Gate9/Gate11 FAIL",
+    "normalized_reason_codes": [
+      "GATE12_BLOCKED_DUE_TO_GATE9_GATE11_FAIL"
+    ],
+    "canon_ref": "CANON_PIPELINE_v1.2",
+    "run_id": "2026-02-23T12-24-55Z",
+    "timestamp": "2026-02-23T12-24-55Z",
+    "actor_type": "system",
+    "actor_user_id": null
+  },
+  {
+    "gate_log_entry_id": "2026-02-23T12-24-55Z-Gate13",
+    "case_id": "DSS_Output_Package_TC_E22_V1_2026-02-23T12-24-55Z",
+    "gate_id": "Gate13",
+    "pipeline_step": 13,
+    "result": "fail",
+    "check_type": "AUTOMATED",
+    "criteria_scope": "CANON",
+    "criteria_results": [],
+    "reason": "Step13.workstreams missing",
+    "normalized_reason_codes": [
+      "STEP13_WORKSTREAMS_MISSING"
+    ],
+    "canon_ref": "CANON_PIPELINE_v1.2",
+    "run_id": "2026-02-23T12-24-55Z",
+    "timestamp": "2026-02-23T12-24-55Z",
+    "actor_type": "system",
+    "actor_user_id": null
+  },
+  {
+    "gate_log_entry_id": "2026-02-23T12-24-55Z-Gate14",
+    "case_id": "DSS_Output_Package_TC_E22_V1_2026-02-23T12-24-55Z",
+    "gate_id": "Gate14",
+    "pipeline_step": 14,
+    "result": "fail",
+    "check_type": "AUTOMATED",
+    "criteria_scope": "CANON",
+    "criteria_results": [],
+    "reason": "Step14.rule_id missing, Step14.rule_statement_if_then missing, Step14.criterion missing, Step14.boundaries missing, Step14.evidence_from_case missing, Step14.test_case_action missing, Step14.version_note missing, Step14.rationale_1l missing",
+    "normalized_reason_codes": [
+      "STEP14_RULE_ID_MISSING",
+      "STEP14_RULE_STATEMENT_IF_THEN_MISSING",
+      "STEP14_CRITERION_MISSING",
+      "STEP14_BOUNDARIES_MISSING",
+      "STEP14_EVIDENCE_FROM_CASE_MISSING",
+      "STEP14_TEST_CASE_ACTION_MISSING",
+      "STEP14_VERSION_NOTE_MISSING",
+      "STEP14_RATIONALE_1L_MISSING"
+    ],
+    "canon_ref": "CANON_PIPELINE_v1.2",
+    "run_id": "2026-02-23T12-24-55Z",
+    "timestamp": "2026-02-23T12-24-55Z",
+    "actor_type": "system",
+    "actor_user_id": null
+  },
+  {
+    "gate_log_entry_id": "2026-02-23T12-24-55Z-GateTRIZ",
+    "case_id": "DSS_Output_Package_TC_E22_V1_2026-02-23T12-24-55Z",
+    "gate_id": "GateTRIZ",
+    "pipeline_step": 8,
+    "result": "fail",
+    "check_type": "TRIZ",
+    "criteria_scope": "TRIZ_CORE_ENGINE",
+    "criteria_results": [],
+    "reason": "TRIZ_G4_INVALID: non-obviousness has no reference to separation (step_8.TRIZ_CORE.non_obviousness_check)",
+    "normalized_reason_codes": [
+      "TRIZ_G4_INVALID"
+    ],
+    "canon_ref": "CANON_PIPELINE_v1.2",
+    "run_id": "2026-02-23T12-24-55Z",
+    "timestamp": "2026-02-23T12-24-55Z",
+    "actor_type": "system",
+    "actor_user_id": null
+  }
+]

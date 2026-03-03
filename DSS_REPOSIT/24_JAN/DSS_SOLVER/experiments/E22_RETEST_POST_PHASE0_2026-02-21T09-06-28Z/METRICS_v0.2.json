@@ -1,0 +1,30 @@
+{
+  "reference_variant": "V1",
+  "exports": {
+    "V1": {
+      "pfl_verdict": null,
+      "pfl_reason": null,
+      "input_fingerprint": null,
+      "verdict_source": null,
+      "reason_source": null
+    },
+    "V2": {
+      "pfl_verdict": null,
+      "pfl_reason": null,
+      "input_fingerprint": null,
+      "verdict_source": null,
+      "reason_source": null
+    },
+    "V3": {
+      "pfl_verdict": null,
+      "pfl_reason": null,
+      "input_fingerprint": null,
+      "verdict_source": null,
+      "reason_source": null
+    }
+  },
+  "flip_baseline_relative": false,
+  "pfl_variance_baseline_relative": 0.0,
+  "diff_variants": [],
+  "note": "Computed per STAGEA_METRICS_SPEC_v0.1; sources recorded in verdict_source/reason_source."
+}

@@ -1,0 +1,10 @@
+{
+  "checkpoint_1_gatephase0": "SINGLE_RUN",
+  "checkpoint_2_hashes": "SINGLE_RUN",
+  "per_variant": {
+    "V1": {
+      "gatephase0_ok": "SINGLE_RUN",
+      "hashes_ok": "SINGLE_RUN"
+    }
+  }
+}

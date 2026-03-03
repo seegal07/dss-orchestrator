@@ -1,0 +1,348 @@
+[
+  {
+    "gate_log_entry_id": "2026-02-20T11-04-24Z-Gate0",
+    "case_id": "DSS_Output_Package_TC_E21_A1_2026-02-20T11-04-24Z",
+    "gate_id": "Gate0",
+    "pipeline_step": 0,
+    "result": "blocked",
+    "check_type": "AUTOMATED",
+    "criteria_scope": "CANON",
+    "criteria_results": [],
+    "reason": "status is not FILLED, mode is invalid, canon_versions missing",
+    "normalized_reason_codes": [
+      "STATUS_IS_NOT_FILLED",
+      "MODE_IS_INVALID",
+      "CANON_VERSIONS_MISSING"
+    ],
+    "canon_ref": "CANON_PIPELINE_v1.2",
+    "run_id": "2026-02-20T11-04-24Z",
+    "timestamp": "2026-02-20T11-04-24Z",
+    "actor_type": "system",
+    "actor_user_id": null
+  },
+  {
+    "gate_log_entry_id": "2026-02-20T11-04-24Z-Gate1",
+    "case_id": "DSS_Output_Package_TC_E21_A1_2026-02-20T11-04-24Z",
+    "gate_id": "Gate1",
+    "pipeline_step": 1,
+    "result": "not_run",
+    "check_type": "AUTOMATED",
+    "criteria_scope": "CANON",
+    "criteria_results": [],
+    "reason": "Gate0 blocked",
+    "normalized_reason_codes": [
+      "GATE0_BLOCKED"
+    ],
+    "canon_ref": "CANON_PIPELINE_v1.2",
+    "run_id": "2026-02-20T11-04-24Z",
+    "timestamp": "2026-02-20T11-04-24Z",
+    "actor_type": "system",
+    "actor_user_id": null
+  },
+  {
+    "gate_log_entry_id": "2026-02-20T11-04-24Z-Gate2",
+    "case_id": "DSS_Output_Package_TC_E21_A1_2026-02-20T11-04-24Z",
+    "gate_id": "Gate2",
+    "pipeline_step": 2,
+    "result": "not_run",
+    "check_type": "AUTOMATED",
+    "criteria_scope": "CANON",
+    "criteria_results": [],
+    "reason": "Gate0 blocked",
+    "normalized_reason_codes": [
+      "GATE0_BLOCKED"
+    ],
+    "canon_ref": "CANON_PIPELINE_v1.2",
+    "run_id": "2026-02-20T11-04-24Z",
+    "timestamp": "2026-02-20T11-04-24Z",
+    "actor_type": "system",
+    "actor_user_id": null
+  },
+  {
+    "gate_log_entry_id": "2026-02-20T11-04-24Z-Gate3",
+    "case_id": "DSS_Output_Package_TC_E21_A1_2026-02-20T11-04-24Z",
+    "gate_id": "Gate3",
+    "pipeline_step": 3,
+    "result": "not_run",
+    "check_type": "AUTOMATED",
+    "criteria_scope": "CANON",
+    "criteria_results": [],
+    "reason": "Gate0 blocked",
+    "normalized_reason_codes": [
+      "GATE0_BLOCKED"
+    ],
+    "canon_ref": "CANON_PIPELINE_v1.2",
+    "run_id": "2026-02-20T11-04-24Z",
+    "timestamp": "2026-02-20T11-04-24Z",
+    "actor_type": "system",
+    "actor_user_id": null
+  },
+  {
+    "gate_log_entry_id": "2026-02-20T11-04-24Z-Gate4",
+    "case_id": "DSS_Output_Package_TC_E21_A1_2026-02-20T11-04-24Z",
+    "gate_id": "Gate4",
+    "pipeline_step": 4,
+    "result": "not_run",
+    "check_type": "ASSISTED",
+    "criteria_scope": "CANON",
+    "criteria_results": [
+      {
+        "criterion_id": "G4-P1",
+        "status": "pass",
+        "evidence": "ok"
+      }
+    ],
+    "reason": "Gate0 blocked",
+    "normalized_reason_codes": [
+      "GATE0_BLOCKED"
+    ],
+    "canon_ref": "CANON_PIPELINE_v1.2",
+    "run_id": "2026-02-20T11-04-24Z",
+    "timestamp": "2026-02-20T11-04-24Z",
+    "actor_type": "system",
+    "actor_user_id": null
+  },
+  {
+    "gate_log_entry_id": "2026-02-20T11-04-24Z-Gate5",
+    "case_id": "DSS_Output_Package_TC_E21_A1_2026-02-20T11-04-24Z",
+    "gate_id": "Gate5",
+    "pipeline_step": 5,
+    "result": "not_run",
+    "check_type": "ASSISTED",
+    "criteria_scope": "CANON",
+    "criteria_results": [
+      {
+        "criterion_id": "G5-P1",
+        "status": "pass",
+        "evidence": "ok"
+      }
+    ],
+    "reason": "Gate0 blocked",
+    "normalized_reason_codes": [
+      "GATE0_BLOCKED"
+    ],
+    "canon_ref": "CANON_PIPELINE_v1.2",
+    "run_id": "2026-02-20T11-04-24Z",
+    "timestamp": "2026-02-20T11-04-24Z",
+    "actor_type": "system",
+    "actor_user_id": null
+  },
+  {
+    "gate_log_entry_id": "2026-02-20T11-04-24Z-Gate6",
+    "case_id": "DSS_Output_Package_TC_E21_A1_2026-02-20T11-04-24Z",
+    "gate_id": "Gate6",
+    "pipeline_step": 6,
+    "result": "not_run",
+    "check_type": "ASSISTED",
+    "criteria_scope": "CANON",
+    "criteria_results": [
+      {
+        "criterion_id": "G6-P1",
+        "status": "pass",
+        "evidence": "ok"
+      }
+    ],
+    "reason": "Gate0 blocked",
+    "normalized_reason_codes": [
+      "GATE0_BLOCKED"
+    ],
+    "canon_ref": "CANON_PIPELINE_v1.2",
+    "run_id": "2026-02-20T11-04-24Z",
+    "timestamp": "2026-02-20T11-04-24Z",
+    "actor_type": "system",
+    "actor_user_id": null
+  },
+  {
+    "gate_log_entry_id": "2026-02-20T11-04-24Z-Gate7",
+    "case_id": "DSS_Output_Package_TC_E21_A1_2026-02-20T11-04-24Z",
+    "gate_id": "Gate7",
+    "pipeline_step": 7,
+    "result": "not_run",
+    "check_type": "AUTOMATED",
+    "criteria_scope": "CANON",
+    "criteria_results": [],
+    "reason": "Gate0 blocked",
+    "normalized_reason_codes": [
+      "GATE0_BLOCKED"
+    ],
+    "canon_ref": "CANON_PIPELINE_v1.2",
+    "run_id": "2026-02-20T11-04-24Z",
+    "timestamp": "2026-02-20T11-04-24Z",
+    "actor_type": "system",
+    "actor_user_id": null
+  },
+  {
+    "gate_log_entry_id": "2026-02-20T11-04-24Z-Gate8",
+    "case_id": "DSS_Output_Package_TC_E21_A1_2026-02-20T11-04-24Z",
+    "gate_id": "Gate8",
+    "pipeline_step": 8,
+    "result": "not_run",
+    "check_type": "AUTOMATED",
+    "criteria_scope": "CANON",
+    "criteria_results": [],
+    "reason": "Gate0 blocked",
+    "normalized_reason_codes": [
+      "GATE0_BLOCKED"
+    ],
+    "canon_ref": "CANON_PIPELINE_v1.2",
+    "run_id": "2026-02-20T11-04-24Z",
+    "timestamp": "2026-02-20T11-04-24Z",
+    "actor_type": "system",
+    "actor_user_id": null
+  },
+  {
+    "gate_log_entry_id": "2026-02-20T11-04-24Z-Gate9",
+    "case_id": "DSS_Output_Package_TC_E21_A1_2026-02-20T11-04-24Z",
+    "gate_id": "Gate9",
+    "pipeline_step": 9,
+    "result": "not_run",
+    "check_type": "AUTOMATED",
+    "criteria_scope": "CANON",
+    "criteria_results": [],
+    "reason": "Gate0 blocked",
+    "normalized_reason_codes": [
+      "GATE0_BLOCKED"
+    ],
+    "canon_ref": "CANON_PIPELINE_v1.2",
+    "run_id": "2026-02-20T11-04-24Z",
+    "timestamp": "2026-02-20T11-04-24Z",
+    "actor_type": "system",
+    "actor_user_id": null
+  },
+  {
+    "gate_log_entry_id": "2026-02-20T11-04-24Z-Gate10",
+    "case_id": "DSS_Output_Package_TC_E21_A1_2026-02-20T11-04-24Z",
+    "gate_id": "Gate10",
+    "pipeline_step": 10,
+    "result": "not_run",
+    "check_type": "AUTOMATED",
+    "criteria_scope": "CANON",
+    "criteria_results": [],
+    "reason": "Gate0 blocked",
+    "normalized_reason_codes": [
+      "GATE0_BLOCKED"
+    ],
+    "canon_ref": "CANON_PIPELINE_v1.2",
+    "run_id": "2026-02-20T11-04-24Z",
+    "timestamp": "2026-02-20T11-04-24Z",
+    "actor_type": "system",
+    "actor_user_id": null
+  },
+  {
+    "gate_log_entry_id": "2026-02-20T11-04-24Z-Gate11",
+    "case_id": "DSS_Output_Package_TC_E21_A1_2026-02-20T11-04-24Z",
+    "gate_id": "Gate11",
+    "pipeline_step": 11,
+    "result": "not_run",
+    "check_type": "ASSISTED",
+    "criteria_scope": "CANON",
+    "criteria_results": [
+      {
+        "criterion_id": "G11-P1",
+        "status": "pass",
+        "evidence": "ok"
+      }
+    ],
+    "reason": "Gate0 blocked",
+    "normalized_reason_codes": [
+      "GATE0_BLOCKED"
+    ],
+    "canon_ref": "CANON_PIPELINE_v1.2",
+    "run_id": "2026-02-20T11-04-24Z",
+    "timestamp": "2026-02-20T11-04-24Z",
+    "actor_type": "system",
+    "actor_user_id": null
+  },
+  {
+    "gate_log_entry_id": "2026-02-20T11-04-24Z-Gate12",
+    "case_id": "DSS_Output_Package_TC_E21_A1_2026-02-20T11-04-24Z",
+    "gate_id": "Gate12",
+    "pipeline_step": 12,
+    "result": "not_run",
+    "check_type": "ASSISTED",
+    "criteria_scope": "CANON",
+    "criteria_results": [
+      {
+        "criterion_id": "G12-P1",
+        "status": "pass",
+        "evidence": "ok"
+      },
+      {
+        "criterion_id": "G12-P2",
+        "status": "pass",
+        "evidence": "ok"
+      },
+      {
+        "criterion_id": "G12-P3",
+        "status": "pass",
+        "evidence": "ok"
+      }
+    ],
+    "reason": "Gate0 blocked",
+    "normalized_reason_codes": [
+      "GATE0_BLOCKED"
+    ],
+    "canon_ref": "CANON_PIPELINE_v1.2",
+    "run_id": "2026-02-20T11-04-24Z",
+    "timestamp": "2026-02-20T11-04-24Z",
+    "actor_type": "system",
+    "actor_user_id": null
+  },
+  {
+    "gate_log_entry_id": "2026-02-20T11-04-24Z-Gate13",
+    "case_id": "DSS_Output_Package_TC_E21_A1_2026-02-20T11-04-24Z",
+    "gate_id": "Gate13",
+    "pipeline_step": 13,
+    "result": "not_run",
+    "check_type": "AUTOMATED",
+    "criteria_scope": "CANON",
+    "criteria_results": [],
+    "reason": "Gate0 blocked",
+    "normalized_reason_codes": [
+      "GATE0_BLOCKED"
+    ],
+    "canon_ref": "CANON_PIPELINE_v1.2",
+    "run_id": "2026-02-20T11-04-24Z",
+    "timestamp": "2026-02-20T11-04-24Z",
+    "actor_type": "system",
+    "actor_user_id": null
+  },
+  {
+    "gate_log_entry_id": "2026-02-20T11-04-24Z-Gate14",
+    "case_id": "DSS_Output_Package_TC_E21_A1_2026-02-20T11-04-24Z",
+    "gate_id": "Gate14",
+    "pipeline_step": 14,
+    "result": "not_run",
+    "check_type": "AUTOMATED",
+    "criteria_scope": "CANON",
+    "criteria_results": [],
+    "reason": "Gate0 blocked",
+    "normalized_reason_codes": [
+      "GATE0_BLOCKED"
+    ],
+    "canon_ref": "CANON_PIPELINE_v1.2",
+    "run_id": "2026-02-20T11-04-24Z",
+    "timestamp": "2026-02-20T11-04-24Z",
+    "actor_type": "system",
+    "actor_user_id": null
+  },
+  {
+    "gate_log_entry_id": "2026-02-20T11-04-24Z-GateTRIZ",
+    "case_id": "DSS_Output_Package_TC_E21_A1_2026-02-20T11-04-24Z",
+    "gate_id": "GateTRIZ",
+    "pipeline_step": 8,
+    "result": "fail",
+    "check_type": "TRIZ",
+    "criteria_scope": "TRIZ_CORE_ENGINE",
+    "criteria_results": [],
+    "reason": "TRIZ_G4_INVALID: non-obviousness has no reference to separation (step_8.TRIZ_CORE.non_obviousness_check)",
+    "normalized_reason_codes": [
+      "TRIZ_G4_INVALID"
+    ],
+    "canon_ref": "CANON_PIPELINE_v1.2",
+    "run_id": "2026-02-20T11-04-24Z",
+    "timestamp": "2026-02-20T11-04-24Z",
+    "actor_type": "system",
+    "actor_user_id": null
+  }
+]

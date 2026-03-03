@@ -1,0 +1,12 @@
+run_id: 2026-02-23T09-14-44Z
+test_case_id: TC_E22_V2
+issues:
+  - gate: Gate3
+    issue_code: STRUCTURAL
+    message: "Step3.flows[0] not a dict"
+  - gate: GatePFL
+    issue_code: STRUCTURAL
+    message: "SOLUTION_AS_XY"
+  - gate: GateTRIZ
+    issue_code: STRUCTURAL
+    message: "TRIZ_G4_INVALID: non-obviousness has no reference to separation (step_8.TRIZ_CORE.non_obviousness_check)"

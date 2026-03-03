@@ -1,0 +1,6 @@
+run_id: 2026-02-09T11-46-07Z
+test_case_id: TC_CASE_01_SIMPLE_R0
+issues:
+  - gate: GateTRIZ
+    issue_code: STRUCTURAL
+    message: "TRIZ_G4_INVALID: non-obviousness has no reference to separation (step_8.TRIZ_CORE.non_obviousness_check)"

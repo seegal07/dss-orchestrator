@@ -1,0 +1,18 @@
+run_id: 2026-02-08T18-10-28Z
+test_case_id: TC_CLIENT_SELF_RUN_001
+issues:
+  - gate: Gate11
+    issue_code: STRUCTURAL
+    message: "G11-P1: new_contradiction_exists не задан"
+  - gate: Gate12
+    issue_code: STRUCTURAL
+    message: "G12-P1: нет выбранного концепта"
+  - gate: Gate12
+    issue_code: STRUCTURAL
+    message: "G12-P2: нет reasons"
+  - gate: Gate12
+    issue_code: STRUCTURAL
+    message: "G12-P3: нет thresholds"
+  - gate: GateTRIZ
+    issue_code: STRUCTURAL
+    message: "TRIZ_G4_INVALID: non-obviousness has no reference to separation (step_8.TRIZ_CORE.non_obviousness_check)"

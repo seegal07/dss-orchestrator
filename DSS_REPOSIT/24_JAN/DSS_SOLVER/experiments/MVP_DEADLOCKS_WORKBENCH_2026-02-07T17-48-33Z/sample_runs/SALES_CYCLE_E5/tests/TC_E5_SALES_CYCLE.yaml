@@ -1,0 +1,130 @@
+test_case_id: TC_E5_SALES_CYCLE
+status: FILLED
+mode: full_vector
+canon_versions:
+  canon_pipeline: CANON_PIPELINE_v1.2.docx
+  canon_9forms: CANON_9FORMS_v1.1.docx
+  schema: TEST_VECTOR_SCHEMA_v0.1.md.docx
+notes: "MVP deadlock — sales cycle"
+
+full_vector:
+  step_0:
+    symptom_1l: "Цикл сделки слишком длинный, конверсия падает."
+  step_1:
+    owner_role: "Руководитель продаж"
+    owner_scope: "Воронка, квалификация, скрипты, приоритизация"
+    constraints:
+      - "Штат не увеличиваем"
+      - "Маркетинг не растим"
+      - "Срок эффекта — 3 месяца"
+    success_metric_hint: "Цикл ≤45 дней, конверсия ≥ текущей"
+  step_2:
+    actor: ["Лид", "Менеджер", "CRM"]
+    system: ["Квалификация", "Переговоры", "Воронка"]
+    environment: ["Рынок", "Бюджеты клиентов"]
+    boundary_note_1l: "Внутри — процессы продаж; снаружи — рынок и бюджеты клиентов."
+  step_3:
+    elements: ["Лид", "Квалификация", "Переговоры", "Сделка"]
+    flows:
+      - from: "Лид"
+        to: "Квалификация"
+        type: "info"
+        note: "Первичный отбор"
+      - from: "Квалификация"
+        to: "Переговоры"
+        type: "other"
+        note: "Переход"
+    symptom_location: "Квалификация и переговоры"
+  step_4:
+    improve_x: "Скорость квалификации"
+    worsen_y: "Точность отбора"
+    statement_1l: "Если ускоряем квалификацию, падает точность"
+    measurement_hint: "Скорость квалификации, конверсия, длина цикла"
+  step_5:
+    ikr_1l: "Цикл сделки ≤45 дней при сохранении качества лидов и без роста штата"
+    no_new_harm_clause: "Не ухудшать конверсию и не увеличивать расходы"
+  step_6:
+    barrier_1l: "Нельзя одновременно сильно ускорить квалификацию и сохранить точность без изменения процесса"
+    equivalent_to_step4: true
+  step_7:
+    resources:
+      - name: "CRM"
+        category: "info"
+        tied_to: "Сценарии"
+        note: "Есть"
+      - name: "Скрипты"
+        category: "info"
+        tied_to: "Квалификация"
+        note: "Можно обновить"
+      - name: "Сегментация лидов"
+        category: "org"
+        tied_to: "Приоритизация"
+        note: "Можно внедрить"
+  step_8:
+    PRIMARY_FORM: "Форма сегментации"
+    BOUNDARY_CHECK:
+      NEAREST_FORMS: ["Форма контроля", "Форма регламента"]
+      WHY_NOT_X: ["Нельзя увеличить штат"]
+      WHY_NOT_Y: ["Нельзя терять качество"]
+    TRIZ_CORE:
+      CONTRADICTION_1L: "нужно ускорить квалификацию, но нельзя терять качество"
+      IKR_1L: "цикл ≤45 дней без ухудшения качества"
+    PRINCIPLES_TO_ACTION:
+      PRINCIPLES: [13]
+      ACTIONS: ["Сегментировать лидов"]
+    IKR_TEST:
+      Q1: "YES"
+      Q2: "YES"
+    CONFIDENCE:
+      score: 2
+      justification: "Противоречие и IKR подтверждены входом"
+  step_9:
+    count_rule: "3–5"
+    concepts:
+      - concept_index: 1
+        name: "Сегментация лидов"
+        idea_1l: "Разные сценарии по сегментам"
+        linked_form: "Форма сегментации"
+        linked_principles: [13]
+        linked_resources: ["CRM", "Сегментация лидов"]
+        ikr_alignment_1l: "Сокращает цикл"
+  step_10:
+    concept_specs:
+      - concept_index: 1
+        A_name_tagline: "Сегментация лидов"
+        B_axis_and_resource: "CRM + сегментация"
+        C_mechanism_steps: ["Классифицировать лиды", "Назначить сценарии"]
+        D_assumptions_constraints: ["Без роста штата"]
+        E_risks_failures: ["Ошибки сегментации"]
+        F_metrics:
+          leading: ["Скорость квалификации"]
+          lagging: ["Цикл", "Конверсия"]
+        G_experiment:
+          timebox: "3 месяца"
+          budget: "0"
+          pass_criteria: "Цикл ≤45 дней"
+  step_11:
+    new_contradiction_exists: false
+  step_12:
+    chosen_concept_index: 1
+    chosen_concept_name: "Сегментация лидов"
+    reasons: ["Не требует штата", "Ускоряет цикл"]
+    rejected_alternatives: ["Жёсткая квалификация", "Автоскоринг"]
+    assumptions: ["Сегментация корректна"]
+    success_criteria: ["Цикл ≤45 дней", "Конверсия ≥ текущей"]
+  step_13:
+    workstreams:
+      - name: "Сегментация"
+        owner: "Sales"
+        steps: ["Классификация", "Правила"]
+        timing: "2 недели"
+        risks: ["Ошибки классификации"]
+  step_14:
+    rule_id: "RULE_E5_SALES_001"
+    rule_statement_if_then: "Если цикл >45 дней через 3 месяца, то сегментация пересматривается"
+    criterion: "Цикл сделки"
+    boundaries: "Текущая база лидов"
+    evidence_from_case: "Отчёты CRM"
+    test_case_action: "Пересмотр сегментации"
+    version_note: "v1"
+    rationale_1l: "Сокращаем цикл без потери качества"

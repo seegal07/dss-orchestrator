@@ -1,0 +1,103 @@
+test_case_id: TC_CASE_B_GROWTH_VS_PROFITABILITY_DATA_GAPS
+status: FILLED
+mode: full_vector
+canon_versions:
+  canon_pipeline: CANON_PIPELINE_v1.2.docx
+  canon_9forms: CANON_9FORMS_v1.1.docx
+  schema: TEST_VECTOR_SCHEMA_v0.1.md.docx
+notes: "Diagnostic Case B: growth vs profitability with data gaps"
+
+full_vector:
+  step_0:
+    symptom_1l: "Дилемма: агрессивный рост vs фокус на прибыль/ранвей при отсутствии надёжных метрик unit economics."
+  step_1:
+    owner_role: "CEO/Founder"
+    owner_scope: "Приоритеты роста, бюджетные правила, продуктовые ограничения на 90 дней"
+    constraints:
+      - "Нет времени на полный финмоделинг"
+      - "Нельзя предполагать неизвестные метрики"
+      - "Горизонт решения — 90 дней"
+    success_metric_hint: "Выбор режима + пороги переключения + список данных и срок их получения"
+  step_2:
+    actor: ["CEO", "Финансы", "Команда"]
+    system: ["Бизнес", "Денежный поток", "Unit economics"]
+    environment: ["Рынок", "Спрос"]
+    boundary_note_1l: "Внутри — управленческие решения и правила, снаружи — рынок."
+  step_3:
+    elements: ["Рост", "Прибыльность", "Runway", "Unit economics", "90 дней"]
+    flows: []
+    symptom_location: "Отсутствие данных для выбора режима"
+  step_4:
+    improve_x: "Темп роста"
+    worsen_y: "Runway / прибыльность"
+    statement_1l: "Если фокус на росте, ухудшается runway; если фокус на прибыльности, замедляется рост"
+    measurement_hint: "MISSING: LTV, CAC, маржа, runway"
+  step_5:
+    ikr_1l: "MISSING: нет данных для IKR"
+    no_new_harm_clause: "MISSING"
+  step_6:
+    barrier_1l: "MISSING: барьер не определён без метрик"
+    equivalent_to_step4: "MISSING"
+  step_7:
+    resources:
+      - name: "Команда"
+        category: "org"
+        tied_to: "Исполнение"
+        note: "Есть"
+      - name: "Исторические данные"
+        category: "info"
+        tied_to: "Финансы"
+        note: "MISSING: качество данных не подтверждено"
+  step_8:
+    PRIMARY_FORM: "Форма противоречия"
+    BOUNDARY_CHECK:
+      NEAREST_FORMS: ["Форма метрик", "Форма финмодели"]
+      WHY_NOT_X: ["Нет надёжных метрик"]
+      WHY_NOT_Y: ["Нельзя предполагать неизвестные показатели"]
+    TRIZ_CORE:
+      CONTRADICTION_1L: "Рост vs прибыльность при отсутствии данных"
+      IKR_1L: "MISSING"
+    PRINCIPLES_TO_ACTION:
+      PRINCIPLES: []
+      ACTIONS: ["MISSING"]
+    IKR_TEST:
+      Q1: "MISSING"
+      Q2: "MISSING"
+    CONFIDENCE:
+      score: 0
+      justification: "Нет базовых метрик"
+  step_9:
+    count_rule: "3–5"
+    concepts:
+      - concept_index: 1
+        name: "Режим роста"
+        idea_1l: "Фокус на росте"
+        linked_form: "Форма стратегии"
+        linked_principles: []
+        linked_resources: ["Команда"]
+        ikr_alignment_1l: "MISSING"
+      - concept_index: 2
+        name: "Режим прибыльности"
+        idea_1l: "Фокус на прибыльности"
+        linked_form: "Форма стратегии"
+        linked_principles: []
+        linked_resources: ["Команда"]
+        ikr_alignment_1l: "MISSING"
+  step_10:
+    mechanism_1l: "MISSING: механизм выбора режима"
+    mechanism_constraints: "MISSING"
+  step_11:
+    new_contradiction_exists: "MISSING"
+    contradiction_1l: "MISSING"
+  step_12:
+    chosen_concept_index: "MISSING: нет порогов переключения"
+    reasons:
+      - "MISSING: пороги не заданы"
+    success_criteria:
+      - "MISSING: базовые метрики"
+  step_13:
+    plan_1l: "MISSING: нельзя строить план без выбора режима"
+    steps: []
+  step_14:
+    rule_if_then: "MISSING: нет порогов и режима"
+    monitoring_metrics: ["MISSING: LTV", "MISSING: CAC", "MISSING: маржа", "MISSING: runway"]

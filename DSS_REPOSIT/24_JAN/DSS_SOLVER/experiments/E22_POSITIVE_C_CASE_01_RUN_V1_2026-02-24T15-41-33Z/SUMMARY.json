@@ -1,0 +1,58 @@
+{
+  "checkpoints": {
+    "checkpoint_1_gatephase0": "PASS",
+    "checkpoint_2_hashes": "PASS",
+    "per_variant": {
+      "V1": {
+        "gatephase0_ok": true,
+        "hashes_ok": true,
+        "y_object_not_unknown": true
+      },
+      "V2": {
+        "gatephase0_ok": true,
+        "hashes_ok": true,
+        "y_object_not_unknown": true
+      },
+      "V3": {
+        "gatephase0_ok": true,
+        "hashes_ok": true,
+        "y_object_not_unknown": true
+      }
+    },
+    "y_object_not_unknown": "PASS"
+  },
+  "Step1": "PASS",
+  "Step2": "PASS",
+  "variants": {
+    "V1": {
+      "canonical_hash_v0": "db9ab65100231e214e5efc0da972f231cfb26b6ffc34c0ee4e3c948b319596a0",
+      "canonical_hash_text": "15ac1363a8cf1ac8973431b910de9865c43d7df5039ee2de9955671fb6c0b676",
+      "X_metric": "точность",
+      "X_object": "филиалов",
+      "Y_metric": "время",
+      "Y_object": "филиалов",
+      "GatePFL_result": "fail",
+      "GatePFL_reason": "NO_MUTUAL_DEGRADATION"
+    },
+    "V2": {
+      "canonical_hash_v0": "db9ab65100231e214e5efc0da972f231cfb26b6ffc34c0ee4e3c948b319596a0",
+      "canonical_hash_text": "15ac1363a8cf1ac8973431b910de9865c43d7df5039ee2de9955671fb6c0b676",
+      "X_metric": "точность",
+      "X_object": "филиалов",
+      "Y_metric": "время",
+      "Y_object": "филиалов",
+      "GatePFL_result": "fail",
+      "GatePFL_reason": "NO_MUTUAL_DEGRADATION"
+    },
+    "V3": {
+      "canonical_hash_v0": "db9ab65100231e214e5efc0da972f231cfb26b6ffc34c0ee4e3c948b319596a0",
+      "canonical_hash_text": "15ac1363a8cf1ac8973431b910de9865c43d7df5039ee2de9955671fb6c0b676",
+      "X_metric": "точность",
+      "X_object": "филиалов",
+      "Y_metric": "время",
+      "Y_object": "филиалов",
+      "GatePFL_result": "fail",
+      "GatePFL_reason": "NO_MUTUAL_DEGRADATION"
+    }
+  }
+}

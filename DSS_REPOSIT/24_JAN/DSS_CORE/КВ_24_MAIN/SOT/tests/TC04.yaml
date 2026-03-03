@@ -1,0 +1,324 @@
+test_case_id: TC04
+status: FILLED
+mode: artifact_pack
+canon_versions:
+  canon_pipeline: CANON_PIPELINE_v1.2.docx
+  canon_9forms: CANON_9FORMS_v1.1.docx
+  schema: TEST_VECTOR_SCHEMA_v0.1.md.docx
+notes: "synthetic regression vector"
+
+artifact_pack:
+  - artifact_type: CASE_SYMPTOM
+    pipeline_step: 0
+    payload:
+      symptom_1l: "Еженедельные решения собственника не превращаются в правила/артефакты, поэтому одни и те же проблемы возвращаются."
+
+  - artifact_type: PROBLEM_OWNER_CARD
+    pipeline_step: 1
+    payload:
+      owner_role: "Собственник / CEO SMB (20–150 сотрудников)"
+      owner_scope: "Может менять правила принятия решений, формат фиксации решений, ответственность (RACI/owners), метрики контроля, регламент эскалаций."
+      constraints:
+        - "Без найма новых руководителей в ближайшие 4 недели"
+        - "Нельзя останавливать текущие продажи/операционку"
+        - "Внедрение должно занять ≤ 2 часа в неделю времени собственника"
+      success_metric_hint: "Кол-во зафиксированных управленческих артефактов/неделя + снижение повторных эскалаций по одинаковым причинам."
+
+  - artifact_type: SYSTEM_BOUNDARY_MAP
+    pipeline_step: 2
+    payload:
+      vector_meta:
+        status: FILLED
+        mode: artifact_pack
+      actor:
+        - "CEO/Owner"
+        - "Function heads"
+        - "Team leads"
+      system:
+        - "Decision capture → rule conversion workflow"
+      environment:
+        - "Customers"
+        - "Market changes"
+      boundary_note_1l: "Symptom is inside the boundary between 'decision making' and 'execution by teams'."
+
+  - artifact_type: INTERACTION_MAP
+    pipeline_step: 3
+    payload:
+      elements:
+        - "CEO/Owner"
+        - "Weekly leadership meeting"
+        - "Decision log (rule cards)"
+        - "Teams"
+        - "Customer feedback"
+      flows:
+        - from: "CEO/Owner"
+          to: "Weekly leadership meeting"
+          type: info
+          note: "weekly decisions are made"
+        - from: "Weekly leadership meeting"
+          to: "Teams"
+          type: info
+          note: "decisions communicated verbally"
+        - from: "Teams"
+          to: "CEO/Owner"
+          type: info
+          note: "repeat escalations because no stable rule exists"
+        - from: "Customer feedback"
+          to: "Teams"
+          type: info
+          note: "issues reappear due to inconsistent handling"
+      symptom_location: "Flow 'Weekly leadership meeting → Teams' lacks a reusable decision artifact; repeats accumulate via 'Teams → CEO/Owner'."
+
+  - artifact_type: CONTRADICTION_STATEMENT
+    pipeline_step: 4
+    payload:
+      improve_x: "Repeatability of decisions (rule reuse across weeks)"
+      worsen_y: "CEO time + flexibility (risk of bureaucracy)"
+      statement_1l: "Если повышаем повторяемость решений через фиксацию правил, ухудшается гибкость и растёт время CEO на управление."
+      measurement_hint: "X=кол-во повторно применённых правил/нед; Y=часы CEO в операционке/нед и число исключений/эскалаций."
+
+  - artifact_type: IKR_CARD
+    pipeline_step: 5
+    payload:
+      ikr_1l: "Решения становятся применимыми правилами с владельцем и метрикой без дополнительного времени CEO."
+      no_new_harm_clause: "Не замедлять продажи и не вводить новые согласования."
+
+  - artifact_type: HARD_BARRIER
+    pipeline_step: 6
+    payload:
+      barrier_1l: "Нельзя одновременно ограничить участие CEO ≤2ч/нед и при этом превращать каждое ключевое решение в правило с владельцем и метрикой."
+      equivalent_to_step4: true
+
+  - artifact_type: RESOURCE_MAP
+    pipeline_step: 7
+    payload:
+      resources:
+        - name: "Weekly leadership meeting slot (30 min)"
+          category: time
+          tied_to: "Weekly leadership meeting"
+          note: "existing cadence"
+        - name: "Existing shared doc template"
+          category: info
+          tied_to: "Decision log (rule cards)"
+          note: "rule-card template"
+        - name: "Escalation history (last 30 days)"
+          category: info
+          tied_to: "Teams → CEO/Owner"
+          note: "repeat patterns"
+        - name: "Team lead decision authority"
+          category: org
+          tied_to: "Team leads"
+          note: "can own rules"
+        - name: "CEO veto right"
+          category: org
+          tied_to: "CEO/Owner"
+          note: "inversion: only veto escalates"
+        - name: "Customer SLA promises"
+          category: trust
+          tied_to: "Customers"
+          note: "boundaries for decisions"
+        - name: "Current KPI review ritual"
+          category: org
+          tied_to: "Weekly leadership meeting"
+          note: "checkpoint slot"
+        - name: "CRM tags/fields"
+          category: info
+          tied_to: "Teams"
+          note: "store rule id + metric link"
+        - name: "Budget=0 constraint"
+          category: finance
+          tied_to: "constraints"
+          note: "no new spend"
+
+  - artifact_type: FORM_SELECTION
+    pipeline_step: 8
+    payload:
+      PRIMARY_FORM: "№5 Инверсия"
+      BOUNDARY_CHECK:
+        NEAREST_FORMS:
+          - "№4 Медиация"
+          - "№6 Ресурсоэффективность"
+        WHY_NOT_X:
+          - "Нужна не договорённость, а устойчивое правило и воспроизводимость."
+          - "Проблема не в конфликте сторон, а в отсутствии переносимого артефакта решения."
+          - "Медиация не гарантирует повторное применение решения на новых кейсах."
+        WHY_NOT_Y:
+          - "Ресурсы важны, но корень — в обратном дефолте эскалаций и фиксации решения как правила."
+          - "Ресурсоэффективность не меняет принцип “решение исчезает после разговора”."
+          - "Требуется смена логики контроля: CEO включается только как veto по исключениям."
+      TRIZ_CORE:
+        CONTRADICTION_1L: "Нужно фиксировать решения как правила, но нельзя увеличивать нагрузку на CEO и бюрократию."
+        IKR_1L: "Правила появляются и применяются без дополнительных согласований и времени CEO."
+      PRINCIPLES_TO_ACTION:
+        PRINCIPLES: [13]
+        ACTIONS:
+          - "Инверсия: решение считается принятым только после фиксации как правило (if–then + owner + метрика) и публикации в общем журнале."
+      IKR_TEST:
+        Q1: "YES — используется текущий слот и шаблон; без новых систем."
+        Q2: "YES — CEO участвует только как veto по исключениям."
+      CONFIDENCE:
+        score: 70
+        justification: "синтетический регрессионный вектор; логика непротиворечива."
+
+  - artifact_type: SOLUTION_SET
+    pipeline_step: 9
+    payload:
+      count_rule: "3–5"
+      concepts:
+        - concept_index: 1
+          name: "Rule Card Ledger"
+          idea_1l: "каждое решение оформляется как if-then правило с owner+metric"
+          linked_form: "№5 Инверсия"
+          linked_principles: [13]
+          linked_resources:
+            - "Existing shared doc template"
+            - "Team lead decision authority"
+            - "Current KPI review ritual"
+          ikr_alignment_1l: "правило создаётся в рамках текущего ритма без доп. времени CEO"
+        - concept_index: 2
+          name: "Escalation by Exception"
+          idea_1l: "по умолчанию нет эскалации; эскалация только по явным veto-триггерам"
+          linked_form: "№5 Инверсия"
+          linked_principles: [13]
+          linked_resources:
+            - "CEO veto right"
+            - "Customer SLA promises"
+            - "Escalation history (last 30 days)"
+          ikr_alignment_1l: "CEO включается только при нарушении границ"
+        - concept_index: 3
+          name: "Rule Reuse Checklist"
+          idea_1l: "правило превращается в чек-лист повторного применения"
+          linked_form: "№5 Инверсия"
+          linked_principles: [13]
+          linked_resources:
+            - "CRM tags/fields"
+            - "Existing shared doc template"
+          ikr_alignment_1l: "повторное применение без новых совещаний"
+
+  - artifact_type: MECHANISM_SPECS
+    pipeline_step: 10
+    payload:
+      concept_specs:
+        - concept_index: 1
+          A_name_tagline: "Rule Card Ledger — решение = правило"
+          B_axis_and_resource: "ось: repeatability vs CEO time; ресурс: weekly meeting + template"
+          C_mechanism_steps:
+            - "В конце встречи фиксировать 1–3 решения в Rule Card (if-then)."
+            - "Назначить owner (team lead) и 1 leading + 1 lagging metric."
+            - "Публикация rule_id в общий доступ + ссылка в CRM."
+          D_assumptions_constraints:
+            - "Не более 3 rule cards в неделю."
+            - "Время CEO на фиксацию ≤ 20 минут/нед."
+          E_risks_failures:
+            - "rule cards превращаются в бюрократию без метрик"
+          F_metrics:
+            leading: ["# новых rule cards/нед", "% rule cards с owner+metric"]
+            lagging: ["снижение повторных эскалаций по тем же причинам", "часы CEO в операционке/нед"]
+          G_experiment:
+            timebox: "2 недели"
+            budget: "0"
+            pass_criteria: "≥6 rule cards, ≥80% с owner+metric, повторные эскалации ↓ на 20%+"
+        - concept_index: 2
+          A_name_tagline: "Escalation by Exception — CEO как veto"
+          B_axis_and_resource: "ось: autonomy vs risk; ресурс: CEO veto triggers"
+          C_mechanism_steps:
+            - "Определить 5 veto-триггеров (SLA/комплаенс/финансы/репутация/безопасность)."
+            - "Любое решение без триггера принимается на уровне team lead."
+            - "Только триггерные кейсы эскалируются CEO."
+          D_assumptions_constraints:
+            - "Триггеры должны быть измеримы и кратки."
+          E_risks_failures:
+            - "слишком широкий список триггеров → всё снова уходит наверх"
+          F_metrics:
+            leading: ["# кейсов сработавших триггеров/нед", "% решений без эскалации"]
+            lagging: ["время ответа CEO на эскалации", "число SLA инцидентов"]
+          G_experiment:
+            timebox: "2 недели"
+            budget: "0"
+            pass_criteria: "≥60% решений без эскалации и без роста SLA инцидентов"
+        - concept_index: 3
+          A_name_tagline: "Rule Reuse Checklist — повторяемость"
+          B_axis_and_resource: "ось: consistency vs flexibility; ресурс: CRM tags"
+          C_mechanism_steps:
+            - "Для каждого rule_id создать чек-лист 3–5 пунктов."
+            - "В CRM добавлять tag rule_id к кейсам."
+            - "Еженедельно смотреть top-3 rule_id по использованию."
+          D_assumptions_constraints:
+            - "Не менять IT-стек; использовать текущие теги."
+          E_risks_failures:
+            - "чек-листы не применяются без владельца"
+          F_metrics:
+            leading: ["# кейсов с tag rule_id/нед", "# повторных применений rule_id/нед"]
+            lagging: ["снижение повторных проблем", "уменьшение переписок/эскалаций"]
+          G_experiment:
+            timebox: "2 недели"
+            budget: "0"
+            pass_criteria: "≥10 кейсов с тегами; ≥3 rule_id с повторным применением"
+
+  - artifact_type: SECONDARY_CONTRADICTION_CHECK
+    pipeline_step: 11
+    payload:
+      new_contradiction_exists: false
+
+  - artifact_type: DECISION_RECORD
+    pipeline_step: 12
+    payload:
+      chosen_concept_index: 1
+      chosen_concept_name: "Rule Card Ledger"
+      reasons:
+        - "максимально простой ритуал без новых систем"
+        - "создаёт воспроизводимость и ownership"
+      rejected_alternatives:
+        - concept_index: 2
+          concept: "Escalation by Exception"
+          why_rejected: "требует стабильного набора триггеров; риск спорности"
+        - concept_index: 3
+          concept: "Rule Reuse Checklist"
+          why_rejected: "зависит от качества rule cards; вторично"
+      assumptions:
+        - "функциональные руководители готовы быть owners"
+      success_criteria:
+        - "≥6 rule cards за 2 недели"
+        - "≥80% rule cards имеют owner+metric"
+
+  - artifact_type: IMPLEMENTATION_MAP
+    pipeline_step: 13
+    payload:
+      workstreams:
+        - name: "Cadence"
+          owner: "COO"
+          tasks:
+            - task: "Добавить 10-мин блок Rule Cards в еженедельную встречу"
+              due: "T+3d"
+              dependency: ""
+              checkpoint_metric: "блок проведён 2 раза"
+            - task: "Утвердить шаблон Rule Card (if-then + owner + metric)"
+              due: "T+3d"
+              dependency: ""
+              checkpoint_metric: "шаблон опубликован"
+        - name: "Ownership & Metrics"
+          owner: "CEO/Owner"
+          tasks:
+            - task: "Назначить owners для первых 6 rule cards"
+              due: "T+7d"
+              dependency: "шаблон"
+              checkpoint_metric: "6 owners назначены"
+            - task: "Определить 1 leading + 1 lagging metric для каждой rule card"
+              due: "T+7d"
+              dependency: "owners"
+              checkpoint_metric: "метрики заполнены ≥80%"
+
+  - artifact_type: RULE_UPDATE
+    pipeline_step: 14
+    payload:
+      rule_id: "RULE-DECISION-TO-RULE-01"
+      rule_statement_if_then: "Если принято повторяющееся управленческое решение, то в течение 24 часов создаётся Rule Card (if-then) с owner и метрикой."
+      criterion: "решение повторяется ≥2 раза за 30 дней или влияет на SLA/финансы/репутацию"
+      boundaries: "не применяется к разовым исключениям без повторяемости"
+      evidence_from_case: "симптом: решения не превращаются в правила; повторы эскалируются"
+      test_case_action:
+        add_or_update: add
+        test_case_id: TC04
+        expected_effect: "повторные проблемы ↓ за счёт rule reuse"
+      version_note: "NON-CANON: rule update stored in case; canon unchanged"
+      rationale_1l: "без фиксации решения как правила организация платит повторно за одно и то же"

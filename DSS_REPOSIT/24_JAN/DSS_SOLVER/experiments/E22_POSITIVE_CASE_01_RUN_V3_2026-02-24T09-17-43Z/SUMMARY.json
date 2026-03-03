@@ -1,0 +1,46 @@
+{
+  "checkpoints": {
+    "checkpoint_1_gatephase0": "FAIL",
+    "checkpoint_2_hashes": "FAIL",
+    "per_variant": {
+      "V1": {
+        "gatephase0_ok": false,
+        "hashes_ok": false,
+        "gatepfl_no_missing_invalid": false
+      },
+      "V2": {
+        "gatephase0_ok": false,
+        "hashes_ok": false,
+        "gatepfl_no_missing_invalid": false
+      },
+      "V3": {
+        "gatephase0_ok": false,
+        "hashes_ok": false,
+        "gatepfl_no_missing_invalid": false
+      }
+    },
+    "gatepfl_missing_invalid_reasons": "FAIL"
+  },
+  "Step1": "NOT_RUN",
+  "Step2": "NOT_RUN",
+  "variants": {
+    "V1": {
+      "canonical_hash_v0": null,
+      "canonical_hash_text": null,
+      "GatePFL_result": null,
+      "GatePFL_reason": null
+    },
+    "V2": {
+      "canonical_hash_v0": null,
+      "canonical_hash_text": null,
+      "GatePFL_result": null,
+      "GatePFL_reason": null
+    },
+    "V3": {
+      "canonical_hash_v0": null,
+      "canonical_hash_text": null,
+      "GatePFL_result": null,
+      "GatePFL_reason": null
+    }
+  }
+}

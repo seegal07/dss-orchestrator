@@ -1,0 +1,64 @@
+run_id: 2026-02-09T12-46-58Z
+test_case_id: TC_CASE_02_MEDIUM_R0
+harness_version: dss-solver-0.1
+timestamp_utc: 2026-02-09T12-46-58Z
+overall_status: FAIL
+gate_results:
+  - gate: Gate0
+    status: PASS
+    reasons: []
+  - gate: Gate1
+    status: PASS
+    reasons: []
+  - gate: Gate2
+    status: PASS
+    reasons: []
+  - gate: Gate3
+    status: PASS
+    reasons: []
+  - gate: Gate4
+    status: PASS
+    reasons:
+      - "G4-P1: Step4 improve_x/worsen_y заданы измеримо"
+      - "G4-P2: statement_1l в форме 'если X, ухудшается Y'"
+      - "G4-P3: measurement_hint содержит baseline и лимиты"
+  - gate: Gate5
+    status: PASS
+    reasons:
+      - "G5-P1: IKR описывает результат без механизма"
+      - "G5-P2: IKR без 'через/путём'"
+  - gate: Gate6
+    status: PASS
+    reasons:
+      - "G6-P1: barrier_1l выражает взаимоисключение автономии и контроля"
+      - "G6-P2: equivalent_to_step4=true"
+  - gate: Gate7
+    status: PASS
+    reasons: []
+  - gate: Gate8
+    status: PASS
+    reasons: []
+  - gate: Gate9
+    status: FAIL
+    reasons:
+      - "Step9.concepts count < 3"
+  - gate: Gate10
+    status: PASS
+    reasons: []
+  - gate: Gate11
+    status: FAIL
+    reasons:
+      - "Step11.selection_criteria_refs missing"
+  - gate: Gate12
+    status: NOT_RUN
+    reasons:
+      - "Gate12 blocked due to Gate9/Gate11 FAIL"
+  - gate: Gate13
+    status: PASS
+    reasons: []
+  - gate: Gate14
+    status: PASS
+    reasons: []
+  - gate: GateTRIZ
+    status: PASS
+    reasons: []

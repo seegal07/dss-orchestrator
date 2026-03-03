@@ -1,0 +1,41 @@
+USER FLOW (Simple)
+
+Goal: turn a messy business problem into a validated decision + execution package.
+
+Principles:
+- Default rule owner: CLIENT.
+- Client does NOT see PASS/FAIL; only interpretation.
+- FAIL is diagnostic, not a client rejection.
+
+Step 1 — Intake (15–30 min)
+- Client describes the problem and constraints.
+- Output: clear statement + owner + constraints.
+
+Step 2 — Structure (30–60 min)
+- Boundary, actors, interactions, contradiction, resources.
+- Output: structured problem model.
+
+Step 3 — Synthesis (30–60 min)
+- Form selection, solution set, mechanisms.
+- Output: decision draft + mechanisms.
+
+Step 4 — Decision Lock (required)
+- One decision is fixed.
+- Rejected alternatives are fixed.
+- Cost of error is fixed.
+
+Step 5 — Decision & Plan (30–60 min)
+- Final decision, implementation map, rule.
+- Output: plan + operational rule.
+
+Step 6 — Validation (5–10 min)
+- Harness runs Gate0–Gate14.
+- Client sees only:
+  A) “Decision ready”
+  B) “Requires mandatory input clarification”
+  C) “Decision impossible under given conditions”
+
+Step 7 — Delivery (10–15 min)
+- Client receives report + plan + rule.
+
+Total time (manual): ~2–4 hours per case.

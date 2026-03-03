@@ -1,0 +1,21 @@
+{
+  "case_id": "DSS_Output_Package_TC_CASE_A_CUSTOMIZATION_VS_STANDARDIZATION_v2_2026-02-08T10-23-24Z",
+  "run_id": "2026-02-08T10-23-24Z",
+  "latest": {
+    "Gate0": "pass",
+    "Gate1": "pass",
+    "Gate2": "pass",
+    "Gate3": "pass",
+    "Gate4": "pass",
+    "Gate5": "pass",
+    "Gate6": "pass",
+    "Gate7": "pass",
+    "Gate8": "fail",
+    "Gate9": "pass",
+    "Gate10": "fail",
+    "Gate11": "pass",
+    "Gate12": "pass",
+    "Gate13": "fail",
+    "Gate14": "fail"
+  }
+}

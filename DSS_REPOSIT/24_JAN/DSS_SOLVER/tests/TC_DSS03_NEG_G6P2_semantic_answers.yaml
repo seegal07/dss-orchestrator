@@ -1,0 +1,47 @@
+criteria_version: ASSISTED_GATE_CRITERIA_v0.1
+criteria_doc: ASSISTED_GATE_CRITERIA_v0.1.md
+
+results:
+  Gate4:
+    criteria:
+      - criterion_id: G4-P1
+        status: PASS
+        evidence: "OK"
+      - criterion_id: G4-P2
+        status: PASS
+        evidence: "OK"
+      - criterion_id: G4-P3
+        status: PASS
+        evidence: "OK"
+  Gate5:
+    criteria:
+      - criterion_id: G5-P1
+        status: PASS
+        evidence: "OK"
+      - criterion_id: G5-P2
+        status: PASS
+        evidence: "OK"
+  Gate6:
+    criteria:
+      - criterion_id: G6-P1
+        status: PASS
+        evidence: "OK"
+      - criterion_id: G6-P2
+        status: FAIL
+        evidence: "Негативный тест: G6-P2 FAIL"
+  Gate11:
+    criteria:
+      - criterion_id: G11-P1
+        status: PASS
+        evidence: "OK"
+  Gate12:
+    criteria:
+      - criterion_id: G12-P1
+        status: PASS
+        evidence: "OK"
+      - criterion_id: G12-P2
+        status: PASS
+        evidence: "OK"
+      - criterion_id: G12-P3
+        status: PASS
+        evidence: "OK"

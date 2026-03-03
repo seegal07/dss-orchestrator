@@ -1,0 +1,332 @@
+test_case_id: TC16
+status: FILLED
+mode: artifact_pack
+canon_versions:
+  canon_pipeline: CANON_PIPELINE_v1.2.docx
+  canon_9forms: CANON_9FORMS_v1.1.docx
+  schema: TEST_VECTOR_SCHEMA_v0.1.md.docx
+notes: "synthetic regression vector"
+
+artifact_pack:
+  - artifact_type: CASE_SYMPTOM
+    pipeline_step: 0
+    payload:
+      symptom_1l: "Руководители откладывают принятие решений; большинство вопросов эскалируется на CEO; время цикла решения растёт."
+
+  - artifact_type: PROBLEM_OWNER_CARD
+    pipeline_step: 1
+    payload:
+      owner_role: "CEO / Собственник"
+      owner_scope: "Может менять политику допуска ошибок, цену ошибки, правила эскалации, формат пост-мортемов, распределение ответственности."
+      constraints:
+        - "Нельзя снижать качество/комплаенс"
+        - "Нельзя вводить штрафы как основной инструмент"
+        - "Решение должно работать в мультистране/удалёнке (разные офисы/культуры)"
+      success_metric_hint: "Снижение доли “согласований” + рост доли решений на уровне руководителей + сокращение времени цикла решения."
+
+  - artifact_type: SYSTEM_BOUNDARY_MAP
+    pipeline_step: 2
+    payload:
+      vector_meta:
+        status: FILLED
+        mode: artifact_pack
+      actor:
+        - "CEO"
+        - "Country/office managers"
+        - "Teams"
+      system:
+        - "Decision rights + error-tolerance policy"
+      environment:
+        - "Multi-country / remote context"
+        - "Compliance constraints"
+      boundary_note_1l: "Symptom at boundary between decision rights and perceived personal risk for managers."
+
+  - artifact_type: INTERACTION_MAP
+    pipeline_step: 3
+    payload:
+      elements:
+        - "Decision requests"
+        - "Approval chain"
+        - "Error policy"
+        - "Post-mortems"
+        - "Teams"
+      flows:
+        - from: "Teams"
+          to: "Managers"
+          type: info
+          note: "requests for decisions"
+        - from: "Managers"
+          to: "CEO"
+          type: risk
+          note: "escalation to avoid blame"
+        - from: "CEO"
+          to: "Managers"
+          type: info
+          note: "approvals and responsibility signals"
+        - from: "Post-mortems"
+          to: "Error policy"
+          type: info
+          note: "learning"
+      symptom_location: "Managers escalate by default due to unclear acceptable-error boundaries and fear of blame."
+
+  - artifact_type: CONTRADICTION_STATEMENT
+    pipeline_step: 4
+    payload:
+      improve_x: "скорость и автономность решений на уровне руководителей"
+      worsen_y: "риск ошибок/комплаенса (качество нельзя снижать)"
+      statement_1l: "Если увеличиваем автономность решений, возрастает риск ошибок и нарушение комплаенса."
+      measurement_hint: "X=% решений на уровне руководителей; Y=# комплаенс/качество инцидентов + стоимость ошибок."
+
+  - artifact_type: IKR_CARD
+    pipeline_step: 5
+    payload:
+      ikr_1l: "Руководители принимают решения без страха, потому что границы допустимой ошибки формализованы и защищают их при соблюдении правил."
+      no_new_harm_clause: "Качество/комплаенс не ухудшается; штрафы не основной инструмент."
+
+  - artifact_type: HARD_BARRIER
+    pipeline_step: 6
+    payload:
+      barrier_1l: "Нельзя одновременно убрать страх ошибок и при этом гарантировать нулевые ошибки при мультикультурной удалёнке без формальных границ."
+      equivalent_to_step4: true
+
+  - artifact_type: RESOURCE_MAP
+    pipeline_step: 7
+    payload:
+      resources:
+        - name: "Existing approval logs"
+          category: info
+          tied_to: "Approval chain"
+          note: "where escalations happen"
+        - name: "Post-mortem practice (lightweight)"
+          category: org
+          tied_to: "Post-mortems"
+          note: "learning without blame"
+        - name: "CEO authority to set policy"
+          category: org
+          tied_to: "CEO"
+          note: "policy lever"
+        - name: "Compliance rulebook"
+          category: info
+          tied_to: "Compliance constraints"
+          note: "hard boundaries"
+        - name: "Decision classes (A/B/C)"
+          category: info
+          tied_to: "Decision requests"
+          note: "differentiation"
+        - name: "Error budget per class"
+          category: finance
+          tied_to: "Decision classes (A/B/C)"
+          note: "cost cap"
+        - name: "Manager autonomy"
+          category: org
+          tied_to: "Country/office managers"
+          note: "decision rights"
+        - name: "Trust signals"
+          category: trust
+          tied_to: "CEO → Managers"
+          note: "explicit protection clause"
+
+  - artifact_type: FORM_SELECTION
+    pipeline_step: 8
+    payload:
+      PRIMARY_FORM: "№1 Дифференциация"
+      BOUNDARY_CHECK:
+        NEAREST_FORMS:
+          - "№6 Ресурсоэффективность"
+          - "№1 Дифференциация"
+        WHY_NOT_X:
+          - "Ресурсность важна, но первично — разделить классы решений и допустимую ошибку."
+          - "Оптимизация ресурсов не убирает страх, если границы ответственности не определены."
+          - "Нужен механизм “разные правила для разных рисков”, а не “делать дешевле/быстрее”."
+        WHY_NOT_Y:
+          - "Дифференциация даёт разные правила для разных классов риска и защищает руководителей."
+          - "Требуется разделение по цене ошибки, иначе любое решение воспринимается как потенциально наказуемое."
+          - "Дифференциация обеспечивает масштабируемость на мультистране через простые классы и примеры."
+      D_MARKER: "D5"
+      TRIZ_CORE:
+        CONTRADICTION_1L: "Нужно дать руководителям автономность, но нужно удержать качество и комплаенс без штрафной культуры."
+        IKR_1L: "Каждый класс решения имеет границы и защиту: если руководитель действует в границах, ответственность не персонализируется."
+      PRINCIPLES_TO_ACTION:
+        PRINCIPLES: [1, 4]
+        ACTIONS:
+          - "Сегментация: разделить решения на классы по риску и цене ошибки; для каждого класса задать права, границы и обязательные доказательства."
+          - "Асимметрия: в низкорисковых классах разрешить быстрые решения с пост-мортемом, в высокорисковых — сохранить строгие запреты и эскалацию."
+      IKR_TEST:
+        Q1: "YES — используется существующая политика и логи; без новых систем."
+        Q2: "YES — комплаенс сохраняется через отдельный класс решений и запреты."
+      CONFIDENCE:
+        score: 70
+        justification: "требует локализации по странам, но структура переносима."
+
+  - artifact_type: SOLUTION_SET
+    pipeline_step: 9
+    payload:
+      count_rule: "3–5"
+      concepts:
+        - concept_index: 1
+          name: "Decision Classing + Rights"
+          idea_1l: "классы решений A/B/C + права принятия"
+          linked_form: "№1 Дифференциация"
+          linked_principles: [1, 4]
+          linked_resources:
+            - "Decision classes (A/B/C)"
+            - "Manager autonomy"
+            - "Compliance rulebook"
+          ikr_alignment_1l: "автономность появляется там, где риск управляем"
+        - concept_index: 2
+          name: "Protected Error Budget"
+          idea_1l: "ошибки допускаются в пределах error budget; вне — эскалация"
+          linked_form: "№1 Дифференциация"
+          linked_principles: [1]
+          linked_resources:
+            - "Error budget per class"
+            - "Existing approval logs"
+          ikr_alignment_1l: "страх снижается через защиту при соблюдении границ"
+        - concept_index: 3
+          name: "Blameless Post-mortem Rule"
+          idea_1l: "обязательный разбор ошибок без наказаний при соблюдении процесса"
+          linked_form: "№1 Дифференциация"
+          linked_principles: [4]
+          linked_resources:
+            - "Post-mortem practice (lightweight)"
+            - "Trust signals"
+          ikr_alignment_1l: "учимся без персонализации вины"
+
+  - artifact_type: MECHANISM_SPECS
+    pipeline_step: 10
+    payload:
+      concept_specs:
+        - concept_index: 1
+          A_name_tagline: "Decision Classing — права по классам"
+          B_axis_and_resource: "ось: autonomy vs compliance; ресурс: классификация A/B/C"
+          C_mechanism_steps:
+            - "Определить 3 класса решений по риску и цене ошибки"
+            - "Для каждого класса задать: кто принимает решение, какие проверки обязательны"
+            - "Опубликовать policy и встроить в approval flow"
+          D_assumptions_constraints:
+            - "мультистрана: формулировать правила максимально просто"
+          E_risks_failures:
+            - "классы слишком абстрактны; менеджеры не понимают куда отнести кейс"
+          F_metrics:
+            leading:
+              - "% решений с присвоенным классом"
+              - "% решений класса C без эскалации"
+            lagging:
+              - "снижение доли согласований"
+              - "# комплаенс инцидентов"
+          G_experiment:
+            timebox: "4 недели"
+            budget: "0"
+            pass_criteria: "≥80% решений имеют класс; согласования ↓ на 25% без роста инцидентов"
+        - concept_index: 2
+          A_name_tagline: "Protected Error Budget — защита от страха"
+          B_axis_and_resource: "ось: speed vs cost-of-error; ресурс: error budget по классам"
+          C_mechanism_steps:
+            - "Для каждого класса задать лимит допустимой стоимости ошибки (error budget)"
+            - "Если кейс в пределах лимита — решение на уровне менеджера"
+            - "Если выше — обязательная эскалация"
+          D_assumptions_constraints:
+            - "лимиты должны быть измеримы"
+          E_risks_failures:
+            - "споры о стоимости ошибки"
+          F_metrics:
+            leading:
+              - "# решений в пределах budget"
+              - "# спорных оценок/нед"
+            lagging:
+              - "снижение эскалаций"
+              - "стоимость ошибок"
+          G_experiment:
+            timebox: "4 недели"
+            budget: "0"
+            pass_criteria: "эскалации ↓; стоимость ошибок не растёт"
+        - concept_index: 3
+          A_name_tagline: "Blameless Post-mortem — обучение"
+          B_axis_and_resource: "ось: fear vs learning; ресурс: пост-мортем практика"
+          C_mechanism_steps:
+            - "Ввести правило: пост-мортем обязателен для ошибок класса A/B"
+            - "Если процесс соблюдён — нет персональных санкций"
+            - "Выход пост-мортема — обновление правила/чек-листа"
+          D_assumptions_constraints:
+            - "штрафы не основной инструмент"
+          E_risks_failures:
+            - "пост-мортем превращается в поиск виноватых"
+          F_metrics:
+            leading:
+              - "# пост-мортемов/мес"
+              - "% пост-мортемов с rule update"
+            lagging:
+              - "снижение повторных ошибок"
+              - "рост автономных решений"
+          G_experiment:
+            timebox: "6 недель"
+            budget: "0"
+            pass_criteria: "повторные ошибки ↓; автономные решения ↑"
+
+  - artifact_type: SECONDARY_CONTRADICTION_CHECK
+    pipeline_step: 11
+    payload:
+      new_contradiction_exists: false
+
+  - artifact_type: DECISION_RECORD
+    pipeline_step: 12
+    payload:
+      chosen_concept_index: 1
+      chosen_concept_name: "Decision Classing + Rights"
+      reasons:
+        - "даёт понятные границы и снижает страх через предсказуемость"
+        - "масштабируется на мультистране и не требует штрафов"
+      rejected_alternatives:
+        - concept_index: 2
+          concept: "Protected Error Budget"
+          why_rejected: "нужна оценка стоимости ошибки; риск споров на старте"
+        - concept_index: 3
+          concept: "Blameless Post-mortem Rule"
+          why_rejected: "важно, но вторично к классификации прав"
+      assumptions:
+        - "compliance rulebook доступен и может быть привязан к классу A"
+      success_criteria:
+        - "доля согласований ↓ на 25%+"
+        - "комплаенс инциденты не растут"
+
+  - artifact_type: IMPLEMENTATION_MAP
+    pipeline_step: 13
+    payload:
+      workstreams:
+        - name: "Policy Design"
+          owner: "CEO"
+          tasks:
+            - task: "Определить классы решений A/B/C и примеры"
+              due: "T+7d"
+              dependency: ""
+              checkpoint_metric: "policy draft готов"
+            - task: "Согласовать с комплаенсом границы класса A"
+              due: "T+14d"
+              dependency: "draft"
+              checkpoint_metric: "границы утверждены"
+        - name: "Rollout & Training"
+          owner: "COO"
+          tasks:
+            - task: "Обучение менеджеров: как классифицировать кейсы"
+              due: "T+21d"
+              dependency: "policy"
+              checkpoint_metric: "≥80% менеджеров прошли"
+            - task: "Еженедельный аудит 10 решений на корректность класса"
+              due: "T+28d"
+              dependency: "rollout"
+              checkpoint_metric: "ошибки классификации ↓"
+
+  - artifact_type: RULE_UPDATE
+    pipeline_step: 14
+    payload:
+      rule_id: "RULE-DECISION-CLASS-01"
+      rule_statement_if_then: "Если решение относится к классу C (низкий риск), то оно принимается руководителем без согласования; если класс A — обязательная проверка комплаенса и эскалация по правилу."
+      criterion: "decision_class in {A,B,C} определён по примерам и границам; A требует комплаенс-check"
+      boundaries: "класс A определяется комплаенсом; для новых типов решений — временно класс B до уточнения"
+      evidence_from_case: "симптом: страх ошибки и эскалации; ограничение: нельзя снижать комплаенс и нельзя строить штрафы"
+      test_case_action:
+        add_or_update: add
+        test_case_id: TC16
+        expected_effect: "автономные решения ↑, согласования ↓ без роста инцидентов"
+      version_note: "NON-CANON case rule; canon unchanged"
+      rationale_1l: "страх снижается, когда границы ответственности формализованы"

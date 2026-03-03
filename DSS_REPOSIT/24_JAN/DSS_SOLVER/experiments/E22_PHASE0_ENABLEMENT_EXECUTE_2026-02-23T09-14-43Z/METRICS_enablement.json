@@ -1,0 +1,22 @@
+{
+  "reference_variant": "V1",
+  "gatepfl": {
+    "V1": {
+      "verdict": "pass",
+      "reason": ""
+    },
+    "V2": {
+      "verdict": "fail",
+      "reason": "SOLUTION_AS_XY"
+    },
+    "V3": {
+      "verdict": "pass",
+      "reason": ""
+    }
+  },
+  "flip_baseline_relative": true,
+  "PFL_variance_baseline_relative": 0.5,
+  "diff_variants": [
+    "V2"
+  ]
+}

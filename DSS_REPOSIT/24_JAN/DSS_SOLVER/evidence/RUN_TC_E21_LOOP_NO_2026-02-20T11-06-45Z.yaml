@@ -1,0 +1,99 @@
+run_id: 2026-02-20T11-06-45Z
+test_case_id: TC_E21_LOOP_NO
+harness_version: dss-solver-0.1
+timestamp_utc: 2026-02-20T11-06-45Z
+overall_status: FAIL
+gate_results:
+  - gate: Gate0
+    status: PASS
+    reasons: []
+  - gate: Gate1
+    status: FAIL
+    reasons:
+      - "Step0.symptom_1l missing"
+      - "Step1.constraints missing"
+  - gate: Gate2
+    status: FAIL
+    reasons:
+      - "Step2.actor missing"
+      - "Step2.system missing"
+      - "Step2.environment missing"
+      - "Step2.boundary_note_1l missing"
+  - gate: Gate3
+    status: FAIL
+    reasons:
+      - "Step3.elements missing"
+      - "Step3.flows missing"
+      - "Step3.symptom_location missing"
+  - gate: GatePFL
+    status: NOT_RUN
+    reasons:
+      - "PFL disabled (historical compatibility)"
+  - gate: Gate4
+    status: PASS
+    reasons:
+      - "G4-P1: ok"
+  - gate: Gate5
+    status: PASS
+    reasons:
+      - "G5-P1: ok"
+  - gate: Gate6
+    status: PASS
+    reasons:
+      - "G6-P1: ok"
+  - gate: Gate7
+    status: FAIL
+    reasons:
+      - "Step7.resources is not a list"
+  - gate: Gate8
+    status: FAIL
+    reasons:
+      - "Step8.PRIMARY_FORM missing"
+      - "Step8.BOUNDARY_CHECK missing"
+      - "Step8.TRIZ_CORE missing"
+      - "Step8.PRINCIPLES_TO_ACTION missing"
+      - "Step8.IKR_TEST missing"
+      - "Step8.CONFIDENCE missing"
+      - "Step8.PRINCIPLES_TO_ACTION.PRINCIPLES missing"
+      - "Step8.PRINCIPLES_TO_ACTION.ACTIONS missing"
+      - "Step8.TRIZ_CORE.physical_contradiction missing"
+      - "Step8.TRIZ_CORE.separation missing"
+      - "Step8.TRIZ_CORE.system_operator missing"
+      - "Step8.TRIZ_CORE.transformation_model missing"
+      - "Step8.TRIZ_CORE.non_obviousness_check missing"
+  - gate: GateCR
+    status: HARD_FAIL
+    reasons:
+      - "structural resolution not found"
+  - gate: Gate9
+    status: NOT_RUN
+    reasons:
+      - "structural resolution not found"
+  - gate: Gate10
+    status: NOT_RUN
+    reasons:
+      - "structural resolution not found"
+  - gate: Gate11
+    status: NOT_RUN
+    reasons:
+      - "structural resolution not found"
+  - gate: Gate12
+    status: NOT_RUN
+    reasons:
+      - "structural resolution not found"
+  - gate: Gate13
+    status: NOT_RUN
+    reasons:
+      - "structural resolution not found"
+  - gate: Gate14
+    status: NOT_RUN
+    reasons:
+      - "structural resolution not found"
+  - gate: GateTRIZ
+    status: FAIL
+    reasons:
+      - "TRIZ_G1_MISSING: physical_contradiction missing (step_8.TRIZ_CORE.physical_contradiction)"
+      - "TRIZ_G2_MISSING: separation missing (step_8.TRIZ_CORE.separation)"
+      - "TRIZ_G3_MISSING: system_operator missing (step_8.TRIZ_CORE.system_operator)"
+      - "TRIZ_G4_MISSING: non_obviousness_check missing (step_8.TRIZ_CORE.non_obviousness_check)"
+      - "TRIZ_GX_MISSING: transformation_model missing (step_8.TRIZ_CORE.transformation_model)"

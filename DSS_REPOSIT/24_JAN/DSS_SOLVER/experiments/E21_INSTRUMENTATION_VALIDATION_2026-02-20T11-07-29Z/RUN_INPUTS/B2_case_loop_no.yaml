@@ -1,0 +1,124 @@
+test_case_id: "TC_E21_LOOP_NO"
+status: "FILLED"
+mode: "full_vector"
+canon_versions:
+  schema: "TEST_VECTOR_SCHEMA_v0.2"
+schema: "TEST_VECTOR_SCHEMA_v0.2"
+schema_version: null
+pfl_enabled: null
+historical_exempt: false
+operator_core_enabled: true
+full_vector:
+  step_1:
+    owner_role: "собственник бизнеса"
+    owner_scope: "выход на рынок Польши с ограниченным стартовым ассортиментом"
+    problem_1l: "Не может выбрать стартовый ассортимент для выхода на рынок Польши из-за ограничения бюджета и неопределенности по ценовому сегменту."
+  step_4:
+    raw_constraints: "нужно 3..10 SKU из 20, неясен ценовой сегмент старта"
+    improve_x: "уверенность в правильном стартовом ассортименте для Польши"
+    worsen_y: "ошибка выбора SKU, дающая искаженный сигнал о реальном спросе"
+    statement_1l: "Нужно повысить уверенность выбора стартового ассортимента, не допуская ошибочного набора SKU."
+    measurement_hint: "качество сигнала спроса по стартовому набору SKU"
+  step_5:
+    ikr_1l: "Выйти в Польшу со стартовым набором SKU, который дает надежный рыночный сигнал по цене/УТП без потерь от масштабирования."
+  step_6:
+    barrier_1l: "Бюджет первой волны выхода на рынок Польши не выше 20 000 EUR."
+    equivalent_to_step4: true
+    max_launch_budget_eur: 20000
+  step_7:
+    resources:
+      -
+        name: "бюджет 20 000 EUR"
+        category: "money"
+        tied_to: "первая волна выхода"
+      -
+        name: "склад в Украине"
+        category: "material"
+        tied_to: "наличие товара"
+      -
+        name: "генераторы на складе"
+        category: "material"
+        tied_to: "стартовый ассортимент"
+      -
+        name: "транспорт (машина)"
+        category: "logistics"
+        tied_to: "доставка в Польшу"
+      -
+        name: "каналы продаж (сети/онлайн)"
+        category: "channel"
+        tied_to: "реализация старта"
+  step_8:
+    risk_1l: "Риск: в первую волну завезти неправильные SKU, которые не востребованы рынком, и потерять деньги."
+  step_8_5:
+    detected_conflict_types:
+      - "B"
+    dominant_conflict_type: "B"
+    operator_selected: "DEPENDENCY_INVERSION"
+    operator_frame: "Сначала малый проверочный набор для сигнала спроса, масштабирование только по подтвержденному сигналу."
+    proposed_mechanism: "Первая волна: 3 SKU, бюджет до 20 000 EUR; масштабирование только если 10 торговых точек готовы заказать по 5 единиц."
+    open_risk_note: "Остается риск неверного выбора самих SKU для первой волны."
+    sku_selection_rule_draft: "Выбор 3 SKU по анализу интернет-продаж в Польше на агрегаторах: брать наиболее часто заказываемые аналоги из собственного ассортимента."
+    sku_selection_rule: "Перед запуском выбираем топ-50 продаваемых генераторов на польских агрегаторах, затем берем 3 ближайших аналога из собственного ассортимента по техпараметрам."
+    structural_resolution_confirmed: true
+    separation_illusion_test: false
+    gatecr_status: "PASS"
+    hard_fail_message: ""
+  step_9:
+    count_rule: "single action chain"
+    concepts:
+      -
+        concept_index: 1
+        name: "Анализ-три SKU-полевая проверка"
+        idea_1l: "Сначала анализ топ-20 продаж в Польше, затем выбор 3 SKU, далее выезд представителя с образцами/каталогом для первой проверки."
+  step_10:
+    concept_specs:
+      -
+        concept_index: 1
+        A_name_tagline: "Анализ топ-20 и выбор 3 SKU"
+        B_axis_and_resource: "Маркетинг-директор + техдиректор + внутренние данные/агрегаторы"
+        C_mechanism_steps:
+          - "анализ топ-20 продаж в Польше"
+          - "передача 3 SKU техдиректору за 2 дня"
+        D_assumptions_constraints:
+          - "бюджет этапа 0 EUR"
+          - "используются текущие сотрудники"
+        E_risks_failures:
+          - "ошибка интерпретации рыночных данных"
+        F_metrics:
+          leading:
+            - "завершен анализ за 2 дня"
+          lagging:
+            - "сформирован список 3 SKU"
+        G_experiment:
+          timebox: "2 дня"
+          budget: "0 EUR"
+          pass_criteria: "3 SKU переданы техдиректору"
+    mechanism_1l: "Маркетинг-директор за 2 дня анализирует топ-20 и передает техдиректору 3 SKU; бюджет этапа 0 EUR."
+  step_11:
+    new_contradiction_exists: false
+    selection_criteria_refs:
+      - "contradiction"
+      - "ikr"
+      - "barrier"
+    criteria:
+      -
+        criterion: "Выход в первую волну только при подтвержденной марже по выбранным 3 SKU"
+        derived_from: "CONSTRAINT"
+        check_method: "Сверка цен Польша/наша цена и расчет маржи в отчете маркетинг-директора"
+      -
+        criterion: "Выбранные SKU должны быть технически близки к топ-продажам Польши"
+        derived_from: "IKR"
+        check_method: "Сопоставление техпараметров техдиректором в таблице соответствия"
+      -
+        criterion: "Решение о выходе принимает owner/CEO после отчета"
+        derived_from: "RISK"
+        check_method: "Наличие решения owner/CEO по итоговому пакету данных"
+  step_12:
+    chosen_concept_index: 1
+    chosen_concept_name: "Выход с 3 SKU по рыночному фильтру и проверке маржи"
+    reasons:
+      - "подтверждение техсоответствия и маржи перед первой волной"
+    commit_confirmation: "YES"
+    compromise_mode: false
+    commit_step: "Запустить первую волну с 3 SKU после отчета маркетинг-директора и сверки техдиректором"
+    revisit_if: "Если итоговая маржа ниже порога или техсоответствие не подтверждено"

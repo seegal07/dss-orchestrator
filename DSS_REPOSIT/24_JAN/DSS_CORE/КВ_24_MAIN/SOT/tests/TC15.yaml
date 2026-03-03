@@ -1,0 +1,318 @@
+test_case_id: TC15
+status: FILLED
+mode: artifact_pack
+canon_versions:
+  canon_pipeline: CANON_PIPELINE_v1.2.docx
+  canon_9forms: CANON_9FORMS_v1.1.docx
+  schema: TEST_VECTOR_SCHEMA_v0.1.md.docx
+notes: "patched vector"
+
+artifact_pack:
+  - artifact_type: CASE_SYMPTOM
+    pipeline_step: 0
+    payload:
+      symptom_1l: "В проектной команде растёт переработка и выгорание, но срок выпуска не ускоряется; люди параллелят слишком много задач."
+
+  - artifact_type: PROBLEM_OWNER_CARD
+    pipeline_step: 1
+    payload:
+      owner_role: "Руководитель направления / Delivery Manager"
+      owner_scope: "Может менять правила WIP, приоритизацию, формат планирования, распределение задач и политику «стоп-начала»."
+      constraints:
+        - "Нельзя увеличивать штат команды"
+        - "Нельзя сдвигать дедлайн релиза"
+        - "Нельзя вводить микроменеджмент по минутам"
+      success_metric_hint: "WIP на человека, cycle time, переработки (ч/неделя), дефекты."
+
+  - artifact_type: SYSTEM_BOUNDARY_MAP
+    pipeline_step: 2
+    payload:
+      actor:
+        - "Разработчики"
+        - "Тимлид"
+        - "Delivery Manager"
+        - "Бэклог/таск-трекер"
+        - "Стейкхолдеры"
+      system:
+        - "Процесс планирования и приоритизации"
+        - "Правила WIP и переключения контекста"
+      environment:
+        - "Дедлайн релиза"
+        - "Внешние зависимости"
+        - "Ожидания бизнеса"
+      boundary_note_1l: "Симптом возникает из-за дефицита управляемого ресурса внимания/фокуса в условиях фиксированного дедлайна."
+
+  - artifact_type: INTERACTION_MAP
+    pipeline_step: 3
+    payload:
+      elements:
+        - "Бэклог"
+        - "WIP"
+        - "Переключение контекста"
+        - "Дедлайн релиза"
+        - "Качество (дефекты)"
+      flows:
+        - from: "Стейкхолдеры"
+          to: "Бэклог"
+          type: info
+          note: "новые запросы/приоритеты"
+        - from: "Delivery Manager"
+          to: "WIP"
+          type: org
+          note: "назначение задач и параллельность"
+        - from: "WIP"
+          to: "Переключение контекста"
+          type: time
+          note: "потери времени на переключение"
+        - from: "Переключение контекста"
+          to: "Качество (дефекты)"
+          type: risk
+          note: "ошибки и переделки"
+      symptom_location: "В узле «WIP → переключение контекста»: растёт переработка без ускорения поставки."
+
+  - artifact_type: CONTRADICTION_STATEMENT
+    pipeline_step: 4
+    payload:
+      improve_x: "Скорость поставки (выпуск к дедлайну)"
+      worsen_y: "Нагрузка и качество (переработки и дефекты)"
+      statement_1l: "Если увеличиваем скорость через параллельность, растут переработки и дефекты; если ограничиваем нагрузку, кажется, что скорость падает."
+      measurement_hint: "X=% задач в релиз; Y=переработки/неделя + дефекты."
+
+  - artifact_type: IKR_CARD
+    pipeline_step: 5
+    payload:
+      ikr_1l: "Команда поставляет больше к релизу без переработок и без роста дефектов."
+      no_new_harm_clause: "Без микроменеджмента времени."
+
+  - artifact_type: HARD_BARRIER
+    pipeline_step: 6
+    payload:
+      barrier_1l: "Нельзя держать много задач в работе и сохранять высокий фокус без потерь и дефектов."
+      equivalent_to_step4: true
+
+  - artifact_type: RESOURCE_MAP
+    pipeline_step: 7
+    payload:
+      resources:
+        - name: "Фокус внимания разработчика"
+          category: time
+          tied_to: "Переключение контекста"
+          note: "теряется при параллельности"
+        - name: "Лимит WIP как правило"
+          category: org
+          tied_to: "WIP"
+          note: "формализуем 1–2 задачи"
+        - name: "Статистика cycle time по задачам"
+          category: info
+          tied_to: "Бэклог/таск-трекер"
+          note: "видим где узкие места"
+        - name: "Буфер релиза (критический путь)"
+          category: time
+          tied_to: "Дедлайн релиза"
+          note: "защищаем от «вбросов»"
+        - name: "Шаблоны DoD"
+          category: org
+          tied_to: "Качество (дефекты)"
+          note: "уменьшают переделки"
+        - name: "CI/автотесты"
+          category: info
+          tied_to: "Качество (дефекты)"
+          note: "самопроверка"
+        - name: "Правило stop-starting"
+          category: org
+          tied_to: "WIP"
+          note: "новое только после завершения"
+        - name: "Приоритет Top-3"
+          category: org
+          tied_to: "Бэклог"
+          note: "фиксирует фокус"
+        - name: "Договорённость со стейкхолдерами о входящем потоке"
+          category: trust
+          tied_to: "Стейкхолдеры"
+          note: "снижает шум"
+
+  - artifact_type: FORM_SELECTION
+    pipeline_step: 8
+    payload:
+      PRIMARY_FORM: "№6 Ресурсоэффективность"
+      BOUNDARY_CHECK:
+        NEAREST_FORMS:
+          - "№6 Ресурсоэффективность"
+          - "№1 Дифференциация"
+        WHY_NOT_X:
+          - "Ключ — дефицитный ресурс фокуса и потока; его надо экономить."
+          - "Меньше WIP ускоряет завершение без найма."
+        WHY_NOT_Y:
+          - "Дробление задач полезно, но не лечит потери от переключений."
+          - "Сначала управляем ресурсом потока, потом оптимизируем структуру."
+      D_MARKER: "D5"
+      TRIZ_CORE:
+        CONTRADICTION_1L: "нужно делать много параллельно, но нужно сохранять фокус"
+        IKR_1L: "поток ускоряется при меньшем WIP"
+      PRINCIPLES_TO_ACTION:
+        PRINCIPLES: [6, 25, 12]
+        ACTIONS:
+          - "06: Универсальность — стандартизировать DoD и шаблоны задач."
+          - "25: Самообслуживание — автоматизировать проверки через CI."
+          - "12: Эквипотенциальность — выровнять нагрузку через Top-3 и stop-starting."
+      IKR_TEST:
+        Q1: "YES — WIP лимиты высвобождают фокус."
+        Q2: "YES — CI снижает дефекты без роста нагрузки."
+      CONFIDENCE:
+        score: 74
+        justification: "Есть данные в таск-трекере; правила WIP в контроле владельца."
+
+  - artifact_type: SOLUTION_SET
+    pipeline_step: 9
+    payload:
+      count_rule: "3–5"
+      concepts:
+        - concept_index: 1
+          name: "Лимиты WIP + stop-starting"
+          idea_1l: "Ввести WIP=1–2 на человека и правило: новая задача только после завершения текущей."
+          linked_form: "№6 Ресурсоэффективность"
+          linked_principles: [12]
+          linked_resources:
+            - "Лимит WIP как правило"
+            - "Фокус внимания разработчика"
+            - "Правило stop-starting"
+          ikr_alignment_1l: "Ускорение потока за счёт меньших потерь на переключение."
+        - concept_index: 2
+          name: "Стандартизированный DoD + шаблоны"
+          idea_1l: "Унифицировать DoD и шаблоны задач, чтобы уменьшить переделки."
+          linked_form: "№6 Ресурсоэффективность"
+          linked_principles: [6]
+          linked_resources:
+            - "Шаблоны DoD"
+            - "Статистика cycle time по задачам"
+          ikr_alignment_1l: "Меньше переделок — больше свободного ресурса."
+        - concept_index: 3
+          name: "Автопроверки в CI"
+          idea_1l: "Сделать обязательными автопроверки в CI, чтобы снизить дефекты и ручной контроль."
+          linked_form: "№6 Ресурсоэффективность"
+          linked_principles: [25]
+          linked_resources:
+            - "CI/автотесты"
+            - "Шаблоны DoD"
+          ikr_alignment_1l: "Качество растёт без переработок."
+
+  - artifact_type: MECHANISM_SPECS
+    pipeline_step: 10
+    payload:
+      concept_specs:
+        - concept_index: 1
+          A_name_tagline: "WIP лимиты — «меньше начатого, больше завершенного»"
+          B_axis_and_resource: "Ось: поток задач; ресурс: фокус внимания"
+          C_mechanism_steps:
+            - "Замерить базовую линию WIP/чел и cycle time за 2 недели."
+            - "Ввести правило WIP=1–2 и stop-starting в таск-трекере."
+            - "Ежедневно отслеживать нарушения и причины."
+          D_assumptions_constraints:
+            - "Стейкхолдеры принимают Top-3."
+          E_risks_failures:
+            - "Срочные вбросы сломают правило."
+          F_metrics:
+            leading:
+              - "средний WIP/чел"
+              - "число переключений статусов"
+              - "доля задач завершённых/неделя"
+            lagging:
+              - "cycle time"
+              - "переработки/неделя"
+              - "дефекты"
+          G_experiment:
+            timebox: "3 недели"
+            budget: "0 EUR"
+            pass_criteria: "Cycle time ↓ ≥15% и переработки ↓ ≥10% при неизменном объёме закрытых задач"
+        - concept_index: 2
+          A_name_tagline: "DoD и шаблоны — «меньше переделок»"
+          B_axis_and_resource: "Ось: снижение вариативности; ресурс: стандарты"
+          C_mechanism_steps:
+            - "Сделать DoD и шаблоны для 5 типовых задач."
+            - "Ввести обязательное использование шаблонов."
+          D_assumptions_constraints:
+            - "Шаблоны не добавляют бюрократии."
+          E_risks_failures:
+            - "Шаблоны будут игнорироваться."
+          F_metrics:
+            leading:
+              - "доля задач по шаблону"
+              - "число возвратов на доработку"
+            lagging:
+              - "дефекты"
+              - "cycle time"
+          G_experiment:
+            timebox: "4 недели"
+            budget: "0 EUR"
+            pass_criteria: "Возвраты на доработку ↓ ≥20%"
+        - concept_index: 3
+          A_name_tagline: "CI проверки — «самообслуживание качества»"
+          B_axis_and_resource: "Ось: автоматизация контроля; ресурс: CI"
+          C_mechanism_steps:
+            - "Определить 3 обязательные проверки (lint/tests/security)."
+            - "Сделать правило: без зелёного CI нельзя мёржить."
+          D_assumptions_constraints:
+            - "CI инфраструктура доступна."
+          E_risks_failures:
+            - "CI станет медленным."
+          F_metrics:
+            leading:
+              - "% зелёного CI"
+              - "время CI"
+              - "дефекты пойманы до релиза"
+            lagging:
+              - "дефекты на релиз"
+              - "переработки"
+          G_experiment:
+            timebox: "3 недели"
+            budget: "0–300 EUR"
+            pass_criteria: "Дефекты ↓ ≥15% без роста времени CI > 20%"
+
+  - artifact_type: SECONDARY_CONTRADICTION_CHECK
+    pipeline_step: 11
+    payload:
+      new_contradiction_exists: false
+
+  - artifact_type: DECISION_RECORD
+    pipeline_step: 12
+    payload:
+      chosen_concept_index: 1
+      chosen_concept_name: "Лимиты WIP + stop-starting"
+      reasons:
+        - "Быстрый эффект без найма."
+        - "Лечит корень — потери на переключениях."
+      success_criteria:
+        - "WIP/чел ↓"
+        - "Cycle time ↓ ≥15%"
+        - "Переработки ↓ ≥10%"
+
+  - artifact_type: IMPLEMENTATION_MAP
+    pipeline_step: 13
+    payload:
+      workstreams:
+        - name: "Правила потока"
+          owner: "Delivery Manager"
+          tasks:
+            - task: "Согласовать Top-3 приоритета со стейкхолдерами"
+              due: "2026-02-05"
+              dependency: "нет"
+              checkpoint_metric: "Top-3 закреплены"
+            - task: "Ввести WIP=1–2 и stop-starting в таск-трекере"
+              due: "2026-02-08"
+              dependency: "Top-3 закреплены"
+              checkpoint_metric: "правило включено"
+
+  - artifact_type: RULE_UPDATE
+    pipeline_step: 14
+    payload:
+      rule_id: "CASE-RULE-TC15-01"
+      rule_statement_if_then: "Если WIP/чел > 2, то новые задачи не начинаются до завершения текущих, а приоритет фиксируется как Top-3."
+      criterion: "WIP/чел > 2 более 3 дней подряд."
+      boundaries: "Не применимо к аварийным инцидентам."
+      evidence_from_case: "Симптом: переработки без ускорения из-за параллельности."
+      test_case_action:
+        add_or_update: add
+        test_case_id: TC15
+        expected_effect: "cycle time ↓, переработки ↓"
+      version_note: "NON-CANON case rule; canon unchanged"
+      rationale_1l: "Экономия ресурса фокуса ускоряет поток без выгорания."

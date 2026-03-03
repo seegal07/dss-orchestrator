@@ -1,0 +1,9 @@
+run_id: 2026-02-06T22-14-30Z
+test_case_id: TC_DSS03_NEG_G6P1
+issues:
+  - gate: Gate6
+    issue_code: STRUCTURAL
+    message: "G6-P1: Негативный тест: G6-P1 FAIL"
+  - gate: Gate6
+    issue_code: STRUCTURAL
+    message: "G6-P2: OK"

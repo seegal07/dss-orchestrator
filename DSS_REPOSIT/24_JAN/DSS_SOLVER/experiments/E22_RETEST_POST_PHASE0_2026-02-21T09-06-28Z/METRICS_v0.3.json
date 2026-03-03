@@ -1,0 +1,31 @@
+{
+  "variants": {
+    "V1": {
+      "GatePFL": "pass",
+      "PFL_OUTPUT_verdict": "PASS",
+      "PFL_OUTPUT_reason": "NONE"
+    },
+    "V2": {
+      "GatePFL": "fail",
+      "PFL_OUTPUT_verdict": "PASS",
+      "PFL_OUTPUT_reason": "NONE"
+    },
+    "V3": {
+      "GatePFL": "pass",
+      "PFL_OUTPUT_verdict": "PASS",
+      "PFL_OUTPUT_reason": "NONE"
+    }
+  },
+  "metrics_gatepfl": {
+    "flip": true,
+    "pfl_variance": 0.5,
+    "diff_variants": [
+      "V2"
+    ]
+  },
+  "metrics_pfl_output": {
+    "flip": false,
+    "pfl_variance": 0.0,
+    "diff_variants": []
+  }
+}

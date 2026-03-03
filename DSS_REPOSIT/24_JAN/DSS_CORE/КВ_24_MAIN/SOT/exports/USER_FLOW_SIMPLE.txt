@@ -1,0 +1,28 @@
+USER FLOW (Simple)
+
+Goal: Turn a messy business problem into a validated decision + execution package.
+
+Step 1 — Intake (15–30 min)
+- User describes the problem and constraints.
+- Output: clear problem statement + owner + constraints.
+
+Step 2 — Structure (30–60 min)
+- Define boundaries, actors, interactions, contradiction, resources.
+- Output: structured problem model.
+
+Step 3 — Synthesis (30–60 min)
+- Select form, generate solution set, choose mechanism.
+- Output: decision draft + mechanism specs.
+
+Step 4 — Decision & Plan (30–60 min)
+- Final decision, implementation map, rule update.
+- Output: execution plan + rule update.
+
+Step 5 — Validation (5–10 min)
+- Harness checks Gate0–Gate14.
+- Output: PASS/FAIL evidence.
+
+Step 6 — Delivery (10–15 min)
+- Client receives report + plan + policy rule.
+
+Total time (manual): ~2–4 hours per case.

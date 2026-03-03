@@ -1,0 +1,103 @@
+{
+  "reference_variant": "V1",
+  "checkpoints": {
+    "checkpoint_1_gatephase0": "PASS",
+    "checkpoint_2_hashes": "PASS",
+    "per_variant": {
+      "V1": {
+        "gatephase0_ok": true,
+        "hashes_ok": true
+      },
+      "V2": {
+        "gatephase0_ok": true,
+        "hashes_ok": true
+      },
+      "V3": {
+        "gatephase0_ok": true,
+        "hashes_ok": true
+      }
+    }
+  },
+  "Step1": "PASS",
+  "Step2": "PASS",
+  "variants": {
+    "V1": {
+      "canonical_hash_v0": "24fea4b593c4325ffc7e855d3921e9d40e39021cf4c167c73975e029f3322c57",
+      "s2a_hash": "fddc58694ba124905ef05deb5650fe5ce4d4598a63e53914cf2d242210e25610",
+      "X_delta_direction": "decelerate",
+      "Y_delta_direction": "decelerate",
+      "trace_markers": [
+        "DELTA_FROM_RAW:X",
+        "DELTA_FROM_RAW:Y"
+      ],
+      "GatePFL_result": "fail",
+      "GatePFL_reason": "NO_MUTUAL_DEGRADATION",
+      "raw_variant_text_symptom_1l": "Trade-off: чем выше точность прогноза для запуска филиалов в Европе, тем дольше время запуска филиалов в Европе, при фиксированном бюджете и длительности исследования.",
+      "anchors": {
+        "S03_0": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/S2A_CAPABLE_BASELINE_FAMILY_CONSISTENT_2026-02-27T11-32-41Z/EXPORTS/V1/S03_0_PHASE0_OUTPUT.md",
+        "gate_log": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/S2A_CAPABLE_BASELINE_FAMILY_CONSISTENT_2026-02-27T11-32-41Z/EXPORTS/V1/gate_log.json",
+        "tc_yaml": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/S2A_CAPABLE_BASELINE_FAMILY_CONSISTENT_2026-02-27T11-32-41Z/E22_V1.yaml",
+        "canonical_hash_v0_line": 8,
+        "s2a_hash_line": 9,
+        "X_delta_direction_line": 14,
+        "Y_delta_direction_line": 19,
+        "trace_markers_line": 26,
+        "GatePFL_result_line": 92,
+        "GatePFL_reason_line": 96,
+        "symptom_1l_line": 16
+      }
+    },
+    "V2": {
+      "canonical_hash_v0": "24fea4b593c4325ffc7e855d3921e9d40e39021cf4c167c73975e029f3322c57",
+      "s2a_hash": "fddc58694ba124905ef05deb5650fe5ce4d4598a63e53914cf2d242210e25610",
+      "X_delta_direction": "decelerate",
+      "Y_delta_direction": "decelerate",
+      "trace_markers": [
+        "DELTA_FROM_RAW:X",
+        "DELTA_FROM_RAW:Y"
+      ],
+      "GatePFL_result": "fail",
+      "GatePFL_reason": "NO_MUTUAL_DEGRADATION",
+      "raw_variant_text_symptom_1l": "Конфликт метрик: чем больше точность прогноза для запуска филиалов в Европе, тем дольше время запуска филиалов в Европе; бюджет и длительность исследования не увеличиваются.",
+      "anchors": {
+        "S03_0": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/S2A_CAPABLE_BASELINE_FAMILY_CONSISTENT_2026-02-27T11-32-41Z/EXPORTS/V2/S03_0_PHASE0_OUTPUT.md",
+        "gate_log": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/S2A_CAPABLE_BASELINE_FAMILY_CONSISTENT_2026-02-27T11-32-41Z/EXPORTS/V2/gate_log.json",
+        "tc_yaml": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/S2A_CAPABLE_BASELINE_FAMILY_CONSISTENT_2026-02-27T11-32-41Z/E22_V2.yaml",
+        "canonical_hash_v0_line": 8,
+        "s2a_hash_line": 9,
+        "X_delta_direction_line": 14,
+        "Y_delta_direction_line": 19,
+        "trace_markers_line": 26,
+        "GatePFL_result_line": 92,
+        "GatePFL_reason_line": 96,
+        "symptom_1l_line": 16
+      }
+    },
+    "V3": {
+      "canonical_hash_v0": "24fea4b593c4325ffc7e855d3921e9d40e39021cf4c167c73975e029f3322c57",
+      "s2a_hash": "fddc58694ba124905ef05deb5650fe5ce4d4598a63e53914cf2d242210e25610",
+      "X_delta_direction": "decelerate",
+      "Y_delta_direction": "decelerate",
+      "trace_markers": [
+        "DELTA_FROM_RAW:X",
+        "DELTA_FROM_RAW:Y"
+      ],
+      "GatePFL_result": "fail",
+      "GatePFL_reason": "NO_MUTUAL_DEGRADATION",
+      "raw_variant_text_symptom_1l": "Противоречие: чем выше точность прогноза для запуска филиалов в Европе, тем дольше время запуска филиалов в Европе, при неизменных бюджете и длительности исследования.",
+      "anchors": {
+        "S03_0": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/S2A_CAPABLE_BASELINE_FAMILY_CONSISTENT_2026-02-27T11-32-41Z/EXPORTS/V3/S03_0_PHASE0_OUTPUT.md",
+        "gate_log": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/S2A_CAPABLE_BASELINE_FAMILY_CONSISTENT_2026-02-27T11-32-41Z/EXPORTS/V3/gate_log.json",
+        "tc_yaml": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/S2A_CAPABLE_BASELINE_FAMILY_CONSISTENT_2026-02-27T11-32-41Z/E22_V3.yaml",
+        "canonical_hash_v0_line": 8,
+        "s2a_hash_line": 9,
+        "X_delta_direction_line": 14,
+        "Y_delta_direction_line": 19,
+        "trace_markers_line": 26,
+        "GatePFL_result_line": 92,
+        "GatePFL_reason_line": 96,
+        "symptom_1l_line": 16
+      }
+    }
+  }
+}

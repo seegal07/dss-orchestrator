@@ -1,0 +1,322 @@
+test_case_id: TC11
+status: FILLED
+mode: artifact_pack
+canon_versions:
+  canon_pipeline: CANON_PIPELINE_v1.2.docx
+  canon_9forms: CANON_9FORMS_v1.1.docx
+  schema: TEST_VECTOR_SCHEMA_v0.1.md.docx
+notes: "Expansion A vector"
+
+artifact_pack:
+  - artifact_type: CASE_SYMPTOM
+    pipeline_step: 0
+    payload:
+      symptom_1l: "Внутренние проекты внедрения затягиваются, потому что задачи "висят" между командами и нет ясного владельца стыков."
+
+  - artifact_type: PROBLEM_OWNER_CARD
+    pipeline_step: 1
+    payload:
+      owner_role: "Руководитель PMO / Program Manager (или COO)"
+      owner_scope: "Может определить границы работ команд, правила передачи, RACI и артефакты приёмки"
+      constraints:
+        - "Нельзя добавлять новых менеджеров/PM"
+        - "Нельзя менять оргструктуру в этом квартале"
+        - "Решение должно работать на существующих ролях"
+      success_metric_hint: "% задач, завершённых в срок + среднее время "waiting for handoff" (дней)."
+
+  - artifact_type: SYSTEM_BOUNDARY_MAP
+    pipeline_step: 2
+    payload:
+      actor:
+        - "PMO"
+        - "Team A"
+        - "Team B"
+        - "Stakeholder"
+      system:
+        - "Cross-team project delivery"
+      environment:
+        - "Existing org structure"
+        - "Current tooling (boards/docs)"
+      boundary_note_1l: "Граница - управление стыками и передачей задач между командами без изменения оргструктуры."
+
+  - artifact_type: INTERACTION_MAP
+    pipeline_step: 3
+    payload:
+      elements:
+        - "Team A backlog"
+        - "Team B backlog"
+        - "Handoff checklist"
+        - "Acceptance criteria"
+        - "Stakeholder review"
+      flows:
+        - from: "Team A backlog"
+          to: "Team B backlog"
+          type: info
+          note: "передача задачи"
+        - from: "Handoff checklist"
+          to: "Team A backlog"
+          type: info
+          note: "что должно быть передано"
+        - from: "Acceptance criteria"
+          to: "Stakeholder review"
+          type: info
+          note: "условия приёмки"
+        - from: "Stakeholder review"
+          to: "Team A backlog"
+          type: info
+          note: "фидбек/изменения"
+      symptom_location: "Пересечение Team A backlog -> Team B backlog (нет явного владельца стыка и чёткого пакета передачи)."
+
+  - artifact_type: CONTRADICTION_STATEMENT
+    pipeline_step: 4
+    payload:
+      improve_x: "Скорость доставки межкомандных проектов"
+      worsen_y: "Риск потери качества из-за "ускорения" передачи без ясных критериев"
+      statement_1l: "Если ускоряем передачу задач между командами, то растёт риск неполной передачи контекста и переделок."
+      measurement_hint: "время handoff (дни) vs % возвратов на доработку после передачи."
+
+  - artifact_type: IKR_CARD
+    pipeline_step: 5
+    payload:
+      ikr_1l: "Передача между командами происходит сразу и без потери контекста, а ответственность за стык ясна без новых ролей."
+      no_new_harm_clause: "Без найма и без оргреформ."
+
+  - artifact_type: HARD_BARRIER
+    pipeline_step: 6
+    payload:
+      barrier_1l: "Нельзя одновременно ускорить handoff и не вводить новый контроль, если нет стандартного пакета передачи и владельца стыка."
+      equivalent_to_step4: true
+
+  - artifact_type: RESOURCE_MAP
+    pipeline_step: 7
+    payload:
+      resources:
+        - name: "Текущие доски задач команд"
+          category: info
+          tied_to: "Team A backlog"
+          note: "статусы и владельцы"
+        - name: "Роли team lead в каждой команде"
+          category: org
+          tied_to: "Team B backlog"
+          note: "можно назначить ownership стыка"
+        - name: "Шаблон acceptance criteria"
+          category: info
+          tied_to: "Acceptance criteria"
+          note: "можно стандартизировать"
+        - name: "История возвратов/переделок"
+          category: info
+          tied_to: "Stakeholder review"
+          note: "данные о типовых потерях контекста"
+        - name: "Еженедельный слот синхронизации 30 мин"
+          category: time
+          tied_to: "PMO"
+          note: "калибровка стыков"
+        - name: "Документ RACI (черновик)"
+          category: info
+          tied_to: "PMO"
+          note: "можно закрепить правила"
+        - name: "Канал коммуникации между командами"
+          category: org
+          tied_to: "Handoff checklist"
+          note: "единая точка вопросов"
+        - name: "Ограничение "без найма""
+          category: finance
+          tied_to: "PMO"
+          note: "задаёт рамки решения"
+
+  - artifact_type: FORM_SELECTION
+    pipeline_step: 8
+    payload:
+      PRIMARY_FORM: "№6 Ресурсоэффективность"
+      BOUNDARY_CHECK:
+        NEAREST_FORMS:
+          - "№4 Медиация"
+          - "№2 Динамизация"
+        WHY_NOT_X:
+          - "Конфликт интересов может быть, но корень - в неструктурированной передаче и отсутствии пакета приёмки."
+          - "Медиация не создаёт артефакт, который сокращает потери контекста на каждом handoff."
+        WHY_NOT_Y:
+          - "Динамизация ускоряет, но без использования имеющихся ресурсов (шаблоны, роли лидов) даст хаос и рост переделок."
+          - "Нужно перераспределить существующие роли и документы, не добавляя новые процессы."
+      TRIZ_CORE:
+        CONTRADICTION_1L: "Нужно ускорить handoff, но нельзя добавлять новых менеджеров и контрольных встреч."
+        IKR_1L: "Передача происходит по стандартному пакету, а существующие роли автоматически обеспечивают качество стыка."
+      PRINCIPLES_TO_ACTION:
+        PRINCIPLES: [25, 33]
+        ACTIONS:
+          - "25: Использовать самообслуживание: чек-лист handoff и критерии приёмки заполняются командой-отправителем."
+          - "33: Использовать предварительную подготовку: готовить пакет передачи заранее в борде до статуса "ready for handoff"."
+      IKR_TEST:
+        Q1: "YES - Шаблоны и правила handoff можно внедрить без найма и оргреформ."
+        Q2: "YES - Опирается на существующие доски, роли лидов и слот синхронизации."
+      CONFIDENCE:
+        score: 68
+        justification: "Пакет передачи и критерии приёмки часто дают быстрый эффект на стыках."
+
+  - artifact_type: SOLUTION_SET
+    pipeline_step: 9
+    payload:
+      count_rule: "3–5"
+      concepts:
+        - concept_index: 1
+          name: "Handoff Checklist + DoD"
+          idea_1l: "единый чек-лист передачи + DoD для статуса ready"
+          linked_form: "№6"
+          linked_principles: [25]
+          linked_resources:
+            - "Шаблон acceptance criteria"
+            - "Текущие доски задач команд"
+          ikr_alignment_1l: "стык не теряет контекст"
+        - concept_index: 2
+          name: "Interface Owner (existing lead)"
+          idea_1l: "назначить владельца стыка из существующих team lead без новой роли"
+          linked_form: "№6"
+          linked_principles: [33]
+          linked_resources:
+            - "Роли team lead в каждой команде"
+            - "Документ RACI (черновик)"
+          ikr_alignment_1l: "есть один ответственный за handoff"
+        - concept_index: 3
+          name: "Pre-Handoff Pack in Board"
+          idea_1l: "пакет передачи (контекст, риски, тесты) собирается в задаче до передачи"
+          linked_form: "№6"
+          linked_principles: [33]
+          linked_resources:
+            - "Текущие доски задач команд"
+            - "История возвратов/переделок"
+          ikr_alignment_1l: "передача без уточнений"
+
+  - artifact_type: MECHANISM_SPECS
+    pipeline_step: 10
+    payload:
+      concept_specs:
+        - concept_index: 1
+          A_name_tagline: "Checklist + DoD — стандарт передачи"
+          B_axis_and_resource: "ось: скорость vs качество; ресурс: шаблон AC + доски"
+          C_mechanism_steps:
+            - "Создать чек-лист handoff (контекст, ссылки, тесты, риски)."
+            - "Добавить статус "ready for handoff" только после заполнения чек-листа."
+            - "Проверять 5 выборочных handoff/нед."
+          D_assumptions_constraints:
+            - "Команды согласны на общий шаблон."
+          E_risks_failures:
+            - "Чек-лист превращается в формальность."
+          F_metrics:
+            leading:
+              - "% задач со статусом ready и заполненным чек-листом"
+              - "кол-во пропусков полей/нед"
+            lagging:
+              - "время handoff (дни)"
+              - "% возвратов после передачи"
+          G_experiment:
+            timebox: "3 недели"
+            budget: "0"
+            pass_criteria: "handoff time ↓ на 20%+, возвраты ↓ на 15%+"
+        - concept_index: 2
+          A_name_tagline: "Interface Owner — владелец стыка"
+          B_axis_and_resource: "ось: ясность ответственности vs нагрузка; ресурс: team lead"
+          C_mechanism_steps:
+            - "Назначить владельца стыка (по домену/потоку) из существующих лидов."
+            - "Зафиксировать RACI и право "stop-go" по handoff."
+            - "Вести список типовых причин возврата и устранять по шаблону."
+          D_assumptions_constraints:
+            - "Лид имеет полномочия."
+          E_risks_failures:
+            - "Перегруз лидов."
+          F_metrics:
+            leading:
+              - "кол-во handoff, прошедших через owner"
+              - "время реакции owner (часы)"
+            lagging:
+              - "кол-во "висящих" задач"
+              - "% эскалаций из-за стыков"
+          G_experiment:
+            timebox: "3 недели"
+            budget: "0"
+            pass_criteria: "висящие задачи ↓ на 30%+, эскалации ↓"
+        - concept_index: 3
+          A_name_tagline: "Pre-Handoff Pack — пакет в задаче"
+          B_axis_and_resource: "ось: контекст vs время подготовки; ресурс: история возвратов"
+          C_mechanism_steps:
+            - "Определить обязательные поля пакета передачи в задаче."
+            - "Собрать примеры лучших пакетов и обучить команды."
+            - "Раз в неделю разбирать 3 худших пакета и обновлять шаблон."
+          D_assumptions_constraints:
+            - "Полевая структура доступна в текущем инструменте."
+          E_risks_failures:
+            - "Сопротивление из-за "лишних полей"."
+          F_metrics:
+            leading:
+              - "% задач с заполненным пакетом"
+              - "кол-во уточнений после передачи/задачу"
+            lagging:
+              - "% возвратов"
+              - "cycle time межкомандных задач (дни)"
+          G_experiment:
+            timebox: "4 недели"
+            budget: "0"
+            pass_criteria: "уточнения ↓ на 20%+, cycle time ↓ на 15%+"
+
+  - artifact_type: SECONDARY_CONTRADICTION_CHECK
+    pipeline_step: 11
+    payload:
+      new_contradiction_exists: false
+
+  - artifact_type: DECISION_RECORD
+    pipeline_step: 12
+    payload:
+      chosen_concept_index: 1
+      chosen_concept_name: "Handoff Checklist + DoD"
+      reasons:
+        - "Быстро внедряется и уменьшает потери контекста."
+        - "Не требует новых ролей."
+      rejected_alternatives:
+        - concept_index: 2
+          concept: "Interface Owner (existing lead)"
+          why_rejected: "может перегрузить лидов без базового стандарта"
+        - concept_index: 3
+          concept: "Pre-Handoff Pack in Board"
+          why_rejected: "работает после введения статуса ready и шаблона"
+      assumptions:
+        - "Команды примут единый DoD."
+      success_criteria:
+        - "handoff time ↓ на 20%+"
+        - "возвраты после передачи ↓ на 15%+"
+
+  - artifact_type: IMPLEMENTATION_MAP
+    pipeline_step: 13
+    payload:
+      workstreams:
+        - name: "Templates"
+          owner: "PMO"
+          tasks:
+            - "чек-лист handoff"
+            - "DoD/AC шаблон"
+          timeline: "нед 1"
+        - name: "Rollout"
+          owner: "Team leads"
+          tasks:
+            - "внедрить статус ready"
+            - "применять шаблон на новых задачах"
+          timeline: "нед 2"
+        - name: "QA"
+          owner: "PMO"
+          tasks:
+            - "5 выборочных проверок/нед"
+            - "обновление шаблона"
+          timeline: "нед 3-4"
+
+  - artifact_type: RULE_UPDATE
+    pipeline_step: 14
+    payload:
+      rule_id: "RULE-HANDOFF-PACK-01"
+      rule_statement_if_then: "Если задача передаётся между командами, то она может перейти в статус handoff только при заполненном пакете передачи и критериях приёмки; иначе возврат на доработку отправителю."
+      criterion: "чек-лист заполнен AND AC/DoD заполнены AND owner стыка указан (если применимо)"
+      boundaries: "не применимо к инцидентам P0 (отдельный регламент)"
+      evidence_from_case: "симптом: задачи висят между командами; ограничение: без найма и оргреформ"
+      test_case_action:
+        add_or_update: add
+        test_case_id: TC11
+        expected_effect: "cycle time ↓, возвраты ↓"
+      version_note: "NON-CANON case rule; canon unchanged"
+      rationale_1l: "стандарт пакета передачи делает стык управляемым существующими ресурсами"

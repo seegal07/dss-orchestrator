@@ -1,0 +1,320 @@
+test_case_id: TC09
+status: FILLED
+mode: artifact_pack
+canon_versions:
+  canon_pipeline: CANON_PIPELINE_v1.2.docx
+  canon_9forms: CANON_9FORMS_v1.1.docx
+  schema: TEST_VECTOR_SCHEMA_v0.1.md.docx
+notes: "Expansion A vector"
+
+artifact_pack:
+  - artifact_type: CASE_SYMPTOM
+    pipeline_step: 0
+    payload:
+      symptom_1l: "Проект с внешним подрядчиком регулярно срывает сроки из-за часовых поясов и ожидания ответов, хотя объём работ не растёт."
+
+  - artifact_type: PROBLEM_OWNER_CARD
+    pipeline_step: 1
+    payload:
+      owner_role: "Руководитель проекта / PM (или COO)"
+      owner_scope: "Может менять правила коммуникации, буферы, формат согласований и распределение ответственности"
+      constraints:
+        - "Нельзя сменить подрядчика в этом квартале"
+        - "Нельзя увеличивать бюджет проекта"
+        - "Решение должно работать при удалённой коммуникации"
+      success_metric_hint: "% задач, завершённых в срок + среднее время ожидания ответа (часов)."
+
+  - artifact_type: SYSTEM_BOUNDARY_MAP
+    pipeline_step: 2
+    payload:
+      actor:
+        - "PM"
+        - "Vendor team lead"
+        - "Internal reviewer"
+      system:
+        - "Remote delivery process (tasks + approvals)"
+      environment:
+        - "Time zones"
+        - "Async tools (email/chat)"
+      boundary_note_1l: "Граница - правила взаимодействия и согласования без смены подрядчика и без роста бюджета."
+
+  - artifact_type: INTERACTION_MAP
+    pipeline_step: 3
+    payload:
+      elements:
+        - "Task board"
+        - "Vendor deliverable"
+        - "Internal review"
+        - "Approval request"
+        - "Waiting time"
+      flows:
+        - from: "Task board"
+          to: "Vendor deliverable"
+          type: info
+          note: "задача/ТЗ"
+        - from: "Vendor deliverable"
+          to: "Internal review"
+          type: info
+          note: "результат"
+        - from: "Internal review"
+          to: "Approval request"
+          type: info
+          note: "вопросы/правки"
+        - from: "Approval request"
+          to: "Vendor deliverable"
+          type: time
+          note: "ожидание ответа из-за часового пояса"
+      symptom_location: "Approval request + Waiting time (асинхронные согласования без буфера и SLA)."
+
+  - artifact_type: CONTRADICTION_STATEMENT
+    pipeline_step: 4
+    payload:
+      improve_x: "Скорость прохождения согласований"
+      worsen_y: "Риск ошибок и недопонимания при удалённой работе"
+      statement_1l: "Если ускоряем коммуникацию и согласования, то растёт риск неверных решений из-за отсутствия общего контекста."
+      measurement_hint: "среднее время согласования (часы) vs % переделок/итераций."
+
+  - artifact_type: IKR_CARD
+    pipeline_step: 5
+    payload:
+      ikr_1l: "Согласования проходят без ожидания и без роста числа переделок, при этом обе стороны понимают контекст."
+      no_new_harm_clause: "Без смены подрядчика и без увеличения бюджета."
+
+  - artifact_type: HARD_BARRIER
+    pipeline_step: 6
+    payload:
+      barrier_1l: "Нельзя одновременно убрать ожидание в часовых поясах и сохранять формат "вопрос-ответ" без буферов и заранее подготовленного контекста."
+      equivalent_to_step4: true
+
+  - artifact_type: RESOURCE_MAP
+    pipeline_step: 7
+    payload:
+      resources:
+        - name: "Task board (Jira/Trello)"
+          category: info
+          tied_to: "Task board"
+          note: "видимость статусов"
+        - name: "История комментариев и правок"
+          category: info
+          tied_to: "Internal review"
+          note: "повторяющиеся вопросы"
+        - name: "Еженедельный слот синхронизации 30 мин"
+          category: time
+          tied_to: "PM"
+          note: "одна встреча вместо множества"
+        - name: "Шаблон "Definition of Done" по задачам"
+          category: info
+          tied_to: "Vendor deliverable"
+          note: "снижает вопросы"
+        - name: "SLA на ответы (например 12 часов)"
+          category: org
+          tied_to: "Approval request"
+          note: "правило ожидания"
+        - name: "Буфер времени в плане (1 день на итерацию)"
+          category: time
+          tied_to: "Waiting time"
+          note: "гасит задержки"
+        - name: "Асинхронные видео/скринкасты"
+          category: info
+          tied_to: "Approval request"
+          note: "контекст без живого созвона"
+        - name: "Право PM фиксировать "freeze window""
+          category: org
+          tied_to: "PM"
+          note: "окно согласований"
+
+  - artifact_type: FORM_SELECTION
+    pipeline_step: 8
+    payload:
+      PRIMARY_FORM: "№5 Инверсия"
+      BOUNDARY_CHECK:
+        NEAREST_FORMS:
+          - "№2 Динамизация"
+          - "№6 Ресурсоэффективность"
+        WHY_NOT_X:
+          - "Динамизация меняет процесс, но корень - в ожидании и формате вопросов; нужно инвертировать дефолт согласований."
+          - "Без смены дефолта "ждём ответа" время будет утекать."
+        WHY_NOT_Y:
+          - "Экономия ресурсов не решает логики ожидания; можно быть эффективным и всё равно ждать сутки."
+          - "Требуется переворот: согласование по умолчанию считается принятым при отсутствии ответа в окне."
+      TRIZ_CORE:
+        CONTRADICTION_1L: "Нужно быстро получать согласование, но нельзя увеличивать количество созвонов и переделок."
+        IKR_1L: "Согласование происходит автоматически в рамках окна, а контекст передан заранее."
+      PRINCIPLES_TO_ACTION:
+        PRINCIPLES: [13]
+        ACTIONS:
+          - "13: Сделать обратный дефолт: если нет ответа в SLA-окне, решение считается принятым (с правом вето по исключениям)."
+      IKR_TEST:
+        Q1: "YES - Инверсия дефолта возможна регламентом без бюджета."
+        Q2: "YES - Опирается на уже существующие инструменты и SLA."
+      CONFIDENCE:
+        score: 60
+        justification: "Работает, если границы вето и окно согласований формализованы."
+
+  - artifact_type: SOLUTION_SET
+    pipeline_step: 9
+    payload:
+      count_rule: "3–5"
+      concepts:
+        - concept_index: 1
+          name: "Silent Approval Window"
+          idea_1l: "если нет ответа в окне 12 часов, задача считается согласованной"
+          linked_form: "№5"
+          linked_principles: [13]
+          linked_resources:
+            - "SLA на ответы (например 12 часов)"
+            - "Право PM фиксировать "freeze window""
+          ikr_alignment_1l: "снимает ожидание без созвонов"
+        - concept_index: 2
+          name: "Context-first Pack"
+          idea_1l: "каждое согласование сопровождается скринкастом+DoD, чтобы снизить вопросы"
+          linked_form: "№5"
+          linked_principles: [13]
+          linked_resources:
+            - "Асинхронные видео/скринкасты"
+            - "Шаблон "Definition of Done" по задачам"
+          ikr_alignment_1l: "контекст убирает переделки"
+        - concept_index: 3
+          name: "Weekly Batch Review"
+          idea_1l: "вместо постоянных пингов - один 30-мин батч-ревью по всем спорным пунктам"
+          linked_form: "№5"
+          linked_principles: [13]
+          linked_resources:
+            - "Еженедельный слот синхронизации 30 мин"
+            - "История комментариев и правок"
+          ikr_alignment_1l: "минимум синхронизаций, максимум решений"
+
+  - artifact_type: MECHANISM_SPECS
+    pipeline_step: 10
+    payload:
+      concept_specs:
+        - concept_index: 1
+          A_name_tagline: "Silent Approval — молчаливое согласование"
+          B_axis_and_resource: "ось: скорость vs риск; ресурс: SLA + право freeze window"
+          C_mechanism_steps:
+            - "Определить категории задач, где допустимо silent approval."
+            - "Задать окно 12 часов и список veto-исключений."
+            - "Автоматически фиксировать статус "approved" по истечении окна."
+          D_assumptions_constraints:
+            - "Есть явные veto-исключения."
+          E_risks_failures:
+            - "Важная задача пройдёт без ответа."
+          F_metrics:
+            leading:
+              - "% задач, идущих через окно"
+              - "кол-во veto-исключений/нед"
+            lagging:
+              - "среднее время согласования (часы)"
+              - "% переделок из-за недопонимания"
+          G_experiment:
+            timebox: "2 недели"
+            budget: "0"
+            pass_criteria: "время согласования ↓ на 30%+, переделки не растут >5%"
+        - concept_index: 2
+          A_name_tagline: "Context Pack — контекст до вопроса"
+          B_axis_and_resource: "ось: ясность vs время подготовки; ресурс: скринкасты + DoD"
+          C_mechanism_steps:
+            - "Ввести правило: запрос на согласование без DoD и скринкаста не принимается."
+            - "Шаблонизировать DoD для 10 типов задач."
+            - "Хранить скринкасты рядом с задачей."
+          D_assumptions_constraints:
+            - "Команда умеет делать 2-мин скринкасты."
+          E_risks_failures:
+            - "Сопротивление из-за "лишней работы"."
+          F_metrics:
+            leading:
+              - "% задач с DoD+скринкастом"
+              - "кол-во уточняющих вопросов/задачу"
+            lagging:
+              - "% переделок"
+              - "время согласования"
+          G_experiment:
+            timebox: "2 недели"
+            budget: "0"
+            pass_criteria: "уточняющие вопросы ↓ на 20%+, переделки ↓"
+        - concept_index: 3
+          A_name_tagline: "Batch Review — батч согласований"
+          B_axis_and_resource: "ось: синхронизация vs потери времени; ресурс: 30 мин/нед"
+          C_mechanism_steps:
+            - "Собрать все "спорные" пункты в список к еженедельному батчу."
+            - "На батче решать только спорные пункты, без статусов."
+            - "Фиксировать решения в таск-борде."
+          D_assumptions_constraints:
+            - "Есть дисциплина не пинговать вне батча."
+          E_risks_failures:
+            - "Срочные вопросы не ждут батча."
+          F_metrics:
+            leading:
+              - "кол-во пунктов в батче/нед"
+              - "время батча (мин)"
+            lagging:
+              - "кол-во внеплановых пингов/нед"
+              - "срыв сроков из-за ожидания"
+          G_experiment:
+            timebox: "3 недели"
+            budget: "0"
+            pass_criteria: "внеплановые пинги ↓ на 30%+, % задач в срок ↑"
+
+  - artifact_type: SECONDARY_CONTRADICTION_CHECK
+    pipeline_step: 11
+    payload:
+      new_contradiction_exists: false
+
+  - artifact_type: DECISION_RECORD
+    pipeline_step: 12
+    payload:
+      chosen_concept_index: 1
+      chosen_concept_name: "Silent Approval Window"
+      reasons:
+        - "Прямо устраняет ожидание в часовых поясах."
+        - "Не требует бюджета и не увеличивает созвоны."
+      rejected_alternatives:
+        - concept_index: 2
+          concept: "Context-first Pack"
+          why_rejected: "полезно, но не убирает ожидание без инверсии дефолта"
+        - concept_index: 3
+          concept: "Weekly Batch Review"
+          why_rejected: "часть задержек останется между батчами"
+      assumptions:
+        - "Границы veto исключений согласованы."
+      success_criteria:
+        - "время согласования ↓ на 30%+"
+        - "переделки не растут >5%"
+
+  - artifact_type: IMPLEMENTATION_MAP
+    pipeline_step: 13
+    payload:
+      workstreams:
+        - name: "Policy"
+          owner: "PM"
+          tasks:
+            - "определить задачи для silent approval"
+            - "согласовать veto исключения"
+          timeline: "нед 1"
+        - name: "Templates"
+          owner: "PM"
+          tasks:
+            - "шаблон DoD"
+            - "шаблон скринкаста"
+          timeline: "нед 1"
+        - name: "Rollout"
+          owner: "Vendor lead"
+          tasks:
+            - "применять окна согласований"
+            - "фиксировать статусы в борде"
+          timeline: "нед 2-3"
+
+  - artifact_type: RULE_UPDATE
+    pipeline_step: 14
+    payload:
+      rule_id: "RULE-ASYNC-APPROVAL-01"
+      rule_statement_if_then: "Если запрос на согласование отправлен и в течение SLA-окна нет ответа, то решение считается принятым, кроме случаев veto-исключений."
+      criterion: "окно задано AND veto исключения описаны AND статус фиксируется в таске"
+      boundaries: "не применяется к задачам безопасности/комплаенса и финансовым лимитам выше порога"
+      evidence_from_case: "симптом: ожидание из-за часовых поясов; ограничение: без смены подрядчика и бюджета"
+      test_case_action:
+        add_or_update: add
+        test_case_id: TC09
+        expected_effect: "время согласования ↓, % задач в срок ↑"
+      version_note: "NON-CANON case rule; canon unchanged"
+      rationale_1l: "инверсия дефолта переводит ожидание в измеримое окно"

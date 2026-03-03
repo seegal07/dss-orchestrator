@@ -1,0 +1,5 @@
+file_id: DECISIONS
+status: ACTIVE
+source_docx: DECISIONS__patched_append-only_v0.8.2_repair.docx
+notes:
+  - Placeholder decisions reference; full content remains in DOCX until migrated.

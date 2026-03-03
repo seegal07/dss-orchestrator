@@ -1,0 +1,75 @@
+run_id: 2026-02-08T15-52-19Z
+test_case_id: TC_PILOT_V1_BRANCH_AUTONOMY
+harness_version: dss-solver-0.1
+timestamp_utc: 2026-02-08T15-52-19Z
+overall_status: FAIL
+gate_results:
+  - gate: Gate0
+    status: PASS
+    reasons: []
+  - gate: Gate1
+    status: PASS
+    reasons: []
+  - gate: Gate2
+    status: PASS
+    reasons: []
+  - gate: Gate3
+    status: PASS
+    reasons: []
+  - gate: Gate4
+    status: PASS
+    reasons:
+      - "G4-P1: X/Y измеримы (рост/инциденты/часы)"
+      - "G4-P2: statement_1l в форме 'если X, ухудшается Y'"
+      - "G4-P3: measurement_hint задан"
+  - gate: Gate5
+    status: PASS
+    reasons:
+      - "G5-P1: IKR без механизма"
+      - "G5-P2: IKR не противоречит ограничениям"
+  - gate: Gate6
+    status: PASS
+    reasons:
+      - "G6-P1: барьер описывает взаимоисключение"
+      - "G6-P2: equivalent_to_step4=true"
+  - gate: Gate7
+    status: PASS
+    reasons: []
+  - gate: Gate8
+    status: PASS
+    reasons: []
+  - gate: Gate9
+    status: PASS
+    reasons: []
+  - gate: Gate10
+    status: FAIL
+    reasons:
+      - "Step10.concept_specs missing"
+  - gate: Gate11
+    status: PASS
+    reasons:
+      - "G11-P1: new_contradiction_exists=false"
+  - gate: Gate12
+    status: PASS
+    reasons:
+      - "G12-P1: chosen_concept_index=1"
+      - "G12-P2: reasons связаны с ограничениями и метриками"
+      - "G12-P3: success_criteria согласованы"
+  - gate: Gate13
+    status: FAIL
+    reasons:
+      - "Step13.workstreams missing"
+  - gate: Gate14
+    status: FAIL
+    reasons:
+      - "Step14.rule_id missing"
+      - "Step14.rule_statement_if_then missing"
+      - "Step14.criterion missing"
+      - "Step14.boundaries missing"
+      - "Step14.evidence_from_case missing"
+      - "Step14.test_case_action missing"
+      - "Step14.version_note missing"
+      - "Step14.rationale_1l missing"
+  - gate: GateTRIZ
+    status: PASS
+    reasons: []

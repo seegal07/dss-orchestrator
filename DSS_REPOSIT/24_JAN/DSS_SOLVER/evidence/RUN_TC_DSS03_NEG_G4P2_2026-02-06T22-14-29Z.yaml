@@ -1,0 +1,62 @@
+run_id: 2026-02-06T22-14-29Z
+test_case_id: TC_DSS03_NEG_G4P2
+harness_version: dss-solver-0.1
+timestamp_utc: 2026-02-06T22-14-29Z
+overall_status: FAIL
+gate_results:
+  - gate: Gate0
+    status: PASS
+    reasons: []
+  - gate: Gate1
+    status: PASS
+    reasons: []
+  - gate: Gate2
+    status: PASS
+    reasons: []
+  - gate: Gate3
+    status: PASS
+    reasons: []
+  - gate: Gate4
+    status: FAIL
+    reasons:
+      - "G4-P1: OK"
+      - "G4-P2: Негативный тест: G4-P2 FAIL"
+      - "G4-P3: OK"
+  - gate: Gate5
+    status: PASS
+    reasons:
+      - "G5-P1: OK"
+      - "G5-P2: OK"
+  - gate: Gate6
+    status: PASS
+    reasons:
+      - "G6-P1: OK"
+      - "G6-P2: OK"
+  - gate: Gate7
+    status: PASS
+    reasons: []
+  - gate: Gate8
+    status: PASS
+    reasons: []
+  - gate: Gate9
+    status: PASS
+    reasons: []
+  - gate: Gate10
+    status: PASS
+    reasons: []
+  - gate: Gate11
+    status: PASS
+    reasons:
+      - "G11-P1: OK"
+  - gate: Gate12
+    status: PASS
+    reasons:
+      - "G12-P1: OK"
+      - "G12-P2: OK"
+      - "G12-P3: OK"
+  - gate: Gate13
+    status: PASS
+    reasons: []
+  - gate: Gate14
+    status: PASS
+    reasons: []

@@ -1,0 +1,153 @@
+test_case_id: TC_E4_REAL_CASE_003
+status: FILLED
+mode: full_vector
+canon_versions:
+  canon_pipeline: CANON_PIPELINE_v1.2.docx
+  canon_9forms: CANON_9FORMS_v1.1.docx
+  schema: TEST_VECTOR_SCHEMA_v0.1.md.docx
+notes: "E4 — HR/колл‑центр, текучесть"
+
+full_vector:
+  step_0:
+    symptom_1l: "Высокая текучесть в колл‑центре: сотрудники уходят в первые 2–3 месяца, SLA падает."
+  step_1:
+    owner_role: "HR‑директор"
+    owner_scope: "Найм, обучение, графики, регламенты, коммуникации"
+    constraints:
+      - "ФОТ фиксирован"
+      - "Новые ставки/бонусы нельзя"
+      - "Штат расширять нельзя"
+      - "Срок эффекта — 4 месяца"
+    success_metric_hint: "Снижение текучести, SLA стабилен"
+  step_2:
+    actor: ["Кандидат", "Сотрудник", "Наставник", "Руководитель смены", "HR"]
+    system: ["Обучение", "Смены", "Регламенты", "Оценка качества"]
+    environment: ["Рынок труда", "Конкуренты", "Ожидания кандидатов"]
+    boundary_note_1l: "Внутри — процессы найма/обучения; снаружи — рынок труда."
+  step_3:
+    elements: ["Кандидат", "Обучение", "Сотрудник", "Смена", "SLA", "Увольнение"]
+    flows:
+      - from: "Кандидат"
+        to: "Обучение"
+        type: "info"
+        note: "Вход в обучение"
+      - from: "Обучение"
+        to: "Сотрудник"
+        type: "other"
+        note: "Переход в смены"
+      - from: "Сотрудник"
+        to: "SLA"
+        type: "other"
+        note: "Работа на линии"
+      - from: "Сотрудник"
+        to: "Увольнение"
+        type: "other"
+        note: "Уход в 2–3 месяца"
+    symptom_location: "Смена и первые 2–3 месяца работы"
+  step_4:
+    improve_x: "Контроль качества и дисциплина"
+    worsen_y: "Удержание сотрудников"
+    statement_1l: "Если усиливаем контроль, растёт текучесть"
+    measurement_hint: "Текучесть, SLA, длительность работы"
+  step_5:
+    ikr_1l: "MISSING: идеальный результат без механизма"
+    no_new_harm_clause: "MISSING"
+  step_6:
+    barrier_1l: "MISSING: жёсткий барьер"
+    equivalent_to_step4: "MISSING"
+  step_7:
+    resources:
+      - name: "Обучение"
+        category: "org"
+        tied_to: "Onboarding"
+        note: "Можно менять"
+      - name: "Наставники"
+        category: "org"
+        tied_to: "Поддержка"
+        note: "Можно назначать"
+      - name: "Регламенты"
+        category: "org"
+        tied_to: "Контроль"
+        note: "Можно корректировать"
+  step_8:
+    PRIMARY_FORM: "MISSING"
+    BOUNDARY_CHECK:
+      NEAREST_FORMS: ["MISSING"]
+      WHY_NOT_X: ["MISSING"]
+      WHY_NOT_Y: ["MISSING"]
+    TRIZ_CORE:
+      CONTRADICTION_1L: "MISSING"
+      IKR_1L: "MISSING"
+    PRINCIPLES_TO_ACTION:
+      PRINCIPLES: ["MISSING"]
+      ACTIONS: ["MISSING"]
+    IKR_TEST:
+      Q1: "MISSING"
+      Q2: "MISSING"
+    CONFIDENCE:
+      score: "MISSING"
+      justification: "MISSING"
+  step_9:
+    count_rule: "3–5"
+    concepts:
+      - concept_index: 1
+        name: "Перезапуск обучения"
+        idea_1l: "Обновить программу onboarding"
+        linked_form: "MISSING"
+        linked_principles: ["MISSING"]
+        linked_resources: ["Обучение"]
+        ikr_alignment_1l: "MISSING"
+      - concept_index: 2
+        name: "Наставничество"
+        idea_1l: "Назначить наставников"
+        linked_form: "MISSING"
+        linked_principles: ["MISSING"]
+        linked_resources: ["Наставники"]
+        ikr_alignment_1l: "MISSING"
+      - concept_index: 3
+        name: "Перераспределение смен"
+        idea_1l: "Снизить нагрузку в пиковые часы"
+        linked_form: "MISSING"
+        linked_principles: ["MISSING"]
+        linked_resources: ["Регламенты"]
+        ikr_alignment_1l: "MISSING"
+  step_10:
+    concept_specs:
+      - concept_index: 1
+        A_name_tagline: "Перезапуск обучения"
+        B_axis_and_resource: "Обучение + регламенты"
+        C_mechanism_steps: ["Обновить программу"]
+        D_assumptions_constraints: ["ФОТ не увеличивается"]
+        E_risks_failures: ["Сопротивление"]
+        F_metrics:
+          leading: ["Процент завершения обучения"]
+          lagging: ["Текучесть"]
+        G_experiment:
+          timebox: "4 месяца"
+          budget: "0"
+          pass_criteria: "Снижение текучести"
+  step_11:
+    new_contradiction_exists: "MISSING"
+  step_12:
+    chosen_concept_index: "MISSING"
+    chosen_concept_name: "MISSING"
+    reasons: ["MISSING"]
+    rejected_alternatives: ["MISSING"]
+    assumptions: ["MISSING"]
+    success_criteria: ["MISSING"]
+  step_13:
+    workstreams:
+      - name: "Обучение"
+        owner: "HR"
+        steps: ["Обновить программу", "Запустить набор"]
+        timing: "1–2 месяца"
+        risks: ["Низкая вовлечённость"]
+  step_14:
+    rule_id: "MISSING"
+    rule_statement_if_then: "MISSING"
+    criterion: "MISSING"
+    boundaries: "MISSING"
+    evidence_from_case: "MISSING"
+    test_case_action: "MISSING"
+    version_note: "MISSING"
+    rationale_1l: "MISSING"

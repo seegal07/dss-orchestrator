@@ -1,0 +1,90 @@
+run_id: 2026-02-20T11-06-43Z
+test_case_id: TC_E21_LOOP_NO
+issues:
+  - gate: Gate1
+    issue_code: STRUCTURAL
+    message: "Step0.symptom_1l missing"
+  - gate: Gate1
+    issue_code: STRUCTURAL
+    message: "Step1.constraints missing"
+  - gate: Gate2
+    issue_code: STRUCTURAL
+    message: "Step2.actor missing"
+  - gate: Gate2
+    issue_code: STRUCTURAL
+    message: "Step2.system missing"
+  - gate: Gate2
+    issue_code: STRUCTURAL
+    message: "Step2.environment missing"
+  - gate: Gate2
+    issue_code: STRUCTURAL
+    message: "Step2.boundary_note_1l missing"
+  - gate: Gate3
+    issue_code: STRUCTURAL
+    message: "Step3.elements missing"
+  - gate: Gate3
+    issue_code: STRUCTURAL
+    message: "Step3.flows missing"
+  - gate: Gate3
+    issue_code: STRUCTURAL
+    message: "Step3.symptom_location missing"
+  - gate: Gate7
+    issue_code: STRUCTURAL
+    message: "Step7.resources is not a list"
+  - gate: Gate8
+    issue_code: STRUCTURAL
+    message: "Step8.PRIMARY_FORM missing"
+  - gate: Gate8
+    issue_code: STRUCTURAL
+    message: "Step8.BOUNDARY_CHECK missing"
+  - gate: Gate8
+    issue_code: STRUCTURAL
+    message: "Step8.TRIZ_CORE missing"
+  - gate: Gate8
+    issue_code: STRUCTURAL
+    message: "Step8.PRINCIPLES_TO_ACTION missing"
+  - gate: Gate8
+    issue_code: STRUCTURAL
+    message: "Step8.IKR_TEST missing"
+  - gate: Gate8
+    issue_code: STRUCTURAL
+    message: "Step8.CONFIDENCE missing"
+  - gate: Gate8
+    issue_code: STRUCTURAL
+    message: "Step8.PRINCIPLES_TO_ACTION.PRINCIPLES missing"
+  - gate: Gate8
+    issue_code: STRUCTURAL
+    message: "Step8.PRINCIPLES_TO_ACTION.ACTIONS missing"
+  - gate: Gate8
+    issue_code: STRUCTURAL
+    message: "Step8.TRIZ_CORE.physical_contradiction missing"
+  - gate: Gate8
+    issue_code: STRUCTURAL
+    message: "Step8.TRIZ_CORE.separation missing"
+  - gate: Gate8
+    issue_code: STRUCTURAL
+    message: "Step8.TRIZ_CORE.system_operator missing"
+  - gate: Gate8
+    issue_code: STRUCTURAL
+    message: "Step8.TRIZ_CORE.transformation_model missing"
+  - gate: Gate8
+    issue_code: STRUCTURAL
+    message: "Step8.TRIZ_CORE.non_obviousness_check missing"
+  - gate: GateCR
+    issue_code: STRUCTURAL
+    message: "structural resolution not found"
+  - gate: GateTRIZ
+    issue_code: STRUCTURAL
+    message: "TRIZ_G1_MISSING: physical_contradiction missing (step_8.TRIZ_CORE.physical_contradiction)"
+  - gate: GateTRIZ
+    issue_code: STRUCTURAL
+    message: "TRIZ_G2_MISSING: separation missing (step_8.TRIZ_CORE.separation)"
+  - gate: GateTRIZ
+    issue_code: STRUCTURAL
+    message: "TRIZ_G3_MISSING: system_operator missing (step_8.TRIZ_CORE.system_operator)"
+  - gate: GateTRIZ
+    issue_code: STRUCTURAL
+    message: "TRIZ_G4_MISSING: non_obviousness_check missing (step_8.TRIZ_CORE.non_obviousness_check)"
+  - gate: GateTRIZ
+    issue_code: STRUCTURAL
+    message: "TRIZ_GX_MISSING: transformation_model missing (step_8.TRIZ_CORE.transformation_model)"

@@ -1,0 +1,62 @@
+run_id: 2026-02-07T17-53-24Z
+test_case_id: TC_E7_CASHFLOW_AR
+harness_version: dss-solver-0.1
+timestamp_utc: 2026-02-07T17-53-24Z
+overall_status: PASS
+gate_results:
+  - gate: Gate0
+    status: PASS
+    reasons: []
+  - gate: Gate1
+    status: PASS
+    reasons: []
+  - gate: Gate2
+    status: PASS
+    reasons: []
+  - gate: Gate3
+    status: PASS
+    reasons: []
+  - gate: Gate4
+    status: PASS
+    reasons:
+      - "G4-P1: X/Y измеримы (DSO, % просрочки, churn)"
+      - "G4-P2: формула противоречия задана"
+      - "G4-P3: measurement_hint задан"
+  - gate: Gate5
+    status: PASS
+    reasons:
+      - "G5-P1: IKR без механизма"
+      - "G5-P2: нет указания средств"
+  - gate: Gate6
+    status: PASS
+    reasons:
+      - "G6-P1: барьер сформулирован"
+      - "G6-P2: equivalent_to_step4=true"
+  - gate: Gate7
+    status: PASS
+    reasons: []
+  - gate: Gate8
+    status: PASS
+    reasons: []
+  - gate: Gate9
+    status: PASS
+    reasons: []
+  - gate: Gate10
+    status: PASS
+    reasons: []
+  - gate: Gate11
+    status: PASS
+    reasons:
+      - "G11-P1: new_contradiction_exists=false"
+  - gate: Gate12
+    status: PASS
+    reasons:
+      - "G12-P1: chosen_concept_index=1"
+      - "G12-P2: reasons связаны с ограничениями"
+      - "G12-P3: success_criteria заданы"
+  - gate: Gate13
+    status: PASS
+    reasons: []
+  - gate: Gate14
+    status: PASS
+    reasons: []

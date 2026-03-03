@@ -1,0 +1,87 @@
+{
+  "case_id": "TC_E22_V1",
+  "title": "TC_E22_V1",
+  "created_at": "2026-02-27T13-07-26Z",
+  "updated_at": "2026-02-27T13-07-26Z",
+  "case_version": 1,
+  "status": "done",
+  "canon_versions": {
+    "canon_pipeline_version": "v1.2",
+    "canon_9forms_version": "v1.1"
+  },
+  "shell_versions": {
+    "gate_automation_matrix_version": "v0.1.1",
+    "prd_version": "v0.1",
+    "ux_flow_version": "v0.1",
+    "export_spec_version": "v0.1",
+    "data_model_version": "v0.1"
+  },
+  "pfl_status": "PFL_READY",
+  "pfl_status_reason": "PFL v0.1 compute executed from canonical fields",
+  "pfl_verdict": "FAIL",
+  "pfl_reason": "SOLUTION_AS_XY",
+  "pfl_attempt_index": 1,
+  "pfl_structural_tension": false,
+  "instrumentation": {
+    "input_fingerprint": "55f193122fe192dd5560ab2ef1c022e19412fb879472c41046026396ed16203f",
+    "manual_override_used": false,
+    "override_type": null,
+    "normalized_reason_codes": [
+      "SOLUTION_AS_XY",
+      "STEP3_FLOWS_0_NOT_A_DICT",
+      "TRIZ_G4_INVALID"
+    ],
+    "gatecr_status_mirror": "NOT_APPLICABLE",
+    "phase0_verdict": "PASS",
+    "phase0_reason_code": "NONE",
+    "canonical_hash": "55f193122fe192dd5560ab2ef1c022e19412fb879472c41046026396ed16203f",
+    "raw_hash": "cbbae6e80f35e1a7f02a411685d9236b3dd8e1547c26f8355be122a9a1bce70c",
+    "trace_count": 4,
+    "confidence_summary": "HIGH",
+    "reconstruction_trace": [
+      {
+        "raw_fragment": "Ускорить запуск филиалов в Европе и повысить точность CAPEX/OPEX+PMF до запуска.",
+        "interpreted_parameter": "Ускорить запуск филиалов в Европе и повысить точность CAPEX/OPEX+PMF до запуска.",
+        "reasoning_trace": "X:normalize_whitespace",
+        "confidence_level": "HIGH"
+      },
+      {
+        "raw_fragment": "Не увеличивать чрезмерно время и стоимость подготовки запуска.",
+        "interpreted_parameter": "Не увеличивать чрезмерно время и стоимость подготовки запуска.",
+        "reasoning_trace": "Y:normalize_whitespace",
+        "confidence_level": "HIGH"
+      },
+      {
+        "raw_fragment": "правило запуска новых филиалов в Европе",
+        "interpreted_parameter": "правило запуска новых филиалов в Европе",
+        "reasoning_trace": "scope:scope_projection",
+        "confidence_level": "HIGH"
+      },
+      {
+        "raw_fragment": "['не раздувать исследовательский бюджет/срок']",
+        "interpreted_parameter": [
+          "не раздувать исследовательский бюджет/срок"
+        ],
+        "reasoning_trace": "constraints:stable_list_sort",
+        "confidence_level": "HIGH"
+      }
+    ],
+    "canonical_object": {
+      "system_scope": "правило запуска новых филиалов в Европе",
+      "X_param": "Ускорить запуск филиалов в Европе и повысить точность CAPEX/OPEX+PMF до запуска.",
+      "Y_param": "Не увеличивать чрезмерно время и стоимость подготовки запуска.",
+      "constraints": [
+        "не раздувать исследовательский бюджет/срок"
+      ],
+      "conflict_type_candidate": "causal",
+      "conflict_type_candidate_trace": null,
+      "s2a_hash": "939e10ddd0fd626d4f73eabc735866cf8e958dfcba65609a504c3ce68eb8c865"
+    },
+    "pfl_status": "PFL_READY",
+    "pfl_status_reason": "PFL v0.1 compute executed from canonical fields",
+    "pfl_verdict": "FAIL",
+    "pfl_reason": "SOLUTION_AS_XY",
+    "pfl_attempt_index": 1,
+    "pfl_structural_tension": false
+  }
+}

@@ -1,0 +1,45 @@
+run_id: 2026-02-08T17-39-49Z
+test_case_id: TC_CLIENT_SELF_RUN_001
+issues:
+  - gate: Gate8
+    issue_code: STRUCTURAL
+    message: "Step8.TRIZ_CORE.physical_contradiction missing"
+  - gate: Gate8
+    issue_code: STRUCTURAL
+    message: "Step8.TRIZ_CORE.separation missing"
+  - gate: Gate8
+    issue_code: STRUCTURAL
+    message: "Step8.TRIZ_CORE.system_operator missing"
+  - gate: Gate8
+    issue_code: STRUCTURAL
+    message: "Step8.TRIZ_CORE.transformation_model missing"
+  - gate: Gate8
+    issue_code: STRUCTURAL
+    message: "Step8.TRIZ_CORE.non_obviousness_check missing"
+  - gate: Gate11
+    issue_code: STRUCTURAL
+    message: "G11-P1: new_contradiction_exists не задан"
+  - gate: Gate12
+    issue_code: STRUCTURAL
+    message: "G12-P1: нет выбранного концепта"
+  - gate: Gate12
+    issue_code: STRUCTURAL
+    message: "G12-P2: нет reasons"
+  - gate: Gate12
+    issue_code: STRUCTURAL
+    message: "G12-P3: нет thresholds"
+  - gate: GateTRIZ
+    issue_code: STRUCTURAL
+    message: "TRIZ_G1_MISSING: physical_contradiction missing (step_8.TRIZ_CORE.physical_contradiction)"
+  - gate: GateTRIZ
+    issue_code: STRUCTURAL
+    message: "TRIZ_G2_MISSING: separation missing (step_8.TRIZ_CORE.separation)"
+  - gate: GateTRIZ
+    issue_code: STRUCTURAL
+    message: "TRIZ_G3_MISSING: system_operator missing (step_8.TRIZ_CORE.system_operator)"
+  - gate: GateTRIZ
+    issue_code: STRUCTURAL
+    message: "TRIZ_G4_MISSING: non_obviousness_check missing (step_8.TRIZ_CORE.non_obviousness_check)"
+  - gate: GateTRIZ
+    issue_code: STRUCTURAL
+    message: "TRIZ_GX_MISSING: transformation_model missing (step_8.TRIZ_CORE.transformation_model)"

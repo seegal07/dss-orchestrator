@@ -1,0 +1,71 @@
+run_id: 2026-02-08T09-49-12Z
+test_case_id: TC_CASE_A_CUSTOMIZATION_VS_STANDARDIZATION
+harness_version: dss-solver-0.1
+timestamp_utc: 2026-02-08T09-49-12Z
+overall_status: BLOCKED
+gate_results:
+  - gate: Gate0
+    status: PASS
+    reasons: []
+  - gate: Gate1
+    status: PASS
+    reasons: []
+  - gate: Gate2
+    status: PASS
+    reasons: []
+  - gate: Gate3
+    status: PASS
+    reasons: []
+  - gate: Gate4
+    status: FAIL
+    reasons:
+      - "G4-P1: X/Y заданы как наблюдаемые параметры (сделка, скорость релизов/поддержка)"
+      - "G4-P2: statement_1l в форме 'если X, ухудшается Y'"
+      - "G4-P3: measurement_hint содержит MISSING для X/Y/baseline"
+  - gate: Gate5
+    status: PASS
+    reasons:
+      - "G5-P1: IKR описывает эффект без механизма"
+      - "G5-P2: IKR не противоречит ограничениям"
+  - gate: Gate6
+    status: PASS
+    reasons:
+      - "G6-P1: barrier_1l описывает взаимоисключение"
+      - "G6-P2: equivalent_to_step4=true"
+  - gate: Gate7
+    status: PASS
+    reasons: []
+  - gate: Gate8
+    status: FAIL
+    reasons:
+      - "Step8.PRINCIPLES_TO_ACTION.PRINCIPLES missing"
+  - gate: Gate9
+    status: PASS
+    reasons: []
+  - gate: Gate10
+    status: FAIL
+    reasons:
+      - "Step10.concept_specs missing"
+  - gate: Gate11
+    status: BLOCKED
+    reasons:
+      - "G11-P1: MISSING: Step11.new_contradiction_exists отсутствует"
+  - gate: Gate12
+    status: FAIL
+    reasons:
+      - "Step12.chosen_concept_name missing"
+  - gate: Gate13
+    status: FAIL
+    reasons:
+      - "Step13.workstreams missing"
+  - gate: Gate14
+    status: FAIL
+    reasons:
+      - "Step14.rule_id missing"
+      - "Step14.rule_statement_if_then missing"
+      - "Step14.criterion missing"
+      - "Step14.boundaries missing"
+      - "Step14.evidence_from_case missing"
+      - "Step14.test_case_action missing"
+      - "Step14.version_note missing"
+      - "Step14.rationale_1l missing"

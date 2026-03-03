@@ -1,0 +1,23 @@
+{
+  "checkpoints": {
+    "checkpoint_1_gatephase0": "FAIL",
+    "checkpoint_2_hashes": "FAIL",
+    "per_variant": {
+      "E22_V1": {
+        "gatephase0_ok": false,
+        "hashes_ok": false
+      },
+      "E22_V2": {
+        "gatephase0_ok": false,
+        "hashes_ok": false
+      },
+      "E22_V3": {
+        "gatephase0_ok": false,
+        "hashes_ok": false
+      }
+    }
+  },
+  "Step1": "NOT_RUN",
+  "Step2": "NOT_RUN",
+  "variants": {}
+}

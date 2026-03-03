@@ -1,0 +1,60 @@
+{
+  "case_id": "TC_E21_LOOP_NO",
+  "title": "TC_E21_LOOP_NO",
+  "created_at": "2026-02-20T11-06-43Z",
+  "updated_at": "2026-02-20T11-06-43Z",
+  "case_version": 1,
+  "status": "done",
+  "canon_versions": {
+    "canon_pipeline_version": "v1.2",
+    "canon_9forms_version": "v1.1"
+  },
+  "shell_versions": {
+    "gate_automation_matrix_version": "v0.1.1",
+    "prd_version": "v0.1",
+    "ux_flow_version": "v0.1",
+    "export_spec_version": "v0.1",
+    "data_model_version": "v0.1"
+  },
+  "instrumentation": {
+    "input_fingerprint": "1e3e97ced39cf09a1b28efa2a9b72ad86714f5f708d66beb74421d93b592a568",
+    "manual_override_used": false,
+    "override_type": null,
+    "normalized_reason_codes": [
+      "G4_P1",
+      "G5_P1",
+      "G6_P1",
+      "PFL_DISABLED_HISTORICAL_COMPATIBILITY",
+      "STEP0_SYMPTOM_1L_MISSING",
+      "STEP1_CONSTRAINTS_MISSING",
+      "STEP2_ACTOR_MISSING",
+      "STEP2_BOUNDARY_NOTE_1L_MISSING",
+      "STEP2_ENVIRONMENT_MISSING",
+      "STEP2_SYSTEM_MISSING",
+      "STEP3_ELEMENTS_MISSING",
+      "STEP3_FLOWS_MISSING",
+      "STEP3_SYMPTOM_LOCATION_MISSING",
+      "STEP7_RESOURCES_IS_NOT_A_LIST",
+      "STEP8_BOUNDARY_CHECK_MISSING",
+      "STEP8_CONFIDENCE_MISSING",
+      "STEP8_IKR_TEST_MISSING",
+      "STEP8_PRIMARY_FORM_MISSING",
+      "STEP8_PRINCIPLES_TO_ACTION_ACTIONS_MISSING",
+      "STEP8_PRINCIPLES_TO_ACTION_MISSING",
+      "STEP8_PRINCIPLES_TO_ACTION_PRINCIPLES_MISSING",
+      "STEP8_TRIZ_CORE_MISSING",
+      "STEP8_TRIZ_CORE_NON_OBVIOUSNESS_CHECK_MISSING",
+      "STEP8_TRIZ_CORE_PHYSICAL_CONTRADICTION_MISSING",
+      "STEP8_TRIZ_CORE_SEPARATION_MISSING",
+      "STEP8_TRIZ_CORE_SYSTEM_OPERATOR_MISSING",
+      "STEP8_TRIZ_CORE_TRANSFORMATION_MODEL_MISSING",
+      "STRUCTURAL_RESOLUTION_NOT_FOUND",
+      "TRIZ_G1_MISSING",
+      "TRIZ_G2_MISSING",
+      "TRIZ_G3_MISSING",
+      "TRIZ_G4_MISSING",
+      "TRIZ_GX_MISSING"
+    ],
+    "gatecr_status_mirror": "HARD_FAIL"
+  }
+}

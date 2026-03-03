@@ -1,0 +1,10 @@
+# EXECUTION_HEADER
+- EXECUTION_MODE=LIVE_CLIENT
+- CASE_ANCHOR=/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/DRYRUN_CLIENT_INTERACTION_2026-02-10T20-05-42Z/CASE_FREEZE.md
+- STEP_STATE=S09
+- SoT:
+  - /Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/governance/SDP_SPEC_v1.0.md
+  - /Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/governance/DCF_DATA_MODEL_v1.0.md
+  - /Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/governance/DCF_GENERATOR_SPEC_v1.0.md
+  - /Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/governance/DSS_EXECUTION_MODE_SPEC_v1.0.md
+  - /Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/governance/DSS_TRIZ_2_GATE9_12_SPEC_v1.0.md

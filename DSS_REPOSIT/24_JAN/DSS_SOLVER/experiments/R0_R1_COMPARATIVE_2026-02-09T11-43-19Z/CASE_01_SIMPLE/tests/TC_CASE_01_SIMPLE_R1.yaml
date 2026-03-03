@@ -1,0 +1,198 @@
+test_case_id: TC_CASE_01_SIMPLE_R1
+status: FILLED
+mode: full_vector
+canon_versions:
+  canon_pipeline: CANON_PIPELINE_v1.2.docx
+  canon_9forms: CANON_9FORMS_v1.1.docx
+  schema: TEST_VECTOR_SCHEMA_v0.1.md.docx
+notes: "R1 simple case: support overload vs growth (principles as operators)"
+
+full_vector:
+  step_0:
+    symptom_1l: "Рост клиентов увеличивает нагрузку поддержки, сроки ответа растут и страдает качество."
+  step_1:
+    owner_role: "CEO"
+    owner_scope: "Правила обслуживания, приоритеты сегментов, допуск клиентов"
+    constraints:
+      - "Нельзя нанимать поддержку в ближайшие 3 месяца"
+      - "Нельзя ухудшать качество для текущих клиентов"
+    success_metric_hint: "Срок ответа ≤ текущий уровень при росте"
+  step_2:
+    actor: ["Клиенты", "Служба поддержки", "CEO"]
+    system: ["Процесс поддержки", "Очередь запросов", "Правила приоритета"]
+    environment: ["Рынок", "Ожидания клиентов"]
+    boundary_note_1l: "Внутри — правила обработки запросов; снаружи — ожидания рынка."
+  step_3:
+    elements: ["Запрос", "Очередь", "Поддержка", "Клиент"]
+    flows:
+      - from: "Клиент"
+        to: "Запрос"
+        type: "info"
+        note: "Поступление запросов"
+      - from: "Запрос"
+        to: "Очередь"
+        type: "info"
+        note: "Формируется очередь"
+      - from: "Очередь"
+        to: "Поддержка"
+        type: "org"
+        note: "Обработка запросов"
+    symptom_location: "Рост очереди увеличивает время ответа"
+  step_4:
+    improve_x: "Скорость ответов"
+    worsen_y: "Возможность обслуживать рост без найма"
+    statement_1l: "Если повышаем скорость ответов (X), снижается способность обслуживать рост без найма (Y); если обслуживаем рост (Y), падает скорость ответов (X)."
+    measurement_hint: "Время ответа, количество запросов в очереди"
+  step_5:
+    ikr_1l: "Скорость ответов сохраняется при росте без найма."
+    no_new_harm_clause: "Без ухудшения качества для текущих клиентов"
+  step_6:
+    barrier_1l: "Нужно ускорить ответы и одновременно выдержать рост без расширения команды."
+    equivalent_to_step4: "true"
+  step_7:
+    resources:
+      - name: "Правила приоритета"
+        category: "org"
+        tied_to: "Очередь"
+        note: "Можно менять порядок обработки"
+      - name: "Типы клиентов"
+        category: "info"
+        tied_to: "Сегментация"
+        note: "Разделение по ценности"
+      - name: "Категории запросов"
+        category: "info"
+        tied_to: "Запросы"
+        note: "Разделение по сложности"
+  step_8:
+    PRIMARY_FORM: "NONE"
+    BOUNDARY_CHECK:
+      NEAREST_FORMS: ["NONE"]
+      WHY_NOT_X: ["Рост очереди"]
+      WHY_NOT_Y: ["Ограничение по найму"]
+    TRIZ_CORE:
+      CONTRADICTION_1L: "Скорость ответа должна быть высокой и не может быть высокой без найма."
+      IKR_1L: "Ответы быстрые без найма и без ухудшения качества."
+      physical_contradiction:
+        object: "Процесс поддержки"
+        parameter: "скорость ответа"
+        state_a: "высокая"
+        state_not_a: "низкая"
+      separation:
+        separation_type: "condition"
+        what_changes: "скорость ответа зависит от категории/сегмента"
+        expected_resolution: "критичные запросы обрабатываются быстро, остальные — по SLA"
+      system_operator:
+        system_present: "Очередь поддержки"
+        subsystem_present: "Категория запроса"
+        system_future: "Рост при фиксированной команде"
+      transformation_model:
+        changed_object: "правила обработки очереди"
+        new_state: "разделение по условию приоритета"
+        resolution_link: "скорость сохраняется для критичных без найма"
+      non_obviousness_check:
+        assumption_broken: "без условного разделения скорость нельзя сохранить"
+        why_not_obvious: "условное разделение меняет скорость без найма"
+    PRINCIPLES_TO_ACTION:
+      PRINCIPLES: ["P1_SEGMENTATION", "P2_CONDITIONALLY_PRIORITY"]
+      ACTIONS:
+        - "ввести разные SLA по категориям"
+        - "критичные запросы в отдельный поток"
+    IKR_TEST:
+      Q1: "Скорость ответа соблюдена"
+      Q2: "Рост выдержан без найма"
+    CONFIDENCE:
+      score: "0.5"
+      justification: "сегментация снижает нагрузку"
+  step_9:
+    count_rule: "3"
+    concepts:
+      - concept_index: 1
+        name: "Два SLA потока"
+        idea_1l: "Разделить запросы на критичные и обычные с разными SLA"
+        linked_form: "separation: condition"
+        linked_principles: ["P1_SEGMENTATION"]
+        linked_resources: ["Правила приоритета"]
+        ikr_alignment_1l: "Скорость критичных сохраняется"
+        traceability: "principle: P1_SEGMENTATION; resource: правила приоритета"
+      - concept_index: 2
+        name: "Сегментный приоритет"
+        idea_1l: "Приоритет по ценности клиента"
+        linked_form: "separation: condition"
+        linked_principles: ["P2_CONDITIONALLY_PRIORITY"]
+        linked_resources: ["Типы клиентов"]
+        ikr_alignment_1l: "Скорость для ключевых"
+        traceability: "principle: P2_CONDITIONALLY_PRIORITY; resource: типы клиентов"
+      - concept_index: 3
+        name: "Категорийная очередь"
+        idea_1l: "Очереди по категориям сложности"
+        linked_form: "separation: condition"
+        linked_principles: ["P1_SEGMENTATION"]
+        linked_resources: ["Категории запросов"]
+        ikr_alignment_1l: "Снижение времени на простые"
+        traceability: "principle: P1_SEGMENTATION; resource: категории запросов"
+  step_10:
+    concept_specs:
+      - concept_index: 1
+        A_name_tagline: "Два SLA потока"
+        B_axis_and_resource: "Категория запроса"
+        C_mechanism_steps: ["Классифицировать запросы", "Применять SLA"]
+        D_assumptions_constraints: ["Категории определены"]
+        E_risks_failures: ["Ошибочная классификация"]
+        F_metrics:
+          leading: ["Доля критичных"]
+          lagging: ["Время ответа"]
+        G_experiment:
+          timebox: "30 дней"
+          budget: "0"
+          pass_criteria: "Скорость ответа не ухудшается"
+      - concept_index: 2
+        A_name_tagline: "Сегментный приоритет"
+        B_axis_and_resource: "Тип клиента"
+        C_mechanism_steps: ["Сегментировать клиентов", "Назначить приоритет"]
+        D_assumptions_constraints: ["Сегменты определены"]
+        E_risks_failures: ["Недовольство низких сегментов"]
+        F_metrics:
+          leading: ["Доля VIP"]
+          lagging: ["Время ответа VIP"]
+        G_experiment:
+          timebox: "30 дней"
+          budget: "0"
+          pass_criteria: "Скорость VIP без ухудшения"
+      - concept_index: 3
+        A_name_tagline: "Категорийная очередь"
+        B_axis_and_resource: "Категория сложности"
+        C_mechanism_steps: ["Классифицировать сложности", "Разнести очереди"]
+        D_assumptions_constraints: ["Категории известны"]
+        E_risks_failures: ["Смещение нагрузки"]
+        F_metrics:
+          leading: ["Доля простых запросов"]
+          lagging: ["Время ответа"]
+        G_experiment:
+          timebox: "30 дней"
+          budget: "0"
+          pass_criteria: "Скорость ответа не ухудшается"
+  step_11:
+    new_contradiction_exists: "false"
+  step_12:
+    chosen_concept_index: 1
+    chosen_concept_name: "Два SLA потока"
+    reasons: ["Связано с принципами и IKR"]
+    rejected_alternatives: ["Сегментный приоритет", "Категорийная очередь"]
+    assumptions: ["Категории запросов можно выделить"]
+    success_criteria: ["Время ответа не ухудшается"]
+  step_13:
+    workstreams:
+      - name: "Классификация запросов"
+        owner: "Head of Support"
+        steps: ["Определить категории", "Обучить команду"]
+        timing: "2 недели"
+        risks: ["Ошибки классификации"]
+  step_14:
+    rule_id: "RULE_SUPPORT_SLA"
+    rule_statement_if_then: "Если запрос критичный, SLA короткий; иначе стандартный"
+    criterion: "Время ответа не ухудшается"
+    boundaries: "Без найма"
+    evidence_from_case: "Ограничение по найму"
+    test_case_action: "Разделение SLA"
+    version_note: "R1 simple"
+    rationale_1l: "Principles as operators"

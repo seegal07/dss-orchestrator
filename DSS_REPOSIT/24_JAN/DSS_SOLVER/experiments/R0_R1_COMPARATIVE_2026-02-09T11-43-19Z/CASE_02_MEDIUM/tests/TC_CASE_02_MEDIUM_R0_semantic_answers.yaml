@@ -1,0 +1,63 @@
+criteria_version: ASSISTED_GATE_CRITERIA_v0.3
+criteria_doc: ASSISTED_GATE_CRITERIA_v0.3.md
+
+results:
+  Gate4:
+    criteria:
+      - criterion_id: G4-P1
+        status: PASS
+        evidence: "Step4 improve_x/worsen_y заданы измеримо"
+      - criterion_id: G4-P2
+        status: PASS
+        evidence: "statement_1l в форме 'если X, ухудшается Y'"
+      - criterion_id: G4-P3
+        status: PASS
+        evidence: "measurement_hint содержит baseline и лимиты"
+  Gate5:
+    criteria:
+      - criterion_id: G5-P1
+        status: PASS
+        evidence: "IKR описывает результат без механизма"
+      - criterion_id: G5-P2
+        status: PASS
+        evidence: "IKR без 'через/путём'"
+  Gate6:
+    criteria:
+      - criterion_id: G6-P1
+        status: PASS
+        evidence: "barrier_1l выражает взаимоисключение автономии и контроля"
+      - criterion_id: G6-P2
+        status: PASS
+        evidence: "equivalent_to_step4=true"
+  Gate8:
+    criteria:
+      - criterion_id: G8-P1
+        status: PASS
+        evidence: "TRIZ_CORE CONTRADICTION_1L и IKR_1L заданы"
+      - criterion_id: G8-P2
+        status: PASS
+        evidence: "separation_strategy задана (condition)"
+      - criterion_id: G8-P3
+        status: PASS
+        evidence: "PRINCIPLES_TO_ACTION содержит ≥2 принципа и ≥2 действия"
+  Gate9:
+    criteria:
+      - criterion_id: G9-P1
+        status: PASS
+        evidence: "Каждый концепт имеет traceability на separation/principle"
+  Gate11:
+    criteria:
+      - criterion_id: G11-P1
+        status: PASS
+        evidence: "new_contradiction_exists=false"
+  Gate12:
+    criteria:
+      - criterion_id: G12-P1
+        status: PASS
+        evidence: "chosen_concept_index=1 существует в Step9"
+      - criterion_id: G12-P2
+        status: PASS
+        evidence: "reasons ссылаются на separation и principle→action"
+      - criterion_id: G12-P3
+        status: PASS
+        evidence: "success_criteria содержат thresholds и baseline"

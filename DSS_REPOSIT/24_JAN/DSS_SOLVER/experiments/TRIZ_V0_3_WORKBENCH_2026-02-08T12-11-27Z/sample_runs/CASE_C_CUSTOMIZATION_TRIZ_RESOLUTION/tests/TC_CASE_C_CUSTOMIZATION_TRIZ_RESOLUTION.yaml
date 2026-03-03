@@ -1,0 +1,122 @@
+test_case_id: TC_CASE_C_CUSTOMIZATION_TRIZ_RESOLUTION
+status: FILLED
+mode: full_vector
+canon_versions:
+  canon_pipeline: CANON_PIPELINE_v1.2.docx
+  canon_9forms: CANON_9FORMS_v1.1.docx
+  schema: TEST_VECTOR_SCHEMA_v0.1.md.docx
+notes: "TRIZ v0.3 synthetic case"
+
+full_vector:
+  step_0:
+    symptom_1l: "Крупный клиент требует кастомизацию ядра; без неё риск потери сделки, с ней риск деградации продукта и роста поддержки."
+  step_1:
+    owner_role: "CEO/Founder"
+    owner_scope: "Политика кастомизации, роадмап, бюджет dev/support, условия контракта"
+    constraints:
+      - "Нельзя нанимать 2–3 месяца"
+      - "Нельзя ломать сервис текущим клиентам"
+      - "Нельзя создавать не поддерживаемый форк"
+      - "Решение нужно в 2 недели"
+    success_metric_hint: "Кастомизация ≤20% ёмкости; поддержка ≤+25%"
+  step_2:
+    actor: ["CEO", "Продажи", "Разработка", "Поддержка", "Клиент"]
+    system: ["Продукт", "Роадмап", "Поддержка", "Контракт"]
+    environment: ["Рынок", "Конкуренты", "Требования клиента"]
+    boundary_note_1l: "Внутри — политика кастомизации и исполнение; снаружи — требования клиента и рынок."
+  step_3:
+    elements: ["Кастомизация", "Роадмап", "Сделка", "Поддержка", "Скорость релизов"]
+    flows:
+      - from: "Кастомизация"
+        to: "Поддержка"
+        type: "other"
+        note: "Рост нагрузки"
+    symptom_location: "Кастомизация ↔ поддержка/роадмап"
+  step_4:
+    improve_x: "Вероятность закрытия сделки"
+    worsen_y: "Стабильность продукта и нагрузка поддержки"
+    statement_1l: "Если принимаем кастомизацию, растёт нагрузка поддержки и замедляется роадмап; если отказываемся, риск потери сделки"
+    measurement_hint: "PROXY: релизы 2–3/мес; thresholds 20% ёмкости, +25% поддержка; validation_date=2026-03-01"
+  step_5:
+    ikr_1l: "Сделка закрыта без деградации ядра и без роста поддержки"
+    no_new_harm_clause: "Не ухудшать сервис текущим клиентам"
+  step_6:
+    barrier_1l: "Нельзя одновременно сохранить стандартный продукт и удовлетворить кастомизацию без перегруза команды"
+    equivalent_to_step4: true
+  step_7:
+    resources:
+      - name: "Политика кастомизации"
+        category: "org"
+        tied_to: "Контракт"
+        note: "Можно формализовать"
+      - name: "Архитектура продукта"
+        category: "material"
+        tied_to: "Ядро"
+        note: "Можно отделить слой"
+  step_8:
+    PRIMARY_FORM: "Форма противоречия"
+    BOUNDARY_CHECK:
+      NEAREST_FORMS: ["Форма политики", "Форма контракта"]
+      WHY_NOT_X: ["Нельзя расширять команду"]
+      WHY_NOT_Y: ["Нельзя портить сервис действующим клиентам"]
+    TRIZ_CORE:
+      CONTRADICTION_1L: "Нужно принять кастомизацию ради сделки, но нельзя разрушать роадмап и поддержку"
+      IKR_1L: "Сделка закрыта без перегрузки поддержки и без срыва роадмапа"
+      separation_strategy:
+        - type: "condition"
+          description: "Разделить по условиям: кастомизация только для ограниченного сегмента"
+        - type: "part-whole"
+          description: "Разделить по частям: вынести кастомизацию в отдельный слой"
+    PRINCIPLES_TO_ACTION:
+      PRINCIPLES: ["Разделение по условиям", "Дробление"]
+      ACTIONS: ["Контур кастомизации с SLA", "Модульный слой расширений вне ядра"]
+    IKR_TEST:
+      Q1: "YES"
+      Q2: "YES"
+    CONFIDENCE:
+      score: 2
+      justification: "Separation + principles заданы"
+  step_9:
+    count_rule: "3–5"
+    concepts:
+      - concept_index: 1
+        name: "Модуль расширений"
+        idea_1l: "Вынести кастомизацию в модульный слой"
+        linked_form: "Форма разделения"
+        linked_principles: ["Дробление"]
+        linked_resources: ["Архитектура продукта"]
+        ikr_alignment_1l: "Сохраняет ядро"
+        traceability: "principle:Дробление; separation:part-whole"
+      - concept_index: 2
+        name: "Контур кастомизации для сегмента"
+        idea_1l: "Разрешать кастомизацию только для сегмента с отдельным SLA"
+        linked_form: "Форма условий"
+        linked_principles: ["Разделение по условиям"]
+        linked_resources: ["Политика кастомизации"]
+        ikr_alignment_1l: "Ограничивает нагрузку"
+        traceability: "principle:Разделение по условиям; separation:condition"
+  step_10:
+    mechanism_1l: "Принять концепт модульного слоя и контур сегментной кастомизации"
+    mechanism_constraints: "Порог 20% ёмкости, поддержка ≤+25%"
+  step_11:
+    new_contradiction_exists: false
+    contradiction_1l: ""
+  step_12:
+    chosen_concept_index: 1
+    chosen_concept_name: "Модуль расширений"
+    reasons:
+      - "Ссылается на separation part‑whole и принцип дробления"
+      - "Сохраняет ядро при thresholds 20%/+25%"
+    success_criteria:
+      - "Кастомизация ≤ 20% (PROXY)"
+      - "Рост поддержки ≤ +25% (PROXY)"
+      - "validation_date=2026-03-01"
+  step_13:
+    plan_1l: "Ввести модуль расширений и сегментный контур с ревью"
+    steps:
+      - "Зафиксировать правило сегментной кастомизации"
+      - "Выделить модульный слой"
+      - "Ревью после validation_date"
+  step_14:
+    rule_if_then: "Если кастомизация >20% или поддержка >25%, прекращаем кастомизацию"
+    monitoring_metrics: ["Кастомизация %", "Рост поддержки %", "Релизы/мес"]

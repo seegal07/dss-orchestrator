@@ -1,0 +1,18 @@
+{
+  "checkpoint_1_gatephase0": "PASS",
+  "checkpoint_2_hashes": "PASS",
+  "per_variant": {
+    "TC_E22_V1": {
+      "gatephase0_ok": true,
+      "hashes_ok": true
+    },
+    "TC_E22_V2": {
+      "gatephase0_ok": true,
+      "hashes_ok": true
+    },
+    "TC_E22_V3": {
+      "gatephase0_ok": true,
+      "hashes_ok": true
+    }
+  }
+}

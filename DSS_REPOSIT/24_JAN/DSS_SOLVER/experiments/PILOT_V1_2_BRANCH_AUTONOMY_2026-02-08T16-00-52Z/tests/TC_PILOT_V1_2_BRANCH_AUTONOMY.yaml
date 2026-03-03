@@ -1,0 +1,145 @@
+test_case_id: TC_PILOT_V1_2_BRANCH_AUTONOMY
+status: FILLED
+mode: full_vector
+canon_versions:
+  canon_pipeline: CANON_PIPELINE_v1.2.docx
+  canon_9forms: CANON_9FORMS_v1.1.docx
+  schema: TEST_VECTOR_SCHEMA_v0.1.md.docx
+notes: "Pilot V1.2: branch autonomy under hard risk cap"
+
+full_vector:
+  step_0:
+    symptom_1l: "Рост +30% за 90 дней требует автономии, но автономия повышает инциденты при жёстком лимите ущерба и лимите часов CEO."
+  step_1:
+    owner_role: "CEO"
+    owner_scope: "Политика автономии, операционные правила, распределение полномочий"
+    constraints:
+      - "0 € бюджета на HQ на 90 дней"
+      - "Нельзя замораживать рост"
+      - "CEO ≤ 25 ч/нед"
+      - "Базовый уровень инцидентов ≤ 8/мес"
+      - "Потери на филиал ≤ €15k в скользящем окне 30 дней"
+      - "Неравная зрелость менеджеров"
+    success_metric_hint: "+30% выручки за 90 дней; инциденты ≤ 8/мес; CEO ≤ 25 ч/нед"
+  step_2:
+    actor: ["CEO", "Филиалы", "Менеджеры", "Клиенты"]
+    system: ["Сеть филиалов", "Продажи", "Операции", "Контроль качества"]
+    environment: ["Рынок", "Репутационные риски"]
+    boundary_note_1l: "Внутри — политика автономии и операции; снаружи — рынок и репутационные эффекты."
+  step_3:
+    elements: ["Автономия", "Ошибки", "Рост", "CEO нагрузка", "Лимит потерь"]
+    flows:
+      - from: "Автономия"
+        to: "Ошибки"
+        type: "other"
+        note: "Рост инцидентов"
+      - from: "Ошибки"
+        to: "CEO нагрузка"
+        type: "other"
+        note: "Ручное вмешательство"
+    symptom_location: "Автономия ↔ ошибки ↔ нагрузка CEO"
+  step_4:
+    improve_x: "Темп роста выручки"
+    worsen_y: "Инциденты/потери и нагрузка CEO"
+    statement_1l: "Если увеличиваем автономию, растут инциденты и нагрузка CEO; если ограничиваем автономию, падает рост"
+    measurement_hint: "Рост %, инциденты/мес, часы CEO, потери/филиал"
+  step_5:
+    ikr_1l: "Рост +30% за 90 дней без роста инцидентов и без увеличения участия CEO"
+    no_new_harm_clause: "Не превышать 8 инцидентов/мес и €15k потерь/филиал"
+  step_6:
+    barrier_1l: "Нельзя одновременно дать автономию и сохранить инциденты ≤ 8/мес без изменения условий автономии"
+    equivalent_to_step4: true
+  step_7:
+    resources:
+      - name: "Политика автономии"
+        category: "org"
+        tied_to: "Операции"
+        note: "Можно условно ограничить"
+      - name: "Инцидент-данные"
+        category: "info"
+        tied_to: "Контроль"
+        note: "Есть"
+      - name: "Лимит потерь"
+        category: "org"
+        tied_to: "Риск"
+        note: "Жёсткий"
+  step_8:
+    PRIMARY_FORM: "Форма противоречия"
+    BOUNDARY_CHECK:
+      NEAREST_FORMS: ["Форма условий", "Форма контроля"]
+      WHY_NOT_X: ["Нельзя увеличивать часы CEO"]
+      WHY_NOT_Y: ["Нельзя превышать 8 инцидентов/мес"]
+    TRIZ_CORE:
+      physical_contradiction:
+        object: "Автономия филиала"
+        parameter: "Степень автономии"
+        state_a: "Высокая"
+        state_not_a: "Низкая"
+      separation:
+        separation_type: "condition"
+        what_changes: "Автономия включается только при выполнении условий риска"
+        expected_resolution: "Рост при жёстких лимитах инцидентов и потерь"
+      system_operator:
+        system_present: "Сеть филиалов"
+        system_past: "Централизованный контроль"
+        supersystem_present: "Рынок"
+      transformation_model:
+        changed_object: "Политика автономии"
+        new_state: "Условная автономия по риск‑коридору"
+        resolution_link: "Снимает конфликт рост/инциденты"
+      non_obviousness_check:
+        assumption_broken: "assumption_broken=separation_type condition allows autonomy only under risk limits"
+    PRINCIPLES_TO_ACTION:
+      PRINCIPLES: ["Разделение по условиям", "Лимитирование"]
+      ACTIONS: ["Коридор автономии по риску", "Автономия только при инцидентах ≤8/мес и потере ≤€15k"]
+    IKR_TEST:
+      Q1: "YES"
+      Q2: "YES"
+    CONFIDENCE:
+      score: 2
+      justification: "Separation по условиям"
+  step_9:
+    count_rule: "2"
+    concepts:
+      - concept_index: 1
+        name: "Условная автономия"
+        idea_1l: "Автономия разрешается только при выполнении условий риска"
+        linked_form: "Форма условий"
+        linked_principles: ["Разделение по условиям"]
+        linked_resources: ["Инцидент-данные", "Лимит потерь"]
+        ikr_alignment_1l: "Рост без превышения рисков"
+        traceability: "separation:condition"
+      - concept_index: 2
+        name: "Ограниченная автономия"
+        idea_1l: "Автономия с жёстким лимитом потерь"
+        linked_form: "Форма лимитов"
+        linked_principles: ["Лимитирование"]
+        linked_resources: ["Лимит потерь"]
+        ikr_alignment_1l: "Сдерживает потери"
+        traceability: "principle:Лимитирование"
+  step_10:
+    mechanism_1l: "Ввести условную автономию по риск‑коридору"
+    mechanism_constraints: "Инциденты ≤ 8/мес; потери ≤ €15k/филиал"
+  step_11:
+    new_contradiction_exists: false
+    contradiction_1l: ""
+  step_12:
+    chosen_concept_index: 1
+    chosen_concept_name: "Условная автономия"
+    reasons:
+      - "Ссылается на separation по условиям"
+      - "Снимает конфликт рост/инциденты при лимите €15k"
+    success_criteria:
+      - "+30% выручки за 90 дней"
+      - "Инциденты ≤ 8/мес"
+      - "Потери ≤ €15k/филиал"
+      - "CEO ≤ 25 ч/нед"
+  step_13:
+    plan_1l: "Ввести условную автономию с автоматическим отключением при превышении лимитов"
+    steps:
+      - "Определить условия допуска"
+      - "Включать автономию при выполнении условий"
+      - "Отключать при превышении инцидентов/потерь"
+  step_14:
+    rule_if_then: "Если инциденты > 8/мес или потери > €15k, автономия отключается"
+    monitoring_metrics: ["Инциденты/мес", "Потери/филиал", "Часы CEO", "Рост выручки %"]

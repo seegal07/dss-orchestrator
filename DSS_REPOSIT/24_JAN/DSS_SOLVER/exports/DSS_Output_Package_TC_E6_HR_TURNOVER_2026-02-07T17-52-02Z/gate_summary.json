@@ -1,0 +1,21 @@
+{
+  "case_id": "DSS_Output_Package_TC_E6_HR_TURNOVER_2026-02-07T17-52-02Z",
+  "run_id": "2026-02-07T17-52-02Z",
+  "latest": {
+    "Gate0": "pass",
+    "Gate1": "pass",
+    "Gate2": "pass",
+    "Gate3": "pass",
+    "Gate4": "pass",
+    "Gate5": "pass",
+    "Gate6": "pass",
+    "Gate7": "pass",
+    "Gate8": "pass",
+    "Gate9": "pass",
+    "Gate10": "pass",
+    "Gate11": "pass",
+    "Gate12": "blocked",
+    "Gate13": "pass",
+    "Gate14": "pass"
+  }
+}

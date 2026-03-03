@@ -1,0 +1,329 @@
+test_case_id: TC07
+status: FILLED
+mode: artifact_pack
+canon_versions:
+  canon_pipeline: CANON_PIPELINE_v1.2.docx
+  canon_9forms: CANON_9FORMS_v1.1.docx
+  schema: TEST_VECTOR_SCHEMA_v0.1.md.docx
+notes: "Expansion A vector"
+
+artifact_pack:
+  - artifact_type: CASE_SYMPTOM
+    pipeline_step: 0
+    payload:
+      symptom_1l: "Внутренние отчёты по выручке расходятся между источниками, из-за чего решения принимаются на разных цифрах."
+
+  - artifact_type: PROBLEM_OWNER_CARD
+    pipeline_step: 1
+    payload:
+      owner_role: "Финансовый директор / CFO (или CEO, если функции CFO нет)"
+      owner_scope: "Может определить единый источник данных, правила консолидации, формат отчётности и ответственность за корректность"
+      constraints:
+        - "Нельзя внедрять новый BI/ERP в ближайшие 4 недели"
+        - "Нельзя останавливать текущие продажи/операции"
+        - "Допустимы только изменения в текущих таблицах/выгрузках и регламенте"
+      success_metric_hint: "Δ% расхождения ключевых метрик между источниками + часы на сверку/нед."
+
+  - artifact_type: SYSTEM_BOUNDARY_MAP
+    pipeline_step: 2
+    payload:
+      actor:
+        - "CFO"
+        - "Sales Lead"
+        - "Accounting"
+        - "Ops"
+      system:
+        - "Monthly revenue reporting process"
+        - "Current spreadsheets + exports"
+      environment:
+        - "CRM/касса/банк/бухгалтерия (как источники данных)"
+        - "Руководящие совещания (потребители отчёта)"
+      boundary_note_1l: "Граница задачи - консолидация и определение "истины" внутри текущих источников и таблиц без нового BI."
+
+  - artifact_type: INTERACTION_MAP
+    pipeline_step: 3
+    payload:
+      elements:
+        - "CRM export"
+        - "Bank statement"
+        - "Accounting ledger"
+        - "Revenue spreadsheet"
+        - "Weekly executive meeting"
+      flows:
+        - from: "CRM export"
+          to: "Revenue spreadsheet"
+          type: info
+          note: "выгрузка продаж"
+        - from: "Bank statement"
+          to: "Revenue spreadsheet"
+          type: info
+          note: "поступления"
+        - from: "Accounting ledger"
+          to: "Revenue spreadsheet"
+          type: info
+          note: "начисления/корректировки"
+        - from: "Revenue spreadsheet"
+          to: "Weekly executive meeting"
+          type: info
+          note: "финансовый отчёт"
+      symptom_location: "Revenue spreadsheet (формулы/правила) + несовпадающие определения метрик между источниками."
+
+  - artifact_type: CONTRADICTION_STATEMENT
+    pipeline_step: 4
+    payload:
+      improve_x: "Единая и быстрая отчётность по выручке"
+      worsen_y: "Риск ошибок и споров из-за разных определений и ручных сверок"
+      statement_1l: "Если ускоряем подготовку отчёта и делаем один "источник истины", то растёт риск неверных цифр и недоверия."
+      measurement_hint: "время на закрытие отчёта (часы) vs Δ% расхождения между источниками и количество спорных строк/нед."
+
+  - artifact_type: IKR_CARD
+    pipeline_step: 5
+    payload:
+      ikr_1l: "Отчёт формируется автоматически из текущих источников с едиными определениями и без ручной сверки, при этом доверие к цифрам не падает."
+      no_new_harm_clause: "Без внедрения нового BI/ERP и без остановки операций."
+
+  - artifact_type: HARD_BARRIER
+    pipeline_step: 6
+    payload:
+      barrier_1l: "Нельзя одновременно ускорить отчётность и требовать полной ручной проверки каждой строки."
+      equivalent_to_step4: true
+
+  - artifact_type: RESOURCE_MAP
+    pipeline_step: 7
+    payload:
+      resources:
+        - name: "Текущие выгрузки из CRM"
+          category: info
+          tied_to: "CRM export"
+          note: "уже есть формат CSV/XLSX"
+        - name: "Банковская выписка"
+          category: info
+          tied_to: "Bank statement"
+          note: "факт поступлений"
+        - name: "Бухгалтерский регистр"
+          category: info
+          tied_to: "Accounting ledger"
+          note: "начисления/корректировки"
+        - name: "Текущий шаблон отчёта (таблица)"
+          category: info
+          tied_to: "Revenue spreadsheet"
+          note: "можно править формулы/структуру"
+        - name: "Время CFO/бухгалтера 2 часа/нед"
+          category: time
+          tied_to: "Monthly revenue reporting process"
+          note: "на настройку правил"
+        - name: "История корректировок за 30 дней"
+          category: info
+          tied_to: "Revenue spreadsheet"
+          note: "как обучающая выборка для правил"
+        - name: "Ритуал weekly exec meeting"
+          category: org
+          tied_to: "Weekly executive meeting"
+          note: "точка контроля качества цифр"
+        - name: "Право установить регламент "definition of revenue""
+          category: org
+          tied_to: "CFO"
+          note: "фиксирует правило для всех"
+
+  - artifact_type: FORM_SELECTION
+    pipeline_step: 8
+    payload:
+      PRIMARY_FORM: "№8 Кибернетика"
+      BOUNDARY_CHECK:
+        NEAREST_FORMS:
+          - "№2 Динамизация"
+          - "№6 Ресурсоэффективность"
+        WHY_NOT_X:
+          - "Проблема не в темпе изменений, а в отсутствии обратной связи и контроля качества данных."
+          - "Динамизация не задаёт правила сверки и не снижает расхождения между источниками."
+        WHY_NOT_Y:
+          - "Ресурсы есть, но без кибернетического контура проверок "экономия" лишь ускорит распространение ошибок."
+          - "Нужно измеримое правило консолидации и сигнал отклонения, а не просто "делать быстрее/дешевле"."
+      TRIZ_CORE:
+        CONTRADICTION_1L: "Нужно иметь единые цифры для решений, но нельзя увеличивать ручную нагрузку на сверку."
+        IKR_1L: "Цифры сами подтверждают свою корректность через встроенные проверки и расхождения видны сразу."
+      PRINCIPLES_TO_ACTION:
+        PRINCIPLES: [23, 26]
+        ACTIONS:
+          - "23: Встроить контур обратной связи: чек-суммы и сверка 2-х независимых источников для ключевых строк."
+          - "26: Скопировать/тиражировать правило консолидации как единый шаблон + журнал изменений."
+      IKR_TEST:
+        Q1: "YES - Есть путь к IKR без нового BI: добавить проверки и единые определения в текущей таблице."
+        Q2: "YES - Механизм опирается на текущие выгрузки и контрольные метрики, без новых затрат."
+      CONFIDENCE:
+        score: 70
+        justification: "Причина расхождений обычно в определениях и правилах сверки; контур контроля закрывает это при минимальных изменениях."
+
+  - artifact_type: SOLUTION_SET
+    pipeline_step: 9
+    payload:
+      count_rule: "3–5"
+      concepts:
+        - concept_index: 1
+          name: "One Definition Table"
+          idea_1l: "единый справочник определений и маппингов (что считать выручкой) встроен в текущий файл"
+          linked_form: "№8"
+          linked_principles: [23, 26]
+          linked_resources:
+            - "Текущий шаблон отчёта (таблица)"
+            - "Право установить регламент "definition of revenue""
+          ikr_alignment_1l: "единое правило снижает расхождения без ручных споров"
+        - concept_index: 2
+          name: "Reconciliation Loop"
+          idea_1l: "контрольные суммы и авто-сверка CRM vs банк vs бухгалтерия с сигналом отклонения"
+          linked_form: "№8"
+          linked_principles: [23]
+          linked_resources:
+            - "Текущие выгрузки из CRM"
+            - "Банковская выписка"
+            - "Бухгалтерский регистр"
+          ikr_alignment_1l: "расхождения видны сразу, сверка точечная"
+        - concept_index: 3
+          name: "Change Log + Review"
+          idea_1l: "журнал изменений правил + еженедельный review 10 минут на exec meeting"
+          linked_form: "№8"
+          linked_principles: [26]
+          linked_resources:
+            - "Ритуал weekly exec meeting"
+            - "История корректировок за 30 дней"
+          ikr_alignment_1l: "правило не расползается и сохраняет доверие"
+
+  - artifact_type: MECHANISM_SPECS
+    pipeline_step: 10
+    payload:
+      concept_specs:
+        - concept_index: 1
+          A_name_tagline: "One Definition Table — единые определения"
+          B_axis_and_resource: "ось: скорость отчёта vs доверие; ресурс: текущий шаблон отчёта + право регламента"
+          C_mechanism_steps:
+            - "Вынести определения метрик и правила маппинга в отдельный лист "Definitions"."
+            - "Заставить все расчёты ссылаться только на этот лист."
+            - "Зафиксировать владельца листа и правило внесения изменений."
+          D_assumptions_constraints:
+            - "Список источников фиксирован на месяц."
+            - "Определения метрик согласованы с CEO."
+          E_risks_failures:
+            - "Скрытые исключения (возвраты/авансы) не учтены."
+            - "Лист редактируется без контроля."
+          F_metrics:
+            leading:
+              - "% строк отчёта с маппингом в Definitions"
+              - "кол-во изменений Definitions/нед"
+            lagging:
+              - "Δ% расхождения между источниками по выручке"
+              - "часы на ручную сверку/нед"
+          G_experiment:
+            timebox: "2 недели"
+            budget: "0"
+            pass_criteria: "Δ% расхождения ↓ на 30%+, ручная сверка ≤2 ч/нед"
+        - concept_index: 2
+          A_name_tagline: "Reconciliation Loop — авто-сверка"
+          B_axis_and_resource: "ось: полнота сверки vs трудозатраты; ресурс: 3 источника данных"
+          C_mechanism_steps:
+            - "Определить 3 контрольные метрики: total, top-20 deals, refunds."
+            - "Собрать авто-таблицу сравнения CRM/банк/бухгалтерия."
+            - "Вывести список отклонений > порога и владельца разборов."
+          D_assumptions_constraints:
+            - "Порог отклонения задан (например 1%)."
+            - "Есть доступ к выгрузкам 1 раз в неделю."
+          E_risks_failures:
+            - "Неполные выгрузки."
+            - "Разные даты признания выручки."
+          F_metrics:
+            leading:
+              - "кол-во отклонений > порога/нед"
+              - "время до выявления отклонения (часы)"
+            lagging:
+              - "Δ% расхождения выручки"
+              - "кол-во спорных обсуждений на встречах/мес"
+          G_experiment:
+            timebox: "2 недели"
+            budget: "0"
+            pass_criteria: "отклонения выявляются до встречи; Δ% ↓ на 30%+"
+        - concept_index: 3
+          A_name_tagline: "Change Log + Review — контроль изменений"
+          B_axis_and_resource: "ось: гибкость правил vs контроль; ресурс: exec meeting 10 мин"
+          C_mechanism_steps:
+            - "Добавить лист "ChangeLog" (что изменили/почему/кем/дата)."
+            - "Раз в неделю 10 минут подтверждать изменения и их эффект."
+            - "Откатывать изменения без эффекта."
+          D_assumptions_constraints:
+            - "Есть дисциплина фиксировать изменения."
+          E_risks_failures:
+            - "Лог не ведётся."
+            - "Review превращается в спор без метрик."
+          F_metrics:
+            leading:
+              - "% изменений с причиной+ожидаемым эффектом"
+              - "кол-во откатов/нед"
+            lagging:
+              - "стабильность Δ% расхождения"
+              - "доверие к отчёту (опрос 1-5)"
+          G_experiment:
+            timebox: "3 недели"
+            budget: "0"
+            pass_criteria: "≥80% изменений с причиной; доверие ≥4/5"
+
+  - artifact_type: SECONDARY_CONTRADICTION_CHECK
+    pipeline_step: 11
+    payload:
+      new_contradiction_exists: false
+
+  - artifact_type: DECISION_RECORD
+    pipeline_step: 12
+    payload:
+      chosen_concept_index: 2
+      chosen_concept_name: "Reconciliation Loop"
+      reasons:
+        - "Даёт быстрый сигнал отклонений без внедрения нового BI."
+        - "Прямо снижает Δ% расхождений и спорные обсуждения."
+      rejected_alternatives:
+        - concept_index: 1
+          concept: "One Definition Table"
+          why_rejected: "полезно, но без контура сверки рискует остаться документом"
+        - concept_index: 3
+          concept: "Change Log + Review"
+          why_rejected: "работает только после появления метрик отклонений"
+      assumptions:
+        - "Доступны регулярные выгрузки из 3 источников."
+      success_criteria:
+        - "Δ% расхождения выручки ↓ на 30%+ за 2 недели"
+        - "ручная сверка ≤2 ч/нед"
+
+  - artifact_type: IMPLEMENTATION_MAP
+    pipeline_step: 13
+    payload:
+      workstreams:
+        - name: "Data definitions"
+          owner: "CFO"
+          tasks:
+            - "зафиксировать определения метрик"
+            - "утвердить пороги отклонений"
+          timeline: "нед 1"
+        - name: "Reconciliation table"
+          owner: "финаналитик/бухгалтер"
+          tasks:
+            - "собрать авто-сверку"
+            - "настроить список отклонений и владельцев"
+          timeline: "нед 1-2"
+        - name: "Review cadence"
+          owner: "CEO"
+          tasks:
+            - "добавить 10 минут в weekly meeting"
+            - "следить за метриками"
+          timeline: "нед 2-3"
+
+  - artifact_type: RULE_UPDATE
+    pipeline_step: 14
+    payload:
+      rule_id: "RULE-REV-SOURCE-TRUTH-01"
+      rule_statement_if_then: "Если готовится отчёт по выручке, то он строится из утверждённых источников и проходит авто-сверку по порогу; иначе отчёт помечается как "DRAFT" и не используется для решений."
+      criterion: "источники указаны AND авто-сверка выполнена AND отклонения > порога имеют владельца"
+      boundaries: "не применимо к ad-hoc оценкам в течение дня без решений"
+      evidence_from_case: "симптом: разные цифры в отчётах; ограничение: без нового BI"
+      test_case_action:
+        add_or_update: add
+        test_case_id: TC07
+        expected_effect: "Δ% расхождения ↓, время сверки ↓"
+      version_note: "NON-CANON case rule; canon unchanged"
+      rationale_1l: "единые определения + контур сверки делают цифры сопоставимыми без ручной бюрократии"

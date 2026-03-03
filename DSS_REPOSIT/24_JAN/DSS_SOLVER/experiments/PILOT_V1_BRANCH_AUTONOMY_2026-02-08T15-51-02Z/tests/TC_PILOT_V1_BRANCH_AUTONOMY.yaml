@@ -1,0 +1,138 @@
+test_case_id: TC_PILOT_V1_BRANCH_AUTONOMY
+status: FILLED
+mode: full_vector
+canon_versions:
+  canon_pipeline: CANON_PIPELINE_v1.2.docx
+  canon_9forms: CANON_9FORMS_v1.1.docx
+  schema: TEST_VECTOR_SCHEMA_v0.1.md.docx
+notes: "Pilot V1: branch autonomy deadlock"
+
+full_vector:
+  step_0:
+    symptom_1l: "+30% выручки требует автономии филиалов, но автономия увеличивает ошибки и втягивает CEO в ручной контроль."
+  step_1:
+    owner_role: "CEO"
+    owner_scope: "Политика автономии, операционные правила, распределение полномочий"
+    constraints:
+      - "Нельзя нанимать HQ > €15k/мес"
+      - "Нельзя замораживать рост"
+      - "CEO ≤ 25 ч/нед"
+      - "Неравная зрелость менеджеров"
+    success_metric_hint: "+30% выручки за 6 месяцев, инциденты ≤ +5%, CEO involvement не растёт"
+  step_2:
+    actor: ["CEO", "Филиалы", "Менеджеры", "Клиенты"]
+    system: ["Сеть филиалов", "Продажи", "Операции", "Контроль качества"]
+    environment: ["Рынок", "Конкуренты", "Репутационные риски"]
+    boundary_note_1l: "Внутри — политика автономии и операционные правила; снаружи — рынок и репутационные эффекты."
+  step_3:
+    elements: ["Автономия", "Ошибки", "Рост", "CEO нагрузка"]
+    flows:
+      - from: "Автономия"
+        to: "Ошибки"
+        type: "other"
+        note: "Рост инцидентов"
+      - from: "Ошибки"
+        to: "CEO нагрузка"
+        type: "other"
+        note: "Ручное вмешательство"
+    symptom_location: "Автономия ↔ ошибки ↔ нагрузка CEO"
+  step_4:
+    improve_x: "Темп роста выручки"
+    worsen_y: "Ошибки/возвраты и нагрузка CEO"
+    statement_1l: "Если увеличиваем автономию, растут ошибки и нагрузка CEO; если ограничиваем автономию, падает рост"
+    measurement_hint: "Рост выручки %, инциденты %, часы CEO"
+  step_5:
+    ikr_1l: "Рост +30% без роста инцидентов и без увеличения участия CEO"
+    no_new_harm_clause: "Не увеличивать ошибки и не превышать 25 ч/нед CEO"
+  step_6:
+    barrier_1l: "Нельзя одновременно дать автономию и сохранить низкий уровень ошибок без изменения условий автономии"
+    equivalent_to_step4: true
+  step_7:
+    resources:
+      - name: "Политика автономии"
+        category: "org"
+        tied_to: "Операции"
+        note: "Можно условно ограничить"
+      - name: "Инцидент-данные"
+        category: "info"
+        tied_to: "Контроль"
+        note: "Есть"
+  step_8:
+    PRIMARY_FORM: "Форма противоречия"
+    BOUNDARY_CHECK:
+      NEAREST_FORMS: ["Форма регламентов", "Форма контроля"]
+      WHY_NOT_X: ["Нельзя замораживать рост"]
+      WHY_NOT_Y: ["Нельзя увеличивать нагрузку CEO"]
+    TRIZ_CORE:
+      physical_contradiction:
+        object: "Автономия филиала"
+        parameter: "Степень автономии"
+        state_a: "Высокая"
+        state_not_a: "Низкая"
+      separation:
+        separation_type: "condition"
+        what_changes: "Автономия включается только при выполнении условий зрелости"
+        expected_resolution: "Рост при контролируемых инцидентах"
+      system_operator:
+        system_present: "Сеть филиалов"
+        system_past: "Централизованный контроль"
+        supersystem_present: "Рынок"
+      transformation_model:
+        changed_object: "Политика автономии"
+        new_state: "Условная автономия по правилам допуска"
+        resolution_link: "Снимает конфликт между ростом и ошибками"
+      non_obviousness_check:
+        assumption_broken: "assumption_broken=separation_type condition allows autonomy only when maturity conditions are met"
+    PRINCIPLES_TO_ACTION:
+      PRINCIPLES: ["Разделение по условиям", "Лимитирование"]
+      ACTIONS: ["Коридор автономии по допуску", "Автономия только для зрелых филиалов"]
+    IKR_TEST:
+      Q1: "YES"
+      Q2: "YES"
+    CONFIDENCE:
+      score: 2
+      justification: "Separation по условиям"
+  step_9:
+    count_rule: "2"
+    concepts:
+      - concept_index: 1
+        name: "Условная автономия"
+        idea_1l: "Автономия разрешается только при выполнении условий зрелости"
+        linked_form: "Форма условий"
+        linked_principles: ["Разделение по условиям"]
+        linked_resources: ["Политика автономии", "Инцидент-данные"]
+        ikr_alignment_1l: "Рост без роста инцидентов"
+        traceability: "separation:condition"
+      - concept_index: 2
+        name: "Ограниченная автономия"
+        idea_1l: "Автономия с лимитом потерь"
+        linked_form: "Форма лимитов"
+        linked_principles: ["Лимитирование"]
+        linked_resources: ["Инцидент-данные"]
+        ikr_alignment_1l: "Сдерживает потери"
+        traceability: "principle:Лимитирование"
+  step_10:
+    mechanism_1l: "Ввести условную автономию по допуску зрелости"
+    mechanism_constraints: "Инциденты ≤ +5%, CEO ≤ 25 ч/нед"
+  step_11:
+    new_contradiction_exists: false
+    contradiction_1l: ""
+  step_12:
+    chosen_concept_index: 1
+    chosen_concept_name: "Условная автономия"
+    reasons:
+      - "Ссылается на separation по условиям"
+      - "Снимает конфликт рост/ошибки без роста вовлечения CEO"
+    success_criteria:
+      - "+30% выручки за 6 месяцев"
+      - "Инциденты ≤ +5%"
+      - "CEO ≤ 25 ч/нед"
+  step_13:
+    plan_1l: "Ввести условия допуска к автономии и мониторинг инцидентов"
+    steps:
+      - "Определить условия зрелости"
+      - "Включать автономию при выполнении условий"
+      - "Отключать при превышении инцидентов"
+  step_14:
+    rule_if_then: "Если инциденты > +5% или вовлечённость CEO растёт, автономия отключается"
+    monitoring_metrics: ["Инциденты %", "Часы CEO", "Рост выручки %"]

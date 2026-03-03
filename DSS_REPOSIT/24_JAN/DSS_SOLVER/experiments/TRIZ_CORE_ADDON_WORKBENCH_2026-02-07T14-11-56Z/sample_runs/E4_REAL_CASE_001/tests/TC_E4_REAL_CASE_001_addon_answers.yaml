@@ -1,0 +1,36 @@
+criteria_version: TRIZ_CORE_ADDON_GATE_CRITERIA_v0.1
+criteria_doc: TRIZ_CORE_ADDON_GATE_CRITERIA_v0.1.md
+
+results:
+  Gate15:
+    criteria:
+      - criterion_id: G15-P1
+        status: PASS
+        evidence: "Все 9 экранов заполнены"
+      - criterion_id: G15-P2
+        status: PASS
+        evidence: "Различимы past/present/future"
+  Gate16:
+    criteria:
+      - criterion_id: G16-P1
+        status: PASS
+        evidence: "parameter и два состояния заданы"
+      - criterion_id: G16-P2
+        status: PASS
+        evidence: "separation_principle=time"
+  Gate17:
+    criteria:
+      - criterion_id: G17-P1
+        status: PASS
+        evidence: "initial и sharpened заданы"
+      - criterion_id: G17-P2
+        status: PASS
+        evidence: "justification указан"
+  Gate18:
+    criteria:
+      - criterion_id: G18-P1
+        status: PASS
+        evidence: "S1/S2/Field заданы"
+      - criterion_id: G18-P2
+        status: PASS
+        evidence: "problematic_link и transformations заданы"

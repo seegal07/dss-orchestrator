@@ -1,0 +1,12 @@
+# E7_REPORT_v0.1
+- status: completed
+- criteria: 3
+- criteria_confirmation: YES
+- reject_reasons_collected:
+  - Ход 1: yes
+  - Ход 2: yes
+  - Ход 3: not rejected (constraint noted)
+- SDP_triggers: 0
+- DCF_rounds: 0
+- assisted_ack: FALSE
+- stop_reason: normal completion of S11 criteria set + reject-reason prep

@@ -1,0 +1,36 @@
+run_id: 2026-02-13T13-55-13Z
+test_case_id: TC_DSS01
+issues:
+  - gate: Gate8
+    issue_code: STRUCTURAL
+    message: "Step8.TRIZ_CORE.physical_contradiction missing"
+  - gate: Gate8
+    issue_code: STRUCTURAL
+    message: "Step8.TRIZ_CORE.separation missing"
+  - gate: Gate8
+    issue_code: STRUCTURAL
+    message: "Step8.TRIZ_CORE.system_operator missing"
+  - gate: Gate8
+    issue_code: STRUCTURAL
+    message: "Step8.TRIZ_CORE.transformation_model missing"
+  - gate: Gate8
+    issue_code: STRUCTURAL
+    message: "Step8.TRIZ_CORE.non_obviousness_check missing"
+  - gate: Gate11
+    issue_code: STRUCTURAL
+    message: "Step11.selection_criteria_refs missing"
+  - gate: GateTRIZ
+    issue_code: STRUCTURAL
+    message: "TRIZ_G1_MISSING: physical_contradiction missing (step_8.TRIZ_CORE.physical_contradiction)"
+  - gate: GateTRIZ
+    issue_code: STRUCTURAL
+    message: "TRIZ_G2_MISSING: separation missing (step_8.TRIZ_CORE.separation)"
+  - gate: GateTRIZ
+    issue_code: STRUCTURAL
+    message: "TRIZ_G3_MISSING: system_operator missing (step_8.TRIZ_CORE.system_operator)"
+  - gate: GateTRIZ
+    issue_code: STRUCTURAL
+    message: "TRIZ_G4_MISSING: non_obviousness_check missing (step_8.TRIZ_CORE.non_obviousness_check)"
+  - gate: GateTRIZ
+    issue_code: STRUCTURAL
+    message: "TRIZ_GX_MISSING: transformation_model missing (step_8.TRIZ_CORE.transformation_model)"

@@ -1,0 +1,8 @@
+- timestamp_utc: 2026-02-12T09:46:49Z
+- step: S10
+- trigger: NONE
+- note: pre-trigger observation, clarification count for H2 mechanism not yet >2.
+- timestamp_utc: 2026-02-12T09:00:00Z
+- step: S10
+- trigger: NONE
+- note: уточнения не превысили порог >2 на одном микрошаге, стагнация не зафиксирована.

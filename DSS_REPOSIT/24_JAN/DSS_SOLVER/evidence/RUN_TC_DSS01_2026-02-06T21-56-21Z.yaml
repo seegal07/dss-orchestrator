@@ -1,0 +1,62 @@
+run_id: 2026-02-06T21-56-21Z
+test_case_id: TC_DSS01
+harness_version: dss-solver-0.1
+timestamp_utc: 2026-02-06T21-56-21Z
+overall_status: PASS
+gate_results:
+  - gate: Gate0
+    status: PASS
+    reasons: []
+  - gate: Gate1
+    status: PASS
+    reasons: []
+  - gate: Gate2
+    status: PASS
+    reasons: []
+  - gate: Gate3
+    status: PASS
+    reasons: []
+  - gate: Gate4
+    status: PASS
+    reasons:
+      - "G4-P1: Step4: improve_x/worsen_y заданы как измеримые параметры"
+      - "G4-P2: statement_1l в форме 'Если улучшаем X, ухудшается Y'"
+      - "G4-P3: measurement_hint описывает метрики X/Y"
+  - gate: Gate5
+    status: PASS
+    reasons:
+      - "G5-P1: IKR описывает результат без механизма"
+      - "G5-P2: нет конструкций 'через/путём/используя'"
+  - gate: Gate6
+    status: PASS
+    reasons:
+      - "G6-P1: barrier_1l выражает взаимоисключение"
+      - "G6-P2: equivalent_to_step4=true"
+  - gate: Gate7
+    status: PASS
+    reasons: []
+  - gate: Gate8
+    status: PASS
+    reasons: []
+  - gate: Gate9
+    status: PASS
+    reasons: []
+  - gate: Gate10
+    status: PASS
+    reasons: []
+  - gate: Gate11
+    status: PASS
+    reasons:
+      - "G11-P1: new_contradiction_exists=false и в решениях нет новых конфликтов"
+  - gate: Gate12
+    status: PASS
+    reasons:
+      - "G12-P1: chosen_concept_index=1 соответствует Step9"
+      - "G12-P2: reasons связаны с ограничениями и целевыми метриками"
+      - "G12-P3: success_criteria согласованы с IKR"
+  - gate: Gate13
+    status: PASS
+    reasons: []
+  - gate: Gate14
+    status: PASS
+    reasons: []

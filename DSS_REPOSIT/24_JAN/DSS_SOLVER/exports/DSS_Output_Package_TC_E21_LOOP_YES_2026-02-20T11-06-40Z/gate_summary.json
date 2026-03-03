@@ -1,0 +1,73 @@
+{
+  "case_id": "DSS_Output_Package_TC_E21_LOOP_YES_2026-02-20T11-06-40Z",
+  "run_id": "2026-02-20T11-06-40Z",
+  "latest": {
+    "Gate0": "pass",
+    "Gate1": "pass",
+    "Gate2": "pass",
+    "Gate3": "fail",
+    "GatePFL": "pass",
+    "Gate4": "pass",
+    "Gate5": "pass",
+    "Gate6": "pass",
+    "Gate7": "fail",
+    "Gate8": "pass",
+    "Gate9": "fail",
+    "Gate10": "fail",
+    "Gate11": "pass",
+    "Gate12": "not_run",
+    "Gate13": "fail",
+    "Gate14": "fail",
+    "GateTRIZ": "fail"
+  },
+  "normalized_reason_codes": {
+    "Gate0": [],
+    "Gate1": [],
+    "Gate2": [],
+    "Gate3": [
+      "STEP3_FLOWS_0_NOT_A_DICT"
+    ],
+    "GatePFL": [],
+    "Gate4": [
+      "G4_P1"
+    ],
+    "Gate5": [
+      "G5_P1"
+    ],
+    "Gate6": [
+      "G6_P1"
+    ],
+    "Gate7": [
+      "STEP7_RESOURCES_IS_NOT_A_LIST"
+    ],
+    "Gate8": [],
+    "Gate9": [
+      "STEP9_CONCEPTS_IS_NOT_A_LIST"
+    ],
+    "Gate10": [
+      "STEP10_CONCEPT_SPECS_IS_NOT_A_LIST"
+    ],
+    "Gate11": [
+      "G11_P1"
+    ],
+    "Gate12": [
+      "GATE12_BLOCKED_DUE_TO_GATE9_GATE11_FAIL"
+    ],
+    "Gate13": [
+      "STEP13_WORKSTREAMS_MISSING"
+    ],
+    "Gate14": [
+      "STEP14_RULE_ID_MISSING",
+      "STEP14_RULE_STATEMENT_IF_THEN_MISSING",
+      "STEP14_CRITERION_MISSING",
+      "STEP14_BOUNDARIES_MISSING",
+      "STEP14_EVIDENCE_FROM_CASE_MISSING",
+      "STEP14_TEST_CASE_ACTION_MISSING",
+      "STEP14_VERSION_NOTE_MISSING",
+      "STEP14_RATIONALE_1L_MISSING"
+    ],
+    "GateTRIZ": [
+      "TRIZ_G4_INVALID"
+    ]
+  }
+}

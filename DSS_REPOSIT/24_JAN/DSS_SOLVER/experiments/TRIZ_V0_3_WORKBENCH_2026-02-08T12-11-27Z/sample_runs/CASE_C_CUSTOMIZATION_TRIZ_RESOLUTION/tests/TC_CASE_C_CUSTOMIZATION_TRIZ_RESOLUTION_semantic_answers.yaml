@@ -1,0 +1,66 @@
+criteria_version: ASSISTED_GATE_CRITERIA_v0.3
+criteria_doc: ASSISTED_GATE_CRITERIA_v0.3.md
+
+results:
+  Gate4:
+    criteria:
+      - criterion_id: G4-P1
+        status: PASS
+        evidence: "X/Y заданы измеримо"
+      - criterion_id: G4-P2
+        status: PASS
+        evidence: "statement_1l соответствует форме"
+      - criterion_id: G4-P3
+        status: PASS
+        evidence: "measurement_hint содержит PROXY + validation_date"
+  Gate5:
+    criteria:
+      - criterion_id: G5-P1
+        status: PASS
+        evidence: "IKR описывает эффект без механизма"
+      - criterion_id: G5-P2
+        status: PASS
+        evidence: "IKR не противоречит ограничениям"
+  Gate6:
+    criteria:
+      - criterion_id: G6-P1
+        status: PASS
+        evidence: "barrier_1l описывает взаимоисключение"
+      - criterion_id: G6-P2
+        status: PASS
+        evidence: "equivalent_to_step4=true"
+  Gate8:
+    criteria:
+      - criterion_id: G8-P1
+        status: PASS
+        evidence: "TRIZ_CORE содержит contradiction_1l + IKR_1l"
+      - criterion_id: G8-P2
+        status: PASS
+        evidence: "separation_strategy содержит 2 стратегии"
+      - criterion_id: G8-P3
+        status: PASS
+        evidence: "principles list ≥2"
+      - criterion_id: G8-P4
+        status: PASS
+        evidence: "principles→actions mapping задан"
+  Gate9:
+    criteria:
+      - criterion_id: G9-P1
+        status: PASS
+        evidence: "traceability заполнена для каждого концепта"
+  Gate12:
+    criteria:
+      - criterion_id: G12-P1
+        status: PASS
+        evidence: "chosen_concept_index=1"
+      - criterion_id: G12-P2
+        status: PASS
+        evidence: "reasons содержат separation + principle‑action"
+      - criterion_id: G12-P3
+        status: PASS
+        evidence: "success_criteria содержат thresholds + validation_date"
+  Gate11:
+    criteria:
+      - criterion_id: G11-P1
+        status: PASS
+        evidence: "new_contradiction_exists=false"

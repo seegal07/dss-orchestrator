@@ -1,0 +1,159 @@
+test_case_id: TC_DIAG_001
+status: FILLED
+mode: full_vector
+canon_versions:
+  canon_pipeline: CANON_PIPELINE_v1.2.docx
+  canon_9forms: CANON_9FORMS_v1.1.docx
+  schema: TEST_VECTOR_SCHEMA_v0.1.md.docx
+notes: "DIAGNOSTIC_RUN founder speed vs quality"
+
+full_vector:
+  step_0:
+    symptom_1l: "Рост выручки усиливает хаос: сроки срываются, команда выгорает, качество плавает."
+  step_1:
+    owner_role: "Founder/CEO"
+    owner_scope: "Приоритеты продаж, продуктовые ограничения, структура команды, правила приёма клиентов"
+    constraints:
+      - "Нельзя резко останавливать продажи (кассовый разрыв через 3–4 месяца)"
+      - "Нельзя удваивать команду"
+      - "Нельзя резко ухудшать качество для текущих клиентов"
+      - "Горизонт решения — 3 месяца"
+    success_metric_hint: "Выручка ≥ -10%, сроки ≤ текущего, загрузка ключевых ролей ≤85%, ручные исключения ↓"
+  step_2:
+    actor: ["Founder/CEO", "Команда", "Клиенты"]
+    system: ["Продажи", "Поставка/исполнение", "Качество", "Процессы"]
+    environment: ["Рынок", "Конкуренция", "Ожидания клиентов"]
+    boundary_note_1l: "Внутри — продажи, продуктовые ограничения и правила приёма; снаружи — рынок и ожидания клиентов."
+  step_3:
+    elements: ["Лид", "Клиент", "Команда", "Процесс", "Срок", "Качество"]
+    flows:
+      - from: "Лид"
+        to: "Клиент"
+        type: "info"
+        note: "Продажа"
+      - from: "Клиент"
+        to: "Команда"
+        type: "other"
+        note: "Нагрузка на исполнение"
+      - from: "Команда"
+        to: "Срок"
+        type: "other"
+        note: "Исполнение обязательств"
+      - from: "Команда"
+        to: "Качество"
+        type: "other"
+        note: "Качество результата"
+    symptom_location: "Рост клиентов → перегрузка команды → срыв сроков/качества"
+  step_4:
+    improve_x: "Скорость и объём продаж"
+    worsen_y: "Стабильность исполнения и качество"
+    statement_1l: "Если увеличиваем продажи, ухудшается стабильность сроков и качества"
+    measurement_hint: "Выручка, срок исполнения, уровень загрузки, число ручных исключений"
+  step_5:
+    ikr_1l: "Продажи продолжаются без ухудшения сроков и качества при ограниченной загрузке команды"
+    no_new_harm_clause: "Не ухудшать качество и не допускать кассовый разрыв"
+  step_6:
+    barrier_1l: "Нельзя одновременно ускорять продажи и сохранять стабильное качество без изменения правил приёма клиентов"
+    equivalent_to_step4: true
+  step_7:
+    resources:
+      - name: "Правила приёма клиентов"
+        category: "org"
+        tied_to: "Продажи"
+        note: "Можно менять"
+      - name: "Продуктовые ограничения"
+        category: "org"
+        tied_to: "Объём работ"
+        note: "Можно вводить"
+      - name: "Приоритеты продаж"
+        category: "org"
+        tied_to: "Фокус"
+        note: "Можно менять"
+      - name: "Структура команды"
+        category: "org"
+        tied_to: "Роли"
+        note: "Можно перераспределять"
+  step_8:
+    PRIMARY_FORM: "Форма ограничения входа"
+    BOUNDARY_CHECK:
+      NEAREST_FORMS: ["Форма приоритизации", "Форма качества"]
+      WHY_NOT_X: ["Нельзя остановить продажи"]
+      WHY_NOT_Y: ["Нельзя ухудшить качество"]
+    TRIZ_CORE:
+      CONTRADICTION_1L: "нужно расти, но нельзя ломать исполнение"
+      IKR_1L: "рост при стабильном исполнении"
+    PRINCIPLES_TO_ACTION:
+      PRINCIPLES: [13]
+      ACTIONS: ["Ограничить вход и стандартизировать приём"]
+    IKR_TEST:
+      Q1: "YES"
+      Q2: "YES"
+    CONFIDENCE:
+      score: 2
+      justification: "Противоречие подтверждено метриками"
+  step_9:
+    count_rule: "3–5"
+    concepts:
+      - concept_index: 1
+        name: "Контроль входа по ёмкости"
+        idea_1l: "Принимать новых клиентов только при свободной ёмкости"
+        linked_form: "Форма ограничения входа"
+        linked_principles: [13]
+        linked_resources: ["Правила приёма клиентов"]
+        ikr_alignment_1l: "Снижает перегрузку"
+      - concept_index: 2
+        name: "Стандартизированный пакет"
+        idea_1l: "Ограничить продажи стандартным набором услуг"
+        linked_form: "Форма приоритизации"
+        linked_principles: [13]
+        linked_resources: ["Продуктовые ограничения"]
+        ikr_alignment_1l: "Снижает вариативность"
+      - concept_index: 3
+        name: "Очередь запуска"
+        idea_1l: "Фиксировать запуск клиентов по слотам"
+        linked_form: "Форма качества"
+        linked_principles: [13]
+        linked_resources: ["Приоритеты продаж"]
+        ikr_alignment_1l: "Стабилизирует сроки"
+  step_10:
+    concept_specs:
+      - concept_index: 1
+        A_name_tagline: "Контроль входа по ёмкости"
+        B_axis_and_resource: "Правила приёма + ёмкость команды"
+        C_mechanism_steps:
+          - "Определить текущую ёмкость"
+          - "Ввести правило приёма при свободной ёмкости"
+        D_assumptions_constraints: ["Без найма"]
+        E_risks_failures: ["Замедление продаж"]
+        F_metrics:
+          leading: ["Загрузка ключевых ролей"]
+          lagging: ["Срок исполнения", "Качество"]
+        G_experiment:
+          timebox: "3 месяца"
+          budget: "0"
+          pass_criteria: "Загрузка ≤85%"
+  step_11:
+    new_contradiction_exists: false
+  step_12:
+    chosen_concept_index: 1
+    chosen_concept_name: "Контроль входа по ёмкости"
+    reasons: ["Сохраняет качество", "Не требует найма", "Стабилизирует сроки"]
+    rejected_alternatives: ["Стандартизированный пакет", "Очередь запуска"]
+    assumptions: ["Есть измеримая ёмкость"]
+    success_criteria: ["Выручка ≥ -10%", "Срок исполнения ≤ текущего", "Загрузка ≤85%", "Ручные исключения ↓"]
+  step_13:
+    workstreams:
+      - name: "Ёмкость"
+        owner: "Founder/CEO"
+        steps: ["Оценить ёмкость", "Утвердить лимиты"]
+        timing: "2 недели"
+        risks: ["Недооценка объёма"]
+  step_14:
+    rule_id: "RULE_DIAG_001"
+    rule_statement_if_then: "Если загрузка >85% и сроки ухудшаются, то приём новых клиентов ограничивается"
+    criterion: "Загрузка и сроки"
+    boundaries: "Текущие проекты"
+    evidence_from_case: "Метрики загрузки и сроков"
+    test_case_action: "Ограничение входа"
+    version_note: "v1"
+    rationale_1l: "Стабилизация исполнения"

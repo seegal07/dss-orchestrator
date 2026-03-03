@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/harness/harness.py", line 918, in <module>
+    main()
+  File "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/harness/harness.py", line 914, in main
+    run_tc(args.tc, args.answers, args.tc_path, args.addon_answers, args.addon_strict)
+  File "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/harness/harness.py", line 858, in run_tc
+    gate_results = _apply_semantic(structural_results, answers)
+  File "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/harness/harness.py", line 418, in _apply_semantic
+    a = answer_map.get(g.gate)
+AttributeError: 'str' object has no attribute 'get'

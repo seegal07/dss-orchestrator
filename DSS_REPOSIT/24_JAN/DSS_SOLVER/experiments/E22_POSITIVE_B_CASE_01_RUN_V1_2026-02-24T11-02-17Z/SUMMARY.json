@@ -1,0 +1,49 @@
+{
+  "checkpoints": {
+    "checkpoint_1_gatephase0": "PASS",
+    "checkpoint_2_hashes": "PASS",
+    "per_variant": {
+      "V1": {
+        "gatephase0_ok": true,
+        "hashes_ok": true,
+        "s03_5_nonnull": true,
+        "gatepfl_no_solution_as_xy": true
+      },
+      "V2": {
+        "gatephase0_ok": true,
+        "hashes_ok": true,
+        "s03_5_nonnull": true,
+        "gatepfl_no_solution_as_xy": true
+      },
+      "V3": {
+        "gatephase0_ok": true,
+        "hashes_ok": true,
+        "s03_5_nonnull": true,
+        "gatepfl_no_solution_as_xy": true
+      }
+    },
+    "gatepfl_no_solution_as_xy": "PASS"
+  },
+  "Step1": "PASS",
+  "Step2": "PASS",
+  "variants": {
+    "V1": {
+      "canonical_hash_v0": "2731d164ec510c17faf5ff70f37e7c02bc90dae3726f1d5ed84039f32f1159da",
+      "canonical_hash_text": "57e02640435c0da72d514c19ae1710516a563aa755b1cecc02baa359ad6fbde2",
+      "GatePFL_result": "fail",
+      "GatePFL_reason": "pfl_reason invalid"
+    },
+    "V2": {
+      "canonical_hash_v0": "2731d164ec510c17faf5ff70f37e7c02bc90dae3726f1d5ed84039f32f1159da",
+      "canonical_hash_text": "57e02640435c0da72d514c19ae1710516a563aa755b1cecc02baa359ad6fbde2",
+      "GatePFL_result": "fail",
+      "GatePFL_reason": "pfl_reason invalid"
+    },
+    "V3": {
+      "canonical_hash_v0": "2731d164ec510c17faf5ff70f37e7c02bc90dae3726f1d5ed84039f32f1159da",
+      "canonical_hash_text": "57e02640435c0da72d514c19ae1710516a563aa755b1cecc02baa359ad6fbde2",
+      "GatePFL_result": "fail",
+      "GatePFL_reason": "pfl_reason invalid"
+    }
+  }
+}

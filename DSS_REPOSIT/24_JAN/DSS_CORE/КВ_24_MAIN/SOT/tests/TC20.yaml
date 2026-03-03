@@ -1,0 +1,323 @@
+test_case_id: TC20
+status: FILLED
+mode: artifact_pack
+canon_versions:
+  canon_pipeline: CANON_PIPELINE_v1.2.docx
+  canon_9forms: CANON_9FORMS_v1.1.docx
+  schema: TEST_VECTOR_SCHEMA_v0.1.md.docx
+notes: "synthetic regression vector (Marketing)"
+
+artifact_pack:
+  - artifact_type: CASE_SYMPTOM
+    pipeline_step: 0
+    payload:
+      symptom_1l: "Растёт бюджет на маркетинг, но качество лидов падает: конверсия в оплату снижалась 3 месяца подряд."
+
+  - artifact_type: PROBLEM_OWNER_CARD
+    pipeline_step: 1
+    payload:
+      owner_role: "Head of Marketing"
+      owner_scope: "Может менять правила квалификации лидов, канал-микс, креативы, критерии MQL/SQL и SLA с продажами."
+      constraints:
+        - "Нельзя резко снижать общий объём лидов (sales pipeline должен сохраняться)"
+        - "Нельзя увеличивать штат маркетинга"
+        - "Эффект нужен за 4–6 недель"
+      success_metric_hint: "SQL rate, CAC payback, lead→pay, % лидов с низким скором."
+
+  - artifact_type: SYSTEM_BOUNDARY_MAP
+    pipeline_step: 2
+    payload:
+      actor:
+        - "Marketing"
+        - "Sales"
+        - "Leads"
+        - "Analytics"
+      system:
+        - "Lead acquisition + qualification"
+        - "Handoff to Sales"
+      environment:
+        - "Ad platforms"
+        - "Market competition"
+      boundary_note_1l: "Граница — качество лидов на стыке маркетинга и продаж (MQL/SQL)."
+
+  - artifact_type: INTERACTION_MAP
+    pipeline_step: 3
+    payload:
+      elements:
+        - "Ad spend"
+        - "Lead form"
+        - "MQL scoring"
+        - "Sales follow-up"
+        - "Conversion to pay"
+      flows:
+        - from: "Ad spend"
+          to: "Lead form"
+          type: money
+          note: "трафик и заявки"
+        - from: "Lead form"
+          to: "MQL scoring"
+          type: info
+          note: "данные лида"
+        - from: "MQL scoring"
+          to: "Sales follow-up"
+          type: info
+          note: "передача в продажи"
+        - from: "Sales follow-up"
+          to: "Conversion to pay"
+          type: money
+          note: "оплата/отказ"
+      symptom_location: "MQL scoring → Sales follow-up: низкое качество лидов и просадки конверсии."
+
+  - artifact_type: CONTRADICTION_STATEMENT
+    pipeline_step: 4
+    payload:
+      improve_x: "Объём лидов (pipeline coverage)"
+      worsen_y: "Качество лидов (SQL rate, lead→pay)"
+      statement_1l: "Если увеличиваем объём лидов, падает качество и конверсия; если повышаем качество, может упасть объём pipeline."
+      measurement_hint: "X=кол-во MQL; Y=SQL rate, lead→pay."
+
+  - artifact_type: IKR_CARD
+    pipeline_step: 5
+    payload:
+      ikr_1l: "Маркетинг генерирует стабильный объём лидов, но в продажи передаются только качественные, конверсия не падает."
+      no_new_harm_clause: "Без роста штата и без обвала объёма лидов."
+
+  - artifact_type: HARD_BARRIER
+    pipeline_step: 6
+    payload:
+      barrier_1l: "Нельзя одновременно резко увеличить объём лидов и сохранить высокий SQL rate без изменения правил квалификации."
+      equivalent_to_step4: true
+
+  - artifact_type: RESOURCE_MAP
+    pipeline_step: 7
+    payload:
+      resources:
+        - name: "Lead source tags"
+          category: info
+          tied_to: "Lead form"
+          note: "качество по каналам"
+        - name: "MQL scoring rules"
+          category: info
+          tied_to: "MQL scoring"
+          note: "можно ужесточить"
+        - name: "Sales feedback on lead quality"
+          category: info
+          tied_to: "Sales follow-up"
+          note: "сигнал качества"
+        - name: "Campaign performance history"
+          category: info
+          tied_to: "Ad spend"
+          note: "ROI каналов"
+        - name: "Budget reallocation lever"
+          category: finance
+          tied_to: "Ad spend"
+          note: "перераспределение"
+        - name: "SLA on lead response time"
+          category: org
+          tied_to: "Sales follow-up"
+          note: "скорость обработки"
+        - name: "Lead qualification checklist"
+          category: org
+          tied_to: "Sales follow-up"
+          note: "единый критерий"
+        - name: "A/B creative testing"
+          category: info
+          tied_to: "Ad spend"
+          note: "быстрые улучшения"
+
+  - artifact_type: FORM_SELECTION
+    pipeline_step: 8
+    payload:
+      PRIMARY_FORM: "№8 Кибернетика"
+      BOUNDARY_CHECK:
+        NEAREST_FORMS:
+          - "№6 Ресурсоэффективность"
+          - "№8 Кибернетика"
+        WHY_NOT_X:
+          - "Экономия бюджета важна, но корень — отсутствие контура качества лидов."
+        WHY_NOT_Y:
+          - "Нужен контур: качество → сигнал → перераспределение бюджета и правил квалификации."
+      D_MARKER: "D1"
+      TRIZ_CORE:
+        CONTRADICTION_1L: "нужно больше лидов, но нужно сохранить качество"
+        IKR_1L: "система сама балансирует объём и качество через правила и обратную связь"
+      PRINCIPLES_TO_ACTION:
+        PRINCIPLES: [23, 10, 16]
+        ACTIONS:
+          - "23: Регулярный контур: еженедельно пересмотр MQL/SQL и перераспределение бюджета."
+          - "10: Предварительное действие: обновлённый checklist квалификации до передачи в sales."
+          - "16: Частичное действие: при падении качества ограничить объём с низких каналов."
+      IKR_TEST:
+        Q1: "YES — есть данные каналов и правил квалификации."
+        Q2: "YES — изменения делаются без увеличения команды."
+      CONFIDENCE:
+        score: 70
+        justification: "Кибернетический контур качества лидов обычно даёт быстрый эффект."
+
+  - artifact_type: SOLUTION_SET
+    pipeline_step: 9
+    payload:
+      count_rule: "3–5"
+      concepts:
+        - concept_index: 1
+          name: "Quality Gate for MQL"
+          idea_1l: "ужесточить MQL критерии и передавать в sales только после прохождения quality gate"
+          linked_form: "№8 Кибернетика"
+          linked_principles: [10, 23]
+          linked_resources:
+            - "MQL scoring rules"
+            - "Lead qualification checklist"
+            - "Sales feedback on lead quality"
+          ikr_alignment_1l: "качество лидов повышается без обвала объёма"
+        - concept_index: 2
+          name: "Budget Rebalance Loop"
+          idea_1l: "еженедельное перераспределение бюджета в пользу каналов с высоким SQL rate"
+          linked_form: "№8 Кибернетика"
+          linked_principles: [23, 16]
+          linked_resources:
+            - "Campaign performance history"
+            - "Budget reallocation lever"
+          ikr_alignment_1l: "контур качества управляет каналами"
+        - concept_index: 3
+          name: "Fast Creative Test"
+          idea_1l: "A/B тесты креативов по сигналам качества лидов"
+          linked_form: "№8 Кибернетика"
+          linked_principles: [10]
+          linked_resources:
+            - "A/B creative testing"
+          ikr_alignment_1l: "быстрые улучшения качества"
+
+  - artifact_type: MECHANISM_SPECS
+    pipeline_step: 10
+    payload:
+      concept_specs:
+        - concept_index: 1
+          A_name_tagline: "Quality Gate — фильтр лидов"
+          B_axis_and_resource: "Ось: качество vs объём; ресурс: MQL правила + чек-лист"
+          C_mechanism_steps:
+            - "Обновить чек-лист квалификации (5 критериев)."
+            - "Передавать в sales только лидов ≥ порога."
+            - "Еженедельно корректировать пороги по SQL rate."
+          D_assumptions_constraints:
+            - "Sales даёт честную обратную связь по качеству."
+          E_risks_failures:
+            - "слишком строгий фильтр → падение объёма"
+          F_metrics:
+            leading:
+              - "% лидов, прошедших gate"
+              - "SQL rate"
+            lagging:
+              - "lead→pay"
+              - "CAC payback"
+          G_experiment:
+            timebox: "4 недели"
+            budget: "0"
+            pass_criteria: "SQL rate ↑ на 15% без падения lead→pay"
+        - concept_index: 2
+          A_name_tagline: "Budget Loop — управление каналами"
+          B_axis_and_resource: "Ось: ROI vs объём; ресурс: данные кампаний"
+          C_mechanism_steps:
+            - "Считать SQL rate и CAC по каналам еженедельно."
+            - "Сдвигать 10–20% бюджета от низких каналов к высоким."
+            - "Фиксировать эффект на конверсию."
+          D_assumptions_constraints:
+            - "Данные по каналам доступны без задержки >7 дней."
+          E_risks_failures:
+            - "каналы с низким объёмом дают шумные данные"
+          F_metrics:
+            leading:
+              - "% бюджета перераспределено"
+              - "SQL rate по каналам"
+            lagging:
+              - "lead→pay"
+              - "CAC payback"
+          G_experiment:
+            timebox: "4 недели"
+            budget: "0"
+            pass_criteria: "lead→pay ↑ и CAC payback ↓"
+        - concept_index: 3
+          A_name_tagline: "Fast Creative Test — быстрые улучшения"
+          B_axis_and_resource: "Ось: качество лидов; ресурс: A/B тест"
+          C_mechanism_steps:
+            - "Каждую неделю запускать 2 A/B теста по креативам."
+            - "Оценивать не только CPL, но и SQL rate."
+            - "Оставлять только креативы с SQL rate выше медианы."
+          D_assumptions_constraints:
+            - "есть достаточный трафик для A/B."
+          E_risks_failures:
+            - "оптимизация уйдёт в CTR, а не в качество"
+          F_metrics:
+            leading:
+              - "# A/B тестов/нед"
+              - "SQL rate по креативам"
+            lagging:
+              - "lead→pay"
+              - "CAC payback"
+          G_experiment:
+            timebox: "4 недели"
+            budget: "0"
+            pass_criteria: "SQL rate ↑, CPL не растёт"
+
+  - artifact_type: SECONDARY_CONTRADICTION_CHECK
+    pipeline_step: 11
+    payload:
+      new_contradiction_exists: false
+
+  - artifact_type: DECISION_RECORD
+    pipeline_step: 12
+    payload:
+      chosen_concept_index: 1
+      chosen_concept_name: "Quality Gate for MQL"
+      reasons:
+        - "Сразу повышает качество передаваемых лидов."
+        - "Даёт чёткий сигнал для контура улучшений."
+      rejected_alternatives:
+        - concept_index: 2
+          concept: "Budget Rebalance Loop"
+          why_rejected: "эффект идёт после стабилизации качества"
+        - concept_index: 3
+          concept: "Fast Creative Test"
+          why_rejected: "важно, но вторично к качеству MQL"
+      assumptions:
+        - "Sales даёт честную обратную связь по качеству."
+      success_criteria:
+        - "SQL rate ↑ на 15%"
+        - "lead→pay не падает"
+
+  - artifact_type: IMPLEMENTATION_MAP
+    pipeline_step: 13
+    payload:
+      workstreams:
+        - name: "Quality Gate"
+          owner: "Head of Marketing"
+          tasks:
+            - task: "Обновить чек-лист MQL (5 критериев)"
+              due: "2026-02-08"
+              dependency: "Sales feedback"
+              checkpoint_metric: "чек-лист обновлён"
+            - task: "Настроить правило передачи лидов (≥ порога)"
+              due: "2026-02-12"
+              dependency: "чек-лист"
+              checkpoint_metric: "правило включено"
+        - name: "Data & Feedback"
+          owner: "RevOps"
+          tasks:
+            - task: "Еженедельный отчёт по SQL rate"
+              due: "2026-02-10"
+              dependency: "CRM"
+              checkpoint_metric: "отчёт публикуется"
+
+  - artifact_type: RULE_UPDATE
+    pipeline_step: 14
+    payload:
+      rule_id: "CASE-RULE-TC20-01"
+      rule_statement_if_then: "Если SQL rate по каналу падает ниже порога 2 недели подряд, то лиды из канала переводятся в низкий приоритет или фильтруются по более строгому MQL."
+      criterion: "SQL rate < threshold 2 недели подряд"
+      boundaries: "Не применимо к стратегическим каналам brand-awareness (отдельный KPI)."
+      evidence_from_case: "Симптом: падение качества лидов при росте бюджета."
+      test_case_action:
+        add_or_update: add
+        test_case_id: TC20
+        expected_effect: "качество лидов ↑, lead→pay ↑"
+      version_note: "NON-CANON case rule; canon unchanged"
+      rationale_1l: "quality gate и контур сигналов держат баланс объёма и качества"

@@ -1,0 +1,48 @@
+{
+  "case_id": "TC_E21_LOOP_YES",
+  "title": "TC_E21_LOOP_YES",
+  "created_at": "2026-02-20T11-07-31Z",
+  "updated_at": "2026-02-20T11-07-31Z",
+  "case_version": 1,
+  "status": "done",
+  "canon_versions": {
+    "canon_pipeline_version": "v1.2",
+    "canon_9forms_version": "v1.1"
+  },
+  "shell_versions": {
+    "gate_automation_matrix_version": "v0.1.1",
+    "prd_version": "v0.1",
+    "ux_flow_version": "v0.1",
+    "export_spec_version": "v0.1",
+    "data_model_version": "v0.1"
+  },
+  "instrumentation": {
+    "input_fingerprint": "a07b142a56a1625609289ae3b0bf910fb9f2cfa1337ca8b92b0e7624a4d82166",
+    "manual_override_used": false,
+    "override_type": null,
+    "normalized_reason_codes": [
+      "G11_P1",
+      "G4_P1",
+      "G5_P1",
+      "G6_P1",
+      "GATE12_BLOCKED_DUE_TO_GATE9_GATE11_FAIL",
+      "RISK_SHIFT_DETECTED_TRUE_SEARCH_LOOP_TRUE",
+      "STEP10_CONCEPT_SPECS_IS_NOT_A_LIST",
+      "STEP13_WORKSTREAMS_MISSING",
+      "STEP14_BOUNDARIES_MISSING",
+      "STEP14_CRITERION_MISSING",
+      "STEP14_EVIDENCE_FROM_CASE_MISSING",
+      "STEP14_RATIONALE_1L_MISSING",
+      "STEP14_RULE_ID_MISSING",
+      "STEP14_RULE_STATEMENT_IF_THEN_MISSING",
+      "STEP14_TEST_CASE_ACTION_MISSING",
+      "STEP14_VERSION_NOTE_MISSING",
+      "STEP3_FLOWS_0_NOT_A_DICT",
+      "STEP7_RESOURCES_IS_NOT_A_LIST",
+      "STEP8_5_ASSISTED_MATRIX_MISSING",
+      "STEP9_CONCEPTS_IS_NOT_A_LIST",
+      "TRIZ_G4_INVALID"
+    ],
+    "gatecr_status_mirror": "SOFT_FAIL"
+  }
+}

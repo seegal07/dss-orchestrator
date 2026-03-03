@@ -1,0 +1,75 @@
+governance/OPERATOR_LAYER_EXECUTION_RULES_v1.1.md:6:Operator Layer executes at S08.5 and GateCR only.
+governance/OPERATOR_LAYER_EXECUTION_RULES_v1.1.md:16:## 4) GateCR enforcement
+governance/OPERATOR_LAYER_EXECUTION_RULES_v1.1.md:17:- GateCR must execute before S09.
+governance/OPERATOR_LAYER_EXECUTION_RULES_v1.1.md:18:- GateCR outcome controls S09–S14 reachability.
+governance/OPERATOR_LAYER_EXECUTION_RULES_v1.1.md:21:- GateCR `PASS` -> S09, S10, S11, S12, S13, S14 = RUN.
+governance/OPERATOR_LAYER_EXECUTION_RULES_v1.1.md:22:- GateCR `SOFT_FAIL` -> S09, S10, S11, S12, S13, S14 = RUN.
+governance/OPERATOR_LAYER_EXECUTION_RULES_v1.1.md:23:- GateCR `HARD_FAIL` -> S09, S10, S11, S12, S13, S14 = NOT_RUN.
+governance/OPERATOR_LAYER_EXECUTION_RULES_v1.1.md:26:- If GateCR = `SOFT_FAIL`, then `COMPROMISE_MODE=TRUE` is mandatory in S12_DECISION_RECORD.
+governance/OPERATOR_LAYER_EXECUTION_RULES_v1.1.md:27:- GateCR = `SOFT_FAIL` must map run-level status to `PARTIAL`.
+governance/OPERATOR_LAYER_EXECUTION_RULES_v1.1.md:30:- For GateCR `HARD_FAIL`, message must be exactly:
+governance/OWNER_POLICY_DECISIONS_v1.1.md:11:Decision: SOFT_FAIL => overall PARTIAL
+governance/OWNER_POLICY_DECISIONS_v1.1.md:19:Decision: If GateCR=SOFT_FAIL then COMPROMISE_MODE=TRUE mandatory in S12_DECISION_RECORD
+governance/OWNER_POLICY_DECISIONS_v1.1.md:23:Decision: Create new schema version file; do NOT edit v0.1; target TEST_VECTOR_SCHEMA_v0.2 (or equivalent naming)
+governance/OWNER_POLICY_DECISIONS_v1.1.md:27:Decision: GateCR = mixed (structural presence + assisted matrix)
+governance/OWNER_POLICY_DECISIONS_v1.1.md:31:Decision: GateCR outputs tri-state only: PASS / SOFT_FAIL / HARD_FAIL
+governance/OWNER_POLICY_DECISIONS_v1.1.md:43:Decision: Historical runs exempt from GateCR (GateCR applies only when Operator Core enabled by schema/version flag)
+governance/TEST_VECTOR_SCHEMA_v0.2.md:1:# TEST_VECTOR_SCHEMA_v0.2
+governance/TEST_VECTOR_SCHEMA_v0.2.md:3:Status: Operator Core enabled schema extension for S08.5 + GateCR routing.
+governance/TEST_VECTOR_SCHEMA_v0.2.md:4:Backward compatibility: v0.1 vectors remain valid historical runs and are GateCR-exempt.
+governance/TEST_VECTOR_SCHEMA_v0.2.md:7:- `canon_versions.schema` MUST include `TEST_VECTOR_SCHEMA_v0.2` to enable GateCR.
+governance/TEST_VECTOR_SCHEMA_v0.2.md:11:### step_8_5
+governance/TEST_VECTOR_SCHEMA_v0.2.md:20:- `gatecr_status`: enum `PASS|SOFT_FAIL|HARD_FAIL` (optional prefilled; runtime source of truth is harness result)
+governance/TEST_VECTOR_SCHEMA_v0.2.md:25:- `compromise_mode`: boolean
+governance/TEST_VECTOR_SCHEMA_v0.2.md:26:  - mandatory `true` when `GateCR=SOFT_FAIL`
+governance/TEST_VECTOR_SCHEMA_v0.2.md:28:## GateCR routing outputs
+governance/TEST_VECTOR_SCHEMA_v0.2.md:29:- `gatecr_status`: tri-state only (`PASS|SOFT_FAIL|HARD_FAIL`)
+governance/TEST_VECTOR_SCHEMA_v0.2.md:31:- `compromise_mode=true` enforced in S12 for `SOFT_FAIL`
+governance/OPERATOR_CORE_ROUTING_RULES_v1.1.md:5:## 1) GateCR tri-state transition table
+governance/OPERATOR_CORE_ROUTING_RULES_v1.1.md:7:| GateCR status | S09 | S10 | S11 | S12 | S13 | S14 | Required flags | Run-level status |
+governance/OPERATOR_CORE_ROUTING_RULES_v1.1.md:9:| PASS | RUN | RUN | RUN | RUN | RUN | RUN | `COMPROMISE_MODE=FALSE` | no GateCR downgrade |
+governance/OPERATOR_CORE_ROUTING_RULES_v1.1.md:10:| SOFT_FAIL | RUN | RUN | RUN | RUN | RUN | RUN | `COMPROMISE_MODE=TRUE` (mandatory in S12_DECISION_RECORD) | `PARTIAL` |
+governance/OPERATOR_CORE_ROUTING_RULES_v1.1.md:11:| HARD_FAIL | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | NOT_RUN | canonical hard-fail message only | `FAIL`/blocked by policy |
+governance/OPERATOR_CORE_ROUTING_RULES_v1.1.md:13:## 2) NOT_RUN propagation on HARD_FAIL
+governance/OPERATOR_CORE_ROUTING_RULES_v1.1.md:15:- No downstream step execution after GateCR=HARD_FAIL.
+governance/OPERATOR_CORE_ROUTING_RULES_v1.1.md:18:- GateCR=SOFT_FAIL => overall run status must be `PARTIAL`.
+governance/OPERATOR_CORE_ROUTING_RULES_v1.1.md:19:- GateCR=PASS => run-level status is determined by remaining gates.
+governance/OPERATOR_CORE_ROUTING_RULES_v1.1.md:20:- GateCR=HARD_FAIL => downstream steps NOT_RUN; run reported as failed/blocked per harness policy.
+governance/OPERATOR_CORE_ROUTING_RULES_v1.1.md:23:- Historical runs are exempt from GateCR.
+governance/OPERATOR_CORE_ROUTING_RULES_v1.1.md:24:- GateCR applies only when Operator Core is enabled by schema/version flag.
+governance/OPERATOR_CORE_ROUTING_RULES_v1.1.md:25:- Existing artifacts without S08.5/GateCR remain valid historical evidence.
+governance/GATECR_SPEC_v1.1.md:6:GateCR is the mandatory control gate after S08.5 and before S09.
+governance/GATECR_SPEC_v1.1.md:9:GateCR outputs tri-state only:
+governance/GATECR_SPEC_v1.1.md:11:- `SOFT_FAIL`
+governance/GATECR_SPEC_v1.1.md:15:GateCR must evaluate:
+governance/GATECR_SPEC_v1.1.md:28:- `SOFT_FAIL` -> S09–S14 RUN and `COMPROMISE_MODE=TRUE` is mandatory in S12_DECISION_RECORD.
+governance/GATECR_SPEC_v1.1.md:29:- `HARD_FAIL` -> S09–S14 NOT_RUN.
+governance/GATECR_SPEC_v1.1.md:32:- `SOFT_FAIL` => overall `PARTIAL`.
+governance/GATECR_SPEC_v1.1.md:43:- Historical runs are exempt from GateCR.
+governance/GATECR_SPEC_v1.1.md:44:- GateCR applies only when Operator Core is enabled by schema/version flag.
+governance/GATECR_SPEC_v1.1.md:47:GateCR evidence must include:
+harness/gates_structural.py:10:    status: str  # PASS | FAIL | BLOCKED | NOT_RUN | SOFT_FAIL | HARD_FAIL
+harness/gates_structural.py:31:def _is_operator_core_enabled(tc: Dict[str, Any]) -> bool:
+harness/gates_structural.py:34:    if 'TEST_VECTOR_SCHEMA_v0.2' in schema_value:
+harness/gates_structural.py:238:        return GateResult(gate='GateCR', status='HARD_FAIL', reasons=[CANONICAL_HARD_FAIL_MESSAGE])
+harness/gates_structural.py:274:        return GateResult(gate='GateCR', status='HARD_FAIL', reasons=[CANONICAL_HARD_FAIL_MESSAGE])
+harness/gates_structural.py:276:        return GateResult(gate='GateCR', status='SOFT_FAIL', reasons=soft_fail_reasons)
+harness/gates_structural.py:277:    return GateResult(gate='GateCR', status='PASS', reasons=[])
+harness/gates_structural.py:337:    if operator_core_enabled and gatecr_status == 'SOFT_FAIL':
+harness/gates_structural.py:338:        if s12.get('compromise_mode') is not True:
+harness/gates_structural.py:339:            reasons.append('Step12.compromise_mode must be true when GateCR=SOFT_FAIL')
+harness/gates_structural.py:376:def run_structural_gates(tc: Dict[str, Any], step_map: Dict[int, Dict[str, Any]]) -> List[GateResult]:
+harness/gates_structural.py:381:            results.append(GateResult(gate=f'Gate{g}', status='NOT_RUN', reasons=['Gate0 blocked']))
+harness/gates_structural.py:384:    operator_core_enabled = _is_operator_core_enabled(tc)
+harness/gates_structural.py:404:                results.append(GateResult(gate=f'Gate{g}', status='NOT_RUN', reasons=[CANONICAL_HARD_FAIL_MESSAGE]))
+harness/gates_structural.py:422:                g.status = 'NOT_RUN'
+harness/harness.py:12:from gates_structural import run_structural_gates, GateResult
+harness/harness.py:63:                # Step 8.5 is represented as step_8_5 and mapped to integer key 85.
+harness/harness.py:121:    if 'SOFT_FAIL' in statuses:
+harness/harness.py:123:    if all(s == 'PASS' for s in statuses if s != 'NOT_RUN'):
+harness/harness.py:139:            if g.status in ('FAIL', 'BLOCKED', 'NOT_RUN', 'HARD_FAIL', 'SOFT_FAIL'):
+harness/harness.py:231:            if g.gate == 'GateCR':
+harness/harness.py:241:        elif g.gate == 'GateCR':
+harness/harness.py:344:    gatecr_result = next((g for g in gate_results if g.gate == 'GateCR'), None)
+harness/harness.py:349:        'operator_core_enabled': 'TEST_VECTOR_SCHEMA_v0.2' in str((tc.get('canon_versions') or {}).get('schema') or ''),
+harness/harness.py:449:    structural_results = run_structural_gates(tc, step_map)

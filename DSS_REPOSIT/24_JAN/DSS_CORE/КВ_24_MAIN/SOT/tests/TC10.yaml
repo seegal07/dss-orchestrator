@@ -1,0 +1,334 @@
+test_case_id: TC10
+status: FILLED
+mode: artifact_pack
+canon_versions:
+  canon_pipeline: CANON_PIPELINE_v1.2.docx
+  canon_9forms: CANON_9FORMS_v1.1.docx
+  schema: TEST_VECTOR_SCHEMA_v0.1.md.docx
+notes: "synthetic regression vector"
+
+artifact_pack:
+  - artifact_type: CASE_SYMPTOM
+    pipeline_step: 0
+    payload:
+      symptom_1l: "Продукт/проект регулярно срывает сроки, потому что приоритеты меняются “вручную” и нет стабильного правила выбора."
+
+  - artifact_type: PROBLEM_OWNER_CARD
+    pipeline_step: 1
+    payload:
+      owner_role: "Руководитель продукта / Head of Product (или CEO, если продуктовый контур на нём)"
+      owner_scope: "Может вводить правило приоритизации, критерии “стоп/гоу”, механизм заморозки спринта/периода, метрики lead/lag."
+      constraints:
+        - "Нельзя менять команду разработки в этом месяце"
+        - "Нельзя увеличивать срок поставки клиентам"
+        - "Конфликты стейкхолдеров неизбежны (нужно правило, а не переговоры каждый раз)"
+      success_metric_hint: "Стабильность план/факт (variance) + снижение числа экстренных переприоритизаций."
+
+  - artifact_type: SYSTEM_BOUNDARY_MAP
+    pipeline_step: 2
+    payload:
+      vector_meta:
+        status: FILLED
+        mode: artifact_pack
+      actor:
+        - "Head of Product"
+        - "Engineering lead"
+        - "Stakeholders (Sales/CS/CEO)"
+      system:
+        - "Prioritization + sprint freeze governance"
+      environment:
+        - "Customer commitments"
+        - "Market changes"
+      boundary_note_1l: "Symptom is at the boundary between backlog prioritization and delivery commitment (plan/fact variance)."
+
+  - artifact_type: INTERACTION_MAP
+    pipeline_step: 3
+    payload:
+      elements:
+        - "Backlog"
+        - "Prioritization rule"
+        - "Sprint/period freeze"
+        - "Stakeholder requests"
+        - "Delivery pipeline"
+      flows:
+        - from: "Stakeholder requests"
+          to: "Backlog"
+          type: info
+          note: "incoming demands"
+        - from: "Backlog"
+          to: "Sprint/period freeze"
+          type: info
+          note: "selected scope"
+        - from: "Sprint/period freeze"
+          to: "Delivery pipeline"
+          type: time
+          note: "execution"
+        - from: "Stakeholder requests"
+          to: "Sprint/period freeze"
+          type: risk
+          note: "manual reprioritization causing disruption"
+      symptom_location: "Flow 'Stakeholder requests → Sprint/period freeze' bypasses prioritization rule, causing plan/fact variance."
+
+  - artifact_type: CONTRADICTION_STATEMENT
+    pipeline_step: 4
+    payload:
+      improve_x: "стабильность план/факт и предсказуемость поставки"
+      worsen_y: "удовлетворённость стейкхолдеров (желание срочно менять приоритеты)"
+      statement_1l: "Если повышаем стабильность плана, ухудшается возможность быстро удовлетворять срочные запросы стейкхолдеров."
+      measurement_hint: "X=plan/fact variance; Y=# экстренных запросов удовлетворённых вне правила + конфликты."
+
+  - artifact_type: IKR_CARD
+    pipeline_step: 5
+    payload:
+      ikr_1l: "Приоритеты меняются только по прозрачному правилу; поставка стабилизируется без ручного управления каждый раз."
+      no_new_harm_clause: "Нельзя увеличивать срок поставки клиентам; конфликты стейкхолдеров неизбежны."
+
+  - artifact_type: HARD_BARRIER
+    pipeline_step: 6
+    payload:
+      barrier_1l: "Нельзя одновременно обеспечить абсолютную стабильность спринта и при этом мгновенно реагировать на срочные запросы без увеличения сроков."
+      equivalent_to_step4: true
+
+  - artifact_type: RESOURCE_MAP
+    pipeline_step: 7
+    payload:
+      resources:
+        - name: "Historical variance data"
+          category: info
+          tied_to: "Delivery pipeline"
+          note: "plan/fact history"
+        - name: "Backlog scoring fields"
+          category: info
+          tied_to: "Backlog"
+          note: "impact/effort/risk"
+        - name: "Stakeholder time for weekly triage"
+          category: time
+          tied_to: "Stakeholders"
+          note: "30 min"
+        - name: "Engineering capacity baseline"
+          category: info
+          tied_to: "Engineering lead"
+          note: "velocity"
+        - name: "Customer commitment list"
+          category: trust
+          tied_to: "Customers"
+          note: "deadlines"
+        - name: "Freeze window policy"
+          category: org
+          tied_to: "Sprint/period freeze"
+          note: "governance lever"
+        - name: "Stop/go criteria"
+          category: info
+          tied_to: "Prioritization rule"
+          note: "binary thresholds"
+        - name: "Budget 0"
+          category: finance
+          tied_to: "constraints"
+          note: "no spend"
+
+  - artifact_type: FORM_SELECTION
+    pipeline_step: 8
+    payload:
+      PRIMARY_FORM: "№8 Кибернетика"
+      BOUNDARY_CHECK:
+        NEAREST_FORMS:
+          - "№3 Превенция"
+          - "№8 Кибернетика"
+        WHY_NOT_X:
+          - "Превенция важна, но текущая проблема — отсутствие обратной связи и контроллера при приоритизации."
+          - "Профилактика не остановит ручные переприоритизации без правила вмешательства."
+          - "Нужно управлять уже происходящими изменениями через измерение variance и пороги."
+        WHY_NOT_Y:
+          - "Нужен контур управления: измерение variance и правило вмешательства."
+          - "Кибернетика даёт “контроллер” (freeze/исключения/квоты), а не разовые договорённости."
+          - "Требуется механизм обратной связи, который ограничивает хаос без увеличения сроков."
+      D_MARKER: "D2"
+      TRIZ_CORE:
+        CONTRADICTION_1L: "Нужно держать стабильный план, но нужно иметь возможность реагировать на срочные изменения без ручного хаоса."
+        IKR_1L: "Система сама ограничивает переприоритизацию через правило и метрики, сохраняя обязательства перед клиентами."
+      PRINCIPLES_TO_ACTION:
+        PRINCIPLES: [26, 27, 16]
+        ACTIONS:
+          - "Обратная связь: регулярный разбор отклонений plan/fact и корректировка правила приоритизации по порогам."
+          - "Дешёвые замены: сначала правило + простые поля backlog, без тяжёлых систем и новых ролей."
+          - "Частичное действие: разрешать изменения только в ограниченной квоте (override budget) и фиксировать причину в логе."
+      IKR_TEST:
+        Q1: "YES — измеряем variance и используем текущие поля backlog."
+        Q2: "YES — изменения ограничены квотой, а не переговорами каждый раз."
+      CONFIDENCE:
+        score: 75
+        justification: "схема соответствует cybernetic loop; требует калибровки порогов."
+
+  - artifact_type: SOLUTION_SET
+    pipeline_step: 9
+    payload:
+      count_rule: "3–5"
+      concepts:
+        - concept_index: 1
+          name: "Priority Scoring Rule"
+          idea_1l: "единое правило скоринга (impact/effort/risk) + порог для входа в спринт"
+          linked_form: "№8 Кибернетика"
+          linked_principles: [26, 27]
+          linked_resources:
+            - "Backlog scoring fields"
+            - "Engineering capacity baseline"
+            - "Historical variance data"
+          ikr_alignment_1l: "прозрачный контроллер вместо ручных решений"
+        - concept_index: 2
+          name: "Freeze Window + Exceptions"
+          idea_1l: "заморозка периода + формальные исключения по stop/go"
+          linked_form: "№8 Кибернетика"
+          linked_principles: [26]
+          linked_resources:
+            - "Freeze window policy"
+            - "Stop/go criteria"
+            - "Customer commitment list"
+          ikr_alignment_1l: "реакция по правилу без хаоса"
+        - concept_index: 3
+          name: "Token Budget for Changes"
+          idea_1l: "квота на переприоритизацию (tokens) в период"
+          linked_form: "№8 Кибернетика"
+          linked_principles: [16, 26]
+          linked_resources:
+            - "Stakeholder time for weekly triage"
+            - "Historical variance data"
+          ikr_alignment_1l: "частичное действие снижает churn"
+
+  - artifact_type: MECHANISM_SPECS
+    pipeline_step: 10
+    payload:
+      concept_specs:
+        - concept_index: 1
+          A_name_tagline: "Priority Scoring Rule — контроллер приоритизации"
+          B_axis_and_resource: "ось: predictability vs stakeholder change; ресурс: backlog поля + variance данные"
+          C_mechanism_steps:
+            - "Определить 3 поля скоринга: impact/effort/risk"
+            - "Ввести порог score для входа в следующий период"
+            - "Еженедельно сравнивать plan/fact variance и корректировать веса"
+          D_assumptions_constraints:
+            - "команда не меняется; срок поставки не увеличиваем"
+          E_risks_failures:
+            - "стейкхолдеры обходят правило"
+          F_metrics:
+            leading:
+              - "% backlog items со скорингом"
+              - "# исключений из правила/нед"
+            lagging:
+              - "plan/fact variance"
+              - "# экстренных переприоритизаций"
+          G_experiment:
+            timebox: "3 недели"
+            budget: "0"
+            pass_criteria: "variance ↓ на 15%+; исключения ≤2/нед"
+        - concept_index: 2
+          A_name_tagline: "Freeze Window — заморозка с исключениями"
+          B_axis_and_resource: "ось: stability vs responsiveness; ресурс: stop/go критерии"
+          C_mechanism_steps:
+            - "Ввести freeze на 1 неделю/спринт"
+            - "Исключение допускается только при stop/go=true (критерии заранее)"
+            - "Каждое исключение логируется и ретроспективится"
+          D_assumptions_constraints:
+            - "freeze не должен ломать обязательства клиентам"
+          E_risks_failures:
+            - "слишком много исключений"
+          F_metrics:
+            leading:
+              - "# exceptions/период"
+              - "% exceptions с заполненным stop/go"
+            lagging:
+              - "variance"
+              - "удовлетворённость стейкхолдеров (опрос)"
+          G_experiment:
+            timebox: "3 недели"
+            budget: "0"
+            pass_criteria: "exceptions ≤3/период; variance ↓; срок поставки не хуже"
+        - concept_index: 3
+          A_name_tagline: "Token Budget — квота на изменения"
+          B_axis_and_resource: "ось: churn vs agility; ресурс: tokens как ограничитель"
+          C_mechanism_steps:
+            - "Выдать 5 tokens на период на изменения приоритетов"
+            - "Каждое изменение стоит 1 token; tokens не переносятся"
+            - "При 0 tokens изменения запрещены"
+          D_assumptions_constraints:
+            - "нужно согласие ключевых стейкхолдеров"
+          E_risks_failures:
+            - "token система саботируется"
+          F_metrics:
+            leading:
+              - "tokens used/период"
+              - "# запросов отклонено из-за 0 tokens"
+            lagging:
+              - "variance"
+              - "# конфликтов/эскалаций"
+          G_experiment:
+            timebox: "2 периода"
+            budget: "0"
+            pass_criteria: "churn ↓; variance ↓; конфликты ↓"
+
+  - artifact_type: SECONDARY_CONTRADICTION_CHECK
+    pipeline_step: 11
+    payload:
+      new_contradiction_exists: false
+
+  - artifact_type: DECISION_RECORD
+    pipeline_step: 12
+    payload:
+      chosen_concept_index: 2
+      chosen_concept_name: "Freeze Window + Exceptions"
+      reasons:
+        - "даёт простое правило stop/go и снижает ручные переговоры"
+        - "не требует смены команды и инструментов"
+      rejected_alternatives:
+        - concept_index: 1
+          concept: "Priority Scoring Rule"
+          why_rejected: "требует калибровки и дисциплины данных; дольше запуск"
+        - concept_index: 3
+          concept: "Token Budget for Changes"
+          why_rejected: "может восприниматься как политическая игра; риск сопротивления"
+      assumptions:
+        - "есть минимальный набор stop/go критериев согласуемый со стейкхолдерами"
+      success_criteria:
+        - "экстренные переприоритизации ↓ на 30%+"
+        - "plan/fact variance ↓ на 15%+"
+
+  - artifact_type: IMPLEMENTATION_MAP
+    pipeline_step: 13
+    payload:
+      workstreams:
+        - name: "Governance Rule"
+          owner: "Head of Product"
+          tasks:
+            - task: "Определить stop/go критерии (5 пунктов)"
+              due: "T+5d"
+              dependency: ""
+              checkpoint_metric: "критерии опубликованы"
+            - task: "Ввести freeze правило на 1 неделю"
+              due: "T+7d"
+              dependency: "критерии"
+              checkpoint_metric: "freeze соблюдён 1 период"
+        - name: "Exception Logging"
+          owner: "Engineering lead"
+          tasks:
+            - task: "Создать лог исключений (кто/почему/эффект)"
+              due: "T+7d"
+              dependency: ""
+              checkpoint_metric: "все exceptions логируются"
+            - task: "Ретроспектива по exceptions раз в неделю"
+              due: "T+14d"
+              dependency: "лог"
+              checkpoint_metric: "решения по улучшению правила"
+
+  - artifact_type: RULE_UPDATE
+    pipeline_step: 14
+    payload:
+      rule_id: "RULE-PRIORITY-FREEZE-01"
+      rule_statement_if_then: "Если период/спринт заморожен, то изменения приоритетов допускаются только при выполнении заранее заданных stop/go критериев."
+      criterion: "freeze=true AND stop_go=true"
+      boundaries: "не применяется к багфиксам P0 влияющим на безопасность/комплаенс (они отдельный класс) — это часть stop/go"
+      evidence_from_case: "симптом: ручные переприоритизации; ограничение: нельзя увеличивать срок поставки"
+      test_case_action:
+        add_or_update: add
+        test_case_id: TC10
+        expected_effect: "стабильность план/факт ↑, churn ↓"
+      version_note: "NON-CANON case rule; canon unchanged"
+      rationale_1l: "правило снижает хаос и переводит конфликт в метрику stop/go"

@@ -1,0 +1,333 @@
+test_case_id: TC05
+status: FILLED
+mode: artifact_pack
+canon_versions:
+  canon_pipeline: CANON_PIPELINE_v1.2.docx
+  canon_9forms: CANON_9FORMS_v1.1.docx
+  schema: TEST_VECTOR_SCHEMA_v0.1.md.docx
+notes: "synthetic regression vector"
+
+artifact_pack:
+  - artifact_type: CASE_SYMPTOM
+    pipeline_step: 0
+    payload:
+      symptom_1l: "Делегирование “людям” есть, но решения всё равно возвращаются к собственнику через эскалации и согласования."
+
+  - artifact_type: PROBLEM_OWNER_CARD
+    pipeline_step: 1
+    payload:
+      owner_role: "CEO / Генеральный директор (30–200 сотрудников)"
+      owner_scope: "Может определить границы решений, цену ошибки, уровни эскалации, допуски, KPI руководителей и правила “что считается решением”."
+      constraints:
+        - "Нельзя менять оргструктуру в этом квартале"
+        - "Нельзя увеличивать бюджет (0 дополнительного финансирования)"
+        - "Ошибки уровня “репутация/комплаенс” недопустимы"
+      success_metric_hint: "Доля решений, принятых ниже уровня CEO без эскалаций + время CEO в операционке (час/нед)."
+
+  - artifact_type: SYSTEM_BOUNDARY_MAP
+    pipeline_step: 2
+    payload:
+      vector_meta:
+        status: FILLED
+        mode: artifact_pack
+      actor:
+        - "CEO"
+        - "Middle managers"
+        - "Compliance/Legal"
+        - "Teams"
+      system:
+        - "Delegation + escalation boundary system"
+      environment:
+        - "Regulators/contractual obligations"
+        - "Customers"
+      boundary_note_1l: "Symptom sits at the boundary between delegated decisions and escalation triggers (risk management)."
+
+  - artifact_type: INTERACTION_MAP
+    pipeline_step: 3
+    payload:
+      elements:
+        - "CEO"
+        - "Managers"
+        - "Risk/Compliance checklist"
+        - "Escalation channel"
+        - "Teams"
+      flows:
+        - from: "Managers"
+          to: "Teams"
+          type: info
+          note: "task decisions"
+        - from: "Teams"
+          to: "Managers"
+          type: info
+          note: "requests for approval"
+        - from: "Managers"
+          to: "CEO"
+          type: risk
+          note: "escalations to reduce personal risk"
+        - from: "Compliance/Legal"
+          to: "Managers"
+          type: info
+          note: "constraints and red flags"
+      symptom_location: "Managers route too many decisions to CEO due to unclear risk boundaries."
+
+  - artifact_type: CONTRADICTION_STATEMENT
+    pipeline_step: 4
+    payload:
+      improve_x: "автономность решений на уровне менеджеров"
+      worsen_y: "риск комплаенса/репутации и ошибок"
+      statement_1l: "Если увеличиваем автономность решений у менеджеров, возрастает риск комплаенса и цена ошибки."
+      measurement_hint: "X=% решений без эскалации; Y=# комплаенс инцидентов / репутационных кейсов."
+
+  - artifact_type: IKR_CARD
+    pipeline_step: 5
+    payload:
+      ikr_1l: "Менеджеры принимают решения в своих границах без эскалации, а риск контролируется простым фильтром без доп. бюджета."
+      no_new_harm_clause: "Ошибки уровня комплаенса недопустимы; оргструктуру не менять."
+
+  - artifact_type: HARD_BARRIER
+    pipeline_step: 6
+    payload:
+      barrier_1l: "Нельзя одновременно полностью снять эскалации к CEO и при этом гарантировать нулевой комплаенс-риск без доп. бюджета."
+      equivalent_to_step4: true
+
+  - artifact_type: RESOURCE_MAP
+    pipeline_step: 7
+    payload:
+      resources:
+        - name: "Existing compliance checklist"
+          category: info
+          tied_to: "Compliance/Legal"
+          note: "red flags"
+        - name: "Escalation logs"
+          category: info
+          tied_to: "Escalation channel"
+          note: "patterns of fear-based escalations"
+        - name: "Manager decision authority"
+          category: org
+          tied_to: "Managers"
+          note: "delegation base"
+        - name: "CEO time as scarce resource"
+          category: time
+          tied_to: "CEO"
+          note: "constraint"
+        - name: "Customer contract clauses"
+          category: trust
+          tied_to: "Customers"
+          note: "hard boundaries"
+        - name: "Risk classification categories"
+          category: info
+          tied_to: "Risk/Compliance checklist"
+          note: "low/med/high"
+        - name: "Existing meetings (no new rituals)"
+          category: time
+          tied_to: "Managers"
+          note: "use current cadence"
+        - name: "Zero budget constraint"
+          category: finance
+          tied_to: "constraints"
+          note: "no spend"
+
+  - artifact_type: FORM_SELECTION
+    pipeline_step: 8
+    payload:
+      PRIMARY_FORM: "№6 Ресурсоэффективность"
+      BOUNDARY_CHECK:
+        NEAREST_FORMS:
+          - "№7 Реформатирование"
+          - "№6 Ресурсоэффективность"
+        WHY_NOT_X:
+          - "Изменение формата полезно, но первично — задать границы риска и распределить ответственность."
+          - "Реформатирование без риск-границ не убирает мотивацию “прикрыться” эскалацией."
+          - "Нужен не новый формат коммуникации, а правило принятия решений по классам риска."
+        WHY_NOT_Y:
+          - "Нужна формализация 'решение в границах' через ресурсный фильтр риска."
+          - "Без фильтра ресурсоэффективность может оптимизировать процесс, но не снизить страх персональной ответственности."
+          - "Требуется дешёвый механизм контроля риска, а не перераспределение ресурсов."
+      D_MARKER: "D4"
+      TRIZ_CORE:
+        CONTRADICTION_1L: "Нужно делегировать решения менеджерам, но нельзя допустить комплаенс-ошибки и репутационные риски."
+        IKR_1L: "Решения принимаются на уровне менеджеров, а комплаенс-риски отсеиваются простым фильтром без эскалаций по умолчанию."
+      PRINCIPLES_TO_ACTION:
+        PRINCIPLES: [6, 25]
+        ACTIONS:
+          - "Универсальность: один короткий риск-фильтр и чек-лист комплаенса применим ко всем типовым решениям менеджеров."
+          - "Самообслуживание: менеджер сам проходит фильтр, фиксирует доказательства в карточке решения и эскалирует только по правилу."
+      IKR_TEST:
+        Q1: "YES — используем текущий чек-лист и логи; бюджет 0."
+        Q2: "YES — высокорисковые кейсы всё ещё эскалируются по правилу, не по страху."
+      CONFIDENCE:
+        score: 75
+        justification: "структура валидна; требуется уточнение red flags в конкретной компании."
+
+  - artifact_type: SOLUTION_SET
+    pipeline_step: 9
+    payload:
+      count_rule: "3–5"
+      concepts:
+        - concept_index: 1
+          name: "Risk Boundary Matrix"
+          idea_1l: "классифицировать решения по риску и заранее определить границы эскалации"
+          linked_form: "№6 Ресурсоэффективность"
+          linked_principles: [6, 25]
+          linked_resources:
+            - "Existing compliance checklist"
+            - "Risk classification categories"
+            - "Escalation logs"
+          ikr_alignment_1l: "эскалации только по классификации риска"
+        - concept_index: 2
+          name: "Pre-approved Playbooks"
+          idea_1l: "создать 10 playbooks для типовых решений с разрешёнными параметрами"
+          linked_form: "№6 Ресурсоэффективность"
+          linked_principles: [6]
+          linked_resources:
+            - "Existing meetings (no new rituals)"
+            - "Customer contract clauses"
+          ikr_alignment_1l: "типовые решения без согласований"
+        - concept_index: 3
+          name: "Escalate-by-Red-Flag"
+          idea_1l: "эскалация только при красном флаге; иначе решение на уровне менеджера"
+          linked_form: "№6 Ресурсоэффективность"
+          linked_principles: [25]
+          linked_resources:
+            - "Existing compliance checklist"
+            - "CEO time as scarce resource"
+          ikr_alignment_1l: "CEO включается только по red flag"
+
+  - artifact_type: MECHANISM_SPECS
+    pipeline_step: 10
+    payload:
+      concept_specs:
+        - concept_index: 1
+          A_name_tagline: "Risk Boundary Matrix — границы решения"
+          B_axis_and_resource: "ось: autonomy vs compliance risk; ресурс: чек-лист red flags"
+          C_mechanism_steps:
+            - "Определить 3 уровня риска и критерии (green/yellow/red)"
+            - "Для каждого уровня задать: кто решает, какие документы нужны, когда эскалация"
+            - "Встроить правило в текущий процесс согласований (без новых встреч)"
+          D_assumptions_constraints:
+            - "оргструктура не меняется; бюджет 0"
+          E_risks_failures:
+            - "слишком много красных флагов → возврат к старому"
+          F_metrics:
+            leading:
+              - "% решений с заполненной классификацией риска"
+              - "% решений green/yellow без эскалации"
+            lagging:
+              - "# комплаенс инцидентов"
+              - "время CEO на согласования/нед"
+          G_experiment:
+            timebox: "2 недели"
+            budget: "0"
+            pass_criteria: "≥70% решений имеют риск-класс; эскалации ↓ на 30% без роста инцидентов"
+        - concept_index: 2
+          A_name_tagline: "Pre-approved Playbooks — типовые решения"
+          B_axis_and_resource: "ось: speed vs risk; ресурс: playbook шаблоны"
+          C_mechanism_steps:
+            - "Собрать top-10 типовых решений из эскалаций"
+            - "Для каждого описать допустимые параметры и owner"
+            - "Опубликовать playbooks и запретить эскалации по этим типам"
+          D_assumptions_constraints:
+            - "достаточно 10 первых playbooks"
+          E_risks_failures:
+            - "playbooks устаревают без владельца"
+          F_metrics:
+            leading:
+              - "# созданных playbooks"
+              - "% решений, покрытых playbooks"
+            lagging:
+              - "снижение эскалаций по типовым темам"
+              - "# исключений/нарушений"
+          G_experiment:
+            timebox: "3 недели"
+            budget: "0"
+            pass_criteria: "10 playbooks, ≥40% типовых решений без эскалации"
+        - concept_index: 3
+          A_name_tagline: "Escalate-by-Red-Flag — эскалация по правилу"
+          B_axis_and_resource: "ось: ответственность vs страх; ресурс: red flag список"
+          C_mechanism_steps:
+            - "Согласовать 7 красных флагов комплаенса"
+            - "Если red flag = true → эскалация; иначе — решение менеджера"
+            - "Логировать каждый red flag кейс для обучения"
+          D_assumptions_constraints:
+            - "флаги должны быть бинарны"
+          E_risks_failures:
+            - "менеджеры обходят флаги"
+          F_metrics:
+            leading:
+              - "# решений с red-flag check"
+              - "# red-flag true/нед"
+            lagging:
+              - "# комплаенс инцидентов"
+              - "время CEO на согласования"
+          G_experiment:
+            timebox: "2 недели"
+            budget: "0"
+            pass_criteria: "100% решений проходят red-flag check; инциденты не растут"
+
+  - artifact_type: SECONDARY_CONTRADICTION_CHECK
+    pipeline_step: 11
+    payload:
+      new_contradiction_exists: false
+
+  - artifact_type: DECISION_RECORD
+    pipeline_step: 12
+    payload:
+      chosen_concept_index: 1
+      chosen_concept_name: "Risk Boundary Matrix"
+      reasons:
+        - "создаёт ясные границы ответственности без оргизменений"
+        - "масштабируется на все решения и не требует бюджета"
+      rejected_alternatives:
+        - concept_index: 2
+          concept: "Pre-approved Playbooks"
+          why_rejected: "требует больше времени на разработку и поддержки"
+        - concept_index: 3
+          concept: "Escalate-by-Red-Flag"
+          why_rejected: "подмножество матрицы; без уровней риска недостаточно"
+      assumptions:
+        - "есть минимальная функция комплаенса для согласования red flags"
+      success_criteria:
+        - "эскалации к CEO ↓ на 30% за 2 недели"
+        - "0 комплаенс инцидентов в пилоте"
+
+  - artifact_type: IMPLEMENTATION_MAP
+    pipeline_step: 13
+    payload:
+      workstreams:
+        - name: "Risk Rules"
+          owner: "Compliance lead"
+          tasks:
+            - task: "Сформировать 3 уровня риска + критерии"
+              due: "T+5d"
+              dependency: ""
+              checkpoint_metric: "матрица опубликована"
+            - task: "Согласовать список красных флагов"
+              due: "T+7d"
+              dependency: "матрица"
+              checkpoint_metric: "список утверждён"
+        - name: "Manager Adoption"
+          owner: "COO"
+          tasks:
+            - task: "Встроить риск-класс в текущий шаблон решения/заявки"
+              due: "T+7d"
+              dependency: "матрица"
+              checkpoint_metric: "≥70% заявок заполнены"
+            - task: "Еженедельный разбор 5 кейсов с ошибками классификации"
+              due: "T+14d"
+              dependency: "логи"
+              checkpoint_metric: "ошибки ↓"
+
+  - artifact_type: RULE_UPDATE
+    pipeline_step: 14
+    payload:
+      rule_id: "RULE-DELEGATION-RISK-01"
+      rule_statement_if_then: "Если решение не содержит красного флага и классифицировано как green/yellow, то оно принимается менеджером без эскалации к CEO."
+      criterion: "risk_class ∈ {green,yellow} AND red_flag=false"
+      boundaries: "не применяется к red_flag=true и к решениям вне матрицы (новые типы) — они эскалируются"
+      evidence_from_case: "симптом: эскалации из-за страха; ограничение: комплаенс ошибки недопустимы"
+      test_case_action:
+        add_or_update: add
+        test_case_id: TC05
+        expected_effect: "эскалации ↓ при сохранении комплаенса"
+      version_note: "NON-CANON: rule update stored per case; canon unchanged"
+      rationale_1l: "страх заменяется формальным фильтром риска"

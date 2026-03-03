@@ -1,0 +1,70 @@
+{
+  "case_id": "DSS_Output_Package_TC_E22_POSITIVE_CASE_01_V1_2026-02-24T15-27-33Z",
+  "run_id": "2026-02-24T15-27-33Z",
+  "latest": {
+    "Gate0": "pass",
+    "Gate1": "pass",
+    "Gate2": "pass",
+    "Gate3": "pass",
+    "GatePhase0": "pass",
+    "GatePFL": "fail",
+    "Gate4": "not_run",
+    "Gate5": "not_run",
+    "Gate6": "not_run",
+    "Gate7": "not_run",
+    "Gate8": "not_run",
+    "Gate9": "not_run",
+    "Gate10": "not_run",
+    "Gate11": "not_run",
+    "Gate12": "not_run",
+    "Gate13": "not_run",
+    "Gate14": "not_run",
+    "GateTRIZ": "fail"
+  },
+  "normalized_reason_codes": {
+    "Gate0": [],
+    "Gate1": [],
+    "Gate2": [],
+    "Gate3": [],
+    "GatePhase0": [],
+    "GatePFL": [
+      "SOLUTION_AS_XY"
+    ],
+    "Gate4": [
+      "SOLUTION_AS_XY"
+    ],
+    "Gate5": [
+      "SOLUTION_AS_XY"
+    ],
+    "Gate6": [
+      "SOLUTION_AS_XY"
+    ],
+    "Gate7": [
+      "SOLUTION_AS_XY"
+    ],
+    "Gate8": [
+      "SOLUTION_AS_XY"
+    ],
+    "Gate9": [
+      "SOLUTION_AS_XY"
+    ],
+    "Gate10": [
+      "SOLUTION_AS_XY"
+    ],
+    "Gate11": [
+      "SOLUTION_AS_XY"
+    ],
+    "Gate12": [
+      "SOLUTION_AS_XY"
+    ],
+    "Gate13": [
+      "SOLUTION_AS_XY"
+    ],
+    "Gate14": [
+      "SOLUTION_AS_XY"
+    ],
+    "GateTRIZ": [
+      "TRIZ_G4_INVALID"
+    ]
+  }
+}

@@ -1,0 +1,118 @@
+schema_id: TEST_VECTOR_SCHEMA_v0.1
+status: NON_CANON_SHELL
+purpose: Minimum runnable test-vector schema (Steps 0–14)
+notes:
+  - This is a machine-readable skeleton. Full rules live in the DOCX until migrated.
+
+modes:
+  mode_a_full_vector:
+    description: Test case provides all required inputs for Steps 0–14.
+    runnability_rule: Missing required field => BLOCKED.
+  mode_b_artifact_pack:
+    description: Test case provides Step0–Step1 inputs + explicit artifact blocks for Steps 2–14.
+    runnability_rule: Missing required artifact block => BLOCKED.
+
+envelope:
+  required_fields:
+    - test_case_id
+    - status
+    - mode
+    - canon_versions
+  status_enum: [EMPTY, TO_FILL, FILLED]
+  mode_enum: [full_vector, artifact_pack]
+  canon_versions:
+    canon_pipeline: CANON_PIPELINE_v1.2.docx
+    canon_9forms: CANON_9FORMS_v1.1.docx
+    schema: TEST_VECTOR_SCHEMA_v0.1.md.docx
+
+steps:
+  step_0:
+    name: CASE_SYMPTOM
+    required_fields:
+      - symptom_1l
+  step_1:
+    name: PROBLEM_OWNER_CARD
+    required_fields:
+      - owner_role
+      - owner_scope
+      - constraints
+    optional_fields:
+      - success_metric_hint
+  step_2:
+    name: SYSTEM_BOUNDARY_MAP
+    required_fields:
+      - actor
+      - system
+      - environment
+      - boundary_note_1l
+  step_3:
+    name: INTERACTION_MAP
+    required_fields:
+      - elements
+      - flows
+      - symptom_location
+  step_4:
+    name: CONTRADICTION_STATEMENT
+    required_fields:
+      - improve_x
+      - worsen_y
+      - statement_1l
+      - measurement_hint
+  step_5:
+    name: IKR_CARD
+    required_fields:
+      - ikr_1l
+    optional_fields:
+      - no_new_harm_clause
+  step_6:
+    name: HARD_BARRIER
+    required_fields:
+      - barrier_1l
+      - equivalent_to_step4
+  step_7:
+    name: RESOURCE_MAP
+    required_fields:
+      - resources
+  step_8:
+    name: FORM_SELECTION
+    required_fields:
+      - PRIMARY_FORM
+      - BOUNDARY_CHECK
+      - TRIZ_CORE
+      - PRINCIPLES_TO_ACTION
+      - IKR_TEST
+      - CONFIDENCE
+  step_9:
+    name: SOLUTION_SET
+    required_fields:
+      - count_rule
+      - concepts
+  step_10:
+    name: MECHANISM_SPECS
+    required_fields:
+      - concept_specs
+  step_11:
+    name: SECONDARY_CONTRADICTION_CHECK
+    required_fields:
+      - new_contradiction_exists
+  step_12:
+    name: DECISION_RECORD
+    required_fields:
+      - chosen_concept_index
+      - chosen_concept_name
+      - reasons
+  step_13:
+    name: IMPLEMENTATION_MAP
+    required_fields:
+      - workstreams
+  step_14:
+    name: RULE_UPDATE
+    required_fields:
+      - rule_id
+      - rule_statement_if_then
+      - criterion
+      - boundaries
+      - evidence_from_case
+      - test_case_action
+      - version_note
+      - rationale_1l

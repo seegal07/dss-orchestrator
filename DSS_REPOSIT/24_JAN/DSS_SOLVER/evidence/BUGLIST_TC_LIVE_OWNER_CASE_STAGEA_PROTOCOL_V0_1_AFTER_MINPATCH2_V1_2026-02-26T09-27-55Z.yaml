@@ -1,0 +1,21 @@
+run_id: 2026-02-26T09-27-55Z
+test_case_id: TC_LIVE_OWNER_CASE_STAGEA_PROTOCOL_V0_1_AFTER_MINPATCH2_V1
+issues:
+  - gate: GatePFL
+    issue_code: STRUCTURAL
+    message: "NO_MUTUAL_DEGRADATION"
+  - gate: GateTRIZ
+    issue_code: STRUCTURAL
+    message: "TRIZ_G1_MISSING: physical_contradiction missing (step_8.TRIZ_CORE.physical_contradiction)"
+  - gate: GateTRIZ
+    issue_code: STRUCTURAL
+    message: "TRIZ_G2_MISSING: separation missing (step_8.TRIZ_CORE.separation)"
+  - gate: GateTRIZ
+    issue_code: STRUCTURAL
+    message: "TRIZ_G3_MISSING: system_operator missing (step_8.TRIZ_CORE.system_operator)"
+  - gate: GateTRIZ
+    issue_code: STRUCTURAL
+    message: "TRIZ_G4_MISSING: non_obviousness_check missing (step_8.TRIZ_CORE.non_obviousness_check)"
+  - gate: GateTRIZ
+    issue_code: STRUCTURAL
+    message: "TRIZ_GX_MISSING: transformation_model missing (step_8.TRIZ_CORE.transformation_model)"

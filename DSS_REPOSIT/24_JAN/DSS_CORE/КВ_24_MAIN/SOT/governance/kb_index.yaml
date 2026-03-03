@@ -1,0 +1,5 @@
+kb_index_id: KB_INDEX_vNext
+status: ACTIVE
+source_docx: KB_INDEX_vNext.md.docx
+notes:
+  - Placeholder governance reference; full content remains in DOCX until migrated.

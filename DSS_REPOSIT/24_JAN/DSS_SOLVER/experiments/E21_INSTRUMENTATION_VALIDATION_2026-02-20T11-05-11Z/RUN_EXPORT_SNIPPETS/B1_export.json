@@ -1,0 +1,22 @@
+{
+  "run_id": "B1",
+  "export_path": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/exports/DSS_Output_Package_TC_E21_LOOP_NO_2026-02-20T11-05-15Z",
+  "input_fingerprint": "20fdffdab5b5af455a75eab34a8db337621672f245ceba19fb0bfc6e18f3a2b2",
+  "manual_override_used": false,
+  "override_type": null,
+  "normalized_reason_codes": [
+    "CANON_VERSIONS_MISSING",
+    "GATE0_BLOCKED",
+    "MODE_IS_INVALID",
+    "STATUS_IS_NOT_FILLED",
+    "TRIZ_G1_MISSING",
+    "TRIZ_G2_MISSING",
+    "TRIZ_G3_MISSING",
+    "TRIZ_G4_MISSING",
+    "TRIZ_GX_MISSING"
+  ],
+  "gatecr_status_mirror": "NOT_APPLICABLE",
+  "pfl_status": null,
+  "gatecr_status": null,
+  "s08_5_gatecr_status_mirror": "NOT_APPLICABLE"
+}

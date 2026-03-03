@@ -1,0 +1,72 @@
+{
+  "case_id": "DSS_Output_Package_TC_E22_V1_2026-02-23T12-58-54Z",
+  "run_id": "2026-02-23T12-58-54Z",
+  "latest": {
+    "Gate0": "pass",
+    "Gate1": "pass",
+    "Gate2": "pass",
+    "Gate3": "fail",
+    "GatePhase0": "pass",
+    "GatePFL": "fail",
+    "Gate4": "not_run",
+    "Gate5": "not_run",
+    "Gate6": "not_run",
+    "Gate7": "not_run",
+    "Gate8": "not_run",
+    "Gate9": "not_run",
+    "Gate10": "not_run",
+    "Gate11": "not_run",
+    "Gate12": "not_run",
+    "Gate13": "not_run",
+    "Gate14": "not_run",
+    "GateTRIZ": "fail"
+  },
+  "normalized_reason_codes": {
+    "Gate0": [],
+    "Gate1": [],
+    "Gate2": [],
+    "Gate3": [
+      "STEP3_FLOWS_0_NOT_A_DICT"
+    ],
+    "GatePhase0": [],
+    "GatePFL": [
+      "MISSING_SLOTS_V0"
+    ],
+    "Gate4": [
+      "MISSING_SLOTS_V0"
+    ],
+    "Gate5": [
+      "MISSING_SLOTS_V0"
+    ],
+    "Gate6": [
+      "MISSING_SLOTS_V0"
+    ],
+    "Gate7": [
+      "MISSING_SLOTS_V0"
+    ],
+    "Gate8": [
+      "MISSING_SLOTS_V0"
+    ],
+    "Gate9": [
+      "MISSING_SLOTS_V0"
+    ],
+    "Gate10": [
+      "MISSING_SLOTS_V0"
+    ],
+    "Gate11": [
+      "MISSING_SLOTS_V0"
+    ],
+    "Gate12": [
+      "MISSING_SLOTS_V0"
+    ],
+    "Gate13": [
+      "MISSING_SLOTS_V0"
+    ],
+    "Gate14": [
+      "MISSING_SLOTS_V0"
+    ],
+    "GateTRIZ": [
+      "TRIZ_G4_INVALID"
+    ]
+  }
+}

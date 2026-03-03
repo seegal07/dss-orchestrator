@@ -1,0 +1,37 @@
+{
+  "checkpoints": {
+    "checkpoint_1_gatephase0": "PASS",
+    "checkpoint_2_hashes": "PASS",
+    "per_variant": {
+      "LIVE_OWNER_PROTOCOL_V1": {
+        "gatephase0_ok": true,
+        "hashes_ok": true
+      }
+    }
+  },
+  "reference_variant": "LIVE_OWNER_PROTOCOL_V1",
+  "Step1": "PASS",
+  "Step2": "PASS",
+  "variants": {
+    "LIVE_OWNER_PROTOCOL_V1": {
+      "canonical_hash_v0": "a64867ff5cf27cfe24ba4faf422f063c04962ccd7ba3b18270cf64b8f3b3fd24",
+      "s2a_hash": "bb0109a1fea5264d07c5cf9983a4d3cd8f62efe5a7101e3dc209cad98f43e6b6",
+      "trace_markers": [
+        "OBJ_FROM_NA_PATTERN:Y",
+        "DELTA_FROM_RAW:X",
+        "DELTA_FROM_RAW:Y"
+      ],
+      "GatePFL_result": "fail",
+      "GatePFL_reason": "NO_MUTUAL_DEGRADATION",
+      "anchors": {
+        "S03_0": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/REGRESSION_MIN_SET_RUN_2026-02-27T13-07-23Z/06_LIVE_PROTOCOL_READINESS_CONTROL/EXPORTS/LIVE_OWNER_PROTOCOL_V1/S03_0_PHASE0_OUTPUT.md",
+        "gate_log": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/REGRESSION_MIN_SET_RUN_2026-02-27T13-07-23Z/06_LIVE_PROTOCOL_READINESS_CONTROL/EXPORTS/LIVE_OWNER_PROTOCOL_V1/gate_log.json",
+        "canonical_hash_v0_line": 8,
+        "s2a_hash_line": 9,
+        "trace_markers_line": 29,
+        "GatePFL_result_line": 92,
+        "GatePFL_reason_line": 96
+      }
+    }
+  }
+}

@@ -1,0 +1,166 @@
+test_case_id: TC03
+status: FILLED
+mode: artifact_pack
+canon_versions:
+  canon_pipeline: CANON_PIPELINE_v1.2.docx
+  canon_9forms: CANON_9FORMS_v1.1.docx
+  schema: TEST_VECTOR_SCHEMA_v0.1.md.docx
+notes: "Minimal placeholder payload (legacy MCE-style)."
+
+artifact_pack:
+  - artifact_type: CASE_SYMPTOM
+    pipeline_step: 0
+    payload:
+      symptom_1l: "x"
+
+  - artifact_type: PROBLEM_OWNER_CARD
+    pipeline_step: 1
+    payload:
+      owner_role: "x"
+      owner_scope: "x"
+      constraints: ["x"]
+      success_metric_hint: "x"
+
+  - artifact_type: SYSTEM_BOUNDARY_MAP
+    pipeline_step: 2
+    payload:
+      actor: ["x"]
+      system: ["x"]
+      environment: ["x"]
+      boundary_note_1l: "x"
+
+  - artifact_type: INTERACTION_MAP
+    pipeline_step: 3
+    payload:
+      elements: ["x"]
+      flows:
+        - from: "x"
+          to: "x"
+          type: "info"
+          note: "x"
+      symptom_location: "x"
+
+  - artifact_type: CONTRADICTION_STATEMENT
+    pipeline_step: 4
+    payload:
+      improve_x: "x"
+      worsen_y: "x"
+      statement_1l: "Если улучшаем X, ухудшается Y"
+      measurement_hint: "x"
+
+  - artifact_type: IKR_CARD
+    pipeline_step: 5
+    payload:
+      ikr_1l: "x"
+      no_new_harm_clause: "x"
+
+  - artifact_type: HARD_BARRIER
+    pipeline_step: 6
+    payload:
+      barrier_1l: "x"
+      equivalent_to_step4: true
+
+  - artifact_type: RESOURCE_MAP
+    pipeline_step: 7
+    payload:
+      resources:
+        - name: "x"
+          category: "info"
+          tied_to: "x"
+          note: "x"
+
+  - artifact_type: FORM_SELECTION
+    pipeline_step: 8
+    payload:
+      PRIMARY_FORM: "№5 Инверсия"
+      BOUNDARY_CHECK:
+        NEAREST_FORMS:
+          - "№4 Медиация"
+          - "№6 Ресурсоэффективность"
+        WHY_NOT_X: ["x", "x"]
+        WHY_NOT_Y: ["x", "x"]
+      TRIZ_CORE:
+        CONTRADICTION_1L: "нужно A, но нужно не-A"
+        IKR_1L: "x"
+      PRINCIPLES_TO_ACTION:
+        PRINCIPLES: [13]
+        ACTIONS: ["x"]
+      IKR_TEST:
+        Q1: "YES — x"
+        Q2: "YES — x"
+      CONFIDENCE:
+        score: 1
+        justification: "x"
+
+  - artifact_type: SOLUTION_SET
+    pipeline_step: 9
+    payload:
+      count_rule: "3–5"
+      concepts:
+        - concept_index: 1
+          name: "x"
+          idea_1l: "x"
+          linked_form: "№5 Инверсия"
+          linked_principles: [13]
+          linked_resources: ["x"]
+          ikr_alignment_1l: "x"
+
+  - artifact_type: MECHANISM_SPECS
+    pipeline_step: 10
+    payload:
+      concept_specs:
+        - concept_index: 1
+          A_name_tagline: "x"
+          B_axis_and_resource: "x"
+          C_mechanism_steps: ["x"]
+          D_assumptions_constraints: ["x"]
+          E_risks_failures: ["x"]
+          F_metrics:
+            leading: ["x"]
+            lagging: ["x"]
+          G_experiment:
+            timebox: "x"
+            budget: "x"
+            pass_criteria: "x"
+
+  - artifact_type: SECONDARY_CONTRADICTION_CHECK
+    pipeline_step: 11
+    payload:
+      new_contradiction_exists: false
+
+  - artifact_type: DECISION_RECORD
+    pipeline_step: 12
+    payload:
+      chosen_concept_index: 1
+      chosen_concept_name: "x"
+      reasons: ["x"]
+      rejected_alternatives: []
+      assumptions: ["x"]
+      success_criteria: ["x"]
+
+  - artifact_type: IMPLEMENTATION_MAP
+    pipeline_step: 13
+    payload:
+      workstreams:
+        - name: "x"
+          owner: "x"
+          tasks:
+            - task: "x"
+              due: "x"
+              dependency: ""
+              checkpoint_metric: "x"
+
+  - artifact_type: RULE_UPDATE
+    pipeline_step: 14
+    payload:
+      rule_id: "x"
+      rule_statement_if_then: "x"
+      criterion: "x"
+      boundaries: "x"
+      evidence_from_case: "x"
+      test_case_action:
+        add_or_update: add
+        test_case_id: TC03
+        expected_effect: "x"
+      version_note: "NON-CANON"
+      rationale_1l: "x"

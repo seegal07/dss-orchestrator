@@ -1,0 +1,130 @@
+test_case_id: TC_OPERATOR_CORE_HARD_FAIL
+status: FILLED
+mode: full_vector
+canon_versions:
+  canon_pipeline: CANON_PIPELINE_v1.2.docx
+  canon_9forms: CANON_9FORMS_v1.1.docx
+  schema: TEST_VECTOR_SCHEMA_v0.2.md
+notes: "Operator Core HARD_FAIL path"
+
+full_vector:
+  step_0:
+    symptom_1l: "Need growth without risk"
+  step_1:
+    owner_role: "CEO"
+    owner_scope: "Operations"
+    constraints: ["Budget cap"]
+  step_2:
+    actor: ["Branch manager"]
+    system: ["Branch network"]
+    environment: ["Market"]
+    boundary_note_1l: "Operational scope"
+  step_3:
+    elements: ["Branch", "CEO"]
+    flows:
+      - from: "Branch"
+        to: "CEO"
+        type: "info"
+        note: "Escalation"
+    symptom_location: "Escalation overload"
+  step_4:
+    improve_x: "Autonomy"
+    worsen_y: "Risk"
+    statement_1l: "If autonomy grows risk grows"
+    measurement_hint: "Incidents"
+  step_5:
+    ikr_1l: "Autonomy grows while incidents stay controlled"
+  step_6:
+    barrier_1l: "Cannot scale autonomy and control simultaneously"
+    equivalent_to_step4: true
+  step_7:
+    resources:
+      - name: "branch policy"
+        category: "org"
+        tied_to: "branch"
+  step_8:
+    PRIMARY_FORM: "Form 5"
+    BOUNDARY_CHECK:
+      note: "ok"
+    TRIZ_CORE:
+      physical_contradiction:
+        object: "branch decisions"
+        parameter: "autonomy level"
+        state_a: "high local autonomy"
+        state_not_a: "strict central control"
+      separation:
+        separation_type: "condition"
+        what_changes: "autonomy depends on risk category"
+        expected_resolution: "high-risk decisions escalated, low-risk decisions local"
+      system_operator:
+        subsystem_present: "local manager"
+        system_present: "branch governance"
+        supersystem_present: "network policy"
+      transformation_model:
+        changed_object: "approval routing"
+        new_state: "risk-tier routing"
+        resolution_link: "reduces overload while keeping control"
+      non_obviousness_check:
+        assumption_broken: "without condition separation_type autonomy and control cannot coexist"
+        why_not_obvious: "condition separation_type changes autonomy depends on risk category expected_resolution"
+    PRINCIPLES_TO_ACTION:
+      PRINCIPLES: [1]
+      ACTIONS: ["tiered routing"]
+    IKR_TEST:
+      Q1: "YES"
+    CONFIDENCE:
+      score: 1
+  step_8_5:
+    operator_selected: "DEPENDENCY_INVERSION"
+    detected_conflict_types: ["B"]
+    dominant_conflict_type: "B"
+    transformed_conflict_frame: "No true structural shift"
+    what_changed_structurally: "Conflict postponed"
+    structural_resolution_confirmed: false
+    separation_illusion_test: true
+    assisted_matrix:
+      - question_id: "Q1"
+        answer: "YES"
+      - question_id: "Q2"
+        answer: "YES"
+      - question_id: "Q3"
+        answer: "YES"
+      - question_id: "Q4"
+        answer: "YES"
+      - question_id: "Q5"
+        answer: "YES"
+    gatecr_status: "HARD_FAIL"
+    hard_fail_message: "structural resolution not found"
+  step_9:
+    count_rule: "3-5"
+    concepts:
+      - concept_index: 1
+        name: "X"
+      - concept_index: 2
+        name: "Y"
+      - concept_index: 3
+        name: "Z"
+  step_10:
+    concept_specs:
+      - concept_index: 1
+        A_name_tagline: "X"
+  step_11:
+    new_contradiction_exists: false
+    selection_criteria_refs: ["contradiction", "ikr", "barrier"]
+  step_12:
+    chosen_concept_index: 1
+    chosen_concept_name: "X"
+    reasons: ["n/a"]
+    compromise_mode: false
+  step_13:
+    workstreams:
+      - name: "Policy"
+  step_14:
+    rule_id: "R1"
+    rule_statement_if_then: "If risk high then escalate"
+    criterion: "incident threshold"
+    boundaries: "network"
+    evidence_from_case: "synthetic"
+    test_case_action: "apply"
+    version_note: "v1"
+    rationale_1l: "control risk"

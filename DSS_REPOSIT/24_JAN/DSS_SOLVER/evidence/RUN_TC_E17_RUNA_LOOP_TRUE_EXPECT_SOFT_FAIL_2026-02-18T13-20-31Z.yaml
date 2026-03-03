@@ -1,0 +1,75 @@
+run_id: 2026-02-18T13-20-31Z
+test_case_id: TC_E17_RUNA_LOOP_TRUE_EXPECT_SOFT_FAIL
+harness_version: dss-solver-0.1
+timestamp_utc: 2026-02-18T13-20-31Z
+overall_status: FAIL
+gate_results:
+  - gate: Gate0
+    status: PASS
+    reasons: []
+  - gate: Gate1
+    status: PASS
+    reasons: []
+  - gate: Gate2
+    status: PASS
+    reasons: []
+  - gate: Gate3
+    status: PASS
+    reasons: []
+  - gate: GatePFL
+    status: FAIL
+    reasons:
+      - "pfl_X missing"
+      - "pfl_Y missing"
+      - "pfl_verdict invalid"
+      - "pfl_reason invalid"
+      - "pfl_conflict_type_candidate invalid"
+      - "pfl_structural_tension missing"
+      - "pfl_attempt_index missing"
+  - gate: Gate4
+    status: NOT_RUN
+    reasons:
+      - "pfl_X missing"
+  - gate: Gate5
+    status: NOT_RUN
+    reasons:
+      - "pfl_X missing"
+  - gate: Gate6
+    status: NOT_RUN
+    reasons:
+      - "pfl_X missing"
+  - gate: Gate7
+    status: NOT_RUN
+    reasons:
+      - "pfl_X missing"
+  - gate: Gate8
+    status: NOT_RUN
+    reasons:
+      - "pfl_X missing"
+  - gate: Gate9
+    status: NOT_RUN
+    reasons:
+      - "pfl_X missing"
+  - gate: Gate10
+    status: NOT_RUN
+    reasons:
+      - "pfl_X missing"
+  - gate: Gate11
+    status: NOT_RUN
+    reasons:
+      - "pfl_X missing"
+  - gate: Gate12
+    status: NOT_RUN
+    reasons:
+      - "pfl_X missing"
+  - gate: Gate13
+    status: NOT_RUN
+    reasons:
+      - "pfl_X missing"
+  - gate: Gate14
+    status: NOT_RUN
+    reasons:
+      - "pfl_X missing"
+  - gate: GateTRIZ
+    status: PASS
+    reasons: []

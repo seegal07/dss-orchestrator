@@ -1,0 +1,45 @@
+{
+  "case_id": "TC_E22_V2",
+  "title": "TC_E22_V2",
+  "created_at": "2026-02-21T09-06-29Z",
+  "updated_at": "2026-02-21T09-06-29Z",
+  "case_version": 1,
+  "status": "done",
+  "canon_versions": {
+    "canon_pipeline_version": "v1.2",
+    "canon_9forms_version": "v1.1"
+  },
+  "shell_versions": {
+    "gate_automation_matrix_version": "v0.1.1",
+    "prd_version": "v0.1",
+    "ux_flow_version": "v0.1",
+    "export_spec_version": "v0.1",
+    "data_model_version": "v0.1"
+  },
+  "instrumentation": {
+    "input_fingerprint": "56dc8bb0626130f38ae25a5d856332cb1143fa2607df7729542afb5e3acaeb3a",
+    "manual_override_used": false,
+    "override_type": null,
+    "normalized_reason_codes": [
+      "PHASE0_DISABLED_HISTORICAL_COMPATIBILITY",
+      "SOLUTION_AS_XY",
+      "STEP3_FLOWS_0_NOT_A_DICT",
+      "TRIZ_G4_INVALID"
+    ],
+    "gatecr_status_mirror": "NOT_APPLICABLE",
+    "phase0_verdict": null,
+    "phase0_reason_code": null,
+    "canonical_hash": null,
+    "raw_hash": null,
+    "trace_count": null,
+    "confidence_summary": null,
+    "reconstruction_trace": [],
+    "canonical_object": {
+      "system_scope": null,
+      "X_param": null,
+      "Y_param": null,
+      "constraints": null,
+      "conflict_type_candidate": null
+    }
+  }
+}

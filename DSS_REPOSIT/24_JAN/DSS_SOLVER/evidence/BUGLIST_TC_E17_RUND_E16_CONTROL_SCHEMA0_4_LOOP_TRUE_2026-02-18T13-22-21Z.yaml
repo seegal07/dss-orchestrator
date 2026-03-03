@@ -1,0 +1,6 @@
+run_id: 2026-02-18T13-22-21Z
+test_case_id: TC_E17_RUND_E16_CONTROL_SCHEMA0_4_LOOP_TRUE
+issues:
+  - gate: Gate12
+    issue_code: STRUCTURAL
+    message: "Step12.compromise_mode must be true when GateCR=SOFT_FAIL"

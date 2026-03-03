@@ -1,0 +1,15 @@
+run_id: 2026-02-08T16-15-44Z
+test_case_id: TC_PILOT_V1_3_EARLY_BLOCK
+issues:
+  - gate: Gate14
+    issue_code: STRUCTURAL
+    message: "Step14.evidence_from_case missing"
+  - gate: Gate14
+    issue_code: STRUCTURAL
+    message: "Step14.test_case_action missing"
+  - gate: Gate14
+    issue_code: STRUCTURAL
+    message: "Step14.version_note missing"
+  - gate: Gate14
+    issue_code: STRUCTURAL
+    message: "Step14.rationale_1l missing"

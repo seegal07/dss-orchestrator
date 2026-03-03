@@ -1,0 +1,72 @@
+run_id: 2026-02-20T11-05-12Z
+test_case_id: TC_E21_LOOP_YES
+harness_version: dss-solver-0.1
+timestamp_utc: 2026-02-20T11-05-12Z
+overall_status: BLOCKED
+gate_results:
+  - gate: Gate0
+    status: BLOCKED
+    reasons:
+      - "status is not FILLED"
+      - "mode is invalid"
+      - "canon_versions missing"
+  - gate: Gate1
+    status: NOT_RUN
+    reasons:
+      - "Gate0 blocked"
+  - gate: Gate2
+    status: NOT_RUN
+    reasons:
+      - "Gate0 blocked"
+  - gate: Gate3
+    status: NOT_RUN
+    reasons:
+      - "Gate0 blocked"
+  - gate: Gate4
+    status: NOT_RUN
+    reasons:
+      - "Gate0 blocked"
+  - gate: Gate5
+    status: NOT_RUN
+    reasons:
+      - "Gate0 blocked"
+  - gate: Gate6
+    status: NOT_RUN
+    reasons:
+      - "Gate0 blocked"
+  - gate: Gate7
+    status: NOT_RUN
+    reasons:
+      - "Gate0 blocked"
+  - gate: Gate8
+    status: NOT_RUN
+    reasons:
+      - "Gate0 blocked"
+  - gate: Gate9
+    status: NOT_RUN
+    reasons:
+      - "Gate0 blocked"
+  - gate: Gate10
+    status: NOT_RUN
+    reasons:
+      - "Gate0 blocked"
+  - gate: Gate11
+    status: NOT_RUN
+    reasons:
+      - "Gate0 blocked"
+  - gate: Gate12
+    status: NOT_RUN
+    reasons:
+      - "Gate0 blocked"
+  - gate: Gate13
+    status: NOT_RUN
+    reasons:
+      - "Gate0 blocked"
+  - gate: Gate14
+    status: NOT_RUN
+    reasons:
+      - "Gate0 blocked"
+  - gate: GateTRIZ
+    status: FAIL
+    reasons:
+      - "TRIZ_G4_INVALID: non-obviousness has no reference to separation (step_8.TRIZ_CORE.non_obviousness_check)"

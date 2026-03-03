@@ -1,0 +1,272 @@
+test_case_id: TC17
+status: FILLED
+mode: artifact_pack
+canon_versions:
+  canon_pipeline: CANON_PIPELINE_v1.2.docx
+  canon_9forms: CANON_9FORMS_v1.1.docx
+  schema: TEST_VECTOR_SCHEMA_v0.1.md.docx
+notes: "patched vector"
+
+artifact_pack:
+  - artifact_type: CASE_SYMPTOM
+    pipeline_step: 0
+    payload:
+      symptom_1l: "В закупках задержки согласований: финансы, юристы и инициатор многократно перекидывают документы; цикл закупки растёт."
+
+  - artifact_type: PROBLEM_OWNER_CARD
+    pipeline_step: 1
+    payload:
+      owner_role: "Руководитель закупок / Procurement Lead"
+      owner_scope: "Может менять процесс согласования, роль посредника, шаблоны документов и правила входа/выхода из согласования."
+      constraints:
+        - "Нельзя снижать юридическую проверку и комплаенс"
+        - "Нельзя внедрять новую систему документооборота в ближайший месяц"
+        - "Нельзя увеличивать штат юристов/финансов"
+      success_metric_hint: "Длина цикла закупки, число итераций правок, % закупок «в срок»."
+
+  - artifact_type: SYSTEM_BOUNDARY_MAP
+    pipeline_step: 2
+    payload:
+      actor:
+        - "Инициатор закупки"
+        - "Procurement Lead"
+        - "Финансы"
+        - "Юристы"
+        - "Поставщик"
+      system:
+        - "Процесс согласования договора и оплаты"
+        - "Шаблоны документов и чек-листы"
+      environment:
+        - "Комплаенс и регуляторные требования"
+        - "Сроки проектов"
+      boundary_note_1l: "Симптом на границе функций, где нет единого носителя контекста."
+
+  - artifact_type: INTERACTION_MAP
+    pipeline_step: 3
+    payload:
+      elements:
+        - "Запрос на закупку"
+        - "Пакет документов"
+        - "Согласование юристов"
+        - "Согласование финансов"
+        - "Поставщик"
+      flows:
+        - from: "Инициатор"
+          to: "Procurement Lead"
+          type: info
+          note: "требования и сроки"
+        - from: "Поставщик"
+          to: "Procurement Lead"
+          type: info
+          note: "проект договора/счёт"
+        - from: "Procurement Lead"
+          to: "Юристы"
+          type: info
+          note: "пакет на проверку"
+        - from: "Юристы"
+          to: "Procurement Lead"
+          type: info
+          note: "правки/риски"
+        - from: "Procurement Lead"
+          to: "Финансы"
+          type: info
+          note: "условия оплаты и бюджет"
+      symptom_location: "Много итераций между «юристы ↔ финансы ↔ инициатор» из-за неполных пакетов и отсутствия медиатора."
+
+  - artifact_type: CONTRADICTION_STATEMENT
+    pipeline_step: 4
+    payload:
+      improve_x: "Скорость согласования (сокращение цикла закупки)"
+      worsen_y: "Полнота и корректность проверки (юридические/финансовые риски)"
+      statement_1l: "Если ускоряем согласование, растёт риск пропустить требования комплаенса; если усиливаем проверку, цикл становится слишком длинным."
+      measurement_hint: "X=дни от запроса до подписания; Y=инциденты/риски после подписания."
+
+  - artifact_type: IKR_CARD
+    pipeline_step: 5
+    payload:
+      ikr_1l: "Согласование проходит быстро, а качество проверки не ухудшается."
+      no_new_harm_clause: "Без роста нагрузки на юристов и финансы."
+
+  - artifact_type: HARD_BARRIER
+    pipeline_step: 6
+    payload:
+      barrier_1l: "Нельзя одновременно быстро согласовывать и держать все требования комплаенса без единого носителя контекста."
+      equivalent_to_step4: true
+
+  - artifact_type: RESOURCE_MAP
+    pipeline_step: 7
+    payload:
+      resources:
+        - name: "Типовой договор компании"
+          category: info
+          tied_to: "Пакет документов"
+          note: "единая база"
+        - name: "Чек-лист комплаенса (юридический)"
+          category: info
+          tied_to: "Юристы"
+          note: "переводит требования в список"
+        - name: "Чек-лист финансовых условий"
+          category: info
+          tied_to: "Финансы"
+          note: "бюджет/лимиты/оплата"
+        - name: "Procurement Lead как посредник"
+          category: org
+          tied_to: "Procurement Lead"
+          note: "собирает единый пакет"
+        - name: "Регламент «one-pack»"
+          category: org
+          tied_to: "Запрос на закупку"
+          note: "в согласование заходят только полные пакеты"
+        - name: "SLA по ответам на правки"
+          category: time
+          tied_to: "Юристы"
+          note: "ограничивает «вечные» итерации"
+        - name: "Матрица лимитов полномочий"
+          category: info
+          tied_to: "Финансы"
+          note: "кто согласует какие суммы"
+        - name: "Доверие к шаблонам"
+          category: trust
+          tied_to: "Типовой договор компании"
+          note: "ускоряет принятие"
+
+  - artifact_type: FORM_SELECTION
+    pipeline_step: 8
+    payload:
+      PRIMARY_FORM: "№4 Медиация"
+      BOUNDARY_CHECK:
+        NEAREST_FORMS:
+          - "№4 Медиация"
+          - "№7 Реформатирование"
+        WHY_NOT_X:
+          - "Корень — отсутствие посредника и единого пакета требований."
+          - "Медиация снижает число итераций без ослабления проверки."
+        WHY_NOT_Y:
+          - "Формат документов важен, но без медиатора итерации сохранятся."
+      D_MARKER: "D3"
+      TRIZ_CORE:
+        CONTRADICTION_1L: "нужно ускорить согласование, но нужно не потерять требования комплаенса"
+        IKR_1L: "единый пакет проходит проверку без возвратов и пересборок"
+      PRINCIPLES_TO_ACTION:
+        PRINCIPLES: [24, 5, 7]
+        ACTIONS:
+          - "24: Посредник — Procurement Lead формирует единый пакет и ведёт коммуникацию."
+          - "05: Объединение — объединить юридический и финансовый чек-листы в один «лист входа»."
+          - "07: Матрешка — вложить чек-лист в шаблон договора как обязательный раздел."
+      IKR_TEST:
+        Q1: "YES — единый пакет снижает возвраты на доуточнение."
+        Q2: "YES — проверка сохраняется через чек-листы."
+      CONFIDENCE:
+        score: 70
+        justification: "Нужно дисциплина процесса, а не новая система."
+
+  - artifact_type: SOLUTION_SET
+    pipeline_step: 9
+    payload:
+      count_rule: "3–5"
+      concepts:
+        - concept_index: 1
+          name: "One-pack через посредника"
+          idea_1l: "Procurement Lead собирает требования инициатора и чек-листы юристов/финансов и отправляет одним пакетом."
+          linked_form: "№4 Медиация"
+          linked_principles: [24, 5]
+          linked_resources:
+            - "Procurement Lead как посредник"
+            - "Чек-лист комплаенса (юридический)"
+            - "Чек-лист финансовых условий"
+          ikr_alignment_1l: "Согласование становится линейным и предсказуемым."
+        - concept_index: 2
+          name: "Шаблон договора с вложенным чек-листом"
+          idea_1l: "Встроить чек-лист требований в стандартный договор и требовать заполнение перед отправкой в юристов."
+          linked_form: "№4 Медиация"
+          linked_principles: [7]
+          linked_resources:
+            - "Типовой договор компании"
+            - "Регламент «one-pack»"
+          ikr_alignment_1l: "Снижает дефекты пакета на входе."
+        - concept_index: 3
+          name: "SLA и лимит итераций"
+          idea_1l: "Ввести SLA ответа и максимум 2 итерации правок с эскалацией."
+          linked_form: "№4 Медиация"
+          linked_principles: [5]
+          linked_resources:
+            - "SLA по ответам на правки"
+            - "Матрица лимитов полномочий"
+          ikr_alignment_1l: "Стабилизирует длительность цикла."
+
+  - artifact_type: MECHANISM_SPECS
+    pipeline_step: 10
+    payload:
+      concept_specs:
+        - concept_index: 1
+          A_name_tagline: "One-pack — «один вход, один выход»"
+          B_axis_and_resource: "Ось: итерации → 0–1; ресурс: посредник + объединенный чек-лист"
+          C_mechanism_steps:
+            - "Собрать объединённый чек-лист (юридический+финансовый) на 1 страницу."
+            - "Ввести правило: неполные пакеты не принимаются."
+            - "Procurement Lead собирает пакет и фиксирует версию."
+            - "Юристы/финансы дают правки только через посредника."
+          D_assumptions_constraints:
+            - "Функции принимают единый формат входа."
+          E_risks_failures:
+            - "Посредник станет «бутылочным горлом»."
+          F_metrics:
+            leading:
+              - "% пакетов с первого раза"
+              - "число итераций"
+              - "% ответов в SLA"
+            lagging:
+              - "средний цикл закупки (дни)"
+              - "% закупок в срок"
+          G_experiment:
+            timebox: "4 недели"
+            budget: "0 EUR"
+            pass_criteria: "Итерации ↓ ≥30% и цикл ↓ ≥20% без инцидентов комплаенса"
+
+  - artifact_type: SECONDARY_CONTRADICTION_CHECK
+    pipeline_step: 11
+    payload:
+      new_contradiction_exists: false
+
+  - artifact_type: DECISION_RECORD
+    pipeline_step: 12
+    payload:
+      chosen_concept_index: 1
+      chosen_concept_name: "One-pack через посредника"
+      reasons:
+        - "Снижает итерации без ослабления проверки."
+        - "Не требует новой системы."
+      success_criteria:
+        - "Итерации правок ↓ ≥30%"
+        - "Цикл закупки ↓ ≥20%"
+
+  - artifact_type: IMPLEMENTATION_MAP
+    pipeline_step: 13
+    payload:
+      workstreams:
+        - name: "Процесс one-pack"
+          owner: "Procurement Lead"
+          tasks:
+            - task: "Собрать объединённый чек-лист и утвердить формат входа"
+              due: "2026-02-09"
+              dependency: "согласование юристов/финансов"
+              checkpoint_metric: "чек-лист утвержден"
+            - task: "Запустить one-pack на 5 закупках и измерить итерации"
+              due: "2026-02-23"
+              dependency: "чек-лист утвержден"
+              checkpoint_metric: "итерации зафиксированы"
+
+  - artifact_type: RULE_UPDATE
+    pipeline_step: 14
+    payload:
+      rule_id: "CASE-RULE-TC17-01"
+      rule_statement_if_then: "Если закупка требует согласования юристов и финансов, то вход в согласование допускается только единым пакетом через Procurement Lead."
+      criterion: "Любая закупка с договором/оплатой выше лимита."
+      boundaries: "Не применимо к экстренным аварийным закупкам."
+      evidence_from_case: "Симптом: многократные перекидывания документов между функциями."
+      test_case_action:
+        add_or_update: add
+        test_case_id: TC17
+        expected_effect: "итерации ↓, цикл закупки ↓"
+      version_note: "NON-CANON case rule; canon unchanged"
+      rationale_1l: "Посредник и единый пакет уменьшают потери на перевод требований."

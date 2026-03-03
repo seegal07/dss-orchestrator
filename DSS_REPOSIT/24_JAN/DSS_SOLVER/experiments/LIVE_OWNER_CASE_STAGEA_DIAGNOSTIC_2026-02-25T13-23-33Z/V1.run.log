@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/harness/harness.py", line 1232, in <module>
+    main()
+  File "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/harness/harness.py", line 1228, in main
+    run_tc(args.tc, args.answers, args.tc_path, args.addon_answers, args.addon_strict)
+  File "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/harness/harness.py", line 1207, in run_tc
+    export_dir = _export_package(tc_id, tc, run_id, gate_results, answers, addon_results, addon_answers)
+  File "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/harness/harness.py", line 992, in _export_package
+    _write_gate_logs(export_dir, run_id, gate_results, answers, addon_results, addon_answers)
+  File "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/harness/harness.py", line 780, in _write_gate_logs
+    a = answer_map.get(g.gate, {}) if g.gate in ASSISTED_GATES or g.gate in MANUAL_GATES else {}
+AttributeError: 'str' object has no attribute 'get'

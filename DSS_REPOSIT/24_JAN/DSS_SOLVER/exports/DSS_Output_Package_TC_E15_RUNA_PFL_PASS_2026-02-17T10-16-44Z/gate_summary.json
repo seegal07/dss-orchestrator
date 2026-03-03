@@ -1,0 +1,23 @@
+{
+  "case_id": "DSS_Output_Package_TC_E15_RUNA_PFL_PASS_2026-02-17T10-16-44Z",
+  "run_id": "2026-02-17T10-16-44Z",
+  "latest": {
+    "Gate0": "pass",
+    "Gate1": "pass",
+    "Gate2": "pass",
+    "Gate3": "pass",
+    "GatePFL": "fail",
+    "Gate4": "not_run",
+    "Gate5": "not_run",
+    "Gate6": "not_run",
+    "Gate7": "not_run",
+    "Gate8": "not_run",
+    "Gate9": "not_run",
+    "Gate10": "not_run",
+    "Gate11": "not_run",
+    "Gate12": "not_run",
+    "Gate13": "not_run",
+    "Gate14": "not_run",
+    "GateTRIZ": "fail"
+  }
+}

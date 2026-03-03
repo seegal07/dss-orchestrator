@@ -1,0 +1,45 @@
+run_id: 2026-02-20T11-07-31Z
+test_case_id: TC_E21_LOOP_YES
+issues:
+  - gate: Gate3
+    issue_code: STRUCTURAL
+    message: "Step3.flows[0] not a dict"
+  - gate: Gate7
+    issue_code: STRUCTURAL
+    message: "Step7.resources is not a list"
+  - gate: Gate9
+    issue_code: STRUCTURAL
+    message: "Step9.concepts is not a list"
+  - gate: Gate10
+    issue_code: STRUCTURAL
+    message: "Step10.concept_specs is not a list"
+  - gate: Gate13
+    issue_code: STRUCTURAL
+    message: "Step13.workstreams missing"
+  - gate: Gate14
+    issue_code: STRUCTURAL
+    message: "Step14.rule_id missing"
+  - gate: Gate14
+    issue_code: STRUCTURAL
+    message: "Step14.rule_statement_if_then missing"
+  - gate: Gate14
+    issue_code: STRUCTURAL
+    message: "Step14.criterion missing"
+  - gate: Gate14
+    issue_code: STRUCTURAL
+    message: "Step14.boundaries missing"
+  - gate: Gate14
+    issue_code: STRUCTURAL
+    message: "Step14.evidence_from_case missing"
+  - gate: Gate14
+    issue_code: STRUCTURAL
+    message: "Step14.test_case_action missing"
+  - gate: Gate14
+    issue_code: STRUCTURAL
+    message: "Step14.version_note missing"
+  - gate: Gate14
+    issue_code: STRUCTURAL
+    message: "Step14.rationale_1l missing"
+  - gate: GateTRIZ
+    issue_code: STRUCTURAL
+    message: "TRIZ_G4_INVALID: non-obviousness has no reference to separation (step_8.TRIZ_CORE.non_obviousness_check)"

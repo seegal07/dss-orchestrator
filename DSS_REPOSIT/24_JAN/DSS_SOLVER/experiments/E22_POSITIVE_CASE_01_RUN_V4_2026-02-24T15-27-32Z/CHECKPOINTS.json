@@ -1,0 +1,22 @@
+{
+  "checkpoint_1_gatephase0": "PASS",
+  "checkpoint_2_hashes": "PASS",
+  "per_variant": {
+    "V1": {
+      "gatephase0_ok": true,
+      "hashes_ok": true,
+      "y_object_non_null": true
+    },
+    "V2": {
+      "gatephase0_ok": true,
+      "hashes_ok": true,
+      "y_object_non_null": true
+    },
+    "V3": {
+      "gatephase0_ok": true,
+      "hashes_ok": true,
+      "y_object_non_null": true
+    }
+  },
+  "y_object_non_null": "PASS"
+}

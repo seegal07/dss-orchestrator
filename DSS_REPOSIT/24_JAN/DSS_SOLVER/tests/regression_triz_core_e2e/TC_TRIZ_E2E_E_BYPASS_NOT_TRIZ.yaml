@@ -1,0 +1,108 @@
+test_case_id: TC_TRIZ_E2E_E_BYPASS_NOT_TRIZ
+status: FILLED
+mode: full_vector
+canon_versions:
+  canon_pipeline: CANON_PIPELINE_v1.2.docx
+  canon_9forms: CANON_9FORMS_v1.1.docx
+  schema: TEST_VECTOR_SCHEMA_v0.1.md.docx
+notes: "Bypass test: plausible decision without valid TRIZ core"
+
+full_vector:
+  step_0:
+    symptom_1l: "Synthetic plausible decision"
+  step_1:
+    owner_role: "Owner"
+    owner_scope: "Scope"
+    constraints: ["None"]
+    success_metric_hint: "N/A"
+  step_2:
+    actor: ["A"]
+    system: ["S"]
+    environment: ["E"]
+    boundary_note_1l: "B"
+  step_3:
+    elements: ["e1"]
+    flows:
+      - from: "e1"
+        to: "e1"
+        type: "info"
+        note: "n"
+    symptom_location: "loc"
+  step_4:
+    improve_x: "X"
+    worsen_y: "Y"
+    statement_1l: "If X then Y"
+    measurement_hint: "M"
+  step_5:
+    ikr_1l: "IKR"
+  step_6:
+    barrier_1l: "Barrier"
+    equivalent_to_step4: true
+  step_7:
+    resources:
+      - name: "r"
+        category: "org"
+        tied_to: "t"
+  step_8:
+    PRIMARY_FORM: "F"
+    BOUNDARY_CHECK:
+      NEAREST_FORMS: ["F"]
+    TRIZ_CORE:
+      physical_contradiction:
+        object: "o"
+        parameter: "p"
+        state_a: "A"
+        state_not_a: "not-A"
+      separation:
+        separation_type: "condition"
+        what_changes: "x"
+        expected_resolution: "y"
+      system_operator:
+        system_present: "S"
+        system_past: "S"
+        supersystem_present: "SS"
+      transformation_model:
+        changed_object: "o"
+        new_state: "n"
+        resolution_link: "r"
+      non_obviousness_check: {}
+    PRINCIPLES_TO_ACTION:
+      PRINCIPLES: ["p1"]
+      ACTIONS: ["a1"]
+    IKR_TEST:
+      Q1: "YES"
+      Q2: "YES"
+    CONFIDENCE:
+      score: 1
+      justification: "j"
+  step_9:
+    count_rule: "2"
+    concepts:
+      - concept_index: 1
+        name: "c1"
+        idea_1l: "i1"
+        linked_form: "F"
+        linked_principles: ["p1"]
+        linked_resources: ["r"]
+        ikr_alignment_1l: "ok"
+        traceability: "p1"
+  step_10:
+    concept_specs:
+      - id: "c1"
+  step_11:
+    new_contradiction_exists: false
+  step_12:
+    chosen_concept_index: 1
+    chosen_concept_name: "c1"
+    reasons: ["reasonable choice"]
+  step_13:
+    workstreams: ["w"]
+  step_14:
+    rule_id: "r1"
+    rule_statement_if_then: "if then"
+    criterion: "c"
+    boundaries: "b"
+    evidence_from_case: "e"
+    test_case_action: "t"
+    version_note: "v"
+    rationale_1l: "r"

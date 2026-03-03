@@ -1,0 +1,121 @@
+{
+  "reference_variant": "V1",
+  "checkpoints": {
+    "checkpoint_1_gatephase0": "PASS",
+    "checkpoint_2_hashes": "PASS",
+    "per_variant": {
+      "V1": {
+        "gatephase0_ok": true,
+        "hashes_ok": true
+      },
+      "V2": {
+        "gatephase0_ok": true,
+        "hashes_ok": true
+      },
+      "V3": {
+        "gatephase0_ok": true,
+        "hashes_ok": true
+      }
+    }
+  },
+  "Step1": "PASS",
+  "Step2": "PASS",
+  "variants": {
+    "V1": {
+      "canonical_hash_v0": "676fb154a9b228d9ee7b856cec18650d023bc5c0b06fbf765dde4e19cc6e0e5b",
+      "s2a_hash": "647e3d2ebaa9f7e4ffc8c640344bcb5c5c660fb5b9472396604d51c34fb7d35b",
+      "S2a_fields_present": {
+        "X_delta_direction": true,
+        "Y_delta_direction": true,
+        "X_metric_polarity": true,
+        "Y_metric_polarity": true
+      },
+      "trace_markers": [
+        "MISSING_SLOT:Y_object",
+        "DELTA_FROM_RAW:Y"
+      ],
+      "GatePFL_result": "fail",
+      "GatePFL_reason": "SOLUTION_AS_XY",
+      "case_instrumentation_s2a_hash": "647e3d2ebaa9f7e4ffc8c640344bcb5c5c660fb5b9472396604d51c34fb7d35b",
+      "anchors": {
+        "S03_0": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/S2A_CAPABLE_BASELINE_POSITIVE_A_2026-02-26T13-11-28Z/EXPORTS/V1/S03_0_PHASE0_OUTPUT.md",
+        "gate_log": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/S2A_CAPABLE_BASELINE_POSITIVE_A_2026-02-26T13-11-28Z/EXPORTS/V1/gate_log.json",
+        "case_json": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/S2A_CAPABLE_BASELINE_POSITIVE_A_2026-02-26T13-11-28Z/EXPORTS/V1/case.json",
+        "canonical_hash_v0_line": 8,
+        "s2a_hash_line": 9,
+        "X_delta_direction_line": 14,
+        "Y_delta_direction_line": 19,
+        "X_metric_polarity_line": 15,
+        "Y_metric_polarity_line": 20,
+        "trace_markers_line": 26,
+        "GatePFL_result_line": 92,
+        "GatePFL_reason_line": 96,
+        "case_s2a_hash_line": 77
+      }
+    },
+    "V2": {
+      "canonical_hash_v0": "676fb154a9b228d9ee7b856cec18650d023bc5c0b06fbf765dde4e19cc6e0e5b",
+      "s2a_hash": "647e3d2ebaa9f7e4ffc8c640344bcb5c5c660fb5b9472396604d51c34fb7d35b",
+      "S2a_fields_present": {
+        "X_delta_direction": true,
+        "Y_delta_direction": true,
+        "X_metric_polarity": true,
+        "Y_metric_polarity": true
+      },
+      "trace_markers": [
+        "MISSING_SLOT:Y_object",
+        "DELTA_FROM_RAW:Y"
+      ],
+      "GatePFL_result": "fail",
+      "GatePFL_reason": "SOLUTION_AS_XY",
+      "case_instrumentation_s2a_hash": "647e3d2ebaa9f7e4ffc8c640344bcb5c5c660fb5b9472396604d51c34fb7d35b",
+      "anchors": {
+        "S03_0": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/S2A_CAPABLE_BASELINE_POSITIVE_A_2026-02-26T13-11-28Z/EXPORTS/V2/S03_0_PHASE0_OUTPUT.md",
+        "gate_log": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/S2A_CAPABLE_BASELINE_POSITIVE_A_2026-02-26T13-11-28Z/EXPORTS/V2/gate_log.json",
+        "case_json": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/S2A_CAPABLE_BASELINE_POSITIVE_A_2026-02-26T13-11-28Z/EXPORTS/V2/case.json",
+        "canonical_hash_v0_line": 8,
+        "s2a_hash_line": 9,
+        "X_delta_direction_line": 14,
+        "Y_delta_direction_line": 19,
+        "X_metric_polarity_line": 15,
+        "Y_metric_polarity_line": 20,
+        "trace_markers_line": 26,
+        "GatePFL_result_line": 92,
+        "GatePFL_reason_line": 96,
+        "case_s2a_hash_line": 77
+      }
+    },
+    "V3": {
+      "canonical_hash_v0": "676fb154a9b228d9ee7b856cec18650d023bc5c0b06fbf765dde4e19cc6e0e5b",
+      "s2a_hash": "647e3d2ebaa9f7e4ffc8c640344bcb5c5c660fb5b9472396604d51c34fb7d35b",
+      "S2a_fields_present": {
+        "X_delta_direction": true,
+        "Y_delta_direction": true,
+        "X_metric_polarity": true,
+        "Y_metric_polarity": true
+      },
+      "trace_markers": [
+        "MISSING_SLOT:Y_object",
+        "DELTA_FROM_RAW:Y"
+      ],
+      "GatePFL_result": "fail",
+      "GatePFL_reason": "SOLUTION_AS_XY",
+      "case_instrumentation_s2a_hash": "647e3d2ebaa9f7e4ffc8c640344bcb5c5c660fb5b9472396604d51c34fb7d35b",
+      "anchors": {
+        "S03_0": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/S2A_CAPABLE_BASELINE_POSITIVE_A_2026-02-26T13-11-28Z/EXPORTS/V3/S03_0_PHASE0_OUTPUT.md",
+        "gate_log": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/S2A_CAPABLE_BASELINE_POSITIVE_A_2026-02-26T13-11-28Z/EXPORTS/V3/gate_log.json",
+        "case_json": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/S2A_CAPABLE_BASELINE_POSITIVE_A_2026-02-26T13-11-28Z/EXPORTS/V3/case.json",
+        "canonical_hash_v0_line": 8,
+        "s2a_hash_line": 9,
+        "X_delta_direction_line": 14,
+        "Y_delta_direction_line": 19,
+        "X_metric_polarity_line": 15,
+        "Y_metric_polarity_line": 20,
+        "trace_markers_line": 26,
+        "GatePFL_result_line": 92,
+        "GatePFL_reason_line": 96,
+        "case_s2a_hash_line": 77
+      }
+    }
+  }
+}

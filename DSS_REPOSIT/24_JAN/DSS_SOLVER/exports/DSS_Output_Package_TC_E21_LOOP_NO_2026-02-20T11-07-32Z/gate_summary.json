@@ -1,0 +1,100 @@
+{
+  "case_id": "DSS_Output_Package_TC_E21_LOOP_NO_2026-02-20T11-07-32Z",
+  "run_id": "2026-02-20T11-07-32Z",
+  "latest": {
+    "Gate0": "pass",
+    "Gate1": "fail",
+    "Gate2": "fail",
+    "Gate3": "fail",
+    "GatePFL": "not_run",
+    "Gate4": "pass",
+    "Gate5": "pass",
+    "Gate6": "pass",
+    "Gate7": "fail",
+    "Gate8": "fail",
+    "GateCR": "hard_fail",
+    "Gate9": "not_run",
+    "Gate10": "not_run",
+    "Gate11": "not_run",
+    "Gate12": "not_run",
+    "Gate13": "not_run",
+    "Gate14": "not_run",
+    "GateTRIZ": "fail"
+  },
+  "normalized_reason_codes": {
+    "Gate0": [],
+    "Gate1": [
+      "STEP0_SYMPTOM_1L_MISSING",
+      "STEP1_CONSTRAINTS_MISSING"
+    ],
+    "Gate2": [
+      "STEP2_ACTOR_MISSING",
+      "STEP2_SYSTEM_MISSING",
+      "STEP2_ENVIRONMENT_MISSING",
+      "STEP2_BOUNDARY_NOTE_1L_MISSING"
+    ],
+    "Gate3": [
+      "STEP3_ELEMENTS_MISSING",
+      "STEP3_FLOWS_MISSING",
+      "STEP3_SYMPTOM_LOCATION_MISSING"
+    ],
+    "GatePFL": [
+      "PFL_DISABLED_HISTORICAL_COMPATIBILITY"
+    ],
+    "Gate4": [
+      "G4_P1"
+    ],
+    "Gate5": [
+      "G5_P1"
+    ],
+    "Gate6": [
+      "G6_P1"
+    ],
+    "Gate7": [
+      "STEP7_RESOURCES_IS_NOT_A_LIST"
+    ],
+    "Gate8": [
+      "STEP8_PRIMARY_FORM_MISSING",
+      "STEP8_BOUNDARY_CHECK_MISSING",
+      "STEP8_TRIZ_CORE_MISSING",
+      "STEP8_PRINCIPLES_TO_ACTION_MISSING",
+      "STEP8_IKR_TEST_MISSING",
+      "STEP8_CONFIDENCE_MISSING",
+      "STEP8_PRINCIPLES_TO_ACTION_PRINCIPLES_MISSING",
+      "STEP8_PRINCIPLES_TO_ACTION_ACTIONS_MISSING",
+      "STEP8_TRIZ_CORE_PHYSICAL_CONTRADICTION_MISSING",
+      "STEP8_TRIZ_CORE_SEPARATION_MISSING",
+      "STEP8_TRIZ_CORE_SYSTEM_OPERATOR_MISSING",
+      "STEP8_TRIZ_CORE_TRANSFORMATION_MODEL_MISSING",
+      "STEP8_TRIZ_CORE_NON_OBVIOUSNESS_CHECK_MISSING"
+    ],
+    "GateCR": [
+      "STRUCTURAL_RESOLUTION_NOT_FOUND"
+    ],
+    "Gate9": [
+      "STRUCTURAL_RESOLUTION_NOT_FOUND"
+    ],
+    "Gate10": [
+      "STRUCTURAL_RESOLUTION_NOT_FOUND"
+    ],
+    "Gate11": [
+      "STRUCTURAL_RESOLUTION_NOT_FOUND"
+    ],
+    "Gate12": [
+      "STRUCTURAL_RESOLUTION_NOT_FOUND"
+    ],
+    "Gate13": [
+      "STRUCTURAL_RESOLUTION_NOT_FOUND"
+    ],
+    "Gate14": [
+      "STRUCTURAL_RESOLUTION_NOT_FOUND"
+    ],
+    "GateTRIZ": [
+      "TRIZ_G1_MISSING",
+      "TRIZ_G2_MISSING",
+      "TRIZ_G3_MISSING",
+      "TRIZ_G4_MISSING",
+      "TRIZ_GX_MISSING"
+    ]
+  }
+}

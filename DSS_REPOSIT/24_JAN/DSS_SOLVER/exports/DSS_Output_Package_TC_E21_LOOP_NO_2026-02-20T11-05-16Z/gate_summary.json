@@ -1,0 +1,78 @@
+{
+  "case_id": "DSS_Output_Package_TC_E21_LOOP_NO_2026-02-20T11-05-16Z",
+  "run_id": "2026-02-20T11-05-16Z",
+  "latest": {
+    "Gate0": "blocked",
+    "Gate1": "not_run",
+    "Gate2": "not_run",
+    "Gate3": "not_run",
+    "Gate4": "not_run",
+    "Gate5": "not_run",
+    "Gate6": "not_run",
+    "Gate7": "not_run",
+    "Gate8": "not_run",
+    "Gate9": "not_run",
+    "Gate10": "not_run",
+    "Gate11": "not_run",
+    "Gate12": "not_run",
+    "Gate13": "not_run",
+    "Gate14": "not_run",
+    "GateTRIZ": "fail"
+  },
+  "normalized_reason_codes": {
+    "Gate0": [
+      "STATUS_IS_NOT_FILLED",
+      "MODE_IS_INVALID",
+      "CANON_VERSIONS_MISSING"
+    ],
+    "Gate1": [
+      "GATE0_BLOCKED"
+    ],
+    "Gate2": [
+      "GATE0_BLOCKED"
+    ],
+    "Gate3": [
+      "GATE0_BLOCKED"
+    ],
+    "Gate4": [
+      "GATE0_BLOCKED"
+    ],
+    "Gate5": [
+      "GATE0_BLOCKED"
+    ],
+    "Gate6": [
+      "GATE0_BLOCKED"
+    ],
+    "Gate7": [
+      "GATE0_BLOCKED"
+    ],
+    "Gate8": [
+      "GATE0_BLOCKED"
+    ],
+    "Gate9": [
+      "GATE0_BLOCKED"
+    ],
+    "Gate10": [
+      "GATE0_BLOCKED"
+    ],
+    "Gate11": [
+      "GATE0_BLOCKED"
+    ],
+    "Gate12": [
+      "GATE0_BLOCKED"
+    ],
+    "Gate13": [
+      "GATE0_BLOCKED"
+    ],
+    "Gate14": [
+      "GATE0_BLOCKED"
+    ],
+    "GateTRIZ": [
+      "TRIZ_G1_MISSING",
+      "TRIZ_G2_MISSING",
+      "TRIZ_G3_MISSING",
+      "TRIZ_G4_MISSING",
+      "TRIZ_GX_MISSING"
+    ]
+  }
+}

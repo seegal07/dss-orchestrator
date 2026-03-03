@@ -1,0 +1,42 @@
+{
+  "checkpoints": {
+    "checkpoint_1_gatephase0": "PASS",
+    "checkpoint_2_hashes": "PASS",
+    "per_variant": {
+      "V1": {
+        "gatephase0_ok": true,
+        "hashes_ok": true
+      },
+      "V2": {
+        "gatephase0_ok": true,
+        "hashes_ok": true
+      },
+      "V3": {
+        "gatephase0_ok": true,
+        "hashes_ok": true
+      }
+    }
+  },
+  "Step1": "FAIL",
+  "Step2": "NOT_APPLICABLE",
+  "variants": {
+    "V1": {
+      "canonical_hash_v0": "a231ba3fec40b8ec300046c1d898192920d657044e007b5ad186041da9af917e",
+      "canonical_hash_text": "738efc33d0bf536d03a18c796bdfba87514361059f3688d63bf05c0664e9b83c",
+      "GatePFL_result": null,
+      "GatePFL_reason": null
+    },
+    "V2": {
+      "canonical_hash_v0": "13b5000df2cfc3ff4275fd2c8ca1ff54f0cb468aecaa0e10953207428457b1a6",
+      "canonical_hash_text": "b25073ac64450aae4012a2c378611a1685618aaad7873e52c3bc576ef9896302",
+      "GatePFL_result": null,
+      "GatePFL_reason": null
+    },
+    "V3": {
+      "canonical_hash_v0": "b591901a7d522552fc6882edfb6a4c9d8d8defe35039ff8f23e6c754f2ace98f",
+      "canonical_hash_text": "26160f1f447d4ca0067978ba76d14c8d5d27bbe63b069e2e50d2184aeaa73f9e",
+      "GatePFL_result": null,
+      "GatePFL_reason": null
+    }
+  }
+}

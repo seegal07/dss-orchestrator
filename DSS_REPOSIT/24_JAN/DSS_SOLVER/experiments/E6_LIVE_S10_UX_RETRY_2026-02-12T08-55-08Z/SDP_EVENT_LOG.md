@@ -1,0 +1,4 @@
+- timestamp_utc: 2026-02-12T08:55:36Z
+- step: S10
+- trigger: NONE
+- note: stopped on MODE_MISMATCH before S10 collection.

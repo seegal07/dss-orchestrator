@@ -1,0 +1,86 @@
+{
+  "case_id": "TC_E22_POSITIVE_B_CASE_01_V1",
+  "title": "TC_E22_POSITIVE_B_CASE_01_V1",
+  "created_at": "2026-02-26T13-11-30Z",
+  "updated_at": "2026-02-26T13-11-30Z",
+  "case_version": 1,
+  "status": "done",
+  "canon_versions": {
+    "canon_pipeline_version": "v1.2",
+    "canon_9forms_version": "v1.1"
+  },
+  "shell_versions": {
+    "gate_automation_matrix_version": "v0.1.1",
+    "prd_version": "v0.1",
+    "ux_flow_version": "v0.1",
+    "export_spec_version": "v0.1",
+    "data_model_version": "v0.1"
+  },
+  "pfl_status": "PFL_READY",
+  "pfl_status_reason": "PFL v0.1 compute executed from canonical fields",
+  "pfl_verdict": "FAIL",
+  "pfl_reason": "NO_MUTUAL_DEGRADATION",
+  "pfl_attempt_index": 1,
+  "pfl_structural_tension": false,
+  "instrumentation": {
+    "input_fingerprint": "3b83600f606e14b8f43a86836e48081d3cdabe6430ebbf64d348fb14c4e7f57c",
+    "manual_override_used": false,
+    "override_type": null,
+    "normalized_reason_codes": [
+      "NO_MUTUAL_DEGRADATION",
+      "TRIZ_G4_INVALID"
+    ],
+    "gatecr_status_mirror": "NOT_APPLICABLE",
+    "phase0_verdict": "PASS",
+    "phase0_reason_code": "NONE",
+    "canonical_hash": "3b83600f606e14b8f43a86836e48081d3cdabe6430ebbf64d348fb14c4e7f57c",
+    "raw_hash": "0aaebcd307e46d289df53d2a1fea1ae1d1015794fe776575b93a23222ad77a7c",
+    "trace_count": 4,
+    "confidence_summary": "HIGH",
+    "reconstruction_trace": [
+      {
+        "raw_fragment": "точность прогноза",
+        "interpreted_parameter": "точность прогноза",
+        "reasoning_trace": "X:normalize_whitespace",
+        "confidence_level": "HIGH"
+      },
+      {
+        "raw_fragment": "время запуска филиалов в Европе",
+        "interpreted_parameter": "время запуска филиалов в Европе",
+        "reasoning_trace": "Y:normalize_whitespace",
+        "confidence_level": "HIGH"
+      },
+      {
+        "raw_fragment": "Запуск филиалов в Европе",
+        "interpreted_parameter": "Запуск филиалов в Европе",
+        "reasoning_trace": "scope:scope_projection",
+        "confidence_level": "HIGH"
+      },
+      {
+        "raw_fragment": "['Без роста бюджета и без увеличения длительности исследования/подготовки']",
+        "interpreted_parameter": [
+          "Без роста бюджета и без увеличения длительности исследования/подготовки"
+        ],
+        "reasoning_trace": "constraints:stable_list_sort",
+        "confidence_level": "HIGH"
+      }
+    ],
+    "canonical_object": {
+      "system_scope": "Запуск филиалов в Европе",
+      "X_param": "точность прогноза",
+      "Y_param": "время запуска филиалов в Европе",
+      "constraints": [
+        "Без роста бюджета и без увеличения длительности исследования/подготовки"
+      ],
+      "conflict_type_candidate": "causal",
+      "conflict_type_candidate_trace": null,
+      "s2a_hash": "bb0109a1fea5264d07c5cf9983a4d3cd8f62efe5a7101e3dc209cad98f43e6b6"
+    },
+    "pfl_status": "PFL_READY",
+    "pfl_status_reason": "PFL v0.1 compute executed from canonical fields",
+    "pfl_verdict": "FAIL",
+    "pfl_reason": "NO_MUTUAL_DEGRADATION",
+    "pfl_attempt_index": 1,
+    "pfl_structural_tension": false
+  }
+}

@@ -1,0 +1,164 @@
+{
+  "bundle_id": "DSS_Output_Package_2026-02-07T13-11-05Z",
+  "bundle_name": "DSS_Output_Package",
+  "case_id": "TC_E2_REAL_CASE_001",
+  "case_version": 1,
+  "run_id": "2026-02-07T13-11-05Z",
+  "exported_at": "2026-02-07T13-11-05Z",
+  "canon_versions": {
+    "canon_pipeline_version": "v1.2",
+    "canon_9forms_version": "v1.1"
+  },
+  "shell_versions": {
+    "gate_automation_matrix_version": "v0.1.1",
+    "prd_version": "v0.1",
+    "ux_flow_version": "v0.1",
+    "export_spec_version": "v0.1",
+    "data_model_version": "v0.1"
+  },
+  "files": [
+    {
+      "path": "case.json",
+      "sha256": "0e7f4ccffc774f8dc950a855e7b1215d7c53d0254c9eb7c10ebaef7dbf4f926b",
+      "size_bytes": 494,
+      "artifact_type": "meta",
+      "artifact_version_id": null
+    },
+    {
+      "path": "gate_log.json",
+      "sha256": "22ae1c08944a00f5756df38e064fbcfaac680fbca6ee2dd18dcb7b6d4341bb45",
+      "size_bytes": 10141,
+      "artifact_type": "meta",
+      "artifact_version_id": null
+    },
+    {
+      "path": "gate_summary.json",
+      "sha256": "65448a51ee6ed0aaf29605cbc0e51b9410eeff0048091e5d54f52fa4e7cd3341",
+      "size_bytes": 452,
+      "artifact_type": "meta",
+      "artifact_version_id": null
+    },
+    {
+      "path": "artifacts/S06_HARD_BARRIER.md",
+      "sha256": "0faa9bcf79f10013293a0f30464721a15dd36ac8876bdbf682a8220a8ecc40d7",
+      "size_bytes": 246,
+      "artifact_type": "artifact",
+      "artifact_version_id": null
+    },
+    {
+      "path": "artifacts/S01_PROBLEM_OWNER_CARD.md",
+      "sha256": "4347260466dbc7907ea9ba31d493f215f4c417b9b0b8d914ac69f55a2dbe8f3f",
+      "size_bytes": 727,
+      "artifact_type": "artifact",
+      "artifact_version_id": null
+    },
+    {
+      "path": "artifacts/S07_RESOURCE_MAP.md",
+      "sha256": "40febd7e3c9f13e96e9e71ab34f5800d8cfa2d46c5cbd16f8e312665ba9a4abb",
+      "size_bytes": 1464,
+      "artifact_type": "artifact",
+      "artifact_version_id": null
+    },
+    {
+      "path": "artifacts/S14_RULE_UPDATE.md",
+      "sha256": "dc4d8fabff02fdf1e826fdf8bf483693c5ee808ac01102419205c0e6c82bcdb0",
+      "size_bytes": 638,
+      "artifact_type": "artifact",
+      "artifact_version_id": null
+    },
+    {
+      "path": "artifacts/S08_FORM_SELECTION.md",
+      "sha256": "f71cfd4fe2d388f3e5b8dd52abd672d4167f6af3d5187fbbd4e9980c3c574071",
+      "size_bytes": 1015,
+      "artifact_type": "artifact",
+      "artifact_version_id": null
+    },
+    {
+      "path": "artifacts/S11_SECONDARY_CONTRADICTION_CHECK.md",
+      "sha256": "398fcbcb8a49c58c6d3a8c7df993cfcfef22a137a95e6296feb32c39188cf774",
+      "size_bytes": 72,
+      "artifact_type": "artifact",
+      "artifact_version_id": null
+    },
+    {
+      "path": "artifacts/S00_CASE_SYMPTOM.md",
+      "sha256": "757507dff3d51e857d3b1b32de618b5ecd2048cdea2e46003c02ba1f9f3ba47d",
+      "size_bytes": 232,
+      "artifact_type": "artifact",
+      "artifact_version_id": null
+    },
+    {
+      "path": "artifacts/S03_INTERACTION_MAP.md",
+      "sha256": "b5623e8795898bfcf6033d8dd37367f4ed23e8d9472faf543d6aa7702977790a",
+      "size_bytes": 1126,
+      "artifact_type": "artifact",
+      "artifact_version_id": null
+    },
+    {
+      "path": "artifacts/S09_SOLUTION_SET.md",
+      "sha256": "adb1db5c80e4b253171e0694eac64c09d00372ee11a570f6ec16a635c239d6b8",
+      "size_bytes": 1610,
+      "artifact_type": "artifact",
+      "artifact_version_id": null
+    },
+    {
+      "path": "artifacts/S05_IKR_CARD.md",
+      "sha256": "fedf5fb281a44de63d24365e1d1be410292dbf2410d40bafd739b856bdce0d2e",
+      "size_bytes": 333,
+      "artifact_type": "artifact",
+      "artifact_version_id": null
+    },
+    {
+      "path": "artifacts/S02_SYSTEM_BOUNDARY_MAP.md",
+      "sha256": "f0c8d37dcefea0b201a1ce757f527f49a4341d5081105819700b5ecd10566a71",
+      "size_bytes": 722,
+      "artifact_type": "artifact",
+      "artifact_version_id": null
+    },
+    {
+      "path": "artifacts/S13_IMPLEMENTATION_MAP.md",
+      "sha256": "d191c16e237c4ecc5061a87b3568c7ab3e50a74a532426dbf93c4f57e391416d",
+      "size_bytes": 1031,
+      "artifact_type": "artifact",
+      "artifact_version_id": null
+    },
+    {
+      "path": "artifacts/S04_CONTRADICTION_STATEMENT.md",
+      "sha256": "fc714dcd4da2da7bd0f9a8bf44a184cf8e0d9002ee4a87508a875d0ae69378b7",
+      "size_bytes": 527,
+      "artifact_type": "artifact",
+      "artifact_version_id": null
+    },
+    {
+      "path": "artifacts/S12_DECISION_RECORD.md",
+      "sha256": "05eed076fb4d33686c9ea7901cca55018e073679150ceaa4323e7227525441d9",
+      "size_bytes": 568,
+      "artifact_type": "artifact",
+      "artifact_version_id": null
+    },
+    {
+      "path": "artifacts/S10_MECHANISM_SPECS/C01_MECHANISM_SPEC.md",
+      "sha256": "7369e599a5c9be2fb5524824d2ed900a1cc6085845146ba55d701df31b5a675e",
+      "size_bytes": 1000,
+      "artifact_type": "artifact",
+      "artifact_version_id": null
+    },
+    {
+      "path": "artifacts/S10_MECHANISM_SPECS/C03_MECHANISM_SPEC.md",
+      "sha256": "8c9e1f42365a48d203a0ede5aae37f2d7aba0c91faf2640f3e1da35369b944dd",
+      "size_bytes": 778,
+      "artifact_type": "artifact",
+      "artifact_version_id": null
+    },
+    {
+      "path": "artifacts/S10_MECHANISM_SPECS/C02_MECHANISM_SPEC.md",
+      "sha256": "2dc246e0ba7a1e0c9f1041b07ff194dbae01fbbad8ff3c4a632099da2a262479",
+      "size_bytes": 777,
+      "artifact_type": "artifact",
+      "artifact_version_id": null
+    }
+  ],
+  "required_artifacts_check": {
+    "missing_files": []
+  }
+}

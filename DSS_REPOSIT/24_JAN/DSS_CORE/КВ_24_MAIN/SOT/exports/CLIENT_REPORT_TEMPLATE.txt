@@ -1,0 +1,68 @@
+CLIENT REPORT (Template)
+
+Title: DSS Case Report
+Client: ______________________
+Date: ________________________
+Case ID: _____________________
+Owner: _______________________
+
+1) Executive Summary
+- Problem in 1–2 sentences:
+  _______________________________________________
+- Why it matters now:
+  _______________________________________________
+- Target outcome (measurable):
+  _______________________________________________
+
+2) Problem Structure
+- System boundary (who/what is inside vs outside):
+  _______________________________________________
+- Key actors and interactions:
+  _______________________________________________
+- Core contradiction (trade‑off):
+  _______________________________________________
+
+3) Ideal Result (IKR)
+- IKR statement:
+  _______________________________________________
+- No‑new‑harm clause:
+  _______________________________________________
+
+4) Selected Approach
+- Chosen mechanism (1–2 lines):
+  _______________________________________________
+- Why this was chosen:
+  _______________________________________________
+- Alternatives considered (brief):
+  _______________________________________________
+
+5) Execution Plan (Next 2–4 weeks)
+- Workstream 1: ________________________________
+  Tasks:
+  - __________________________
+  - __________________________
+- Workstream 2: ________________________________
+  Tasks:
+  - __________________________
+  - __________________________
+
+6) Metrics & Validation
+- Leading metrics:
+  - __________________________
+- Lagging metrics:
+  - __________________________
+- Pass criteria:
+  _______________________________________________
+
+7) Rule Update (Operational Policy)
+If __________________________ then __________________________.
+Boundary/Exceptions:
+_______________________________________________
+
+8) Evidence Summary
+- Validation status: PASS / FAIL
+- Evidence files: _______________________________
+
+Appendix (Optional)
+- Notes, assumptions, risks
+- References to internal artifacts

@@ -1,0 +1,191 @@
+{
+  "schema": "TEST_VECTOR_SCHEMA_v0.2",
+  "full_vector": {
+    "step_4": {
+      "raw_scenario": "У меня есть четыре филиала в разных странах, в Румынии, в Словакии и два в Польше. Каждый филиал существует как отдельное юридическое лицо, но подчиняется правилам и процедурам центрального офиса. правила и процедуры от центрального офиса не всегда легко адаптировать под региональные потребности и возможности, под команды. И поэтому получается, что филиалы должны двигаться быстрее, инициировать новые продукты, новые решения, новые маркетинговые креативы, но они не имеют права это делать без разрешения от центрального офиса. А центральный офис сам не знает, как нужно, и своевременно не реагирует. Поэтому проблема в том, чтобы филиал развивался, он должен быстро генерировать новые идеи, новые продукты, но он не имеет права быстро это делать без центрального офиса. То есть нужен постоянный контроль, а центральный офис боится отдавать без своего апрува, без своего подтверждения разрешения на эти команды, потому что может возникнуть хаос, и цена ошибки довольно высокая в деньгах, во времени и в репутации.",
+      "improve_x": "самостоятельность команд филиалов",
+      "worsen_y": "качество решений и уровень финансово-репутационного риска",
+      "statement_1l": "Нужно усилить самостоятельность команд филиалов, не ухудшая качество решений и контроль риска."
+    },
+    "step_5": {
+      "ikr_1l": "Филиалы самостоятельно принимают решения, решения остаются качественными, а центральный офис быстро видит корректность и масштабируемость."
+    },
+    "step_6": {
+      "constraint_candidates": [
+        "нельзя нарушать финансовую дисциплину",
+        "нельзя запускать новые продукты без согласования центрального офиса",
+        "нельзя запускать малокомплектные группы, ломающие экономику филиала"
+      ],
+      "barrier_1l": "Нельзя заводить филиал в финансовый убыток.",
+      "equivalent_to_step4": true
+    },
+    "step_7": {
+      "resources": [
+        {
+          "name": "действующая команда филиала",
+          "category": "org",
+          "tied_to": "локальное исполнение"
+        },
+        {
+          "name": "оргтехника и материально-техническая база",
+          "category": "material",
+          "tied_to": "операционные запуски"
+        }
+      ]
+    },
+    "step_8": {
+      "risk_1l": "Кассовый разрыв при запуске нового продукта без быстрой окупаемости.",
+      "PRIMARY_FORM": "локальная инициатива с центральным стоп-контуром по деньгам",
+      "BOUNDARY_CHECK": {
+        "note": "контроль кассового риска обязателен"
+      },
+      "TRIZ_CORE": {
+        "physical_contradiction": {
+          "object": "управление запуском",
+          "parameter": "скорость и контроль",
+          "state_a": "быстрый локальный запуск",
+          "state_not_a": "жёсткий центральный контроль"
+        },
+        "separation": {
+          "separation_type": "condition",
+          "what_changes": "уровень свободы зависит от денежного риска",
+          "expected_resolution": "низкий риск — локально, высокий риск — через центр"
+        },
+        "system_operator": {
+          "subsystem_present": "команда филиала",
+          "system_present": "управление запуском продукта",
+          "supersystem_present": "центральный офис"
+        },
+        "transformation_model": {
+          "changed_object": "порядок одобрения запуска",
+          "new_state": "двухконтурный запуск по риску",
+          "resolution_link": "ускоряем локально и защищаем кассу"
+        },
+        "non_obviousness_check": {
+          "assumption_broken": "без разделения по условию нельзя одновременно дать скорость и защиту кассы",
+          "why_not_obvious": "условное разделение: свобода зависит от уровня денежного риска и лимита потерь"
+        }
+      },
+      "PRINCIPLES_TO_ACTION": {
+        "PRINCIPLES": [
+          1
+        ],
+        "ACTIONS": [
+          "ввести порог риска для автозапуска"
+        ]
+      },
+      "IKR_TEST": {
+        "Q1": "YES"
+      },
+      "CONFIDENCE": {
+        "score": 1,
+        "justification": "снижает кассовый разрыв"
+      }
+    },
+    "step_8_5": {
+      "operator_selected": "DEPENDENCY_INVERSION",
+      "detected_conflict_types": [
+        "B",
+        "A"
+      ],
+      "dominant_conflict_type": "B",
+      "transformed_conflict_frame": "По умолчанию запуск решает филиал, но при риске кассового разрыва включается центральный стоп-контур.",
+      "what_changed_structurally": "Филиал сам запускает тест в лимите 300/600 евро; центр не участвует до выхода за лимит; при плохом спросе дальнейшие траты запрещены.",
+      "operator_prompt": {
+        "instruction": "Сделайте порядок, где локальная команда запускает сама в безопасной зоне, а центр подключается только при превышении лимита потерь."
+      },
+      "current_process_1l": "Филиал не запускает продукт без полного согласования с центральным офисом.",
+      "mechanism_status": "pending_clarification_2",
+      "mechanism_1l": "Филиал сам тестирует продукт при лимите: рекламный бюджет до 600 евро и адаптация до 300 евро; выше лимита — согласование центра.",
+      "financial_limit_test_eur": 600,
+      "financial_limit_adaptation_eur": 300,
+      "structural_resolution_confirmed": true,
+      "assisted_matrix": [
+        {
+          "question_id": "Q1",
+          "answer": "YES"
+        },
+        {
+          "question_id": "Q2",
+          "answer": "YES"
+        },
+        {
+          "question_id": "Q3",
+          "answer": "YES"
+        },
+        {
+          "question_id": "Q4",
+          "answer": "YES"
+        },
+        {
+          "question_id": "Q5",
+          "answer": "YES"
+        }
+      ],
+      "separation_illusion_test": true,
+      "gatecr_before_conflict": "Решение блокировалось на обязательном полном согласовании центра до любого локального запуска.",
+      "gatecr_after_conflict": "Решение проходит локально в филиале в пределах лимитов 300/600 евро; выше лимита идет в центр.",
+      "gatecr_change_note": "Новый порядок заменяет тотальный апрув центра на лимитированный локальный запуск с авто-стопом по результату.",
+      "separation_illusion_reason": "Риск затрат переносится в филиал без устойчивого снятия конфликта и с возможным скрытием расходов.",
+      "gatecr_status": "HARD_FAIL",
+      "hard_fail_message": "structural resolution not found"
+    },
+    "step_9": {
+      "status": "NOT_RUN",
+      "reason": "structural resolution not found"
+    },
+    "step_10": {
+      "status": "NOT_RUN",
+      "reason": "structural resolution not found"
+    },
+    "step_11": {
+      "status": "NOT_RUN",
+      "reason": "structural resolution not found"
+    },
+    "step_12": {
+      "status": "NOT_RUN",
+      "reason": "structural resolution not found"
+    },
+    "step_13": {
+      "status": "NOT_RUN",
+      "reason": "structural resolution not found"
+    },
+    "step_14": {
+      "status": "NOT_RUN",
+      "reason": "structural resolution not found"
+    }
+  },
+  "gate_trace": {
+    "GateCR": {
+      "status": "HARD_FAIL",
+      "reason": "structural resolution not found",
+      "evidence": [
+        "Риск затрат переносится в филиал без устойчивого снятия конфликта и с возможным скрытием расходов."
+      ]
+    },
+    "Gate9": {
+      "status": "NOT_RUN",
+      "reason": "structural resolution not found"
+    },
+    "Gate10": {
+      "status": "NOT_RUN",
+      "reason": "structural resolution not found"
+    },
+    "Gate11": {
+      "status": "NOT_RUN",
+      "reason": "structural resolution not found"
+    },
+    "Gate12": {
+      "status": "NOT_RUN",
+      "reason": "structural resolution not found"
+    },
+    "Gate13": {
+      "status": "NOT_RUN",
+      "reason": "structural resolution not found"
+    },
+    "Gate14": {
+      "status": "NOT_RUN",
+      "reason": "structural resolution not found"
+    }
+  }
+}

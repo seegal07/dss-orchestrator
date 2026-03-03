@@ -1,0 +1,110 @@
+test_case_id: TC_CASE_B_GROWTH_VS_PROFITABILITY_DATA_GAPS_v2
+status: FILLED
+mode: full_vector
+canon_versions:
+  canon_pipeline: CANON_PIPELINE_v1.2.docx
+  canon_9forms: CANON_9FORMS_v1.1.docx
+  schema: TEST_VECTOR_SCHEMA_v0.1.md.docx
+notes: "Diagnostic Case B v2 with PROXY thresholds"
+
+full_vector:
+  step_0:
+    symptom_1l: "Дилемма: агрессивный рост vs фокус на прибыль/ранвей при отсутствии точных метрик."
+  step_1:
+    owner_role: "CEO/Founder"
+    owner_scope: "Приоритеты роста, бюджетные правила, продуктовые ограничения на 90 дней"
+    constraints:
+      - "Нет времени на полный финмоделинг"
+      - "Нельзя предполагать неизвестные метрики"
+      - "Горизонт решения — 90 дней"
+    success_metric_hint: "Выбор режима + пороги переключения (PROXY) + валидация к 2026-03-01"
+  step_2:
+    actor: ["CEO", "Финансы", "Команда"]
+    system: ["Бизнес", "Денежный поток", "Unit economics"]
+    environment: ["Рынок", "Спрос"]
+    boundary_note_1l: "Внутри — управленческие решения и правила, снаружи — рынок."
+  step_3:
+    elements: ["Рост", "Прибыльность", "Runway", "Unit economics", "90 дней"]
+    flows: []
+    symptom_location: "Отсутствие точных метрик"
+  step_4:
+    improve_x: "Темп роста"
+    worsen_y: "Runway / прибыльность"
+    statement_1l: "Если фокус на росте, ухудшается runway; если фокус на прибыльности, замедляется рост"
+    measurement_hint: "PROXY: runway 5–7 мес; burn 90–130k$/мес; gross margin 55–65%; validation_date=2026-03-01"
+  step_5:
+    ikr_1l: "Режим выбран, компания сохраняет устойчивость cash‑flow при достижении целей"
+    no_new_harm_clause: "Не выходить за runway 5–7 месяцев"
+  step_6:
+    barrier_1l: "Нельзя одновременно форсировать рост и сохранять runway без порогов"
+    equivalent_to_step4: true
+  step_7:
+    resources:
+      - name: "Команда"
+        category: "org"
+        tied_to: "Исполнение"
+        note: "Есть"
+      - name: "Исторические данные"
+        category: "info"
+        tied_to: "Финансы"
+        note: "PROXY диапазоны"
+  step_8:
+    PRIMARY_FORM: "Форма противоречия"
+    BOUNDARY_CHECK:
+      NEAREST_FORMS: ["Форма метрик", "Форма финмодели"]
+      WHY_NOT_X: ["Точных метрик нет"]
+      WHY_NOT_Y: ["Нельзя предполагать неизвестное"]
+    TRIZ_CORE:
+      CONTRADICTION_1L: "Рост vs устойчивость cash‑flow"
+      IKR_1L: "Выбранный режим обеспечивает устойчивость"
+    PRINCIPLES_TO_ACTION:
+      PRINCIPLES: []
+      ACTIONS: ["Пороговое правило переключения режима"]
+    IKR_TEST:
+      Q1: "YES"
+      Q2: "YES"
+    CONFIDENCE:
+      score: 2
+      justification: "Proxy‑пороги заданы"
+  step_9:
+    count_rule: "3–5"
+    concepts:
+      - concept_index: 1
+        name: "Режим роста"
+        idea_1l: "Фокус на росте с порогами переключения"
+        linked_form: "Форма стратегии"
+        linked_principles: []
+        linked_resources: ["Команда"]
+        ikr_alignment_1l: "Рост при контроле runway"
+      - concept_index: 2
+        name: "Режим прибыльности"
+        idea_1l: "Фокус на прибыльности с порогами переключения"
+        linked_form: "Форма стратегии"
+        linked_principles: []
+        linked_resources: ["Команда"]
+        ikr_alignment_1l: "Стабилизация cash‑flow"
+  step_10:
+    mechanism_1l: "Пороговое правило переключения режимов"
+    mechanism_constraints: "PROXY thresholds; validation_date=2026-03-01"
+  step_11:
+    new_contradiction_exists: false
+    contradiction_1l: ""
+  step_12:
+    chosen_concept_index: 1
+    chosen_concept_name: "Режим роста"
+    reasons:
+      - "Рост допустим при runway 5–7 мес и burn 90–130k$/мес"
+      - "Пороговое правило переключения задано"
+    success_criteria:
+      - "runway 5–7 мес (PROXY)"
+      - "burn 90–130k$/мес (PROXY)"
+      - "gross margin 55–65% (PROXY)"
+      - "validation_date=2026-03-01"
+  step_13:
+    plan_1l: "Следовать режиму роста с ревью при достижении порогов"
+    steps:
+      - "Отслеживать runway/burn/margin"
+      - "Ревью на дату валидации"
+  step_14:
+    rule_if_then: "Если runway <5 мес или burn >130k$/мес, переключиться в режим прибыльности"
+    monitoring_metrics: ["runway", "burn", "gross margin"]

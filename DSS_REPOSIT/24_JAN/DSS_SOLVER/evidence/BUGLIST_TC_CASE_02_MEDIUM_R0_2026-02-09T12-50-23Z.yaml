@@ -1,0 +1,9 @@
+run_id: 2026-02-09T12-50-23Z
+test_case_id: TC_CASE_02_MEDIUM_R0
+issues:
+  - gate: Gate9
+    issue_code: STRUCTURAL
+    message: "Step9.concepts count < 3"
+  - gate: Gate11
+    issue_code: STRUCTURAL
+    message: "Step11.selection_criteria_refs missing"

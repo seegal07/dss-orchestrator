@@ -1,0 +1,15 @@
+# REGRESSION PACK RUN: KNOWN_ISSUE / PAUSE
+source_pack: /Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/E22_POSITIVE_C_CASE_01_RUN_V3_2026-02-25T11-50-52Z
+expected: checkpoints=PASS/PASS, Step1=FAIL, Step2=NOT_EVALUATED
+observed: checkpoints=PASS/PASS, Step1=PASS, Step2=PASS
+harness_crash: False
+
+## GatePFL truth-source (gate_log primary)
+- V1: result=fail reason=NO_MUTUAL_DEGRADATION (/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/REGRESSION_MIN_SET_RUN_2026-02-27T13-07-23Z/05_KNOWN_ISSUE_PAUSE/EXPORTS/V1/gate_log.json:92/96)
+- V2: result=fail reason=NO_MUTUAL_DEGRADATION (/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/REGRESSION_MIN_SET_RUN_2026-02-27T13-07-23Z/05_KNOWN_ISSUE_PAUSE/EXPORTS/V2/gate_log.json:92/96)
+- V3: result=fail reason=NO_MUTUAL_DEGRADATION (/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/REGRESSION_MIN_SET_RUN_2026-02-27T13-07-23Z/05_KNOWN_ISSUE_PAUSE/EXPORTS/V3/gate_log.json:92/96)
+
+## Variant artifacts
+- V1: /Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/REGRESSION_MIN_SET_RUN_2026-02-27T13-07-23Z/05_KNOWN_ISSUE_PAUSE/EXPORTS/V1
+- V2: /Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/REGRESSION_MIN_SET_RUN_2026-02-27T13-07-23Z/05_KNOWN_ISSUE_PAUSE/EXPORTS/V2
+- V3: /Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/REGRESSION_MIN_SET_RUN_2026-02-27T13-07-23Z/05_KNOWN_ISSUE_PAUSE/EXPORTS/V3

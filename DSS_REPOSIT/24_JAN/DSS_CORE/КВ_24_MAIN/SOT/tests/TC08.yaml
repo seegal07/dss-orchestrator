@@ -1,0 +1,325 @@
+test_case_id: TC08
+status: FILLED
+mode: artifact_pack
+canon_versions:
+  canon_pipeline: CANON_PIPELINE_v1.2.docx
+  canon_9forms: CANON_9FORMS_v1.1.docx
+  schema: TEST_VECTOR_SCHEMA_v0.1.md.docx
+notes: "Expansion A vector"
+
+artifact_pack:
+  - artifact_type: CASE_SYMPTOM
+    pipeline_step: 0
+    payload:
+      symptom_1l: "Клиенты получают разный ответ на одинаковый запрос в зависимости от сотрудника, из-за чего растут жалобы и возвраты."
+
+  - artifact_type: PROBLEM_OWNER_CARD
+    pipeline_step: 1
+    payload:
+      owner_role: "Руководитель поддержки / Head of Support (или COO)"
+      owner_scope: "Может задавать стандарты ответов, базу знаний, правила эскалации и обучение"
+      constraints:
+        - "Нельзя увеличить штат поддержки в этом месяце"
+        - "Нельзя "зашить" ответы в CRM через разработку (только контент/процессы)"
+        - "Решение должно работать для новых сотрудников"
+      success_metric_hint: "% повторных обращений + NPS/CSAT + доля возвратов по причине "неправильный ответ"."
+
+  - artifact_type: SYSTEM_BOUNDARY_MAP
+    pipeline_step: 2
+    payload:
+      actor:
+        - "Support agent"
+        - "Team lead"
+        - "Customer"
+      system:
+        - "Support response process (email/chat)"
+        - "Knowledge base (docs)"
+      environment:
+        - "Product changes/releases"
+        - "SLA policies"
+      boundary_note_1l: "Граница - стандартизация ответа и принятия решений в поддержке без изменений IT-стека."
+
+  - artifact_type: INTERACTION_MAP
+    pipeline_step: 3
+    payload:
+      elements:
+        - "Customer ticket"
+        - "Support agent"
+        - "Internal knowledge base"
+        - "Escalation channel"
+        - "Refund policy"
+      flows:
+        - from: "Customer ticket"
+          to: "Support agent"
+          type: info
+          note: "вопрос/проблема"
+        - from: "Support agent"
+          to: "Internal knowledge base"
+          type: info
+          note: "поиск ответа"
+        - from: "Support agent"
+          to: "Customer ticket"
+          type: info
+          note: "ответ"
+        - from: "Support agent"
+          to: "Escalation channel"
+          type: info
+          note: "сложные кейсы"
+        - from: "Refund policy"
+          to: "Support agent"
+          type: info
+          note: "правила возвратов"
+      symptom_location: "Ответы Support agent (нет стандарта и единой логики для одинаковых кейсов)."
+
+  - artifact_type: CONTRADICTION_STATEMENT
+    pipeline_step: 4
+    payload:
+      improve_x: "Быстрая и персональная реакция поддержки"
+      worsen_y: "Непоследовательность и ошибки, ведущие к жалобам и возвратам"
+      statement_1l: "Если даём сотрудникам свободу отвечать быстро, то растёт риск разных ответов и падения доверия."
+      measurement_hint: "среднее время ответа vs % расхождений по типовым кейсам и % возвратов."
+
+  - artifact_type: IKR_CARD
+    pipeline_step: 5
+    payload:
+      ikr_1l: "Поддержка отвечает быстро, но ответы по одинаковым кейсам всегда совпадают и корректны без ручной проверки лидом."
+      no_new_harm_clause: "Без найма и без разработческих изменений в CRM."
+
+  - artifact_type: HARD_BARRIER
+    pipeline_step: 6
+    payload:
+      barrier_1l: "Нельзя одновременно дать полную свободу ответа и требовать 100% одинаковых решений без стандарта."
+      equivalent_to_step4: true
+
+  - artifact_type: RESOURCE_MAP
+    pipeline_step: 7
+    payload:
+      resources:
+        - name: "История тикетов за 60 дней"
+          category: info
+          tied_to: "Customer ticket"
+          note: "типовые кейсы и формулировки"
+        - name: "Текущие макросы/шаблоны ответов"
+          category: info
+          tied_to: "Internal knowledge base"
+          note: "можно расширить"
+        - name: "Политика возвратов"
+          category: info
+          tied_to: "Refund policy"
+          note: "границы решений"
+        - name: "Team lead review слот 30 мин/нед"
+          category: time
+          tied_to: "Escalation channel"
+          note: "для калибровки"
+        - name: "Канал #support-qa"
+          category: org
+          tied_to: "Escalation channel"
+          note: "точка согласования сложных кейсов"
+        - name: "2 опытных агента-наставника"
+          category: org
+          tied_to: "Support agent"
+          note: "источник эталонных решений"
+        - name: "FAQ на сайте"
+          category: info
+          tied_to: "Customer"
+          note: "можно синхронизировать"
+        - name: "Метрика CSAT/NPS"
+          category: info
+          tied_to: "Customer ticket"
+          note: "обратная связь"
+
+  - artifact_type: FORM_SELECTION
+    pipeline_step: 8
+    payload:
+      PRIMARY_FORM: "№1 Дифференциация"
+      BOUNDARY_CHECK:
+        NEAREST_FORMS:
+          - "№4 Медиация"
+          - "№2 Динамизация"
+        WHY_NOT_X:
+          - "Проблема не в конфликте сторон, а в отсутствии стандарта для типовых решений."
+          - "Медиация не создаёт воспроизводимый эталон ответа и не снижает дисперсию решений."
+        WHY_NOT_Y:
+          - "Динамизация ускорит адаптацию, но без разбиения кейсов на классы и правил выдаст хаотичную обновляемость."
+          - "Нужны классы запросов и разные стандарты ответа по классам, а не постоянные изменения "на лету"."
+      TRIZ_CORE:
+        CONTRADICTION_1L: "Нужно отвечать быстро и гибко, но нельзя допускать разные решения для одинаковых кейсов."
+        IKR_1L: "Запрос сам попадает в правильный класс, и ответ выдаётся по эталону без участия лида."
+      PRINCIPLES_TO_ACTION:
+        PRINCIPLES: [1, 3]
+        ACTIONS:
+          - "01: Разделить запросы на 6–10 классов и задать для каждого "эталон решения + границы"."
+          - "03: Ввести локальную сегментацию: разные шаблоны для новых/опытных агентов и для разных каналов."
+      IKR_TEST:
+        Q1: "YES - Классификация кейсов и эталоны можно сделать в базе знаний без разработки."
+        Q2: "YES - Опирается на историю тикетов и существующие макросы."
+      CONFIDENCE:
+        score: 65
+        justification: "Разбивка на классы + эталоны обычно быстро снижает разброс ответов."
+
+  - artifact_type: SOLUTION_SET
+    pipeline_step: 9
+    payload:
+      count_rule: "3–5"
+      concepts:
+        - concept_index: 1
+          name: "Case Classes + Playbooks"
+          idea_1l: "классы запросов и пошаговые playbooks с границами решений"
+          linked_form: "№1"
+          linked_principles: [1]
+          linked_resources:
+            - "История тикетов за 60 дней"
+            - "Текущие макросы/шаблоны ответов"
+          ikr_alignment_1l: "типовой кейс - типовой ответ"
+        - concept_index: 2
+          name: "QA Sampling Loop"
+          idea_1l: "выборка 20 тикетов/нед на проверку и обновление эталонов"
+          linked_form: "№1"
+          linked_principles: [3]
+          linked_resources:
+            - "Team lead review слот 30 мин/нед"
+            - "Канал #support-qa"
+          ikr_alignment_1l: "качество держится без тотального контроля"
+        - concept_index: 3
+          name: "Mentor Pairing"
+          idea_1l: "новые агенты отвечают парно с наставником по 2 классам кейсов"
+          linked_form: "№1"
+          linked_principles: [3]
+          linked_resources:
+            - "2 опытных агента-наставника"
+          ikr_alignment_1l: "ошибки не попадают к клиенту"
+
+  - artifact_type: MECHANISM_SPECS
+    pipeline_step: 10
+    payload:
+      concept_specs:
+        - concept_index: 1
+          A_name_tagline: "Playbooks — эталон решения"
+          B_axis_and_resource: "ось: скорость vs одинаковость; ресурс: история тикетов + макросы"
+          C_mechanism_steps:
+            - "Собрать топ-30 повторяющихся кейсов и сгруппировать в 6–10 классов."
+            - "Для каждого класса написать playbook: решение, границы, когда эскалировать."
+            - "Синхронизировать макросы с playbooks."
+          D_assumptions_constraints:
+            - "Доступна история тикетов."
+          E_risks_failures:
+            - "Классы слишком грубые."
+            - "Playbooks не обновляются."
+          F_metrics:
+            leading:
+              - "% тикетов с присвоенным классом"
+              - "кол-во playbooks обновлений/нед"
+            lagging:
+              - "% повторных обращений"
+              - "% возвратов из-за неверного ответа"
+          G_experiment:
+            timebox: "2 недели"
+            budget: "0"
+            pass_criteria: "повторные обращения ↓ на 15%+, возвраты ↓ на 10%+"
+        - concept_index: 2
+          A_name_tagline: "QA Sampling — контроль выборкой"
+          B_axis_and_resource: "ось: контроль vs нагрузка; ресурс: 30 мин лид-слот"
+          C_mechanism_steps:
+            - "Выбирать 20 тикетов/нед по каждому классу."
+            - "Фиксировать ошибки и обновлять playbooks."
+            - "Публиковать 3 частые ошибки недели в #support-qa."
+          D_assumptions_constraints:
+            - "Лид реально выделяет 30 мин/нед."
+          E_risks_failures:
+            - "Сэмпл нерепрезентативен."
+          F_metrics:
+            leading:
+              - "кол-во проверенных тикетов/нед"
+              - "кол-во исправлений playbooks/нед"
+            lagging:
+              - "CSAT по классам"
+              - "жалобы на противоречивые ответы/нед"
+          G_experiment:
+            timebox: "3 недели"
+            budget: "0"
+            pass_criteria: "жалобы ↓ на 20%+, CSAT ↑"
+        - concept_index: 3
+          A_name_tagline: "Mentor Pairing — парное обучение"
+          B_axis_and_resource: "ось: скорость онбординга vs риск ошибок; ресурс: 2 наставника"
+          C_mechanism_steps:
+            - "Назначить 2 наставника, закрепить 2 класса кейсов на каждого."
+            - "Новые агенты первые 2 недели отвечают только по закреплённым классам и с ревью наставника."
+            - "После 2 недель расширять набор классов."
+          D_assumptions_constraints:
+            - "Наставники имеют 30 мин/день на ревью."
+          E_risks_failures:
+            - "Бутылочное горлышко наставников."
+          F_metrics:
+            leading:
+              - "кол-во тикетов новых агентов с ревью"
+              - "время ревью (мин)"
+            lagging:
+              - "ошибки новых агентов/нед"
+              - "скорость выхода на норму (дни)"
+          G_experiment:
+            timebox: "2 недели"
+            budget: "0"
+            pass_criteria: "ошибки новых агентов ↓ на 30%+, время ответа не ухудшается >10%"
+
+  - artifact_type: SECONDARY_CONTRADICTION_CHECK
+    pipeline_step: 11
+    payload:
+      new_contradiction_exists: false
+
+  - artifact_type: DECISION_RECORD
+    pipeline_step: 12
+    payload:
+      chosen_concept_index: 1
+      chosen_concept_name: "Case Classes + Playbooks"
+      reasons:
+        - "Даёт воспроизводимость ответов без разработки и найма."
+        - "Сразу снижает дисперсию решений."
+      rejected_alternatives:
+        - concept_index: 2
+          concept: "QA Sampling Loop"
+          why_rejected: "эффект позже, сначала нужен базовый стандарт"
+        - concept_index: 3
+          concept: "Mentor Pairing"
+          why_rejected: "зависит от наличия наставников и не решает эталон для всех"
+      assumptions:
+        - "Топ-кейсы можно классифицировать за 2 недели."
+      success_criteria:
+        - "жалобы на противоречивые ответы ↓ на 20%+"
+
+  - artifact_type: IMPLEMENTATION_MAP
+    pipeline_step: 13
+    payload:
+      workstreams:
+        - name: "Classification"
+          owner: "Head of Support"
+          tasks:
+            - "собрать топ-кейсы"
+            - "утвердить классы"
+          timeline: "нед 1"
+        - name: "Playbooks"
+          owner: "Team lead"
+          tasks:
+            - "написать playbooks"
+            - "обновить макросы"
+          timeline: "нед 1-2"
+        - name: "QA loop"
+          owner: "Team lead"
+          tasks:
+            - "запустить выборочный контроль"
+            - "публиковать ошибки недели"
+          timeline: "нед 2-3"
+
+  - artifact_type: RULE_UPDATE
+    pipeline_step: 14
+    payload:
+      rule_id: "RULE-SUPPORT-CONSISTENCY-01"
+      rule_statement_if_then: "Если запрос относится к одному из утверждённых классов, то ответ даётся по playbook этого класса; иначе кейс эскалируется в #support-qa."
+      criterion: "класс указан AND использован playbook OR эскалация выполнена"
+      boundaries: "не применимо к инцидентам P0 (они идут по отдельному регламенту)"
+      evidence_from_case: "симптом: разные ответы на одинаковый запрос; ограничение: без найма и без разработки"
+      test_case_action:
+        add_or_update: add
+        test_case_id: TC08
+        expected_effect: "жалобы ↓, возвраты ↓"
+      version_note: "NON-CANON case rule; canon unchanged"
+      rationale_1l: "классификация + эталон решения устраняет вариативность"

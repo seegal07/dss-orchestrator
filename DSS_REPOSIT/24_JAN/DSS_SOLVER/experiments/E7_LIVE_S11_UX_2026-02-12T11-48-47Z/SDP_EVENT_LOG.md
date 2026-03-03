@@ -1,0 +1,16 @@
+- timestamp_utc: 2026-02-12T12:24:44Z
+- step: S11
+- trigger: NONE
+- note: first no-information-gain event (invalid token for Derived_from).
+- timestamp_utc: 2026-02-12T12:35:41Z
+- step: S11
+- trigger: NONE
+- note: information gain present, no stagnation pair.
+- timestamp_utc: 2026-02-12T13:20:55Z
+- step: S11
+- trigger: NONE
+- note: E7 completed with information gain, no stagnation pair.
+- timestamp_utc: 2026-02-12T13:21:08Z
+- step: S11
+- trigger: NONE
+- note: E7 completed with information gain, no stagnation pair.

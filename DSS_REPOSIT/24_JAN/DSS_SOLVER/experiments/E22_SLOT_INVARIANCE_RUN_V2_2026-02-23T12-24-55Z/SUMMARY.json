@@ -1,0 +1,21 @@
+{
+  "Step1": "FAIL",
+  "Step2": "NOT_APPLICABLE",
+  "variants": {
+    "V1": {
+      "canonical_hash_v0": null,
+      "canonical_hash_text": null,
+      "canonical_hash": null
+    },
+    "V2": {
+      "canonical_hash_v0": null,
+      "canonical_hash_text": null,
+      "canonical_hash": null
+    },
+    "V3": {
+      "canonical_hash_v0": null,
+      "canonical_hash_text": null,
+      "canonical_hash": null
+    }
+  }
+}

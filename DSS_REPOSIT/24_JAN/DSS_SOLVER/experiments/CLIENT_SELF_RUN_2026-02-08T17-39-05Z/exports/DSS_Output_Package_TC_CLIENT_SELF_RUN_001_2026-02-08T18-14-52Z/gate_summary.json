@@ -1,0 +1,22 @@
+{
+  "case_id": "DSS_Output_Package_TC_CLIENT_SELF_RUN_001_2026-02-08T18-14-52Z",
+  "run_id": "2026-02-08T18-14-52Z",
+  "latest": {
+    "Gate0": "pass",
+    "Gate1": "pass",
+    "Gate2": "pass",
+    "Gate3": "pass",
+    "Gate4": "pass",
+    "Gate5": "pass",
+    "Gate6": "pass",
+    "Gate7": "pass",
+    "Gate8": "pass",
+    "Gate9": "pass",
+    "Gate10": "pass",
+    "Gate11": "blocked",
+    "Gate12": "blocked",
+    "Gate13": "pass",
+    "Gate14": "pass",
+    "GateTRIZ": "fail"
+  }
+}

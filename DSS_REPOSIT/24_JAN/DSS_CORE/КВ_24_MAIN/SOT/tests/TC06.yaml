@@ -1,0 +1,325 @@
+test_case_id: TC06
+status: FILLED
+mode: artifact_pack
+canon_versions:
+  canon_pipeline: CANON_PIPELINE_v1.2.docx
+  canon_9forms: CANON_9FORMS_v1.1.docx
+  schema: TEST_VECTOR_SCHEMA_v0.1.md.docx
+notes: "synthetic regression vector"
+
+artifact_pack:
+  - artifact_type: CASE_SYMPTOM
+    pipeline_step: 0
+    payload:
+      symptom_1l: "В компании много активности и встреч, но показатели не улучшаются, потому что решения не “закрываются” метриками и владельцами."
+
+  - artifact_type: PROBLEM_OWNER_CARD
+    pipeline_step: 1
+    payload:
+      owner_role: "Операционный директор / COO (или CEO в роли COO)"
+      owner_scope: "Может менять контур управления: cadence (еженедельные циклы), формат постановки задач, ownership, контрольные метрики, правила “definition of done”."
+      constraints:
+        - "Команда перегружена, нельзя добавлять больше 1 нового ритуала/нед"
+        - "Нельзя менять IT-стек (всё на текущих инструментах: Google/Notion/CRM)"
+        - "Результат нужен за 2 недели (ранние сигналы)"
+      success_metric_hint: "Кол-во решений с владельцем+сроком+метрикой / нед + снижение “незакрытых хвостов”."
+
+  - artifact_type: SYSTEM_BOUNDARY_MAP
+    pipeline_step: 2
+    payload:
+      vector_meta:
+        status: FILLED
+        mode: artifact_pack
+      actor:
+        - "COO"
+        - "Cross-functional leads"
+        - "Teams"
+      system:
+        - "Decision closure loop (owner+metric+done definition)"
+      environment:
+        - "Existing toolset (Google/Notion/CRM)"
+      boundary_note_1l: "Symptom sits inside execution loop: decisions exist but are not closed via owner/metric."
+
+  - artifact_type: INTERACTION_MAP
+    pipeline_step: 3
+    payload:
+      elements:
+        - "Meetings"
+        - "Decision items"
+        - "Owners"
+        - "Metrics dashboard"
+        - "Teams"
+      flows:
+        - from: "Meetings"
+          to: "Decision items"
+          type: info
+          note: "decisions recorded informally"
+        - from: "Decision items"
+          to: "Teams"
+          type: info
+          note: "tasks dispatched without owner+metric"
+        - from: "Teams"
+          to: "Meetings"
+          type: info
+          note: "status updates without definition of done"
+      symptom_location: "Decisions move from 'Meetings' to 'Teams' without owner+metric, so they remain open-ended."
+
+  - artifact_type: CONTRADICTION_STATEMENT
+    pipeline_step: 4
+    payload:
+      improve_x: "закрываемость решений (definition of done + метрики)"
+      worsen_y: "нагрузка на команду (нельзя добавлять ритуалы/встречи)"
+      statement_1l: "Если повышаем закрываемость решений через формализацию owner+metric, возрастает нагрузка и риск перегруза команды."
+      measurement_hint: "X=% решений закрытых по метрике в срок; Y=# новых ритуалов/нед + субъективная перегрузка."
+
+  - artifact_type: IKR_CARD
+    pipeline_step: 5
+    payload:
+      ikr_1l: "Каждое решение получает owner+метрику и автоматически закрывается в рамках существующих встреч без добавления ритуалов."
+      no_new_harm_clause: "Не менять IT-стек; не добавлять больше 1 нового ритуала/нед."
+
+  - artifact_type: HARD_BARRIER
+    pipeline_step: 6
+    payload:
+      barrier_1l: "Нельзя одновременно не добавлять ритуалы и при этом обеспечить закрытие всех решений по owner+metric за 2 недели."
+      equivalent_to_step4: true
+
+  - artifact_type: RESOURCE_MAP
+    pipeline_step: 7
+    payload:
+      resources:
+        - name: "Existing meeting agenda"
+          category: info
+          tied_to: "Meetings"
+          note: "can add 5-min closure segment"
+        - name: "Notion page template"
+          category: info
+          tied_to: "Decision items"
+          note: "decision card with fields"
+        - name: "COO authority to enforce DoD"
+          category: org
+          tied_to: "COO"
+          note: "policy"
+        - name: "Team leads as owners"
+          category: org
+          tied_to: "Owners"
+          note: "assignable"
+        - name: "Existing KPI/OKR metrics"
+          category: info
+          tied_to: "Metrics dashboard"
+          note: "reuse metrics"
+        - name: "Timebox discipline"
+          category: time
+          tied_to: "Meetings"
+          note: "existing timeboxes"
+        - name: "Definition of Done checklist"
+          category: info
+          tied_to: "Decision items"
+          note: "3 criteria"
+        - name: "Zero budget"
+          category: finance
+          tied_to: "constraints"
+          note: "no spend"
+
+  - artifact_type: FORM_SELECTION
+    pipeline_step: 8
+    payload:
+      PRIMARY_FORM: "№2 Динамизация"
+      BOUNDARY_CHECK:
+        NEAREST_FORMS:
+          - "№2 Динамизация"
+          - "№3 Превенция"
+        WHY_NOT_X:
+          - "Превенция полезна, но проблема уже возникла; нужен цикл закрытия “здесь и сейчас”."
+          - "Предотвращение не закрывает текущий хвост решений без owner+metric."
+          - "Сначала нужен механизм исполнения и закрытия, затем — профилактика повторов."
+        WHY_NOT_Y:
+          - "Динамизация позволяет встроить закрытие в существующий ритм и timebox."
+          - "Нужен повторяющийся микро-цикл контроля (еженедельно), а не разовая настройка."
+          - "Динамизация держит нагрузку постоянной, без добавления новых встреч."
+      TRIZ_CORE:
+        CONTRADICTION_1L: "Нужно закрывать решения метриками и владельцами, но нельзя перегрузить команду новыми ритуалами."
+        IKR_1L: "Закрытие происходит внутри текущих встреч и инструментов, автоматически по чек-листу."
+      PRINCIPLES_TO_ACTION:
+        PRINCIPLES: [19, 15]
+        ACTIONS:
+          - "Периодическое действие: встроить короткий регулярный блок проверки закрытия решений (owner + метрика + DoD) в существующие встречи."
+          - "Динамичность: параметры owner/метрика адаптируются по типу решения, но формат карточки и правило закрытия остаются едиными."
+      IKR_TEST:
+        Q1: "YES — только перераспределение времени в существующих встречах."
+        Q2: "YES — 1 новый чек-лист DoD вместо новых встреч."
+      CONFIDENCE:
+        score: 70
+        justification: "достаточно для регресса; требуется адаптация под конкретный cadence."
+
+  - artifact_type: SOLUTION_SET
+    pipeline_step: 9
+    payload:
+      count_rule: "3–5"
+      concepts:
+        - concept_index: 1
+          name: "Decision DoD Card"
+          idea_1l: "карточка решения с owner+metric+DoD и статусом"
+          linked_form: "№2 Динамизация"
+          linked_principles: [19, 15]
+          linked_resources:
+            - "Notion page template"
+            - "Team leads as owners"
+            - "Definition of Done checklist"
+          ikr_alignment_1l: "всё закрывается без новых встреч"
+        - concept_index: 2
+          name: "5-min Closure Segment"
+          idea_1l: "периодический блок закрытия в конце существующих встреч"
+          linked_form: "№2 Динамизация"
+          linked_principles: [19]
+          linked_resources:
+            - "Existing meeting agenda"
+            - "Timebox discipline"
+          ikr_alignment_1l: "используем текущее время"
+        - concept_index: 3
+          name: "Metric Reuse"
+          idea_1l: "использовать существующие KPI/OKR как критерии закрытия решений"
+          linked_form: "№2 Динамизация"
+          linked_principles: [15]
+          linked_resources:
+            - "Existing KPI/OKR metrics"
+          ikr_alignment_1l: "без новых метрик"
+
+  - artifact_type: MECHANISM_SPECS
+    pipeline_step: 10
+    payload:
+      concept_specs:
+        - concept_index: 1
+          A_name_tagline: "Decision DoD Card — закрываемость"
+          B_axis_and_resource: "ось: closure rate vs overload; ресурс: карточка решения в Notion"
+          C_mechanism_steps:
+            - "Создать шаблон карточки решения (owner, metric, DoD)"
+            - "Для каждого решения назначить owner (lead) и срок"
+            - "Закрывать решение только при выполнении DoD"
+          D_assumptions_constraints:
+            - "шаблон один на все решения"
+          E_risks_failures:
+            - "owner формально назначен, но не действует"
+          F_metrics:
+            leading:
+              - "% решений с заполненной карточкой"
+              - "% решений с owner+metric"
+            lagging:
+              - "% решений закрытых по DoD в срок"
+              - "# незакрытых хвостов >14 дней"
+          G_experiment:
+            timebox: "2 недели"
+            budget: "0"
+            pass_criteria: "≥20 решений с карточками; ≥60% закрыто по DoD; хвосты ↓"
+        - concept_index: 2
+          A_name_tagline: "5-min Closure Segment — ритм"
+          B_axis_and_resource: "ось: discipline vs meeting time; ресурс: agenda"
+          C_mechanism_steps:
+            - "Добавить 5 минут в конец текущих встреч"
+            - "Проход по open decisions: закрыть/переназначить/эскалировать"
+            - "Логировать причины незакрытия"
+          D_assumptions_constraints:
+            - "не добавлять новые встречи"
+          E_risks_failures:
+            - "блок съедается другими темами"
+          F_metrics:
+            leading:
+              - "кол-во проведённых closure блоков"
+              - "# решений закрыто в блоке/нед"
+            lagging:
+              - "снижение open decisions"
+              - "улучшение план/факт по задачам"
+          G_experiment:
+            timebox: "2 недели"
+            budget: "0"
+            pass_criteria: "≥4 closure блока; open decisions ↓ на 20%+"
+        - concept_index: 3
+          A_name_tagline: "Metric Reuse — без нового измерения"
+          B_axis_and_resource: "ось: measurability vs complexity; ресурс: существующие KPI/OKR"
+          C_mechanism_steps:
+            - "Для каждого решения выбрать 1 существующий KPI как критерий"
+            - "Если KPI не подходит — решение не считается сформулированным"
+            - "Еженедельно сверять прогресс по KPI"
+          D_assumptions_constraints:
+            - "KPI доступны в текущих инструментах"
+          E_risks_failures:
+            - "KPI не отражают решение"
+          F_metrics:
+            leading:
+              - "% решений с KPI-критерием"
+              - "# решений отклонено из-за отсутствия KPI"
+            lagging:
+              - "variance план/факт по KPI"
+              - "хвосты решений"
+          G_experiment:
+            timebox: "2 недели"
+            budget: "0"
+            pass_criteria: "≥70% решений имеют KPI-критерий; закрываемость ↑"
+
+  - artifact_type: SECONDARY_CONTRADICTION_CHECK
+    pipeline_step: 11
+    payload:
+      new_contradiction_exists: false
+
+  - artifact_type: DECISION_RECORD
+    pipeline_step: 12
+    payload:
+      chosen_concept_index: 1
+      chosen_concept_name: "Decision DoD Card"
+      reasons:
+        - "даёт минимальную структуру без смены IT-стека"
+        - "создаёт definition of done и ownership"
+      rejected_alternatives:
+        - concept_index: 2
+          concept: "5-min Closure Segment"
+          why_rejected: "без карточки решения быстро превращается в разговор"
+        - concept_index: 3
+          concept: "Metric Reuse"
+          why_rejected: "важно, но вторично к DoD"
+      assumptions:
+        - "COO может enforce правило DoD"
+      success_criteria:
+        - "≥60% решений закрываются по DoD за 2 недели"
+        - "хвосты >14 дней ↓"
+
+  - artifact_type: IMPLEMENTATION_MAP
+    pipeline_step: 13
+    payload:
+      workstreams:
+        - name: "Template & Policy"
+          owner: "COO"
+          tasks:
+            - task: "Создать шаблон карточки решения"
+              due: "T+2d"
+              dependency: ""
+              checkpoint_metric: "шаблон опубликован"
+            - task: "Ввести правило: нет owner+metric => нет решения"
+              due: "T+2d"
+              dependency: "шаблон"
+              checkpoint_metric: "правило объявлено"
+        - name: "Adoption"
+          owner: "Team leads"
+          tasks:
+            - task: "Заполнить карточки для всех новых решений 2 недели"
+              due: "T+14d"
+              dependency: "policy"
+              checkpoint_metric: "≥80% решений имеют карточку"
+            - task: "Еженедельный обзор хвостов"
+              due: "T+7d"
+              dependency: "карточки"
+              checkpoint_metric: "хвосты ↓"
+
+  - artifact_type: RULE_UPDATE
+    pipeline_step: 14
+    payload:
+      rule_id: "RULE-DECISION-DOD-01"
+      rule_statement_if_then: "Если формулируется решение, то оно обязано иметь owner, срок и критерий закрытия (DoD); иначе решение считается несуществующим."
+      criterion: "owner заполнен AND due заполнен AND metric/DoD заполнен"
+      boundaries: "не применяется к информационным обсуждениям без решения"
+      evidence_from_case: "симптом: решения не закрываются; ограничение: нельзя менять IT-стек и перегружать встречами"
+      test_case_action:
+        add_or_update: add
+        test_case_id: TC06
+        expected_effect: "рост закрываемости решений и снижение хвостов"
+      version_note: "NON-CANON case rule; canon unchanged"
+      rationale_1l: "без DoD и owner решения не имеют финала и возвращаются"

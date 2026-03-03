@@ -1,0 +1,18 @@
+run_id: 2026-02-03T14-12-44Z
+test_case_id: TC04
+harness_version: v0.1.0
+timestamp_utc: 2026-02-03T14-12-44Z
+overall_status: PASS
+gate_results:
+  - gate: Gate0
+    status: PASS
+    reasons: []
+  - gate: Gate1
+    status: PASS
+    reasons: []
+  - gate: Gate2
+    status: PASS
+    reasons: []
+  - gate: Gate3
+    status: PASS
+    reasons: []

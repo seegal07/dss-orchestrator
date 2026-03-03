@@ -1,0 +1,322 @@
+test_case_id: TC12
+status: FILLED
+mode: artifact_pack
+canon_versions:
+  canon_pipeline: CANON_PIPELINE_v1.2.docx
+  canon_9forms: CANON_9FORMS_v1.1.docx
+  schema: TEST_VECTOR_SCHEMA_v0.1.md.docx
+notes: "Expansion A vector"
+
+artifact_pack:
+  - artifact_type: CASE_SYMPTOM
+    pipeline_step: 0
+    payload:
+      symptom_1l: "Качество результата в одной и той же операции сильно зависит от конкретного исполнителя, из-за чего растёт доля переделок."
+
+  - artifact_type: PROBLEM_OWNER_CARD
+    pipeline_step: 1
+    payload:
+      owner_role: "Руководитель операционного подразделения / Ops Lead"
+      owner_scope: "Может определять стандарты выполнения, формат контроля, обучение и правила приёмки"
+      constraints:
+        - "Нельзя нанимать новых senior-исполнителей"
+        - "Нельзя снижать текущий объём выпуска"
+        - "Решение должно быть воспроизводимым и измеримым"
+      success_metric_hint: "% переделок + разброс времени выполнения по исполнителям."
+
+  - artifact_type: SYSTEM_BOUNDARY_MAP
+    pipeline_step: 2
+    payload:
+      actor:
+        - "Executor"
+        - "Reviewer"
+        - "Ops lead"
+      system:
+        - "Operational workflow for a repeated task"
+      environment:
+        - "Client requirements"
+        - "Quality standards"
+      boundary_note_1l: "Граница - стандартизация и перенос "качества" из головы эксперта в процесс без найма."
+
+  - artifact_type: INTERACTION_MAP
+    pipeline_step: 3
+    payload:
+      elements:
+        - "Task intake"
+        - "Execution"
+        - "Review/QA"
+        - "Rework loop"
+        - "Knowledge base"
+      flows:
+        - from: "Task intake"
+          to: "Execution"
+          type: info
+          note: "требования"
+        - from: "Execution"
+          to: "Review/QA"
+          type: info
+          note: "результат"
+        - from: "Review/QA"
+          to: "Rework loop"
+          type: info
+          note: "ошибки/правки"
+        - from: "Knowledge base"
+          to: "Execution"
+          type: info
+          note: "эталоны/примеры"
+      symptom_location: "Execution + Review/QA (нет эталона и стандарта, поэтому качество зависит от человека)."
+
+  - artifact_type: CONTRADICTION_STATEMENT
+    pipeline_step: 4
+    payload:
+      improve_x: "Стабильность качества результата"
+      worsen_y: "Скорость выполнения и нагрузка на лучших исполнителей/ревьюеров"
+      statement_1l: "Если стандартизируем качество, то растёт риск замедления и перегрузки экспертов на обучении и контроле."
+      measurement_hint: "% переделок vs среднее время выполнения и время ревью (мин)."
+
+  - artifact_type: IKR_CARD
+    pipeline_step: 5
+    payload:
+      ikr_1l: "Результат всегда соответствует стандарту, а лучшие исполнители не тратят время на постоянную правку и обучение."
+      no_new_harm_clause: "Без найма senior и без падения объёма выпуска."
+
+  - artifact_type: HARD_BARRIER
+    pipeline_step: 6
+    payload:
+      barrier_1l: "Нельзя одновременно добиться одинакового качества и не увеличивать контроль, если стандарт не материализован в артефакт."
+      equivalent_to_step4: true
+
+  - artifact_type: RESOURCE_MAP
+    pipeline_step: 7
+    payload:
+      resources:
+        - name: "Лучшие примеры выполненных работ (эталоны)"
+          category: info
+          tied_to: "Knowledge base"
+          note: "можно собрать 10 примеров"
+        - name: "История ошибок/правок за 30 дней"
+          category: info
+          tied_to: "Rework loop"
+          note: "типовые дефекты"
+        - name: "Ревью чек-лист (черновик)"
+          category: info
+          tied_to: "Review/QA"
+          note: "можно стандартизировать"
+        - name: "Время ops lead 30 мин/день"
+          category: time
+          tied_to: "Ops lead"
+          note: "на настройку стандарта"
+        - name: "2 senior исполнителя"
+          category: org
+          tied_to: "Executor"
+          note: "источник эталона"
+        - name: "Канал вопросов/ответов"
+          category: org
+          tied_to: "Knowledge base"
+          note: "точка обучения"
+        - name: "Метрика % переделок"
+          category: info
+          tied_to: "Review/QA"
+          note: "обратная связь"
+        - name: "Шаблон задачи/входные требования"
+          category: info
+          tied_to: "Task intake"
+          note: "можно сделать обязательные поля"
+
+  - artifact_type: FORM_SELECTION
+    pipeline_step: 8
+    payload:
+      PRIMARY_FORM: "№7 Реформатирование"
+      BOUNDARY_CHECK:
+        NEAREST_FORMS:
+          - "№6 Ресурсоэффективность"
+          - "№8 Кибернетика"
+        WHY_NOT_X:
+          - "Экономия ресурсов важна, но корень - в отсутствии стандартизированного формата результата."
+          - "Ресурсоэффективность не создаёт "эталон" и структуру проверки, а лишь оптимизирует текущую вариативность."
+        WHY_NOT_Y:
+          - "Кибернетический контур полезен, но без изменения формата результата нечего стабильно измерять и сравнивать."
+          - "Нужно сначала реформатировать результат в стандарт (шаблон+эталон), затем включать контрольные метрики."
+      TRIZ_CORE:
+        CONTRADICTION_1L: "Нужно одинаковое качество, но нельзя перегружать экспертов контролем и обучением."
+        IKR_1L: "Стандарт встроен в формат задачи и результат сам "подсказывает" правильность."
+      PRINCIPLES_TO_ACTION:
+        PRINCIPLES: [14, 35]
+        ACTIONS:
+          - "14: Сфероидальность/кривизна: упростить форму результата до стандарта с обязательными полями."
+          - "35: Изменение параметров: перенести требования качества в измеримые параметры и пороги."
+      IKR_TEST:
+        Q1: "YES - Шаблоны и эталоны можно ввести без найма и без падения объёма."
+        Q2: "YES - Использует существующие примеры и историю ошибок."
+      CONFIDENCE:
+        score: 66
+        justification: "Материализация стандарта обычно быстро снижает вариативность."
+
+  - artifact_type: SOLUTION_SET
+    pipeline_step: 9
+    payload:
+      count_rule: "3–5"
+      concepts:
+        - concept_index: 1
+          name: "Standard Output Template"
+          idea_1l: "единый шаблон результата с обязательными полями и порогами качества"
+          linked_form: "№7"
+          linked_principles: [14, 35]
+          linked_resources:
+            - "Шаблон задачи/входные требования"
+            - "Ревью чек-лист (черновик)"
+          ikr_alignment_1l: "формат результата ведёт к стандарту"
+        - concept_index: 2
+          name: "Golden Examples Library"
+          idea_1l: "библиотека 10 эталонов + пометки типовых ошибок"
+          linked_form: "№7"
+          linked_principles: [35]
+          linked_resources:
+            - "Лучшие примеры выполненных работ (эталоны)"
+            - "История ошибок/правок за 30 дней"
+          ikr_alignment_1l: "обучение через эталон без постоянного ревью"
+        - concept_index: 3
+          name: "Parameter-based QA"
+          idea_1l: "проверка по измеримым параметрам вместо субъективного ревью"
+          linked_form: "№7"
+          linked_principles: [35]
+          linked_resources:
+            - "Метрика % переделок"
+            - "Ревью чек-лист (черновик)"
+          ikr_alignment_1l: "качество измеримо и воспроизводимо"
+
+  - artifact_type: MECHANISM_SPECS
+    pipeline_step: 10
+    payload:
+      concept_specs:
+        - concept_index: 1
+          A_name_tagline: "Output Template — стандарт формата"
+          B_axis_and_resource: "ось: качество vs скорость; ресурс: шаблон входа + чек-лист"
+          C_mechanism_steps:
+            - "Собрать 10 лучших результатов и выделить обязательные поля."
+            - "Создать шаблон результата + шаблон входных требований."
+            - "Сделать обязательной проверку по полям перед сдачей."
+          D_assumptions_constraints:
+            - "Обязательные поля не должны быть чрезмерными (≤12)."
+          E_risks_failures:
+            - "Шаблон слишком сложный."
+          F_metrics:
+            leading:
+              - "% задач, сделанных по шаблону"
+              - "кол-во пропусков полей/нед"
+            lagging:
+              - "% переделок"
+              - "разброс времени выполнения по исполнителям"
+          G_experiment:
+            timebox: "3 недели"
+            budget: "0"
+            pass_criteria: "переделки ↓ на 20%+, разброс времени ↓"
+        - concept_index: 2
+          A_name_tagline: "Golden Examples — библиотека эталонов"
+          B_axis_and_resource: "ось: обучение vs нагрузка экспертов; ресурс: 2 senior + лучшие примеры"
+          C_mechanism_steps:
+            - "Отобрать 10 эталонов и привязать к классам задач."
+            - "Для каждого добавить 3 типовые ошибки и как их избежать."
+            - "Встроить ссылку на эталон в шаблон задачи."
+          D_assumptions_constraints:
+            - "Эталоны актуальны по текущим требованиям."
+          E_risks_failures:
+            - "Эталоны устаревают."
+          F_metrics:
+            leading:
+              - "кол-во эталонов"
+              - "% задач со ссылкой на эталон"
+            lagging:
+              - "ошибки повторяются/нед"
+              - "время обучения новичка (дни)"
+          G_experiment:
+            timebox: "4 недели"
+            budget: "0"
+            pass_criteria: "повторяемые ошибки ↓ на 20%+"
+        - concept_index: 3
+          A_name_tagline: "Parameter QA — параметры вместо субъективности"
+          B_axis_and_resource: "ось: объективность vs трудозатраты; ресурс: измеримые пороги"
+          C_mechanism_steps:
+            - "Определить 5–7 параметров качества и пороги."
+            - "Сделать чек-лист по параметрам и авто-подсчёт (если возможно)."
+            - "Отслеживать дефекты по параметрам и обновлять пороги."
+          D_assumptions_constraints:
+            - "Параметры реально измеримы."
+          E_risks_failures:
+            - "Параметры не покрывают важные нюансы."
+          F_metrics:
+            leading:
+              - "% ревью по параметрам"
+              - "кол-во дефектов на параметр/нед"
+            lagging:
+              - "% переделок"
+              - "NPS внутреннего заказчика (1-5)"
+          G_experiment:
+            timebox: "4 недели"
+            budget: "0"
+            pass_criteria: "переделки ↓ на 20%+, NPS ≥4"
+
+  - artifact_type: SECONDARY_CONTRADICTION_CHECK
+    pipeline_step: 11
+    payload:
+      new_contradiction_exists: false
+
+  - artifact_type: DECISION_RECORD
+    pipeline_step: 12
+    payload:
+      chosen_concept_index: 1
+      chosen_concept_name: "Standard Output Template"
+      reasons:
+        - "Материализует стандарт и делает качество независимым от человека."
+        - "Внедряется без найма."
+      rejected_alternatives:
+        - concept_index: 2
+          concept: "Golden Examples Library"
+          why_rejected: "полезно, но без шаблона остаётся вариативность формата"
+        - concept_index: 3
+          concept: "Parameter-based QA"
+          why_rejected: "требует сначала сформировать стандарт и параметры"
+      assumptions:
+        - "Можно согласовать ≤12 обязательных полей."
+      success_criteria:
+        - "переделки ↓ на 20%+"
+        - "разброс времени ↓"
+
+  - artifact_type: IMPLEMENTATION_MAP
+    pipeline_step: 13
+    payload:
+      workstreams:
+        - name: "Standard definition"
+          owner: "Ops lead"
+          tasks:
+            - "сбор эталонов"
+            - "выделение обязательных полей"
+            - "утверждение порогов"
+          timeline: "нед 1-2"
+        - name: "Template rollout"
+          owner: "Team leads"
+          tasks:
+            - "внедрить шаблон в задачи"
+            - "обучить по эталонам"
+          timeline: "нед 3"
+        - name: "QA by parameters"
+          owner: "Reviewer"
+          tasks:
+            - "ввести чек-лист"
+            - "собирать дефекты по параметрам"
+          timeline: "нед 3-4"
+
+  - artifact_type: RULE_UPDATE
+    pipeline_step: 14
+    payload:
+      rule_id: "RULE-STD-OUTPUT-01"
+      rule_statement_if_then: "Если задача выполняется, то результат оформляется по стандартному шаблону и проходит проверку по параметрам; иначе задача возвращается на доработку без ревью эксперта."
+      criterion: "шаблон заполнен AND параметры качества в порогах"
+      boundaries: "не применимо к экспериментальным задачам без утверждённого стандарта"
+      evidence_from_case: "симптом: качество зависит от человека; ограничение: без найма senior и без падения объёма"
+      test_case_action:
+        add_or_update: add
+        test_case_id: TC12
+        expected_effect: "% переделок ↓, вариативность ↓"
+      version_note: "NON-CANON case rule; canon unchanged"
+      rationale_1l: "стандарт формата делает качество воспроизводимым"

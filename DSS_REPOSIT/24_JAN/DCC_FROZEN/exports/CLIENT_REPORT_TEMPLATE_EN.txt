@@ -1,0 +1,93 @@
+CLIENT REPORT (Template)
+
+Title: DSS Case Report
+Client: ______________________
+Date: ________________________
+Case ID: _____________________
+Owner: _______________________
+
+0) DECISION STATUS (REQUIRED)
+☐ Decision built
+☐ Requires mandatory input clarification
+☐ Decision impossible under given conditions (Decision Lock)
+
+Rule owner (default): CLIENT
+
+1) Decision Lock (hard commitment)
+- DECISION (single):
+  _______________________________________________
+- REJECTED ALTERNATIVES:
+  _______________________________________________
+
+2) Executive Summary
+- Problem in 1–2 sentences:
+  _______________________________________________
+- Why it matters now:
+  _______________________________________________
+- Target outcome (measurable):
+  _______________________________________________
+
+3) Problem Structure
+- System boundary (inside vs outside):
+  _______________________________________________
+- Key actors and interactions:
+  _______________________________________________
+- Core contradiction (trade‑off):
+  _______________________________________________
+
+4) Ideal Result (IKR)
+- IKR statement:
+  _______________________________________________
+- No‑new‑harm clause:
+  _______________________________________________
+
+5) Execution Plan (2–4 weeks)
+- Workstream 1: ________________________________
+  Tasks:
+  - __________________________
+  - __________________________
+- Workstream 2: ________________________________
+  Tasks:
+  - __________________________
+  - __________________________
+
+6) Metrics & Validation
+- Leading metrics:
+  - __________________________
+- Lagging metrics:
+  - __________________________
+- Pass criteria:
+  _______________________________________________
+
+7) Cost of Error (required block)
+- Cost of NOT deciding:
+  _______________________________________________
+- Cost of breaking the rule:
+  _______________________________________________
+- Cost of an alternative path:
+  _______________________________________________
+
+8) Rule (operational)
+If __________________________ then __________________________.
+Boundary/Exceptions:
+_______________________________________________
+Rule owner: CLIENT
+
+9) Harness (client sees interpretation only)
+- Client status:
+  ☐ Decision ready
+  ☐ Requires mandatory input clarification
+  ☐ Decision impossible under given conditions
+
+10) If FAIL due to incorrect input
+Mandatory output:
+- Diagnostic explanation (human readable):
+  _______________________________________________
+- What must be clarified (strict):
+  _______________________________________________
+- Required input format:
+  _______________________________________________
+
+Appendix (optional)
+- Risks, assumptions, notes
+- References to internal artifacts

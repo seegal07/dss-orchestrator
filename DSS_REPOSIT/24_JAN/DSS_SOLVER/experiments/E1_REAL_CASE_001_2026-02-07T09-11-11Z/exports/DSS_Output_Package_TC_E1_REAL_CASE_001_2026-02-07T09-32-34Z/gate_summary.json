@@ -1,0 +1,21 @@
+{
+  "case_id": "DSS_Output_Package_TC_E1_REAL_CASE_001_2026-02-07T09-32-34Z",
+  "run_id": "2026-02-07T09-32-34Z",
+  "latest": {
+    "Gate0": "pass",
+    "Gate1": "pass",
+    "Gate2": "pass",
+    "Gate3": "pass",
+    "Gate4": "pass",
+    "Gate5": "blocked",
+    "Gate6": "blocked",
+    "Gate7": "pass",
+    "Gate8": "pass",
+    "Gate9": "pass",
+    "Gate10": "pass",
+    "Gate11": "blocked",
+    "Gate12": "blocked",
+    "Gate13": "pass",
+    "Gate14": "pass"
+  }
+}

@@ -1,0 +1,66 @@
+run_id: 2026-02-08T18-10-28Z
+test_case_id: TC_CLIENT_SELF_RUN_001
+harness_version: dss-solver-0.1
+timestamp_utc: 2026-02-08T18-10-28Z
+overall_status: BLOCKED
+gate_results:
+  - gate: Gate0
+    status: PASS
+    reasons: []
+  - gate: Gate1
+    status: PASS
+    reasons: []
+  - gate: Gate2
+    status: PASS
+    reasons: []
+  - gate: Gate3
+    status: PASS
+    reasons: []
+  - gate: Gate4
+    status: PASS
+    reasons:
+      - "G4-P1: Step4 improve_x/worsen_y заданы"
+      - "G4-P2: statement_1l формула противоречия есть"
+      - "G4-P3: measurement_hint указан"
+  - gate: Gate5
+    status: PASS
+    reasons:
+      - "G5-P1: IKR задан (общий)"
+      - "G5-P2: без механизма"
+  - gate: Gate6
+    status: PASS
+    reasons:
+      - "G6-P1: barrier_1l выражает взаимно исключающие требования"
+      - "G6-P2: equivalent_to_step4=true"
+  - gate: Gate7
+    status: PASS
+    reasons: []
+  - gate: Gate8
+    status: PASS
+    reasons: []
+  - gate: Gate9
+    status: PASS
+    reasons: []
+  - gate: Gate10
+    status: PASS
+    reasons: []
+  - gate: Gate11
+    status: BLOCKED
+    reasons:
+      - "G11-P1: new_contradiction_exists не задан"
+  - gate: Gate12
+    status: BLOCKED
+    reasons:
+      - "G12-P1: нет выбранного концепта"
+      - "G12-P2: нет reasons"
+      - "G12-P3: нет thresholds"
+  - gate: Gate13
+    status: PASS
+    reasons: []
+  - gate: Gate14
+    status: PASS
+    reasons: []
+  - gate: GateTRIZ
+    status: FAIL
+    reasons:
+      - "TRIZ_G4_INVALID: non-obviousness has no reference to separation (step_8.TRIZ_CORE.non_obviousness_check)"

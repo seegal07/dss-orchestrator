@@ -1,0 +1,12 @@
+run_id: 2026-02-07T17-52-02Z
+test_case_id: TC_E6_HR_TURNOVER
+issues:
+  - gate: Gate12
+    issue_code: STRUCTURAL
+    message: "G12-P1: MISSING: Step12.chosen_concept_index"
+  - gate: Gate12
+    issue_code: STRUCTURAL
+    message: "G12-P2: MISSING: Step12.reasons"
+  - gate: Gate12
+    issue_code: STRUCTURAL
+    message: "G12-P3: MISSING: Step12.success_criteria"

@@ -1,0 +1,113 @@
+test_case_id: "TC_E22_POSITIVE_B_CASE_01_V1"
+status: "FILLED"
+mode: "full_vector"
+canon_versions:
+  schema: "TEST_VECTOR_SCHEMA_v0.6"
+schema: "TEST_VECTOR_SCHEMA_v0.6"
+schema_version: 0.6
+pfl_enabled: true
+phase0_enabled: true
+operator_core_enabled: true
+historical_exempt: false
+manual_override_used: false
+override_type: null
+full_vector:
+  step_0:
+    symptom_1l: "Конфликт: выше точность прогноза ↔ больше время запуска филиалов в Европе, при ограничении бюджета и длительности исследования."
+  step_1:
+    owner_role: "CEO компании"
+    owner_scope: "Запуск филиалов в Европе"
+    constraints:
+      - "Без роста бюджета и без увеличения длительности исследования/подготовки"
+  step_2:
+    actor: ["центральный офис", "региональная команда"]
+    system: ["процесс запуска филиала"]
+    environment: ["рынок Европы", "локальные условия"]
+    boundary_note_1l: "Внутри: запусковой контур и ресурсы; снаружи: рыночные условия."
+  step_3:
+    elements: ["финмодель", "подготовка", "запуск"]
+    flows:
+      - from: "центральный офис"
+        to: "филиал"
+        type: "procedure"
+        note: "единый контур запуска"
+    symptom_location: "Конфликт точности прогноза и времени запуска в контуре запуска филиалов в Европе."
+  step_4:
+    improve_x: "точность прогноза"
+    worsen_y: "время запуска филиалов в Европе"
+    statement_1l: "При более высокой точности прогноза возрастает время запуска филиалов в Европе."
+    measurement_hint: "точность прогноза и время запуска"
+  step_5:
+    ikr_1l: "Точность прогноза выше при контролируемом времени запуска и фиксированных ограничениях."
+  step_6:
+    barrier_1l: "Бюджет и длительность подготовки остаются без роста."
+    equivalent_to_step4: true
+  step_7:
+    resources:
+      - name: "команда запуска"
+        category: "org"
+        tied_to: "запуск"
+  step_8:
+    PRIMARY_FORM: "Form 5"
+    BOUNDARY_CHECK:
+      note: "контроль против перерасхода"
+    TRIZ_CORE:
+      physical_contradiction:
+        object: "запуск филиала"
+        parameter: "точность/время"
+        state_a: "высокая точность"
+        state_not_a: "короткое время запуска"
+      separation:
+        separation_type: "condition"
+        what_changes: "условие допуска"
+        expected_resolution: "контроль trade-off"
+      system_operator:
+        subsystem_present: "подготовка"
+        system_present: "pipeline запуска"
+        supersystem_present: "сеть филиалов"
+      transformation_model:
+        changed_object: "условие допуска"
+        new_state: "через критерий готовности"
+        resolution_link: "баланс точности и времени"
+      non_obviousness_check:
+        assumption_broken: "выше точность всегда без влияния на время"
+        why_not_obvious: "в реальности есть trade-off"
+    PRINCIPLES_TO_ACTION:
+      PRINCIPLES: [1]
+      ACTIONS: ["условный допуск"]
+    IKR_TEST:
+      Q1: "YES"
+    CONFIDENCE:
+      score: 1
+    risk_1l: "риск неверного критерия"
+  step_8_5:
+    operator_selected: "DEPENDENCY_INVERSION"
+    detected_conflict_types: ["B"]
+    dominant_conflict_type: "B"
+    transformed_conflict_frame: "условный допуск по критерию"
+    what_changed_structurally: "решение после выполнения критерия"
+    mechanism_1l: "Допуск к запуску после проверки критерия готовности."
+    search_loop: false
+    structural_resolution_confirmed: true
+    separation_illusion_test: false
+    assisted_matrix:
+      - question_id: "CR_Q1"
+        answer: "YES"
+  step_9:
+    count_rule: "3-5"
+    concepts:
+      - concept_index: 1
+        name: "условный допуск"
+  step_10:
+    concept_specs:
+      - concept_index: 1
+        A_name_tagline: "условный допуск"
+  step_11:
+    new_contradiction_exists: false
+    selection_criteria_refs: ["contradiction", "ikr", "barrier"]
+  step_12:
+    chosen_concept_index: 1
+    chosen_concept_name: "условный допуск"
+    reasons: ["баланс точности и времени"]
+    commit_confirmation: "YES"
+    compromise_mode: false

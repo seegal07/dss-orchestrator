@@ -1,0 +1,14 @@
+{
+  "Step1": "NOT_APPLICABLE_SINGLE_RUN",
+  "Step2": "NOT_APPLICABLE_SINGLE_RUN",
+  "variants": {
+    "V1": {
+      "GatePFL_result": "fail",
+      "GatePFL_reason": "NO_MUTUAL_DEGRADATION",
+      "pfl_status": "PFL_READY",
+      "pfl_verdict": "FAIL",
+      "pfl_reason": "NO_MUTUAL_DEGRADATION",
+      "canonical_hash_v0": "7b529a5df816d766ab760942e72c27ccc6675573b3d08136c7c80b56a6a2c67d"
+    }
+  }
+}

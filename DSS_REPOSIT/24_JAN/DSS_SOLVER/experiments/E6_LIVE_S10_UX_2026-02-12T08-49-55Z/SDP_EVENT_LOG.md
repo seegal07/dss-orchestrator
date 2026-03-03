@@ -1,0 +1,4 @@
+- timestamp_utc: 2026-02-12T08:51:16Z
+- step: S10
+- trigger: NONE
+- note: stopped by MODE_MISMATCH before SDP/DCF stage.

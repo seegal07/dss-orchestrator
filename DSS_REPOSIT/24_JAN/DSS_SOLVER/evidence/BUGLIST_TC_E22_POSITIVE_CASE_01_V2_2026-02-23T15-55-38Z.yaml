@@ -1,0 +1,18 @@
+run_id: 2026-02-23T15-55-38Z
+test_case_id: TC_E22_POSITIVE_CASE_01_V2
+issues:
+  - gate: GatePFL
+    issue_code: STRUCTURAL
+    message: "pfl_verdict invalid"
+  - gate: GatePFL
+    issue_code: STRUCTURAL
+    message: "pfl_reason invalid"
+  - gate: GatePFL
+    issue_code: STRUCTURAL
+    message: "pfl_structural_tension missing"
+  - gate: GatePFL
+    issue_code: STRUCTURAL
+    message: "pfl_attempt_index missing"
+  - gate: GateTRIZ
+    issue_code: STRUCTURAL
+    message: "TRIZ_G4_INVALID: non-obviousness has no reference to separation (step_8.TRIZ_CORE.non_obviousness_check)"

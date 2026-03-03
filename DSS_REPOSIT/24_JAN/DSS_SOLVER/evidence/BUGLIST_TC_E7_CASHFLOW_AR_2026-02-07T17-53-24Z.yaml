@@ -1,0 +1,6 @@
+run_id: 2026-02-07T17-53-24Z
+test_case_id: TC_E7_CASHFLOW_AR
+issues:
+  - gate: NONE
+    issue_code: NONE
+    message: "No issues"

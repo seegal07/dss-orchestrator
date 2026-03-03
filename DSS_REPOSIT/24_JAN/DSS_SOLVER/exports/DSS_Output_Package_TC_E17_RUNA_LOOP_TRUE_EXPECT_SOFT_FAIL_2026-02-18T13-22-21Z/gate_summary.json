@@ -1,0 +1,24 @@
+{
+  "case_id": "DSS_Output_Package_TC_E17_RUNA_LOOP_TRUE_EXPECT_SOFT_FAIL_2026-02-18T13-22-21Z",
+  "run_id": "2026-02-18T13-22-21Z",
+  "latest": {
+    "Gate0": "pass",
+    "Gate1": "pass",
+    "Gate2": "pass",
+    "Gate3": "pass",
+    "GatePFL": "pass",
+    "Gate4": "pass",
+    "Gate5": "pass",
+    "Gate6": "pass",
+    "Gate7": "pass",
+    "Gate8": "pass",
+    "GateCR": "soft_fail",
+    "Gate9": "pass",
+    "Gate10": "pass",
+    "Gate11": "pass",
+    "Gate12": "fail",
+    "Gate13": "pass",
+    "Gate14": "pass",
+    "GateTRIZ": "pass"
+  }
+}

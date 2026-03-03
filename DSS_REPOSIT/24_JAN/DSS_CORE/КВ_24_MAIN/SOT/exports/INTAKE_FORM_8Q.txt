@@ -1,0 +1,25 @@
+INTAKE FORM (8 Questions)
+
+1) What is the core problem in 1–2 sentences?
+   __________________________________________
+
+2) Who owns this problem and what do they control?
+   __________________________________________
+
+3) What are the hard constraints (time, budget, people, compliance)?
+   __________________________________________
+
+4) What does success look like (metrics, target)?
+   __________________________________________
+
+5) Where does the problem happen (process, team, system boundary)?
+   __________________________________________
+
+6) What trade‑off is blocking progress (X improves, Y worsens)?
+   __________________________________________
+
+7) What resources already exist we can reuse?
+   __________________________________________
+
+8) What is the time horizon for results (e.g., 2–4 weeks)?
+   __________________________________________

@@ -1,0 +1,2 @@
+# FRICTION_LOG
+

@@ -1,0 +1,27 @@
+run_id: 2026-02-07T09-32-34Z
+test_case_id: TC_E1_REAL_CASE_001
+issues:
+  - gate: Gate5
+    issue_code: STRUCTURAL
+    message: "G5-P1: MISSING: Step5.ikr_1l не задан"
+  - gate: Gate5
+    issue_code: STRUCTURAL
+    message: "G5-P2: MISSING: Step5.ikr_1l не задан, нельзя проверить отсутствие механизма"
+  - gate: Gate6
+    issue_code: STRUCTURAL
+    message: "G6-P1: MISSING: Step6.barrier_1l отсутствует"
+  - gate: Gate6
+    issue_code: STRUCTURAL
+    message: "G6-P2: MISSING: Step6.equivalent_to_step4 не задан"
+  - gate: Gate11
+    issue_code: STRUCTURAL
+    message: "G11-P1: MISSING: Step11.new_contradiction_exists отсутствует"
+  - gate: Gate12
+    issue_code: STRUCTURAL
+    message: "G12-P1: MISSING: Step12.chosen_concept_index отсутствует"
+  - gate: Gate12
+    issue_code: STRUCTURAL
+    message: "G12-P2: MISSING: Step12.reasons отсутствуют"
+  - gate: Gate12
+    issue_code: STRUCTURAL
+    message: "G12-P3: MISSING: Step12.success_criteria отсутствуют"

@@ -1,0 +1,131 @@
+test_case_id: TC_CASE_A_CUSTOMIZATION_VS_STANDARDIZATION_v2
+status: FILLED
+mode: full_vector
+canon_versions:
+  canon_pipeline: CANON_PIPELINE_v1.2.docx
+  canon_9forms: CANON_9FORMS_v1.1.docx
+  schema: TEST_VECTOR_SCHEMA_v0.1.md.docx
+notes: "Diagnostic Case A v2 with PROXY thresholds"
+
+full_vector:
+  step_0:
+    symptom_1l: "Крупный клиент требует кастомизацию ядра; без неё риск потери сделки, с ней риск деградации продукта и роста поддержки."
+  step_1:
+    owner_role: "CEO/Founder"
+    owner_scope: "Роадмап, политика кастомизации, бюджет dev/support, условия контракта"
+    constraints:
+      - "Нельзя нанимать в ближайшие 2–3 месяца"
+      - "Нельзя ухудшить сервис текущих клиентов"
+      - "Нельзя создавать не поддерживаемый форк"
+      - "Решение нужно в течение 2 недель"
+    success_metric_hint: "Сделка закрыта без разрушения roadmap; кастомизация ≤ 15–25% (PROXY); support load ≤ +15–30% (PROXY); скорость релизов 2–3/мес (PROXY)"
+  step_2:
+    actor: ["CEO", "Продажи", "Разработка", "Поддержка", "Клиент"]
+    system: ["Продукт", "Роадмап", "Поддержка", "Контракт"]
+    environment: ["Рынок", "Конкуренты", "Требования клиента"]
+    boundary_note_1l: "Внутри — политика кастомизации и исполнение; снаружи — требования клиента и рынок."
+  step_3:
+    elements: ["Кастомизация", "Роадмап", "Сделка", "Поддержка", "Скорость релизов"]
+    flows:
+      - from: "Кастомизация"
+        to: "Роадмап"
+        type: "other"
+        note: "Перекрывает план"
+      - from: "Кастомизация"
+        to: "Поддержка"
+        type: "other"
+        note: "Рост нагрузки"
+    symptom_location: "Кастомизация ↔ роадмап/поддержка"
+  step_4:
+    improve_x: "Вероятность закрытия сделки"
+    worsen_y: "Скорость релизов и нагрузка поддержки"
+    statement_1l: "Если принимаем кастомизацию, растёт нагрузка поддержки и замедляется роадмап; если отказываемся, риск потери сделки"
+    measurement_hint: "PROXY: кастомизация 15–25%; support +15–30%; релизы 2–3/мес; validation_date=2026-03-01"
+  step_5:
+    ikr_1l: "Сделка закрыта без разрушения роадмапа и без роста поддержки"
+    no_new_harm_clause: "Не ухудшать качество текущих клиентов"
+  step_6:
+    barrier_1l: "Нельзя одновременно сохранить стандартный продукт и удовлетворить кастомизацию без перегрузки команды"
+    equivalent_to_step4: true
+  step_7:
+    resources:
+      - name: "Политика кастомизации"
+        category: "org"
+        tied_to: "Контракт"
+        note: "Можно формализовать"
+      - name: "Бюджет dev/support"
+        category: "org"
+        tied_to: "Ресурс"
+        note: "Перераспределяемый"
+      - name: "Базовый продукт"
+        category: "material"
+        tied_to: "Роадмап"
+        note: "Ядро"
+  step_8:
+    PRIMARY_FORM: "Форма противоречия"
+    BOUNDARY_CHECK:
+      NEAREST_FORMS: ["Форма политики", "Форма контракта"]
+      WHY_NOT_X: ["Нельзя расширять команду"]
+      WHY_NOT_Y: ["Нельзя портить сервис действующим клиентам"]
+    TRIZ_CORE:
+      CONTRADICTION_1L: "Нужно принять кастомизацию ради сделки, но нельзя разрушать роадмап и поддержку"
+      IKR_1L: "Сделка закрыта без перегрузки поддержки и без срыва роадмапа"
+    PRINCIPLES_TO_ACTION:
+      PRINCIPLES: []
+      ACTIONS: ["Ограниченная ёмкость кастомизации"]
+    IKR_TEST:
+      Q1: "YES"
+      Q2: "YES"
+    CONFIDENCE:
+      score: 2
+      justification: "Proxy‑пороги заданы"
+  step_9:
+    count_rule: "3–5"
+    concepts:
+      - concept_index: 1
+        name: "Ограниченная кастомизация"
+        idea_1l: "Разрешать кастомизацию в пределах жёсткой ёмкости"
+        linked_form: "Форма политики"
+        linked_principles: []
+        linked_resources: ["Политика кастомизации"]
+        ikr_alignment_1l: "Сохраняет ядро продукта"
+      - concept_index: 2
+        name: "Отказ от кастомизации"
+        idea_1l: "Не принимать кастомизацию ядра"
+        linked_form: "Форма политики"
+        linked_principles: []
+        linked_resources: ["Базовый продукт"]
+        ikr_alignment_1l: "Сохраняет роадмап"
+      - concept_index: 3
+        name: "Кастомизация как опция"
+        idea_1l: "Вынести кастомизацию в отдельный контрактный контур"
+        linked_form: "Форма контракта"
+        linked_principles: []
+        linked_resources: ["Бюджет dev/support"]
+        ikr_alignment_1l: "Ограничивает нагрузку"
+  step_10:
+    mechanism_1l: "Ограничение ёмкости кастомизации в диапазоне 15–25%"
+    mechanism_constraints: "PROXY thresholds; validation_date=2026-03-01"
+  step_11:
+    new_contradiction_exists: false
+    contradiction_1l: ""
+  step_12:
+    chosen_concept_index: 1
+    chosen_concept_name: "Ограниченная кастомизация"
+    reasons:
+      - "Соответствует ограничениям по команде"
+      - "Вписывается в proxy‑пороги поддержки и релизов"
+    success_criteria:
+      - "Кастомизация ≤ 15–25% (PROXY)"
+      - "Рост поддержки ≤ +15–30% (PROXY)"
+      - "Скорость релизов 2–3/мес (PROXY)"
+      - "validation_date=2026-03-01"
+  step_13:
+    plan_1l: "Ввести правило ёмкости и пересмотр через 60 дней"
+    steps:
+      - "Зафиксировать лимит кастомизации"
+      - "Отслеживать поддержку и скорость релизов"
+      - "Ревью через 60 дней"
+  step_14:
+    rule_if_then: "Если кастомизация >25% или поддержка >30%, прекращаем кастомизацию"
+    monitoring_metrics: ["Кастомизация %", "Рост поддержки %", "Релизы/мес"]

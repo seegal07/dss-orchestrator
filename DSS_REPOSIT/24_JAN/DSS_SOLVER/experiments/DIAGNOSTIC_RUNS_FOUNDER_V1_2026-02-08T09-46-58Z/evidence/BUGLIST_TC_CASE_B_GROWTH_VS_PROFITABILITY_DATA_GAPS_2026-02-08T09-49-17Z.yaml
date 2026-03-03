@@ -1,0 +1,66 @@
+run_id: 2026-02-08T09-49-17Z
+test_case_id: TC_CASE_B_GROWTH_VS_PROFITABILITY_DATA_GAPS
+issues:
+  - gate: Gate3
+    issue_code: STRUCTURAL
+    message: "Step3.flows missing"
+  - gate: Gate4
+    issue_code: STRUCTURAL
+    message: "G4-P1: X/Y заданы (рост vs прибыльность), но без метрик"
+  - gate: Gate4
+    issue_code: STRUCTURAL
+    message: "G4-P2: statement_1l в форме 'если X, ухудшается Y'"
+  - gate: Gate4
+    issue_code: STRUCTURAL
+    message: "G4-P3: measurement_hint MISSING (LTV/CAC/маржа/runway)"
+  - gate: Gate5
+    issue_code: STRUCTURAL
+    message: "G5-P1: MISSING: Step5.ikr_1l отсутствует"
+  - gate: Gate5
+    issue_code: STRUCTURAL
+    message: "G5-P2: MISSING: нельзя проверить отсутствие механизма"
+  - gate: Gate6
+    issue_code: STRUCTURAL
+    message: "G6-P1: MISSING: Step6.barrier_1l отсутствует"
+  - gate: Gate6
+    issue_code: STRUCTURAL
+    message: "G6-P2: MISSING: Step6.equivalent_to_step4 отсутствует"
+  - gate: Gate8
+    issue_code: STRUCTURAL
+    message: "Step8.PRINCIPLES_TO_ACTION.PRINCIPLES missing"
+  - gate: Gate10
+    issue_code: STRUCTURAL
+    message: "Step10.concept_specs missing"
+  - gate: Gate11
+    issue_code: STRUCTURAL
+    message: "G11-P1: MISSING: Step11.new_contradiction_exists отсутствует"
+  - gate: Gate12
+    issue_code: STRUCTURAL
+    message: "Step12.chosen_concept_name missing"
+  - gate: Gate13
+    issue_code: STRUCTURAL
+    message: "Step13.workstreams missing"
+  - gate: Gate14
+    issue_code: STRUCTURAL
+    message: "Step14.rule_id missing"
+  - gate: Gate14
+    issue_code: STRUCTURAL
+    message: "Step14.rule_statement_if_then missing"
+  - gate: Gate14
+    issue_code: STRUCTURAL
+    message: "Step14.criterion missing"
+  - gate: Gate14
+    issue_code: STRUCTURAL
+    message: "Step14.boundaries missing"
+  - gate: Gate14
+    issue_code: STRUCTURAL
+    message: "Step14.evidence_from_case missing"
+  - gate: Gate14
+    issue_code: STRUCTURAL
+    message: "Step14.test_case_action missing"
+  - gate: Gate14
+    issue_code: STRUCTURAL
+    message: "Step14.version_note missing"
+  - gate: Gate14
+    issue_code: STRUCTURAL
+    message: "Step14.rationale_1l missing"

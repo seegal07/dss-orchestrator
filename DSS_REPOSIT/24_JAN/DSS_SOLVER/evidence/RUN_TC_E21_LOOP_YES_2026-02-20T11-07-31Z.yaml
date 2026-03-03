@@ -1,0 +1,81 @@
+run_id: 2026-02-20T11-07-31Z
+test_case_id: TC_E21_LOOP_YES
+harness_version: dss-solver-0.1
+timestamp_utc: 2026-02-20T11-07-31Z
+overall_status: FAIL
+gate_results:
+  - gate: Gate0
+    status: PASS
+    reasons: []
+  - gate: Gate1
+    status: PASS
+    reasons: []
+  - gate: Gate2
+    status: PASS
+    reasons: []
+  - gate: Gate3
+    status: FAIL
+    reasons:
+      - "Step3.flows[0] not a dict"
+  - gate: GatePFL
+    status: PASS
+    reasons: []
+  - gate: Gate4
+    status: PASS
+    reasons:
+      - "G4-P1: ok"
+  - gate: Gate5
+    status: PASS
+    reasons:
+      - "G5-P1: ok"
+  - gate: Gate6
+    status: PASS
+    reasons:
+      - "G6-P1: ok"
+  - gate: Gate7
+    status: FAIL
+    reasons:
+      - "Step7.resources is not a list"
+  - gate: Gate8
+    status: PASS
+    reasons: []
+  - gate: GateCR
+    status: SOFT_FAIL
+    reasons:
+      - "Step8_5.assisted_matrix missing"
+      - "risk_shift_detected=true (search_loop=true)"
+  - gate: Gate9
+    status: FAIL
+    reasons:
+      - "Step9.concepts is not a list"
+  - gate: Gate10
+    status: FAIL
+    reasons:
+      - "Step10.concept_specs is not a list"
+  - gate: Gate11
+    status: PASS
+    reasons:
+      - "G11-P1: ok"
+  - gate: Gate12
+    status: NOT_RUN
+    reasons:
+      - "Gate12 blocked due to Gate9/Gate11 FAIL"
+  - gate: Gate13
+    status: FAIL
+    reasons:
+      - "Step13.workstreams missing"
+  - gate: Gate14
+    status: FAIL
+    reasons:
+      - "Step14.rule_id missing"
+      - "Step14.rule_statement_if_then missing"
+      - "Step14.criterion missing"
+      - "Step14.boundaries missing"
+      - "Step14.evidence_from_case missing"
+      - "Step14.test_case_action missing"
+      - "Step14.version_note missing"
+      - "Step14.rationale_1l missing"
+  - gate: GateTRIZ
+    status: FAIL
+    reasons:
+      - "TRIZ_G4_INVALID: non-obviousness has no reference to separation (step_8.TRIZ_CORE.non_obviousness_check)"

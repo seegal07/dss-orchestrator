@@ -1,0 +1,23 @@
+{
+  "reference_variant": "V1",
+  "exports": {
+    "V1": {
+      "pfl_verdict": null,
+      "pfl_reason": null,
+      "input_fingerprint": "a07b142a56a1625609289ae3b0bf910fb9f2cfa1337ca8b92b0e7624a4d82166"
+    },
+    "V2": {
+      "pfl_verdict": null,
+      "pfl_reason": null,
+      "input_fingerprint": "56dc8bb0626130f38ae25a5d856332cb1143fa2607df7729542afb5e3acaeb3a"
+    },
+    "V3": {
+      "pfl_verdict": null,
+      "pfl_reason": null,
+      "input_fingerprint": "788fb9b6ec68a1d1664bc275941096849d1db3189f4a29cace20df5801eeb3a2"
+    }
+  },
+  "flip_baseline_relative": false,
+  "pfl_variance_baseline_relative": 0.0,
+  "diff_variants": []
+}

@@ -1,0 +1,82 @@
+{
+  "checkpoints": {
+    "checkpoint_1_gatephase0": "PASS",
+    "checkpoint_2_hashes": "PASS",
+    "per_variant": {
+      "V1": {
+        "gatephase0_ok": true,
+        "hashes_ok": true
+      },
+      "V2": {
+        "gatephase0_ok": true,
+        "hashes_ok": true
+      },
+      "V3": {
+        "gatephase0_ok": true,
+        "hashes_ok": true
+      }
+    }
+  },
+  "reference_variant": "V1",
+  "Step1": "PASS",
+  "Step2": "PASS",
+  "variants": {
+    "V1": {
+      "canonical_hash_v0": "3b83600f606e14b8f43a86836e48081d3cdabe6430ebbf64d348fb14c4e7f57c",
+      "s2a_hash": "bb0109a1fea5264d07c5cf9983a4d3cd8f62efe5a7101e3dc209cad98f43e6b6",
+      "trace_markers": [
+        "DELTA_FROM_RAW:X",
+        "DELTA_FROM_RAW:Y"
+      ],
+      "GatePFL_result": "fail",
+      "GatePFL_reason": "NO_MUTUAL_DEGRADATION",
+      "anchors": {
+        "S03_0": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/REGRESSION_MIN_SET_RUN_2026-02-27T13-07-23Z/02_POSITIVE_B/EXPORTS/V1/S03_0_PHASE0_OUTPUT.md",
+        "gate_log": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/REGRESSION_MIN_SET_RUN_2026-02-27T13-07-23Z/02_POSITIVE_B/EXPORTS/V1/gate_log.json",
+        "canonical_hash_v0_line": 8,
+        "s2a_hash_line": 9,
+        "trace_markers_line": 26,
+        "GatePFL_result_line": 92,
+        "GatePFL_reason_line": 96
+      }
+    },
+    "V2": {
+      "canonical_hash_v0": "3b83600f606e14b8f43a86836e48081d3cdabe6430ebbf64d348fb14c4e7f57c",
+      "s2a_hash": "bb0109a1fea5264d07c5cf9983a4d3cd8f62efe5a7101e3dc209cad98f43e6b6",
+      "trace_markers": [
+        "DELTA_FROM_RAW:X",
+        "DELTA_FROM_RAW:Y"
+      ],
+      "GatePFL_result": "fail",
+      "GatePFL_reason": "NO_MUTUAL_DEGRADATION",
+      "anchors": {
+        "S03_0": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/REGRESSION_MIN_SET_RUN_2026-02-27T13-07-23Z/02_POSITIVE_B/EXPORTS/V2/S03_0_PHASE0_OUTPUT.md",
+        "gate_log": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/REGRESSION_MIN_SET_RUN_2026-02-27T13-07-23Z/02_POSITIVE_B/EXPORTS/V2/gate_log.json",
+        "canonical_hash_v0_line": 8,
+        "s2a_hash_line": 9,
+        "trace_markers_line": 26,
+        "GatePFL_result_line": 92,
+        "GatePFL_reason_line": 96
+      }
+    },
+    "V3": {
+      "canonical_hash_v0": "3b83600f606e14b8f43a86836e48081d3cdabe6430ebbf64d348fb14c4e7f57c",
+      "s2a_hash": "bb0109a1fea5264d07c5cf9983a4d3cd8f62efe5a7101e3dc209cad98f43e6b6",
+      "trace_markers": [
+        "DELTA_FROM_RAW:X",
+        "DELTA_FROM_RAW:Y"
+      ],
+      "GatePFL_result": "fail",
+      "GatePFL_reason": "NO_MUTUAL_DEGRADATION",
+      "anchors": {
+        "S03_0": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/REGRESSION_MIN_SET_RUN_2026-02-27T13-07-23Z/02_POSITIVE_B/EXPORTS/V3/S03_0_PHASE0_OUTPUT.md",
+        "gate_log": "/Users/oleksiichaika/Desktop/DSS_REPOSIT/24_JAN/DSS_SOLVER/experiments/REGRESSION_MIN_SET_RUN_2026-02-27T13-07-23Z/02_POSITIVE_B/EXPORTS/V3/gate_log.json",
+        "canonical_hash_v0_line": 8,
+        "s2a_hash_line": 9,
+        "trace_markers_line": 26,
+        "GatePFL_result_line": 92,
+        "GatePFL_reason_line": 96
+      }
+    }
+  }
+}

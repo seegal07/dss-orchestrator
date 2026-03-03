@@ -1,0 +1,130 @@
+test_case_id: TC_E6_HR_TURNOVER
+status: FILLED
+mode: full_vector
+canon_versions:
+  canon_pipeline: CANON_PIPELINE_v1.2.docx
+  canon_9forms: CANON_9FORMS_v1.1.docx
+  schema: TEST_VECTOR_SCHEMA_v0.1.md.docx
+notes: "MVP deadlock — HR turnover"
+
+full_vector:
+  step_0:
+    symptom_1l: "Высокая текучесть в колл‑центре, уходы в 2–3 месяца."
+  step_1:
+    owner_role: "HR‑директор"
+    owner_scope: "Найм, обучение, графики, регламенты"
+    constraints:
+      - "ФОТ фиксирован"
+      - "Бонусы нельзя"
+      - "Штат не увеличиваем"
+      - "Срок эффекта — 4 месяца"
+    success_metric_hint: "Снижение текучести, SLA сохранён"
+  step_2:
+    actor: ["Сотрудник", "HR", "Наставник"]
+    system: ["Обучение", "Смены", "Регламенты"]
+    environment: ["Рынок труда"]
+    boundary_note_1l: "Внутри — процессы найма/обучения; снаружи — рынок труда."
+  step_3:
+    elements: ["Кандидат", "Обучение", "Сотрудник", "Увольнение"]
+    flows:
+      - from: "Обучение"
+        to: "Сотрудник"
+        type: "other"
+        note: "Переход"
+    symptom_location: "2–3 месяц работы"
+  step_4:
+    improve_x: "Контроль качества"
+    worsen_y: "Удержание сотрудников"
+    statement_1l: "Если усиливаем контроль, растёт текучесть"
+    measurement_hint: "Текучесть, SLA"
+  step_5:
+    ikr_1l: "Текучесть снижена, SLA сохраняется, штат не растёт"
+    no_new_harm_clause: "Не ухудшать SLA и не увеличивать ФОТ"
+  step_6:
+    barrier_1l: "Нельзя одновременно усиливать контроль и удерживать всех сотрудников"
+    equivalent_to_step4: true
+  step_7:
+    resources:
+      - name: "Обучение"
+        category: "org"
+        tied_to: "Onboarding"
+        note: "Можно менять"
+      - name: "Наставники"
+        category: "org"
+        tied_to: "Поддержка"
+        note: "Можно назначать"
+  step_8:
+    PRIMARY_FORM: "Форма удержания"
+    BOUNDARY_CHECK:
+      NEAREST_FORMS: ["Форма контроля", "Форма регламента"]
+      WHY_NOT_X: ["Нельзя увеличить ФОТ"]
+      WHY_NOT_Y: ["Нельзя терять SLA"]
+    TRIZ_CORE:
+      CONTRADICTION_1L: "нужно усилить контроль, но нельзя терять сотрудников"
+      IKR_1L: "текучесть снижена без ухудшения SLA"
+    PRINCIPLES_TO_ACTION:
+      PRINCIPLES: [13]
+      ACTIONS: ["Наставничество"]
+    IKR_TEST:
+      Q1: "YES"
+      Q2: "YES"
+    CONFIDENCE:
+      score: 1
+      justification: "Минимальные данные"
+  step_9:
+    count_rule: "3–5"
+    concepts:
+      - concept_index: 1
+        name: "Наставничество"
+        idea_1l: "Назначить наставников"
+        linked_form: "Форма удержания"
+        linked_principles: [13]
+        linked_resources: ["Наставники"]
+        ikr_alignment_1l: "Снижает текучесть"
+      - concept_index: 2
+        name: "Перезапуск обучения"
+        idea_1l: "Обновить onboarding"
+        linked_form: "Форма регламента"
+        linked_principles: [13]
+        linked_resources: ["Обучение"]
+        ikr_alignment_1l: "Повышает удержание"
+  step_10:
+    concept_specs:
+      - concept_index: 1
+        A_name_tagline: "Наставничество"
+        B_axis_and_resource: "Наставники"
+        C_mechanism_steps: ["Назначить наставников"]
+        D_assumptions_constraints: ["Без доп. штата"]
+        E_risks_failures: ["Низкая вовлечённость"]
+        F_metrics:
+          leading: ["% наставников"]
+          lagging: ["Текучесть"]
+        G_experiment:
+          timebox: "4 месяца"
+          budget: "0"
+          pass_criteria: "Снижение текучести"
+  step_11:
+    new_contradiction_exists: false
+  step_12:
+    chosen_concept_index: "MISSING"
+    chosen_concept_name: "MISSING"
+    reasons: ["MISSING"]
+    rejected_alternatives: ["MISSING"]
+    assumptions: ["MISSING"]
+    success_criteria: ["MISSING"]
+  step_13:
+    workstreams:
+      - name: "Наставничество"
+        owner: "HR"
+        steps: ["Назначить наставников"]
+        timing: "1–2 месяца"
+        risks: ["Низкая вовлечённость"]
+  step_14:
+    rule_id: "MISSING"
+    rule_statement_if_then: "MISSING"
+    criterion: "MISSING"
+    boundaries: "MISSING"
+    evidence_from_case: "MISSING"
+    test_case_action: "MISSING"
+    version_note: "MISSING"
+    rationale_1l: "MISSING"

@@ -1,0 +1,196 @@
+test_case_id: TC_E3_REAL_CASE_002
+status: FILLED
+mode: full_vector
+canon_versions:
+  canon_pipeline: CANON_PIPELINE_v1.2.docx
+  canon_9forms: CANON_9FORMS_v1.1.docx
+  schema: TEST_VECTOR_SCHEMA_v0.1.md.docx
+notes: "E3 — склад/логистика, SLA отгрузки"
+
+full_vector:
+  step_0:
+    symptom_1l: "Склад не успевает собирать и отгружать заказы в срок; SLA срывается, растут штрафы и возвраты."
+  step_1:
+    owner_role: "Операционный директор"
+    owner_scope: "Складские процессы, смены, маршруты сборки, регламенты, приоритеты заказов"
+    constraints:
+      - "Штат не увеличиваем"
+      - "Новый WMS не внедряем"
+      - "Бюджет ≤ 30 000 EUR"
+      - "Срок эффекта — 3 месяца"
+    success_metric_hint: "SLA ≥ 95%, ошибки ≤ 1%"
+  step_2:
+    actor: ["Операционный директор", "Сборщики", "Упаковщики", "WMS", "Отгрузка"]
+    system: ["Склад", "Очередь заказов", "Маршруты сборки", "Контроль качества"]
+    environment: ["Входящий спрос", "Транспортные компании", "Сезонность", "Таможня"]
+    boundary_note_1l: "Внутри — процессы склада и приоритеты; снаружи — спрос и внешняя логистика."
+  step_3:
+    elements: ["Заказ", "Очередь", "Сборка", "Упаковка", "Отгрузка", "SLA", "Ошибки"]
+    flows:
+      - from: "Заказ"
+        to: "Очередь"
+        type: "info"
+        note: "Постановка в очередь"
+      - from: "Очередь"
+        to: "Сборка"
+        type: "other"
+        note: "Маршрут и приоритет"
+      - from: "Сборка"
+        to: "Упаковка"
+        type: "other"
+        note: "Передача заказа"
+      - from: "Упаковка"
+        to: "Отгрузка"
+        type: "other"
+        note: "Выход на доставку"
+      - from: "Сборка"
+        to: "Ошибки"
+        type: "info"
+        note: "Ошибки комплектации"
+    symptom_location: "Очередь и сборка → задержки по SLA и ошибки"
+  step_4:
+    improve_x: "Скорость сборки (время цикла)"
+    worsen_y: "Точность комплектации (ошибки)"
+    statement_1l: "Если ускоряем сборку, растёт число ошибок; если усиливаем контроль, падает скорость"
+    measurement_hint: "Время сборки/заказ, % ошибок, SLA‑отгрузка"
+  step_5:
+    ikr_1l: "Заказы отгружаются в SLA без роста ошибок и без увеличения штата"
+    no_new_harm_clause: "Не увеличивать ФОТ и не снижать точность"
+  step_6:
+    barrier_1l: "Нельзя одновременно резко ускорить сборку и сохранить текущий уровень ошибок без изменения процесса"
+    equivalent_to_step4: true
+  step_7:
+    resources:
+      - name: "Регламенты сборки"
+        category: "org"
+        tied_to: "Процесс"
+        note: "Можно менять"
+      - name: "Зонирование склада"
+        category: "material"
+        tied_to: "Маршруты"
+        note: "Можно менять"
+      - name: "Очереди заказов"
+        category: "org"
+        tied_to: "Приоритеты"
+        note: "Можно разделять"
+      - name: "WMS аналитика"
+        category: "info"
+        tied_to: "Контроль"
+        note: "Отчёты по SLA и ошибкам"
+  step_8:
+    PRIMARY_FORM: "Форма потоков"
+    BOUNDARY_CHECK:
+      NEAREST_FORMS: ["Форма регламента", "Форма контроля"]
+      WHY_NOT_X: ["Нельзя убрать контроль качества"]
+      WHY_NOT_Y: ["Нельзя игнорировать SLA"]
+    TRIZ_CORE:
+      CONTRADICTION_1L: "нужно ускорять сборку, но нельзя увеличивать ошибки"
+      IKR_1L: "SLA выполняется без роста ошибок"
+    PRINCIPLES_TO_ACTION:
+      PRINCIPLES: [13]
+      ACTIONS: ["Разделить потоки заказов"]
+    IKR_TEST:
+      Q1: "YES"
+      Q2: "YES"
+    CONFIDENCE:
+      score: 2
+      justification: "Противоречие и IKR подтверждены метриками"
+  step_9:
+    count_rule: "3–5"
+    concepts:
+      - concept_index: 1
+        name: "Разделение потоков"
+        idea_1l: "Разделить очереди по типам заказов"
+        linked_form: "Форма потоков"
+        linked_principles: [13]
+        linked_resources: ["Очереди заказов"]
+        ikr_alignment_1l: "Сокращает время цикла"
+      - concept_index: 2
+        name: "Оптимизация маршрутов"
+        idea_1l: "Переразместить быстрые SKU"
+        linked_form: "Форма регламента"
+        linked_principles: [13]
+        linked_resources: ["Зонирование склада"]
+        ikr_alignment_1l: "Снижает путь сборки"
+      - concept_index: 3
+        name: "Контрольные точки"
+        idea_1l: "Проверка перед упаковкой"
+        linked_form: "Форма контроля"
+        linked_principles: [13]
+        linked_resources: ["Регламенты сборки"]
+        ikr_alignment_1l: "Снижает ошибки"
+  step_10:
+    concept_specs:
+      - concept_index: 1
+        A_name_tagline: "Разделение потоков"
+        B_axis_and_resource: "Очереди + приоритеты"
+        C_mechanism_steps:
+          - "Сегментировать заказы"
+          - "Назначить правила очередей"
+        D_assumptions_constraints: ["Без нового WMS"]
+        E_risks_failures: ["Ошибки сегментации"]
+        F_metrics:
+          leading: ["Время цикла"]
+          lagging: ["SLA", "% ошибок"]
+        G_experiment:
+          timebox: "3 месяца"
+          budget: "≤30 000 EUR"
+          pass_criteria: "SLA ≥95%, ошибки ≤1%"
+      - concept_index: 2
+        A_name_tagline: "Оптимизация маршрутов"
+        B_axis_and_resource: "Зонирование"
+        C_mechanism_steps:
+          - "Переместить быстрые SKU"
+        D_assumptions_constraints: ["Без нового WMS"]
+        E_risks_failures: ["Сбой логики хранения"]
+        F_metrics:
+          leading: ["Длина маршрута"]
+          lagging: ["SLA"]
+        G_experiment:
+          timebox: "3 месяца"
+          budget: "≤30 000 EUR"
+          pass_criteria: "SLA ≥95%"
+      - concept_index: 3
+        A_name_tagline: "Контрольные точки"
+        B_axis_and_resource: "Регламенты"
+        C_mechanism_steps:
+          - "Чек‑лист перед упаковкой"
+        D_assumptions_constraints: ["Без доп. штата"]
+        E_risks_failures: ["Снижение скорости"]
+        F_metrics:
+          leading: ["% проверок"]
+          lagging: ["% ошибок"]
+        G_experiment:
+          timebox: "3 месяца"
+          budget: "≤30 000 EUR"
+          pass_criteria: "Ошибки ≤1%"
+  step_11:
+    new_contradiction_exists: false
+  step_12:
+    chosen_concept_index: 1
+    chosen_concept_name: "Разделение потоков"
+    reasons: ["Не требует нового WMS", "Влияет на SLA", "Укладывается в бюджет"]
+    rejected_alternatives: ["Оптимизация маршрутов", "Контрольные точки"]
+    assumptions: ["Сегментация корректна"]
+    success_criteria: ["SLA ≥95%", "Ошибки ≤1%"]
+  step_13:
+    workstreams:
+      - name: "Сегментация заказов"
+        owner: "Ops"
+        steps: ["Анализ типов", "Правила очередей"]
+        timing: "2–4 недели"
+        risks: ["Неверная категоризация"]
+      - name: "Контроль SLA"
+        owner: "Ops"
+        steps: ["Еженедельные отчёты", "Коррекция правил"]
+        timing: "3 месяца"
+        risks: ["Срыв дисциплины"]
+  step_14:
+    rule_id: "RULE_E3_SLA_001"
+    rule_statement_if_then: "Если SLA <95% через 3 месяца, то правила очередей пересматриваются"
+    criterion: "SLA‑отгрузка"
+    boundaries: "Текущий склад"
+    evidence_from_case: "Отчёты WMS"
+    test_case_action: "Изменение правил очередей"
+    version_note: "v1"
+    rationale_1l: "Сохраняем SLA без роста ошибок"

@@ -1,0 +1,325 @@
+test_case_id: TC19
+status: FILLED
+mode: artifact_pack
+canon_versions:
+  canon_pipeline: CANON_PIPELINE_v1.2.docx
+  canon_9forms: CANON_9FORMS_v1.1.docx
+  schema: TEST_VECTOR_SCHEMA_v0.1.md.docx
+notes: "synthetic regression vector (Customer Success / Retention)"
+
+artifact_pack:
+  - artifact_type: CASE_SYMPTOM
+    pipeline_step: 0
+    payload:
+      symptom_1l: "Растёт отток клиентов в первые 90 дней: пользователи не достигают ожидаемого результата и уходят после первого цикла продления."
+
+  - artifact_type: PROBLEM_OWNER_CARD
+    pipeline_step: 1
+    payload:
+      owner_role: "Head of Customer Success"
+      owner_scope: "Может менять правила онбординга, стандарты успеха, сигналы риска, планы касаний и правила эскалации."
+      constraints:
+        - "Нельзя увеличивать штат CS в этом квартале"
+        - "Нельзя снижать качество поддержки"
+        - "Эффект нужен за 4–6 недель"
+      success_metric_hint: "Retention 90d, % клиентов достигших 'first value', доля churn по причине 'не получил результат'."
+
+  - artifact_type: SYSTEM_BOUNDARY_MAP
+    pipeline_step: 2
+    payload:
+      actor:
+        - "Customer"
+        - "CSM"
+        - "Support"
+        - "Product"
+      system:
+        - "Onboarding + Success tracking"
+        - "Renewal decision"
+      environment:
+        - "Customer expectations"
+        - "Competitive alternatives"
+      boundary_note_1l: "Граница — перевод клиента в 'first value' и управление риском оттока без расширения команды."
+
+  - artifact_type: INTERACTION_MAP
+    pipeline_step: 3
+    payload:
+      elements:
+        - "Signup/Activation"
+        - "Onboarding steps"
+        - "Usage signals"
+        - "CSM outreach"
+        - "Renewal decision"
+      flows:
+        - from: "Signup/Activation"
+          to: "Onboarding steps"
+          type: info
+          note: "первичные настройки"
+        - from: "Onboarding steps"
+          to: "Usage signals"
+          type: info
+          note: "появление first value"
+        - from: "Usage signals"
+          to: "CSM outreach"
+          type: info
+          note: "сигнал риска или успеха"
+        - from: "CSM outreach"
+          to: "Renewal decision"
+          type: info
+          note: "поддержка принятия решения"
+      symptom_location: "Onboarding steps → Usage signals: клиенты не доходят до first value, сигнал риска не срабатывает вовремя."
+
+  - artifact_type: CONTRADICTION_STATEMENT
+    pipeline_step: 4
+    payload:
+      improve_x: "Удержание клиентов (retention 90d)"
+      worsen_y: "Нагрузка на CS (невозможно сопровождать всех вручную)"
+      statement_1l: "Если усиливаем сопровождение для удержания, нагрузка на CS становится непосильной; если автоматизируем, часть клиентов не получит поддержки."
+      measurement_hint: "X=Retention 90d; Y=нагрузка CSM (кол-во активных клиентов/CSM) и % клиентов без касаний."
+
+  - artifact_type: IKR_CARD
+    pipeline_step: 5
+    payload:
+      ikr_1l: "Клиенты достигают first value вовремя, а CS вмешивается только по сигналам риска, без роста нагрузки."
+      no_new_harm_clause: "Без увеличения команды и без падения качества поддержки."
+
+  - artifact_type: HARD_BARRIER
+    pipeline_step: 6
+    payload:
+      barrier_1l: "Нельзя одновременно дать индивидуальное сопровождение всем и сохранить текущий размер команды без приоритизации рисков."
+      equivalent_to_step4: true
+
+  - artifact_type: RESOURCE_MAP
+    pipeline_step: 7
+    payload:
+      resources:
+        - name: "Product usage events"
+          category: info
+          tied_to: "Usage signals"
+          note: "поведение клиентов"
+        - name: "Customer health score (черновик)"
+          category: info
+          tied_to: "CSM"
+          note: "сигнал риска"
+        - name: "Onboarding checklist"
+          category: org
+          tied_to: "Onboarding steps"
+          note: "стандартизирует путь"
+        - name: "Automated lifecycle emails"
+          category: info
+          tied_to: "CSM outreach"
+          note: "масштабируемые касания"
+        - name: "Support ticket tags"
+          category: info
+          tied_to: "Support"
+          note: "ранние сигналы проблем"
+        - name: "Weekly risk review slot"
+          category: time
+          tied_to: "CSM"
+          note: "15 минут"
+        - name: "Playbooks for risk segments"
+          category: org
+          tied_to: "CSM"
+          note: "действия по классу риска"
+        - name: "Definition of First Value"
+          category: info
+          tied_to: "Onboarding steps"
+          note: "единый критерий"
+
+  - artifact_type: FORM_SELECTION
+    pipeline_step: 8
+    payload:
+      PRIMARY_FORM: "№8 Кибернетика"
+      BOUNDARY_CHECK:
+        NEAREST_FORMS:
+          - "№6 Ресурсоэффективность"
+          - "№8 Кибернетика"
+        WHY_NOT_X:
+          - "Ресурсы ограничены, но корень — отсутствие управляющего контура риска и сигналов."
+        WHY_NOT_Y:
+          - "Нужен контур: сигнал → действие → обновление playbook без ручной опеки всех."
+      D_MARKER: "D1"
+      TRIZ_CORE:
+        CONTRADICTION_1L: "нужно удерживать клиентов, но нельзя расширять CS"
+        IKR_1L: "система сама подсказывает, где CS нужен"
+      PRINCIPLES_TO_ACTION:
+        PRINCIPLES: [23, 10, 16]
+        ACTIONS:
+          - "23: Еженедельный контур — метрики риска обновляют приоритет касаний."
+          - "10: Предварительное действие — Definition of First Value как обязательный чек-лист."
+          - "16: Частичное действие — CS работает только с high-risk сегментом."
+      IKR_TEST:
+        Q1: "YES — контур работает без найма."
+        Q2: "YES — автоматизация покрывает low-risk сегмент."
+      CONFIDENCE:
+        score: 71
+        justification: "Можно реализовать через события продукта и playbooks."
+
+  - artifact_type: SOLUTION_SET
+    pipeline_step: 9
+    payload:
+      count_rule: "3–5"
+      concepts:
+        - concept_index: 1
+          name: "Risk Segmentation + Playbooks"
+          idea_1l: "классифицировать клиентов по риску и применять playbooks с приоритетом high-risk"
+          linked_form: "№8 Кибернетика"
+          linked_principles: [23, 16]
+          linked_resources:
+            - "Customer health score (черновик)"
+            - "Playbooks for risk segments"
+            - "Weekly risk review slot"
+          ikr_alignment_1l: "CS фокусируется там, где риск максимален"
+        - concept_index: 2
+          name: "First Value Checklist"
+          idea_1l: "единый чек-лист first value для онбординга и автоматические напоминания"
+          linked_form: "№8 Кибернетика"
+          linked_principles: [10]
+          linked_resources:
+            - "Onboarding checklist"
+            - "Definition of First Value"
+            - "Automated lifecycle emails"
+          ikr_alignment_1l: "клиенты доходят до результата без ручного сопровождения"
+        - concept_index: 3
+          name: "Support Signal Trigger"
+          idea_1l: "использовать теги тикетов как ранний сигнал риска и запускать playbook"
+          linked_form: "№8 Кибернетика"
+          linked_principles: [23]
+          linked_resources:
+            - "Support ticket tags"
+            - "Playbooks for risk segments"
+          ikr_alignment_1l: "сигналы риска не теряются"
+
+  - artifact_type: MECHANISM_SPECS
+    pipeline_step: 10
+    payload:
+      concept_specs:
+        - concept_index: 1
+          A_name_tagline: "Risk Segmentation — фокус CS"
+          B_axis_and_resource: "Ось: retention vs нагрузка; ресурс: health score + playbooks"
+          C_mechanism_steps:
+            - "Определить 3 уровня риска (low/med/high) по usage и тикетам."
+            - "Назначить playbook действий для high-risk клиентов."
+            - "Еженедельно обновлять список high-risk."
+          D_assumptions_constraints:
+            - "Health score можно вычислить из событий продукта."
+          E_risks_failures:
+            - "Сигналы риска будут шумными."
+          F_metrics:
+            leading:
+              - "% клиентов с присвоенным риском"
+              - "% high-risk с выполненным playbook"
+            lagging:
+              - "retention 90d"
+              - "% churn по причине 'не получил результат'"
+          G_experiment:
+            timebox: "4 недели"
+            budget: "0"
+            pass_criteria: "retention 90d ↑ на 10%+ без роста нагрузки CS"
+        - concept_index: 2
+          A_name_tagline: "First Value Checklist — автопуть"
+          B_axis_and_resource: "Ось: время до результата; ресурс: чек-лист + авто письма"
+          C_mechanism_steps:
+            - "Определить 5 шагов до first value."
+            - "Запустить автоматические напоминания по шагам."
+            - "Фиксировать % клиентов, прошедших чек-лист за 14 дней."
+          D_assumptions_constraints:
+            - "Шаги применимы к большинству сегментов."
+          E_risks_failures:
+            - "Авто сообщения игнорируются."
+          F_metrics:
+            leading:
+              - "% клиентов завершивших чек-лист"
+              - "время до first value"
+            lagging:
+              - "retention 90d"
+              - "% churn"
+          G_experiment:
+            timebox: "4 недели"
+            budget: "0"
+            pass_criteria: "% first value ≥70%, retention ↑"
+        - concept_index: 3
+          A_name_tagline: "Support Signal — ранний риск"
+          B_axis_and_resource: "Ось: ранняя реакция; ресурс: теги тикетов"
+          C_mechanism_steps:
+            - "Определить 5 тегов риска в тикетах (setup, billing, errors)."
+            - "При появлении риска запускать playbook касаний."
+            - "Отслеживать % клиентов с сигналом и результатом."
+          D_assumptions_constraints:
+            - "Теги проставляются корректно."
+          E_risks_failures:
+            - "Сигналы не фиксируются в тикетах."
+          F_metrics:
+            leading:
+              - "# клиентов с risk-тегом"
+              - "% risk-тегов с playbook"
+            lagging:
+              - "% churn"
+              - "retention 90d"
+          G_experiment:
+            timebox: "4 недели"
+            budget: "0"
+            pass_criteria: "churn ↓ на 10%+"
+
+  - artifact_type: SECONDARY_CONTRADICTION_CHECK
+    pipeline_step: 11
+    payload:
+      new_contradiction_exists: false
+
+  - artifact_type: DECISION_RECORD
+    pipeline_step: 12
+    payload:
+      chosen_concept_index: 1
+      chosen_concept_name: "Risk Segmentation + Playbooks"
+      reasons:
+        - "Даёт фокус CS без расширения команды."
+        - "Снижает churn за счёт приоритизации high-risk."
+      rejected_alternatives:
+        - concept_index: 2
+          concept: "First Value Checklist"
+          why_rejected: "полезно, но без сегментации перегрузит CS"
+        - concept_index: 3
+          concept: "Support Signal Trigger"
+          why_rejected: "требует дисциплины тегирования"
+      assumptions:
+        - "Health score можно вычислить из событий продукта."
+      success_criteria:
+        - "retention 90d ↑ на 10%+"
+        - "% churn ↓ по причине 'не получил результат'"
+
+  - artifact_type: IMPLEMENTATION_MAP
+    pipeline_step: 13
+    payload:
+      workstreams:
+        - name: "Segmentation"
+          owner: "Head of CS"
+          tasks:
+            - task: "Определить правила health score"
+              due: "2026-02-10"
+              dependency: "данные usage"
+              checkpoint_metric: "health score определён"
+            - task: "Назначить playbooks для high-risk"
+              due: "2026-02-14"
+              dependency: "health score"
+              checkpoint_metric: "playbooks готовы"
+        - name: "Automation"
+          owner: "CS Ops"
+          tasks:
+            - task: "Запустить автоматические письма по чек-листу first value"
+              due: "2026-02-21"
+              dependency: "чек-лист"
+              checkpoint_metric: "% клиентов в триггерах"
+
+  - artifact_type: RULE_UPDATE
+    pipeline_step: 14
+    payload:
+      rule_id: "CASE-RULE-TC19-01"
+      rule_statement_if_then: "Если клиент имеет high-risk по health score, то запускается playbook касаний CSM в течение 48 часов; иначе клиент ведётся автоматикой."
+      criterion: "health_score=high"
+      boundaries: "не применимо к стратегическим Enterprise аккаунтам (они всегда high-touch)"
+      evidence_from_case: "симптом: клиенты не достигают результата и уходят"
+      test_case_action:
+        add_or_update: add
+        test_case_id: TC19
+        expected_effect: "retention ↑, churn ↓"
+      version_note: "NON-CANON case rule; canon unchanged"
+      rationale_1l: "сегментация риска позволяет удерживать клиентов без роста команды"
